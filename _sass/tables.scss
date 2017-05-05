@@ -1,0 +1,92 @@
+/*!
+ * Copyright (c) 2017, Inversoft Inc., All Rights Reserved
+ */
+
+/* Tables
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+table {
+  background-color: transparent;
+  border: 1px solid $gray-2;
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin-bottom: 17px;
+  max-width: 100%;
+  width: 100%;
+
+  thead {
+    tr {
+      th {
+        border: 1px solid $gray-2;
+        border-bottom-width: 2px;
+        border-top: 0;
+        color: $gray-5;
+        padding: 8px;
+        vertical-align: middle;
+
+        a {
+          color: $blue-medium;
+          text-decoration: none;
+        }
+
+        &.sort-up:after {
+          color: $blue-dark;
+          content: " \f106";
+          font-family: FontAwesome;
+          font-size: 14px;
+        }
+
+        &.sort-down:after {
+          color: $blue-dark;
+          content: " \f107";
+          font-family: FontAwesome;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+
+  tbody {
+    tr {
+      td {
+        border: 1px solid $gray-2;
+        border-bottom-width: 2px;
+        border-top: 0;
+        padding: 8px;
+        vertical-align: middle;
+
+        a {
+          color: $blue-dark;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+
+  .tight {
+    width: 1px;
+  }
+}
+.panel {
+  background-color: #fff;
+  border: 1px solid $gray-3;
+  border-top: 2px solid $gray-5;
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+  -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+  margin-bottom: 20px;
+
+  h2 {
+    background-color: $gray-1;
+    border-bottom: 1px solid $gray-3;
+    color: $gray-6;
+    font-size: 16px;
+    font-weight: 500;
+    margin: 0;
+    padding: 12px 20px;
+  }
+
+  .body {
+    padding: 15px;
+  }
+}

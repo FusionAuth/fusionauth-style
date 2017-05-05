@@ -1,163 +1,323 @@
 <!doctype html>
 <html>
-<link>
+<head>
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css"/>
   <link rel="stylesheet" href="/css/normalize-4.1.1.css"/>
   <link rel="stylesheet" href="/css/skeleton-2.0.4.css"/>
   <link rel="stylesheet" href="/css/inversoft-style.css"/>
   <link rel="stylesheet" href="/css/layout.css"/>
+  <script type="text/javascript" src="/js/prime-0.35.4.js"></script>
+  <script type="text/javascript">
+    var tooltip;
+    Prime.Document.onReady(function() {
+      Prime.Document.query('[data-help]').each(function(e) {
+        e.addEventListener('mouseenter', function(event) {
+          var parent = new Prime.Document.Element(event.target);
+          var helpText = parent.getDataSet()['help'];
+          tooltip = Prime.Document.newElement('<span>').prependTo(parent).addClass('tooltip').setHTML(helpText);
+          if (parent.getComputedStyle()['textAlign'] === 'right') {
+            tooltip.setStyle('right', '-75px');
+            tooltip.setTop(-1 * tooltip.getHeight());
+          } else if (parent.getTagName() === 'LABEL') {
+            tooltip.setLeft(0);
+            tooltip.setTop(-1 * (tooltip.getHeight() + 10));
+          } else {
+            tooltip.setLeft((tooltip.getWidth() - parent.getWidth()) / -2);
+            tooltip.setTop(-1 * (tooltip.getHeight() + 10));
+          }
+        });
+        e.addEventListener('mouseleave', function() {
+          tooltip.removeFromDOM();
+        });
+      });
+    });
+  </script>
 </head>
 <body>
-<div id="buttons">
-  <a class="blue-button" href="#">Test</a>
-  <a class="blue-shadow-button" href="#">Test</a>
-  <a class="green-button" href="#">Test</a>
-  <a class="green-shadow-button" href="#">Test</a>
-  <a class="red-button" href="#">Test</a>
-  <a class="red-shadow-button" href="#">Test</a>
-  <a class="purple-button" href="#">Test</a>
-  <a class="purple-shadow-button" href="#">Test</a>
-</div>
-<div id="typography">
-  <h1>Title 1</h1>
-  <h2>Title 2</h2>
-  <h3>Title 3</h3>
-  <h4>Title 4</h4>
-  <h5>Title 5</h5>
-  <h6>Title 6</h6>
-</div>
-<div class="panel">
-  <h2>Form Panel</h2>
-  <div class="body">
-    <form class="labels-left">
-      <fieldset>
-        <legend>Text boxes</legend>
-        <div class="form-row">
-          <label for="text" data-help="Some tooltip help text."><span>*</span> Text</label>
-          <input type="text" id="text" placeholder="Text input"/>
-        </div>
+<header>
+  The site header
+</header>
+<div class="page-body">
+  <header>
+    <div class="buttons">
+      <button class="blue button square" data-help="Save"><i class="fa fa-save"></i></button>
+      <a href="#" class="gray button square" data-help="Cancel"><i class="fa fa-reply"></i></a>
+      <a href="#" class="red button square" data-help="Delete"><i class="fa fa-trash"></i></a>
+      <a href="#" class="green button square" data-help="Add"><i class="fa fa-plus"></i></a>
+    </div>
+    <h1>The Page Header</h1>
+  </header>
+  <div class="panel">
+    <h2>Form Panel</h2>
+    <div class="body">
+      <form class="labels-left">
+        <fieldset>
+          <legend>Text boxes</legend>
+          <div class="form-row">
+            <label for="text" data-help="Some tooltip help text that is very long and will wrap multiple lines and such."><span>*</span> Text</label>
+            <input type="text" id="text" placeholder="Text input"/>
+          </div>
+
+          <div class="form-row">
+            <label for="error" class="error" data-help="Short">Error</label>
+            <input type="text" id="error" class="error" placeholder="Text input"/>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Checkboxes</legend>
+          <div class="form-row">
+            <label for="foo"><span>*</span> Checkbox label</label>
+            <div class="checkbox"><input type="checkbox" id="foo"/><label for="foo"></label></div><label for="foo">Checkbox info</label>
+          </div>
+
+          <div class="form-row">
+            <label for="bar" class="errors">Error Checkbox label</label>
+            <div class="checkbox error"><input type="checkbox" id="bar"/><label for="bar"></label></div><label for="bar">Checkbox info</label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Radio buttons</legend>
+          <div class="form-row">
+            <label>Radio label</label>
+            <div class="radio"><input type="radio" name="foo" id="foo-1"/><label for="foo-1"></label></div><label for="foo-1">Radio label</label>
+            <div class="radio"><input type="radio" name="foo" id="foo-2"/><label for="foo-2"></label></div><label for="foo-1">Radio label</label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Select</legend>
+          <div class="form-row">
+            <label for="select"><span>*</span> Select label</label>
+            <select id="select">
+              <option>Option 1</option>
+              <option>Option 2</option>
+              <option>Option 3</option>
+              <option>Option 4</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="select-2" class="error"><span>*</span> Error Select label</label>
+            <select id="select-2" class="error">
+              <option>Option 1</option>
+              <option>Option 2</option>
+              <option>Option 3</option>
+              <option>Option 4</option>
+            </select>
+          </div>
+        </fieldset>
 
         <div class="form-row">
-          <label for="error">Error</label>
-          <input type="text" id="error" class="error" placeholder="Text input"/>
+          <input type="submit" class="blue button" value="Submit"/>
+          <a href="#" class="blue button">Cancel</a>
+          <button class="blue button">Back</button>
         </div>
-      </fieldset>
-
-      <fieldset>
-        <legend>Checkboxes</legend>
-        <div class="form-row">
-          <label for="foo"><span>*</span> Checkbox label</label>
-          <div class="checkbox"><input type="checkbox" id="foo"/><label for="foo"></label></div><label for="foo">Checkbox info</label>
-        </div>
-
-        <div class="form-row">
-          <label for="bar">Checkbox label</label>
-          <div class="checkbox"><input type="checkbox" id="bar"/><label for="bar"></label></div><label for="bar">Checkbox info</label>
-        </div>
-      </fieldset>
-
-      <fieldset>
-        <legend>Radio buttons</legend>
-        <div class="form-row">
-          <label>Radio label</label>
-          <div class="radio"><input type="radio" name="foo" id="foo-1"/><label for="foo-1"></label></div><label for="foo-1">Radio label</label>
-          <div class="radio"><input type="radio" name="foo" id="foo-2"/><label for="foo-2"></label></div><label for="foo-1">Radio label</label>
-        </div>
-      </fieldset>
-
-      <fieldset>
-        <legend>Select</legend>
-        <div class="form-row">
-          <label for="select"><span>*</span> Select label</label>
-          <select id="select">
-            <option>Option 1</option>
-            <option>Option 2</option>
-            <option>Option 3</option>
-            <option>Option 4</option>
-          </select>
-        </div>
-      </fieldset>
-
-      <div class="form-row">
-        <input type="submit" class="blue-button" value="Submit"/>
-        <a href="#" class="blue-button">Cancel</a>
-        <button class="blue-button">Back</button>
-      </div>
-    </form>
+      </form>
+    </div>
   </div>
-</div>
-<div class="panel">
-  <h2>Form Panel</h2>
-  <div class="body">
-    <form class="labels-above">
-      <fieldset>
-        <legend>Text boxes</legend>
-        <div class="form-row">
-          <label for="text-above">Text <span>*</span></label>
-          <input type="text" id="text-above" placeholder="Text input"/>
-        </div>
+  <div class="panel">
+    <h2>Form Panel</h2>
+    <div class="body">
+      <form class="labels-above">
+        <fieldset>
+          <legend>Text boxes</legend>
+          <div class="form-row">
+            <label for="text-above">Text <span>*</span></label>
+            <input type="text" id="text-above" placeholder="Text input"/>
+          </div>
+
+          <div class="form-row">
+            <label for="error-above">Error <span>*</span></label>
+            <input type="text" id="error-above" class="error" placeholder="Text input"/>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Checkboxes</legend>
+          <div class="form-row">
+            <label for="foo-above" data-help="Some tooltip text that is shorter.">Checkbox label<span>*</span></label>
+            <div class="checkbox"><input type="checkbox" id="foo-above"/><label for="foo-above"></label></div><label for="foo-above">Checkbox info</label>
+          </div>
+
+          <div class="form-row">
+            <label for="bar-above">Checkbox label</label>
+            <div class="checkbox"><input type="checkbox" id="bar-above"/><label for="bar-above"></label></div><label for="bar-above">Checkbox info</label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Radio buttons</legend>
+          <div class="form-row">
+            <label>Radio label <span>*</span></label>
+            <div class="radio"><input type="radio" name="foo" id="radio-1-above"/><label for="radio-1-above"></label></div><label for="radio-1-above">Radio label</label>
+            <div class="radio"><input type="radio" name="foo" id="radio-2-above"/><label for="radio-2-above"></label></div><label for="radio-1-above">Radio label</label>
+          </div>
+          <div class="form-row">
+            <label>Radio label <span>*</span></label>
+            <div class="radio"><input type="radio" name="foo" id="radio-3-above"/><label for="radio-3-above"></label></div><label for="radio-3-above">Radio label</label>
+            <div class="radio"><input type="radio" name="foo" id="radio-4-above"/><label for="radio-4-above"></label></div><label for="radio-4-above">Radio label</label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Select</legend>
+          <div class="form-row">
+            <label for="select-above">Select label <span>*</span></label>
+            <select id="select-above">
+              <option>Option 1</option>
+              <option>Option 2</option>
+              <option>Option 3</option>
+              <option>Option 4</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="select-1-above">Select label</label>
+            <select id="select-1-above">
+              <option>Option 1</option>
+              <option>Option 2</option>
+              <option>Option 3</option>
+              <option>Option 4</option>
+            </select>
+          </div>
+        </fieldset>
 
         <div class="form-row">
-          <label for="error-above">Error <span>*</span></label>
-          <input type="text" id="error-above" class="error" placeholder="Text input"/>
+          <input type="submit" class="blue button" value="Submit"/>
+          <a href="#" class="blue button">Cancel</a>
+          <button class="blue button">Back</button>
         </div>
-      </fieldset>
-
-      <fieldset>
-        <legend>Checkboxes</legend>
-        <div class="form-row">
-          <label for="foo-above">Checkbox label<span>*</span></label>
-          <div class="checkbox"><input type="checkbox" id="foo-above"/><label for="foo-above"></label></div><label for="foo-above">Checkbox info</label>
-        </div>
-
-        <div class="form-row">
-          <label for="bar-above">Checkbox label</label>
-          <div class="checkbox"><input type="checkbox" id="bar-above"/><label for="bar-above"></label></div><label for="bar-above">Checkbox info</label>
-        </div>
-      </fieldset>
-
-      <fieldset>
-        <legend>Radio buttons</legend>
-        <div class="form-row">
-          <label>Radio label <span>*</span></label>
-          <div class="radio"><input type="radio" name="foo" id="radio-1-above"/><label for="radio-1-above"></label></div><label for="radio-1-above">Radio label</label>
-          <div class="radio"><input type="radio" name="foo" id="radio-2-above"/><label for="radio-2-above"></label></div><label for="radio-1-above">Radio label</label>
-        </div>
-        <div class="form-row">
-          <label>Radio label <span>*</span></label>
-          <div class="radio"><input type="radio" name="foo" id="radio-3-above"/><label for="radio-3-above"></label></div><label for="radio-3-above">Radio label</label>
-          <div class="radio"><input type="radio" name="foo" id="radio-4-above"/><label for="radio-4-above"></label></div><label for="radio-4-above">Radio label</label>
-        </div>
-      </fieldset>
-
-      <fieldset>
-        <legend>Select</legend>
-        <div class="form-row">
-          <label for="select-above">Select label <span>*</span></label>
-          <select id="select-above">
-            <option>Option 1</option>
-            <option>Option 2</option>
-            <option>Option 3</option>
-            <option>Option 4</option>
-          </select>
-        </div>
-        <div class="form-row">
-          <label for="select-1-above">Select label</label>
-          <select id="select-1-above">
-            <option>Option 1</option>
-            <option>Option 2</option>
-            <option>Option 3</option>
-            <option>Option 4</option>
-          </select>
-        </div>
-      </fieldset>
-
-      <div class="form-row">
-        <input type="submit" class="blue-button" value="Submit"/>
-        <a href="#" class="blue-button">Cancel</a>
-        <button class="blue-button">Back</button>
+      </form>
+    </div>
+  </div>
+  <div class="panel">
+    <h2>Table panel</h2>
+    <div class="body">
+      <table>
+        <thead>
+        <tr>
+          <th class="tight"><input type="checkbox"></th>
+          <th class="sort-down text-left"><a href="#">Column 1 (down)</a></th>
+          <th class="sort-up text-right"><a href="#">Column 2 (up)</a></th>
+          <th class="text-right">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td class="tight"><input type="checkbox"></td>
+          <td class="text-left">Value 2</td>
+          <td class="text-right">Value 3</td>
+          <td class="text-right"><a href="#" class="blue button square" data-help="Edit"><i class="fa fa-pencil"></i></a></td>
+        </tr>
+        <tr>
+          <td class="tight"><input type="checkbox"></td>
+          <td class="text-left">Value 2</td>
+          <td class="text-right">Value 3</td>
+          <td class="text-right"><a href="#" class="blue button square" data-help="Edit"><i class="fa fa-pencil"></i></a></td>
+        </tr>
+        <tr>
+          <td class="tight"><input type="checkbox"></td>
+          <td class="text-left">Value 2</td>
+          <td class="text-right">Value 3</td>
+          <td class="text-right"><a href="#" class="blue button square" data-help="Edit"><i class="fa fa-pencil"></i></a></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="panel">
+    <h2>Searchable table panel</h2>
+    <div class="body">
+      <div class="gray-panel row">
+        <form class="labels-above">
+          <div class="four columns">
+            <div class="form-row">
+              <label for="search-1">Search Field 1</label>
+              <input type="text" id="search-1" class="full"/>
+            </div>
+            <div class="form-row">
+              <label for="search-2">Search Field 2</label>
+              <input type="text" id="search-2" class="full"/>
+            </div>
+          </div>
+          <div class="four columns">
+            <div class="form-row">
+              <label for="search-3">Search Field 3</label>
+              <input type="text" id="search-3" class="full"/>
+            </div>
+            <div class="form-row">
+              <label for="search-4">Search Field 4</label>
+              <input type="text" id="search-4" class="full"/>
+            </div>
+          </div>
+          <div class="four columns">
+            <div class="form-row">
+              <label for="search-5">Search Field 5</label>
+              <select id="search-5" class="full">
+                <option>Option</option>
+                <option>Option</option>
+                <option>Option</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <label for="search-6">Search Field 6</label>
+              <input type="text" id="search-6" class="full"/>
+            </div>
+          </div>
+          <div class="twelve columns text-right">
+            <button class="blue button"><i class="fa fa-search"></i> Filter</button>
+          </div>
+        </form>
       </div>
-    </form>
+      <table>
+        <thead>
+        <tr>
+          <th class="tight"><input type="checkbox"></th>
+          <th class="sort-down text-left"><a href="#">Column 1 (down)</a></th>
+          <th class="sort-up text-right"><a href="#">Column 2 (up)</a></th>
+          <th class="text-right">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td class="tight"><input type="checkbox"></td>
+          <td class="text-left">Value 2</td>
+          <td class="text-right">Value 3</td>
+          <td class="text-right"><a href="#" class="blue button square" data-help="Edit"><i class="fa fa-pencil"></i></a></td>
+        </tr>
+        <tr>
+          <td class="tight"><input type="checkbox"></td>
+          <td class="text-left">Value 2</td>
+          <td class="text-right">Value 3</td>
+          <td class="text-right"><a href="#" class="blue button square" data-help="Edit"><i class="fa fa-pencil"></i></a></td>
+        </tr>
+        <tr>
+          <td class="tight"><input type="checkbox"></td>
+          <td class="text-left">Value 2</td>
+          <td class="text-right">Value 3</td>
+          <td class="text-right"><a href="#" class="blue button square" data-help="Edit"><i class="fa fa-pencil"></i></a></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div id="buttons">
+    <a class="blue button" href="#">Test</a>
+    <a class="blue shadow button" href="#">Test</a>
+    <a class="green button" href="#">Test</a>
+    <a class="green shadow button" href="#">Test</a>
+    <a class="red button" href="#">Test</a>
+    <a class="red shadow button" href="#">Test</a>
+    <a class="purple button" href="#">Test</a>
+    <a class="purple shadow button" href="#">Test</a>
+  </div>
+  <div id="typography">
+    <h1>Title 1</h1>
+    <h2>Title 2</h2>
+    <h3>Title 3</h3>
+    <h4>Title 4</h4>
+    <h5>Title 5</h5>
+    <h6>Title 6</h6>
   </div>
 </div>
 </body>
