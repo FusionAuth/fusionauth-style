@@ -67,26 +67,46 @@ table {
     width: 1px;
   }
 }
-.panel {
-  background-color: #fff;
-  border: 1px solid $gray-3;
-  border-top: 2px solid $gray-5;
-  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
-  -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
-  margin-bottom: 20px;
 
-  h2 {
-    background-color: $gray-1;
-    border-bottom: 1px solid $gray-3;
-    color: $gray-6;
-    font-size: 16px;
-    font-weight: 500;
-    margin: 0;
-    padding: 12px 20px;
+.pagination {
+  font-size: 0;
+
+  a:first-of-type, span:first-of-type {
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
   }
 
-  .body {
-    padding: 15px;
+  a:last-of-type, span:last-of-type {
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+  }
+
+  a, span {
+    background-color: #fff;
+    border: 1px solid $gray-2;
+    color: $blue-medium;
+    display: inline-block;
+    font-size: 12px;
+    margin: 0 0 0 -1px;
+    padding: 8px 13px;
+    text-decoration: none;
+  }
+
+  span.header {
+    color: $gray-6;
+  }
+
+  a:hover {
+    background-color: $gray-1;
+  }
+
+  .current {
+    background-color: $blue-medium;
+    border-color: $blue-medium;
+    color: #fff;
+  }
+
+  p {
+    font-size: 12px;
   }
 }

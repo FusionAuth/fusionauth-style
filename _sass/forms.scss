@@ -21,6 +21,10 @@ label {
     content: "\f059";
     margin-left: 4px;
   }
+
+  &.error {
+    color: $red-medium;
+  }
 }
 
 form.labels-left {
@@ -30,9 +34,15 @@ form.labels-left {
     label:first-child {
       float: left;
       margin-right: 20px;
-      padding-top: 9px;
+      margin-top: 6px;
       text-align: right;
       width: 12%;
+    }
+
+    span.error {
+      color: $red-medium;
+      display: block;
+      margin-left: calc(12% + 20px);
     }
 
     &:after {
@@ -60,6 +70,11 @@ form.labels-above {
     label:first-child {
       display: block;
       margin-bottom: 5px;
+    }
+
+    span.error {
+      color: $red-medium;
+      display: block;
     }
   }
 }
@@ -133,13 +148,11 @@ textarea {
 
 .checkbox {
   display: inline-block;
-  height: 20px;
-  margin: 0 10px 0 0;
+  margin: 0;
   padding: 0;
   position: relative;
-  width: 20px;
 
-  label {
+  label:first-of-type {
     background-color: #fff;
     border: 1px solid $gray-4;
     cursor: pointer;
@@ -153,6 +166,10 @@ textarea {
     transition: border 0.2s ease-in-out;
     width: 20px;
 
+    &.error {
+      border-color: $red-medium;
+    }
+
     &:after {
       background: transparent;
       border: 3px solid $green-medium;
@@ -160,10 +177,10 @@ textarea {
       border-top: none;
       content: '';
       height: 5px;
-      left: 2px;
+      left: 1px;
       opacity: 0;
       position: absolute;
-      top: 4px;
+      top: 3px;
       transform: rotate(-55deg);
       width: 14px;
     }
@@ -173,17 +190,25 @@ textarea {
     }
   }
 
-  + label {
+  label:last-of-type {
     font-weight: normal;
+    line-height: 12px;
+    vertical-align: middle;
   }
 
   input {
     height: 20px;
+    margin-right: 7px;
     opacity: 0;
+    vertical-align: middle;
     width: 20px;
 
     &:focus + label {
       border: 1px solid $purple-dark;
+    }
+
+    &:focus + label.error {
+      border: 1px solid $red-dark;
     }
 
     &:checked + label:after {
@@ -192,15 +217,24 @@ textarea {
   }
 }
 
+.checkbox-list {
+  border: 1px solid $gray-3;
+  max-height: 200px;
+  overflow-y: scroll;
+  padding: 0 10px;
+
+  .checkbox {
+    display: block;
+  }
+}
+
 .radio {
   display: inline-block;
-  height: 20px;
-  margin: 0 10px 0 0;
+  margin: 0;
   padding: 0;
   position: relative;
-  width: 20px;
 
-  label {
+  label:first-of-type {
     background-color: #fff;
     border: 1px solid $gray-4;
     -webkit-border-radius: 50px;
@@ -219,6 +253,10 @@ textarea {
     transition: border 0.2s ease-in-out;
     width: 20px;
 
+    &.error {
+      border-color: $red-medium;
+    }
+
     &:after {
       background: $green-medium;
       -webkit-border-radius: 50px;
@@ -226,10 +264,10 @@ textarea {
       border-radius: 50px;
       content: '';
       height: 12px;
-      left: 4px;
+      left: 3px;
       opacity: 0;
       position: absolute;
-      top: 4px;
+      top: 3px;
       width: 12px;
     }
 
@@ -238,17 +276,26 @@ textarea {
     }
   }
 
-  + label {
+  label:last-of-type {
     font-weight: normal;
+    line-height: 12px;
+    margin-right: 10px;
+    vertical-align: middle;
   }
 
   input {
     height: 20px;
     opacity: 0;
+    margin-right: 7px;
+    vertical-align: middle;
     width: 20px;
 
     &:focus + label {
       border: 1px solid $purple-dark;
+    }
+
+    &:focus + label.error {
+      border: 1px solid $red-dark;
     }
 
     &:checked + label:after {
@@ -287,6 +334,12 @@ select {
 
   &.full {
     width: 100%;
+  }
+
+  &.error {
+    background-color: $red-light;
+    background-image: linear-gradient(45deg, transparent 50%, white 50%), linear-gradient(135deg, white 50%, transparent 50%), linear-gradient(to right, $red-light, $red-light);
+    border: 1px solid $red-medium;
   }
 
   option {
