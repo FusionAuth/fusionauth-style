@@ -2,6 +2,8 @@
  * Copyright (c) 2017, Inversoft Inc., All Rights Reserved
  */
 
+@import 'mixins';
+
 /* Buttons
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
@@ -12,6 +14,8 @@
 }
 
 .button {
+  @include transition(background 0.2s ease-in-out);
+
   border-radius: 2px;
   box-sizing: border-box;
   cursor: pointer;
@@ -25,10 +29,6 @@
   text-align: center;
   text-decoration: none;
   text-transform: none;
-  -webkit-transition: background 0.2s ease-in-out;
-  -moz-transition: background 0.2s ease-in-out;
-  -o-transition: background 0.2s ease-in-out;
-  transition: background 0.2s ease-in-out;
   white-space: nowrap;
 
   &.square {
@@ -41,14 +41,10 @@
 }
 
 .button.shadow {
-  -webkit-box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.35);
-  -moz-box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.35);
-  box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.35);
+  @include box-shadow(1px 1px 1px 0 rgba(0, 0, 0, 0.35));
 
   &:hover, &:focus {
-    -webkit-box-shadow: 2px 2px 7px 0 rgba(0, 0, 0, 0.35);
-    -moz-box-shadow: 2px 2px 7px 0 rgba(0, 0, 0, 0.35);
-    box-shadow: 2px 2px 7px 0 rgba(0, 0, 0, 0.35);
+    @include box-shadow(2px 2px 7px 0 rgba(0, 0, 0, 0.35));
   }
 }
 

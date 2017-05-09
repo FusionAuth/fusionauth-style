@@ -4,38 +4,11 @@
 /*!
  * Copyright (c) 2017, Inversoft Inc., All Rights Reserved
  */
-$gray-1: #f7f7f7;
-$gray-2: #e5e5e5;
-$gray-3: #bfbfbf;
-$gray-4: #999999;
-$gray-5: #737373;
-$gray-6: #4c4c4c;
-$gray-7: #262626;
-
-$blue-light: #5EB4EE;
-$blue-medium: #4990E2;
-$blue-dark: #146AA4;
-
-$green-light: #27E2BD;
-$green-medium: #01BB96;
-$green-dark: #0F8B72;
-
-$orange-light: #FFC287;
-$orange-medium: #FF9C3D;
-$orange-dark: #FF6A00;
-
-$red-light: #FF7A95;
-$red-medium: #EB385C;
-$red-dark: #C81B3D;
-
-$purple-light: #577494;
-$purple-medium: #34485E;
-$purple-dark: #203246;
-
-$tooltip-color: $gray-7;
 
 $font-stack: 'Open Sans', 'Avenir', Helvetica, sans-serif;
 
+@import 'colors';
+@import 'mixins';
 @import 'buttons';
 @import 'forms';
 @import 'panels';

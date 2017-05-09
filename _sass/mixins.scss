@@ -1,0 +1,43 @@
+/*!
+ * Copyright (c) 2017, Inversoft Inc., All Rights Reserved
+ */
+
+/* Forms
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+@mixin appearance($value) {
+  -webkit-appearance: $value;
+  -moz-appearance: $value;
+  appearance: $value;
+}
+
+@mixin background-clip($value, $mozValue) {
+  -webkit-background-clip: $value;
+  -moz-background-clip: $mozValue;
+  background-clip: $value;
+}
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  border-radius: $radius;
+}
+
+@mixin box-shadow($value) {
+  -webkit-box-shadow: $value;
+  -moz-box-shadow: $value;
+  box-shadow: $value;
+}
+
+@mixin box-sizing($value) {
+  -webkit-box-sizing: $value;
+  -moz-box-sizing: $value;
+  box-sizing: $value;
+}
+
+@mixin transition($value) {
+  -webkit-transition: $value;
+  -moz-transition: $value;
+  -o-transition: $value;
+  transition: $value;
+}

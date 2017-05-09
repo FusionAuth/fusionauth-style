@@ -1,18 +1,48 @@
 /*!
  * Copyright (c) 2017, Inversoft Inc., All Rights Reserved
  */
+@import 'colors';
+@import 'mixins';
 
 /* Forms
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
+$checkbox-border-color: $gray-4;
+$checkbox-check-color: $green-medium;
+$checkbox-list-border-color: $gray-4;
+$error-color: $red-medium;
+$error-highlight-color: $red-dark;
+$error-widget-color: $red-light;
+$fieldset-border-color: $gray-3;
+$fieldset-legend-color: $gray-7;
+$highlight-color: $purple-dark;
+$label-color: $gray-5;
+$multiple-select-border-color: $gray-4;
+$multiple-select-option-background-color: $gray-2;
+$multiple-select-option-border-color: $gray-3;
+$multiple-select-option-highlight-background-color: $blue-medium;
+$option-background-color: $gray-1;
+$option-color: $gray-7;
+$required-color: $red-medium;
+$radio-border-color: $gray-4;
+$radio-check-color: $green-medium;
+$select-border-color: $gray-4;
+$select-background-color: $gray-3;
+$text-border-color: $gray-4;
+$toggle-rail-color: $gray-5;
+$toggle-rail-highlight-color: $green-gray3;
+$toggle-check-color: $green-medium;
+$tooltip-background-color: $gray-7;
+$tooltip-color: $gray-1;
+
 label {
-  color: $gray-5;
+  color: $label-color;
   display: inline-block;
   font-weight: bold;
   position: relative;
 
-  span {
-    color: $red-medium;
+  span.required {
+    color: $required-color;
   }
 
   &[data-help]:after {
@@ -23,7 +53,7 @@ label {
   }
 
   &.error {
-    color: $red-medium;
+    color: $error-color;
   }
 }
 
@@ -31,16 +61,16 @@ form.labels-left {
   .form-row {
     margin-bottom: 15px;
 
-    label:first-child {
+    > label:first-child {
       float: left;
       margin-right: 20px;
-      margin-top: 6px;
+      margin-top: 8px;
       text-align: right;
       width: 12%;
     }
 
-    span.error {
-      color: $red-medium;
+    > span.error {
+      color: $error-color;
       display: block;
       margin-left: calc(12% + 20px);
     }
@@ -73,7 +103,7 @@ form.labels-above {
     }
 
     span.error {
-      color: $red-medium;
+      color: $error-color;
       display: block;
     }
   }
@@ -87,8 +117,8 @@ fieldset {
 
   legend {
     border: none;
-    border-bottom: 1px solid $gray-3;
-    color: $gray-7;
+    border-bottom: 1px solid $fieldset-border-color;
+    color: $fieldset-legend-color;
     display: block;
     font-size: 18px;
     margin-bottom: 17px;
@@ -113,35 +143,30 @@ input[type="tel"],
 input[type="url"],
 input[type="password"],
 textarea {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
+  @include appearance(none);
+  @include border-radius(2px);
+  @include transition(border 0.2s ease-in-out);
   background-color: #fff;
-  border: 1px solid $gray-4;
-  border-radius: 2px;
+  border: 1px solid $text-border-color;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   box-sizing: border-box;
   display: block;
   font-size: 12px;
   font-weight: normal;
   padding: 8px 13px;
-  -webkit-transition: border 0.2s ease-in-out;
-  -moz-transition: border 0.2s ease-in-out;
-  -o-transition: border 0.2s ease-in-out;
-  transition: border 0.2s ease-in-out;
 
   &:focus {
-    border: 1px solid $purple-dark;
+    border: 1px solid $highlight-color;
     outline: 0;
   }
 
   &.error {
-    border: 1px solid $red-medium;
-    color: $red-medium;
+    border: 1px solid $error-color;
+    color: $error-color;
 
     &:focus {
-      border: 1px solid $red-dark;
-      color: $red-dark;
+      border: 1px solid $error-highlight-color;
+      color: $error-highlight-color;
     }
   }
 }
@@ -152,27 +177,24 @@ textarea {
   padding: 0;
   position: relative;
 
-  label:first-of-type {
+  span.box {
+    @include transition(border 0.2s ease-in-out);
     background-color: #fff;
-    border: 1px solid $gray-4;
+    border: 1px solid $checkbox-border-color;
     cursor: pointer;
     height: 20px;
     left: 0;
     position: absolute;
     top: 0;
-    -webkit-transition: border 0.2s ease-in-out;
-    -moz-transition: border 0.2s ease-in-out;
-    -o-transition: border 0.2s ease-in-out;
-    transition: border 0.2s ease-in-out;
     width: 20px;
 
     &.error {
-      border-color: $red-medium;
+      border-color: $error-color;
     }
 
     &:after {
       background: transparent;
-      border: 3px solid $green-medium;
+      border: 3px solid $checkbox-check-color;
       border-right: none;
       border-top: none;
       content: '';
@@ -190,7 +212,7 @@ textarea {
     }
   }
 
-  label:last-of-type {
+  span.label {
     font-weight: normal;
     line-height: 12px;
     vertical-align: middle;
@@ -203,28 +225,29 @@ textarea {
     vertical-align: middle;
     width: 20px;
 
-    &:focus + label {
-      border: 1px solid $purple-dark;
+    &:focus + span.box {
+      border: 1px solid $highlight-color;
     }
 
-    &:focus + label.error {
-      border: 1px solid $red-dark;
+    &:focus + span.error {
+      border: 1px solid $error-highlight-color;
     }
 
-    &:checked + label:after {
+    &:checked + span.box:after {
       opacity: 1;
     }
   }
 }
 
 .checkbox-list {
-  border: 1px solid $gray-3;
+  border: 1px solid $checkbox-list-border-color;
   max-height: 200px;
   overflow-y: scroll;
   padding: 0 10px;
 
   .checkbox {
     display: block;
+    margin-top: 6px;
   }
 }
 
@@ -234,12 +257,11 @@ textarea {
   padding: 0;
   position: relative;
 
-  label:first-of-type {
+  span.box {
+    @include border-radius(50px);
+    @include transition(border 0.2s ease-in-out);
     background-color: #fff;
-    border: 1px solid $gray-4;
-    -webkit-border-radius: 50px;
-    -moz-border-radius: 50px;
-    border-radius: 50px;
+    border: 1px solid $radio-border-color;
     cursor: pointer;
     height: 20px;
     left: 0;
@@ -247,21 +269,15 @@ textarea {
     padding: 0;
     position: absolute;
     top: 0;
-    -webkit-transition: border 0.2s ease-in-out;
-    -moz-transition: border 0.2s ease-in-out;
-    -o-transition: border 0.2s ease-in-out;
-    transition: border 0.2s ease-in-out;
     width: 20px;
 
     &.error {
-      border-color: $red-medium;
+      border-color: $error-color;
     }
 
     &:after {
-      background: $green-medium;
-      -webkit-border-radius: 50px;
-      -moz-border-radius: 50px;
-      border-radius: 50px;
+      @include border-radius(50px);
+      background: $radio-check-color;
       content: '';
       height: 12px;
       left: 3px;
@@ -276,7 +292,7 @@ textarea {
     }
   }
 
-  label:last-of-type {
+  span.label {
     font-weight: normal;
     line-height: 12px;
     margin-right: 10px;
@@ -290,45 +306,36 @@ textarea {
     vertical-align: middle;
     width: 20px;
 
-    &:focus + label {
-      border: 1px solid $purple-dark;
+    &:focus + span.box {
+      border: 1px solid $highlight-color;
     }
 
-    &:focus + label.error {
-      border: 1px solid $red-dark;
+    &:focus + span.error {
+      border: 1px solid $error-highlight-color;
     }
 
-    &:checked + label:after {
+    &:checked + span.box:after {
       opacity: 1;
     }
   }
 }
 
 select {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  background-color: $gray-3;
+  @include appearance(none);
+  @include border-radius(2px);
+  @include box-shadow(none);
+  @include transition(border 0.2s ease-in-out);
+  background-color: $select-background-color;
   background-image: linear-gradient(45deg, transparent 50%, white 50%), linear-gradient(135deg, white 50%, transparent 50%), linear-gradient(to right, $gray-3, $gray-3);
   background-position: calc(100% - 20px) calc(1em + 2px), calc(100% - 15px) calc(1em + 2px), 100% 0;
   background-repeat: no-repeat;
   background-size: 5px 5px, 5px 5px, 2.5em 2.5em;
-  border: 1px solid $gray-4;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  border-radius: 2px;
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
-  box-shadow: none;
+  border: 1px solid $select-border-color;
   color: #fff;
   padding: 6px 50px 6px 13px;
-  -webkit-transition: border 0.2s ease-in-out;
-  -moz-transition: border 0.2s ease-in-out;
-  -o-transition: border 0.2s ease-in-out;
-  transition: border 0.2s ease-in-out;
 
   &:focus {
-    border: 1px solid $gray-5;
+    border: 1px solid $highlight-color;
     outline: 0;
   }
 
@@ -337,23 +344,195 @@ select {
   }
 
   &.error {
-    background-color: $red-light;
-    background-image: linear-gradient(45deg, transparent 50%, white 50%), linear-gradient(135deg, white 50%, transparent 50%), linear-gradient(to right, $red-light, $red-light);
-    border: 1px solid $red-medium;
+    background-color: $error-widget-color;
+    background-image: linear-gradient(45deg, transparent 50%, white 50%), linear-gradient(135deg, white 50%, transparent 50%), linear-gradient(to right, $error-widget-color, $error-widget-color);
+    border: 1px solid $error-color;
   }
 
   option {
-    background-color: $gray-1;
-    color: $gray-7;
+    background-color: $option-background-color;
+    color: $option-color;
   }
 }
 
+.toggle {
+  margin-top: 6px;
+  position: relative;
+
+  span.rail {
+    @include border-radius(10px);
+    background-color: $toggle-rail-color;
+    height: 15px;
+    position: absolute;
+    top: 0;
+    width: 37px;
+  }
+
+  span.pin {
+    @include border-radius(50%);
+    @include box-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
+    @include transition(0.5s);
+    background-color: white;
+    height: 23px;
+    left: -4px;
+    position: absolute;
+    top: -5px;
+    width: 23px;
+  }
+
+  input[type=checkbox] {
+    height: 1px;
+    opacity: 0;
+    width: 1px;
+
+    &:checked ~ span.rail {
+      background-color: $toggle-rail-highlight-color;
+    }
+
+    &:checked ~ span.pin {
+      background-color: $toggle-check-color;
+      left: 20px;
+    }
+
+    &:focus ~ span.pin {
+      border: 1px solid $highlight-color;
+    }
+  }
+}
+
+.prime-multiple-select-display {
+  position: relative;
+
+  &.error ul.prime-multiple-select-option-list {
+    border: 1px solid $error-highlight-color;
+  }
+
+  &.prime-focus ul.prime-multiple-select-option-list {
+    border: 1px solid $highlight-color;
+  }
+
+  &.error.prime-focus ul.prime-multiple-select-option-list {
+    border: 1px solid $error-highlight-color;
+  }
+
+  ul.prime-multiple-select-option-list {
+    @include transition(border 0.2s ease-in-out);
+
+    border: 1px solid $multiple-select-border-color;
+    margin: 0;
+    padding: 4px 4px;
+    list-style: none;
+    max-height: 80px;
+    min-height: 25px;
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    li {
+      color: #000000;
+      display: inline-block;
+
+      &:first-of-type {
+        margin-left: 0;
+      }
+
+      &.prime-multiple-select-option {
+        @include border-radius(3px);
+        @include background-clip(padding-box, padding);
+        @include box-shadow(1px 1px 2px 0 rgba(0, 0, 0, 0.35));
+
+        background-color: $multiple-select-option-background-color;
+        cursor: default;
+        margin: 1px 4px;
+        padding: 2px 9px;
+
+        span {
+          display: inline-block;
+          margin-right: 2px;
+        }
+
+        a {
+          color: #555;
+          display: inline-block;
+          font-family: FontAwesome;
+          font-size: 14px;
+          margin-left: 5px;
+          text-decoration: none;
+          text-rendering: auto;
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+
+          &:before {
+            content: '\f057';
+          }
+        }
+      }
+
+      &.prime-multiple-select-option-highlighted {
+        background-color: $multiple-select-option-highlight-background-color;
+        color: #fff;
+
+        a {
+          color: #fff;
+        }
+      }
+    }
+  }
+
+  input {
+    @include box-shadow(none);
+    border: none;
+    height: 26px;
+    margin: 0;
+    outline: none;
+    padding: 0;
+
+    &:focus {
+      background: none;
+      border: none;
+      box-shadow: none;
+      outline: none;
+    }
+  }
+
+  .prime-multiple-select-search-result-list {
+    @include box-shadow(0 4px 5px rgba(0,0,0,.15));
+    @include box-sizing(border-box);
+    background-color: #fff;
+    border: 1px solid $multiple-select-border-color;
+    border-top: 0;
+    height: 175px;
+    left: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    overflow-x: hidden;
+    overflow-y: auto;
+    top: 100%;
+    width: 100%;
+    z-index: 1010;
+
+    li {
+      @include box-sizing(border-box);
+      padding: 5px;
+    }
+
+    .prime-searcher-highlighted-search-result {
+      background-color: $multiple-select-option-highlight-background-color;
+      color: #fff;
+    }
+  }
+}
+// Float hack
+form.labels-left .prime-multiple-select-search-result-list {
+  margin-left: 14%;
+  width: 86%;
+}
+
 .tooltip {
-  background-color: $tooltip-color;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-  color: $gray-1;
+  @include border-radius(5px);
+  background-color: $tooltip-background-color;
+  color: $tooltip-color;
   font-weight: normal;
   padding: 5px 10px;
   position: absolute;
@@ -363,7 +542,7 @@ select {
 
   &:after {
     border: 6px solid rgba(0, 0, 0, 0);
-    border-top-color: $tooltip-color;
+    border-top-color: $tooltip-background-color;
     content: ' ';
     height: 0;
     left: 50%;

@@ -1,0 +1,58 @@
+/*!
+ * Copyright (c) 2017, Inversoft Inc., All Rights Reserved
+ */
+
+ul.prime-tabs {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+ul.prime-tabs li {
+  border: solid #aaa;
+  border-width: 1px 1px 0 1px;
+  margin-right: -1px;
+  float: left;
+}
+
+ul.prime-tabs li a {
+  background: #eee;
+  color: black;
+  display: block;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 7px 10px 7px 10px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+ul.prime-tabs li a.error {
+  color: #c34e5d;
+}
+
+ul.prime-tabs li a:hover {
+  background: #e6e6e6;
+}
+
+ul.prime-tabs li.prime-active a {
+  background: #fff;
+  position: relative;
+  top: 1px;
+  pointer-events: none;
+}
+
+ul.prime-tabs li.first-child {
+  border-radius: 3px 0 0 0;
+  margin-left: 10px;
+}
+
+ul.prime-tabs li.last-child {
+  border-radius: 0 3px 0 0;
+}
+
+.prime-tab-content {
+  border: 1px solid #aaa;
+  clear: both;
+  display: none;
+  padding: 10px;
+}
