@@ -10,12 +10,14 @@
 $checkbox-border-color: $gray-4;
 $checkbox-check-color: $green-medium;
 $checkbox-list-border-color: $gray-4;
+$error-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(200, 27, 61, 0.6);
 $error-color: $red-medium;
 $error-highlight-color: $red-dark;
 $error-widget-color: $red-light;
 $fieldset-border-color: $gray-3;
 $fieldset-legend-color: $gray-7;
-$highlight-color: $purple-dark;
+$highlight-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(73, 144, 226, 0.6);
+$highlight-color: $blue-medium;
 $label-color: $gray-5;
 $multiple-select-border-color: $gray-4;
 $multiple-select-option-background-color: $gray-2;
@@ -145,18 +147,18 @@ input[type="password"],
 textarea {
   @include appearance(none);
   @include border-radius(2px);
+  @include box-shadow(inset 0 1px 1px rgba(0, 0, 0, 0.075));
   @include transition(border 0.2s ease-in-out);
   background-color: #fff;
   border: 1px solid $text-border-color;
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-  box-sizing: border-box;
   display: block;
   font-size: 12px;
   font-weight: normal;
   padding: 8px 13px;
 
   &:focus {
-    border: 1px solid $highlight-color;
+    @include box-shadow($highlight-box-shadow);
+    border-color: $highlight-color;
     outline: 0;
   }
 
@@ -165,6 +167,7 @@ textarea {
     color: $error-color;
 
     &:focus {
+      @include box-shadow($error-box-shadow);
       border: 1px solid $error-highlight-color;
       color: $error-highlight-color;
     }
@@ -226,10 +229,12 @@ textarea {
     width: 20px;
 
     &:focus + span.box {
+      @include box-shadow($highlight-box-shadow);
       border: 1px solid $highlight-color;
     }
 
     &:focus + span.error {
+      @include box-shadow($error-box-shadow);
       border: 1px solid $error-highlight-color;
     }
 
@@ -307,10 +312,12 @@ textarea {
     width: 20px;
 
     &:focus + span.box {
+      @include box-shadow($highlight-box-shadow);
       border: 1px solid $highlight-color;
     }
 
     &:focus + span.error {
+      @include box-shadow($error-box-shadow);
       border: 1px solid $error-highlight-color;
     }
 
@@ -335,6 +342,7 @@ select {
   padding: 6px 50px 6px 13px;
 
   &:focus {
+    @include box-shadow($highlight-box-shadow);
     border: 1px solid $highlight-color;
     outline: 0;
   }
@@ -347,6 +355,10 @@ select {
     background-color: $error-widget-color;
     background-image: linear-gradient(45deg, transparent 50%, white 50%), linear-gradient(135deg, white 50%, transparent 50%), linear-gradient(to right, $error-widget-color, $error-widget-color);
     border: 1px solid $error-color;
+  }
+
+  &.error:focus {
+    @include box-shadow($error-box-shadow);
   }
 
   option {
@@ -395,6 +407,7 @@ select {
     }
 
     &:focus ~ span.pin {
+      @include box-shadow($highlight-box-shadow);
       border: 1px solid $highlight-color;
     }
   }
@@ -408,10 +421,12 @@ select {
   }
 
   &.prime-focus ul.prime-multiple-select-option-list {
+    @include box-shadow($highlight-box-shadow);
     border: 1px solid $highlight-color;
   }
 
   &.error.prime-focus ul.prime-multiple-select-option-list {
+    @include box-shadow($error-box-shadow);
     border: 1px solid $error-highlight-color;
   }
 
@@ -487,16 +502,15 @@ select {
     padding: 0;
 
     &:focus {
+      @include box-shadow(none);
       background: none;
       border: none;
-      box-shadow: none;
       outline: none;
     }
   }
 
   .prime-multiple-select-search-result-list {
     @include box-shadow(0 4px 5px rgba(0,0,0,.15));
-    @include box-sizing(border-box);
     background-color: #fff;
     border: 1px solid $multiple-select-border-color;
     border-top: 0;
@@ -513,7 +527,6 @@ select {
     z-index: 1010;
 
     li {
-      @include box-sizing(border-box);
       padding: 5px;
     }
 
@@ -529,31 +542,208 @@ form.labels-left .prime-multiple-select-search-result-list {
   width: 86%;
 }
 
-.tooltip {
-  @include border-radius(5px);
-  background-color: $tooltip-background-color;
-  color: $tooltip-color;
-  font-weight: normal;
-  padding: 5px 10px;
+$datetime-picker-border-color: $gray-2;
+$datetime-picker-highlight-color: $gray-1;
+
+.prime-date-picker {
+  @include border-radius(4px);
+  @include box-shadow(1px 1px 2px 0 rgba(0, 0, 0, 0.35));
+  background-color: #fff;
+  border: 1px solid $datetime-picker-border-color;
+  display: block;
+  margin: 2px;
+  padding: 5px;
   position: absolute;
-  text-align: center;
-  max-width: 150px;
-  z-index: 10000;
+  width: 250px;
+  z-index: 3000;
 
-  &:after {
-    border: 6px solid rgba(0, 0, 0, 0);
-    border-top-color: $tooltip-background-color;
-    content: ' ';
-    height: 0;
-    left: 50%;
-    margin-left: -6px;
-    pointer-events: none;
+  &:before {
+    background: #fff;
+    border-left: 1px solid $datetime-picker-border-color;
+    border-top: 1px solid $datetime-picker-border-color;
+    content: '';
+    display: inline-block;
+    left: 10px;
+    height: 10px;
     position: absolute;
-    top: 100%;
-    width: 0;
+    top: -7px;
+    transform: rotate(45deg);
+    width: 10px;
   }
-}
 
-label .tooltip {
-  width: 150px;
+  .header {
+    @include user-select(none);
+    display: block;
+    margin-top: 5px;
+    padding: 0;
+    text-align: center;
+
+    span {
+      display: inline;
+
+      &.next, &.prev {
+        cursor: pointer;
+      }
+
+      &.prev {
+        float: left;
+        margin-left: 7px;
+      }
+
+      &.next {
+        float: right;
+        margin-right: 7px;
+      }
+    }
+
+    .month {
+      font-weight: bold;
+      margin-right: 4px;
+    }
+  }
+
+  /* Month Drop Selector */
+  .months, .years {
+    @include box-shadow(3px 3px 15px 0 rgba(204,204,204,1));
+    background-color: #fff;
+    border: 1px solid $datetime-picker-border-color;
+    display: inline-block;
+    height: 150px;
+    overflow: scroll;
+    position: absolute;
+    z-index: 3001;
+
+    > div {
+      border-bottom: 1px solid $datetime-picker-border-color;
+      cursor: pointer;
+      padding: 4px 15px 4px 10px;
+
+      &.prime-selected {
+        background-color: $datetime-picker-highlight-color;
+        border: 1px solid $datetime-picker-border-color;
+      }
+
+      &:hover {
+        background-color: $datetime-picker-highlight-color;
+      }
+    }
+  }
+
+  /* Calendar Table */
+  table {
+    @include user-select(none);
+    border-collapse: collapse;
+    border: none;
+    margin: 0 0 4px 0;
+    padding: 0;
+    width: 100%;
+
+    thead {
+      border-color: inherit;
+      display: table-header-group;
+      vertical-align: middle;
+
+      th {
+        border: 0;
+        font-weight: bold;
+        margin: 0;
+        padding: 7px 3px;
+        text-align: center;
+      }
+    }
+
+    td {
+      border: none;
+      margin: 0;
+      padding: 1px;
+
+      a {
+        background: #e6e6e6;
+        border: 1px solid #d3d3d3;
+        color: #555555;
+        display: block;
+        font-weight: normal;
+        margin: 0;
+        padding: 2px;
+        text-align: right;
+        text-decoration: none;
+
+        &.prime-inactive {
+          opacity: 0.4;
+        }
+
+        &:hover {
+          border: 1px solid #999999;
+          background: #dadada;
+          color: #212121;
+          font-weight: normal;
+        }
+
+        &.prime-selected {
+          border: 1px solid #4c4c4c;
+          background: #f3f3f3;
+          font-weight: normal;
+          color: #212121;
+        }
+      }
+    }
+  }
+
+  /* Inputs */
+  .inputs {
+    @include border-radius(2px);
+    background: #e6e6e6;
+    border: 1px solid #d3d3d3;
+    display: block;
+    margin: 20px auto 0;
+    padding: 5px;
+    text-align: center;
+
+    .date, .time {
+      @include border-radius(4px);
+      background: white;
+      border: 1px inset #d3d3d3;
+      display: inline-block;
+      margin: 0 auto;
+      padding: 0;
+      text-align: center;
+    }
+
+    span {
+      margin: 0 2px;
+    }
+
+    input {
+      background: white;
+      border: none;
+      display: inline;
+      height: 20px;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      width: 18px;
+
+      &[name=hour] {
+        text-align: right;
+      }
+
+      &[name=minute] {
+        text-align: left;
+      }
+
+      &[name=am_pm] {
+        width: 25px;
+      }
+
+      &[name=year] {
+        width: 40px;
+      }
+
+      &:focus {
+        @include box-shadow(none);
+        border: none;
+        outline: none;
+      }
+    }
+  }
 }

@@ -31,17 +31,20 @@
         });
       });
 
-      new Prime.Widgets.MultipleSelect(Prime.Document.queryById('multi-select'))
-          .withCustomAddEnabled(true)
-          .withErrorClassHandling('error')
-          .withRemoveIcon('')
+      Prime.Document.query('.multiple-select').each(function(e) {
+        new Prime.Widgets.MultipleSelect(e)
+            .withCustomAddEnabled(true)
+            .withErrorClassHandling('error')
+            .withRemoveIcon('')
+            .render();
+      });
+
+      new Prime.Widgets.Tabs(Prime.Document.queryById('tabs'))
           .render();
 
-      new Prime.Widgets.MultipleSelect(Prime.Document.queryById('error-multi-select'))
-          .withCustomAddEnabled(true)
-          .withErrorClassHandling('error')
-          .withRemoveIcon('')
-          .render();
+      Prime.Document.query('.datetime-picker').each(function(e) {
+        new Prime.Widgets.DateTimePicker(e).render();
+      });
     });
   </script>
 </head>
@@ -95,13 +98,13 @@
           <legend>Radio buttons</legend>
           <div class="form-row">
             <label>Radio label</label>
-            <div class="radio"><input type="radio" name="foo" id="foo-1"/><span class="box"></span><span class="label">Radio label</span></div>
-            <div class="radio"><input type="radio" name="foo" id="foo-2"/><span class="box"></span><span class="label">Radio label</span></div>
+            <label class="radio"><input type="radio" name="foo" id="foo-1"/><span class="box"></span><span class="label">Radio label</span></label>
+            <label class="radio"><input type="radio" name="foo" id="foo-2"/><span class="box"></span><span class="label">Radio label</span></label>
           </div>
           <div class="form-row">
             <label class="error">Error Radio label</label>
-            <div class="radio"><input type="radio" name="bar" id="foo-3"/><span class="box error"></span><span class="label">Radio label</span></div>
-            <div class="radio"><input type="radio" name="bar" id="foo-4"/><span class="box error"></span><span class="label">Radio label</span></div>
+            <label class="radio"><input type="radio" name="bar" id="foo-3"/><span class="box error"></span><span class="label">Radio label</span></label>
+            <label class="radio"><input type="radio" name="bar" id="foo-4"/><span class="box error"></span><span class="label">Radio label</span></label>
             <span class="error">Error 1, error 2, error 3</span>
           </div>
         </fieldset>
@@ -166,26 +169,28 @@
 
         <fieldset>
           <legend>Widgets</legend>
-          <p>
-            Problems to solve:
-          </p>
-          <ul>
-            <li>Multi-select focus highlighting</li>
-            <li>Multi-select error highlighting</li>
-          </ul>
           <div class="form-row">
             <label for="toggle">Toggle</label>
             <label class="toggle"><input type="checkbox" id="toggle"/><span class="rail"></span><span class="pin"></span></label>
           </div>
           <div class="form-row">
             <label for="multi-select">Multi-select</label>
-            <select id="multi-select" multiple="multiple">
+            <select id="multi-select" multiple="multiple" class="multiple-select">
             </select>
           </div>
           <div class="form-row">
             <label for="error-multi-select" class="error">Error multi-select</label>
-            <select id="error-multi-select" multiple="multiple" class="error">
+            <select id="error-multi-select" multiple="multiple" class="error multiple-select">
             </select>
+            <span class="error">Error 1, error 2, error 3</span>
+          </div>
+          <div class="form-row">
+            <label for="datetime">Datetime</label>
+            <input type="text" id="datetime" class="datetime-picker"/>
+          </div>
+          <div class="form-row">
+            <label for="error-datetime">Datetime</label>
+            <input type="text" id="error-datetime" class="error datetime-picker"/>
             <span class="error">Error 1, error 2, error 3</span>
           </div>
         </fieldset>
@@ -237,13 +242,13 @@
           <legend>Radio buttons</legend>
           <div class="form-row">
             <label>Radio label</label>
-            <div class="radio"><input type="radio" name="foo" id="foo-1-above"/><span class="box"></span><span class="label">Radio label</span></div>
-            <div class="radio"><input type="radio" name="foo" id="foo-2-above"/><span class="box"></span><span class="label">Radio label</span></div>
+            <label class="radio"><input type="radio" name="foo" id="foo-1-above"/><span class="box"></span><span class="label">Radio label</span></label>
+            <label class="radio"><input type="radio" name="foo" id="foo-2-above"/><span class="box"></span><span class="label">Radio label</span></label>
           </div>
           <div class="form-row">
             <label class="error">Error Radio label</label>
-            <div class="radio"><input type="radio" name="bar" id="foo-3-above"/><span class="box error"></span><span class="label">Radio label</span></div>
-            <div class="radio"><input type="radio" name="bar" id="foo-4-above"/><span class="box error"></span><span class="label">Radio label</span></div>
+            <label class="radio"><input type="radio" name="bar" id="foo-3-above"/><span class="box error"></span><span class="label">Radio label</span></label>
+            <label class="radio"><input type="radio" name="bar" id="foo-4-above"/><span class="box error"></span><span class="label">Radio label</span></label>
             <span class="error">Error 1, error 2, error 3</span>
           </div>
         </fieldset>
@@ -302,6 +307,25 @@
               <label class="checkbox"><input type="checkbox" id="cbl-above-99"/><span class="box"></span><span class="label">Checkbox list info</span></label>
               <label class="checkbox"><input type="checkbox" id="cbl-above-100"/><span class="box"></span><span class="label">Checkbox list info</span></label>
             </div>
+            <span class="error">Error 1, error 2, error 3</span>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Widgets</legend>
+          <div class="form-row">
+            <label for="toggle-above">Toggle</label>
+            <label class="toggle"><input type="checkbox" id="toggle-above"/><span class="rail"></span><span class="pin"></span></label>
+          </div>
+          <div class="form-row">
+            <label for="multi-select-above">Multi-select</label>
+            <select id="multi-select-above" multiple="multiple" class="multiple-select">
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="error-multi-select-above" class="error">Error multi-select</label>
+            <select id="error-multi-select-above" multiple="multiple" class="error multiple-select">
+            </select>
             <span class="error">Error 1, error 2, error 3</span>
           </div>
         </fieldset>
@@ -451,7 +475,7 @@
   <div class="panel">
     <h2>Tabs</h2>
     <div class="body">
-      <ul class="tabs">
+      <ul id="tabs" class="tabs">
         <li><a href="#tab-1">Tab 1</a></li>
         <li><a href="#tab-2">Tab 2</a></li>
         <li><a href="#tab-3">Tab 3</a></li>

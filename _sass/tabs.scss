@@ -2,57 +2,78 @@
  * Copyright (c) 2017, Inversoft Inc., All Rights Reserved
  */
 
-ul.prime-tabs {
+@import 'mixins';
+
+$tab-color: $gray-5;
+$tab-active-color: $gray-7;
+$tab-border-color: $gray-3;
+
+.prime-tabs {
+  border-bottom: 1px solid $tab-border-color;
   list-style: none;
-  margin: 0;
+  margin: 0 0 25px 0;
   padding: 0;
-}
 
-ul.prime-tabs li {
-  border: solid #aaa;
-  border-width: 1px 1px 0 1px;
-  margin-right: -1px;
-  float: left;
-}
+  &:before {
+    @include box-sizing(border-box);
+    content: ' ';
+    display: table;
+    height: 0;
+    width: 1px;
+  }
 
-ul.prime-tabs li a {
-  background: #eee;
-  color: black;
-  display: block;
-  font-size: 10px;
-  font-weight: 600;
-  padding: 7px 10px 7px 10px;
-  text-decoration: none;
-  text-transform: uppercase;
-}
+  &:after {
+    @include box-sizing(border-box);
+    clear: both;
+    content: ' ';
+    display: table;
+    height: 0;
+    width: 1px;
+  }
 
-ul.prime-tabs li a.error {
-  color: #c34e5d;
-}
+  li {
+    display: block;
+    float: left;
+    margin-bottom: -1px;
+    position: relative;
 
-ul.prime-tabs li a:hover {
-  background: #e6e6e6;
-}
+    a {
+      border: 1px solid transparent;
+      border-radius: 3px 3px 0 0;
+      color: $tab-color;
+      display: block;
+      margin-right: 2px;
+      padding: 10px 15px;
+      position: relative;
+      text-decoration: none;
 
-ul.prime-tabs li.prime-active a {
-  background: #fff;
-  position: relative;
-  top: 1px;
-  pointer-events: none;
-}
+      &.error {
+        color: #c34e5d;
+      }
 
-ul.prime-tabs li.first-child {
-  border-radius: 3px 0 0 0;
-  margin-left: 10px;
-}
+      &:hover {
+        background: #e6e6e6;
+        border-bottom: 1px solid $tab-border-color;
+      }
+    }
 
-ul.prime-tabs li.last-child {
-  border-radius: 0 3px 0 0;
+    &.prime-active {
+      a {
+        background: #fff;
+        border: 1px solid $tab-border-color;
+        border-bottom-color: transparent;
+        color: $tab-active-color;
+        font-weight: 600;
+      }
+    }
+
+    &:first-of-type {
+      margin-left: 4px;
+    }
+  }
 }
 
 .prime-tab-content {
-  border: 1px solid #aaa;
   clear: both;
   display: none;
-  padding: 10px;
 }

@@ -1,0 +1,38 @@
+/*!
+ * Copyright (c) 2017, Inversoft Inc., All Rights Reserved
+ */
+
+@import 'colors';
+@import 'mixins';
+
+$tooltip-background-color: $gray-7;
+$tooltip-color: $gray-1;
+
+.tooltip {
+  @include border-radius(5px);
+  background-color: $tooltip-background-color;
+  color: $tooltip-color;
+  font-weight: normal;
+  padding: 5px 10px;
+  position: absolute;
+  text-align: center;
+  max-width: 150px;
+  z-index: 10000;
+
+  &:after {
+    border: 6px solid rgba(0, 0, 0, 0);
+    border-top-color: $tooltip-background-color;
+    content: ' ';
+    height: 0;
+    left: 50%;
+    margin-left: -6px;
+    pointer-events: none;
+    position: absolute;
+    top: 100%;
+    width: 0;
+  }
+}
+
+label .tooltip {
+  width: 150px;
+}
