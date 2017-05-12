@@ -8,7 +8,7 @@
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
 @mixin button-colors($background-color, $color, $border-color) {
-  background-color: $background-color;
+  background: $background-color;
   border: 1px solid $border-color;
   color: $color;
 }
@@ -38,52 +38,51 @@
   &:hover {
     outline: 0;
   }
-}
 
-.button.shadow {
-  @include box-shadow(1px 1px 1px 0 rgba(0, 0, 0, 0.35));
+  &.shadow {
+    @include box-shadow(1px 1px 1px 0 rgba(0, 0, 0, 0.35));
 
-  &:hover, &:focus {
-    @include box-shadow(2px 2px 7px 0 rgba(0, 0, 0, 0.35));
+    &:hover, &:focus {
+      @include box-shadow(2px 2px 7px 0 rgba(0, 0, 0, 0.35));
+    }
   }
-}
 
-.button.blue {
-  @include button-colors($blue-medium, #fff, transparent);
+  &.blue {
+    @include button-colors($blue-medium, #fff, transparent);
 
-  &:hover, &:focus {
-    @include button-colors($blue-dark, #fff, transparent);
+    &:hover, &:focus {
+      @include button-colors($blue-dark, #fff, transparent);
+    }
   }
-}
 
-.button.gray {
-  @include button-colors($gray-1, $gray-7, $gray-4);
+  &.gray {
+    @include button-colors($gray-1, $gray-7, $gray-4);
 
-  &:hover, &:focus {
-    @include button-colors($gray-2, $gray-7, $gray-4);
+    &:hover, &:focus {
+      @include button-colors($gray-2, $gray-7, $gray-4);
+    }
   }
-}
 
-.button.green {
-  @include button-colors($green-medium, #fff, transparent);
+  &.green {
+    @include button-colors($green-medium, #fff, transparent);
 
-  &:hover, &:focus {
-    @include button-colors($green-dark, #fff, transparent);
+    &:hover, &:focus {
+      @include button-colors($green-dark, #fff, transparent);
+    }
   }
-}
 
-.button.red {
-  @include button-colors($red-medium, #fff, transparent);
+  &.red {
+    @include button-colors($red-medium, #fff, transparent);
 
-  &:hover, &:focus {
-    @include button-colors($red-dark, #fff, transparent);
+    &:hover, &:focus {
+      @include button-colors($red-dark, #fff, transparent);
+    }
   }
-}
 
-.button.purple {
-  @include button-colors($purple-medium, #fff, transparent);
+  &.purple {
+    @include button-colors($purple-medium, #fff, transparent);
 
-  &:hover, &:focus {
-    @include button-colors($purple-dark, #fff, transparent);
-  }
-}
+    &:hover, &:focus {
+      @include button-colors($purple-dark, #fff, transparent);
+    }
+  }}

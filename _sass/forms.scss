@@ -166,7 +166,7 @@ textarea {
   @include border-radius(2px);
   @include box-shadow($input-box-shadow);
   @include transition(border 0.2s ease-in-out);
-  background-color: #fff;
+  background: #fff;
   border: 1px solid $text-border-color;
   display: inline-block;
   font-size: 12px;
@@ -197,7 +197,7 @@ textarea {
 
   .input-icon-left {
     @include border-radius(2px 0 0 2px);
-    background-color: $input-addon-background-color;
+    background: $input-addon-background-color;
     border: 1px solid $text-border-color;
     border-right: none;
     display: table-cell;
@@ -227,7 +227,7 @@ textarea {
 
     & + .input-icon-right {
       @include border-radius(0 2px 2px 0);
-      background-color: $input-addon-background-color;
+      background: $input-addon-background-color;
       border: 1px solid $text-border-color;
       border-left: none;
       display: table-cell;
@@ -246,7 +246,7 @@ textarea {
 
   span.box {
     @include transition(border 0.2s ease-in-out);
-    background-color: #fff;
+    background: #fff;
     border: 1px solid $checkbox-border-color;
     cursor: pointer;
     height: 20px;
@@ -329,7 +329,7 @@ textarea {
   span.box {
     @include border-radius(50px);
     @include transition(border 0.2s ease-in-out);
-    background-color: #fff;
+    background: #fff;
     border: 1px solid $radio-border-color;
     cursor: pointer;
     height: 20px;
@@ -426,7 +426,7 @@ select {
   }
 
   option {
-    background-color: $option-background-color;
+    background: $option-background-color;
     color: $option-color;
   }
 }
@@ -437,7 +437,7 @@ select {
 
   span.rail {
     @include border-radius(10px);
-    background-color: $toggle-rail-color;
+    background: $toggle-rail-color;
     height: 15px;
     position: absolute;
     top: 0;
@@ -448,7 +448,7 @@ select {
     @include border-radius(50%);
     @include box-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
     @include transition(0.5s);
-    background-color: white;
+    background: white;
     height: 23px;
     left: -4px;
     position: absolute;
@@ -462,11 +462,11 @@ select {
     width: 1px;
 
     &:checked ~ span.rail {
-      background-color: $toggle-rail-highlight-color;
+      background: $toggle-rail-highlight-color;
     }
 
     &:checked ~ span.pin {
-      background-color: $toggle-check-color;
+      background: $toggle-check-color;
       left: 20px;
     }
 
@@ -519,7 +519,7 @@ select {
         @include background-clip(padding-box, padding);
         @include box-shadow(0 2px 4px 0 rgba(0, 0, 0, 0.4));
 
-        background-color: $multiple-select-option-background-color;
+        background: $multiple-select-option-background-color;
         cursor: default;
         margin: 1px 4px;
         padding: 2px 9px;
@@ -547,7 +547,7 @@ select {
       }
 
       &.prime-multiple-select-option-highlighted {
-        background-color: $multiple-select-option-highlight-background-color;
+        background: $multiple-select-option-highlight-background-color;
         color: #fff;
 
         a {
@@ -575,7 +575,7 @@ select {
 
   .prime-multiple-select-search-result-list {
     @include box-shadow(0 2px 4px 0 rgba(0, 0, 0, 0.4));
-    background-color: #fff;
+    background: #fff;
     border: 1px solid $multiple-select-border-color;
     border-top: 0;
     height: 175px;
@@ -595,7 +595,7 @@ select {
     }
 
     .prime-searcher-highlighted-search-result {
-      background-color: $multiple-select-option-highlight-background-color;
+      background: $multiple-select-option-highlight-background-color;
       color: #fff;
     }
   }
@@ -612,7 +612,7 @@ $datetime-picker-highlight-color: $gray-2;
 .prime-date-picker {
   @include border-radius(4px);
   @include box-shadow(0 2px 4px 0 rgba(0, 0, 0, 0.4));
-  background-color: #fff;
+  background: #fff;
   border: 1px solid $datetime-picker-border-color;
   display: block;
   margin: 2px;
@@ -669,7 +669,7 @@ $datetime-picker-highlight-color: $gray-2;
   /* Month/Year Dropdown */
   .months, .years {
     @include box-shadow(0 2px 4px 0 rgba(0, 0, 0, 0.4));
-    background-color: #fff;
+    background: #fff;
     border: 1px solid $datetime-picker-border-color;
     display: inline-block;
     height: 150px;
@@ -683,12 +683,12 @@ $datetime-picker-highlight-color: $gray-2;
       padding: 4px 15px 4px 10px;
 
       &.prime-selected {
-        background-color: $datetime-picker-highlight-color;
+        background: $datetime-picker-highlight-color;
         border: 1px solid $datetime-picker-border-color;
       }
 
       &:hover {
-        background-color: $datetime-picker-highlight-color;
+        background: $datetime-picker-highlight-color;
       }
     }
   }

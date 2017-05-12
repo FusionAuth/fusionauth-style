@@ -6,7 +6,7 @@
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
 .panel {
-  background-color: #fff;
+  background: #fff;
   border: 1px solid $gray-3;
   border-top: 2px solid $gray-5;
   -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
@@ -15,7 +15,7 @@
   margin-bottom: 20px;
 
   h2 {
-    background-color: $gray-1;
+    background: $gray-1;
     border-bottom: 1px solid $gray-3;
     color: $gray-6;
     font-size: 16px;
@@ -30,7 +30,7 @@
 }
 
 .gray-panel {
-  background-color: $gray-1;
+  background: $gray-1;
   border: 1px solid $gray-2;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;

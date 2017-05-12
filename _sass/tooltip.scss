@@ -10,7 +10,7 @@ $tooltip-color: $gray-1;
 
 .tooltip {
   @include border-radius(5px);
-  background-color: $tooltip-background-color;
+  background: $tooltip-background-color;
   color: $tooltip-color;
   font-weight: normal;
   padding: 5px 10px;

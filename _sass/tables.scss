@@ -6,7 +6,7 @@
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
 table {
-  background-color: transparent;
+  background: transparent;
   border: 1px solid $gray-2;
   border-collapse: collapse;
   border-spacing: 0;
@@ -82,7 +82,7 @@ table {
   }
 
   a, span {
-    background-color: #fff;
+    background: #fff;
     border: 1px solid $gray-2;
     color: $blue-medium;
     display: inline-block;
@@ -97,11 +97,11 @@ table {
   }
 
   a:hover {
-    background-color: $gray-1;
+    background: $gray-1;
   }
 
   .current {
-    background-color: $blue-medium;
+    background: $blue-medium;
     border-color: $blue-medium;
     color: #fff;
   }

@@ -2,26 +2,239 @@
  * Copyright (c) 2017, Inversoft Inc., All Rights Reserved
  */
 
+@import 'colors';
+@import 'mixins';
+
 /* Overall application layout
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
+html {
+  height: 100%;
+}
+
 body {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+  height: 100%;
 }
 
 .app-header {
+  align-items: center;
+  background: #fff;
+  border-bottom: 1px solid $gray-3;
   display: flex;
-  height: 55px;
+  height: 45px;
+  left: 0;
   position: fixed;
+  top: 0;
   width: 100%;
+  z-index: 1000;
+
+  img {
+    height: 100%;
+    padding: 2px 20px;
+  }
+
+  .app-sidebar-toggle {
+    color: $gray-3;
+    display: inline-block;
+    font-size: 24px;
+    padding: 0 20px;
+    text-decoration: none;
+  }
+
+  .search {
+    padding-left: 45px;
+
+    input {
+      border-color: $gray-3;
+      width: 300px;
+    }
+
+    .input-icon-right {
+      border-color: $gray-3;
+    }
+  }
 }
 
 .app-body {
-  margin-top: 55px;
+  overflow-x: hidden;
+
+  > main {
+    @include transition(margin-left 0.2s ease-in-out);
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 60px;
+
+    h1 {
+      color: $gray-5;
+      font-size: 28px;
+    }
+
+    @media (min-width: 770px) {
+      margin-left: 250px;
+    }
+  }
 }
 
-main {
-  margin-left: 250px;
+
+/* Sidebar
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+$sidebar-background-color: #2a2c36;
+
+body {
+  &.app-sidebar-open {
+    .app-sidebar {
+      margin-left: 0;
+    }
+
+    .app-body > main {
+      margin-left: 250px;
+      margin-right: -250px;
+
+      @media (min-width: 770px) {
+        margin-right: 0;
+      }
+    }
+  }
+
+  &.app-sidebar-closed {
+    .app-sidebar {
+      margin-left: -250px;
+    }
+
+    .app-body > main {
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+}
+
+.app-sidebar {
+  @include transition(margin-left 0.2s ease-in-out);
+  background: $sidebar-background-color;
+  display: block;
+  height: 100%;
+  margin-left: -250px;
+  padding-top: 30px;
+  position: fixed;
+  width: 250px;
+
+  @media (min-width: 770px) {
+    margin-left: 0;
+  }
+
+  header {
+    background: darken($sidebar-background-color, 5%);
+    padding: 20px 0;
+    text-align: center;
+
+    img {
+      @include border-radius(50px);
+      margin: 20px auto;
+      text-align: center;
+      width: 80px;
+    }
+
+    ul {
+      align-items: center;
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+      li {
+        display: block;
+        margin: 0 20px;
+        padding: 0;
+
+        a {
+          color: #fff;
+          font-size: 18px;
+        }
+      }
+    }
+  }
+
+  nav {
+    background: #2a2c36;
+
+    h2 {
+      color: $gray-1;
+      font-size: 12px;
+      padding: 12px 20px;
+      text-transform: uppercase;
+    }
+
+    ul {
+      @include transition(max-height 0.3s ease-in-out);
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+      li {
+        position: relative;
+
+        a {
+          @include transition(background 0.3s ease-in-out);
+          color: $gray-1;
+          display: block;
+          font-size: 12px;
+          font-weight: 400;
+          padding: 15px 20px;
+          text-decoration: none;
+
+          i {
+            font-size: 14px;
+            margin-right: 10px;
+          }
+
+          &:hover {
+            background: darken($sidebar-background-color, 5%);
+          }
+
+          &.folder-toggle:after {
+            @include transition(0.3s);
+            content: "\2039";
+            font-size: 16px;
+            position: absolute;
+            right: 14px;
+            top: 15px;
+          }
+        }
+
+        &.folder:not(.active) ul {
+          max-height: 0;
+          overflow-y: hidden;
+        }
+
+        &.folder.active {
+          background: darken($sidebar-background-color, 5%);
+
+          a {
+            &.folder-toggle:after {
+              transform: rotate(-90deg);
+            }
+
+            &:hover {
+              background: darken($sidebar-background-color, 10%);
+            }
+          }
+
+          ul {
+            background: darken($sidebar-background-color, 5%);
+            max-height: 1000px;
+
+            a:hover, a.active {
+              background: darken($sidebar-background-color, 10%);
+            }
+          }
+        }
+      }
+
+      &.treeview {
+        display: block;
+      }
+    }
+  }
 }

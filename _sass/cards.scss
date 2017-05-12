@@ -1,0 +1,119 @@
+/*!
+ * Copyright (c) 2017, Inversoft Inc., All Rights Reserved
+ */
+
+@import 'colors';
+@import 'mixins';
+
+/* Cards
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.card {
+  margin-bottom: 35px;
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+
+    h3 {
+      color: #fff;
+      font-size: 14px;
+      margin: 0;
+      padding: 0;
+      text-transform: uppercase;
+    }
+
+    span {
+      color: #fff;
+
+      &.decrease:before {
+        content: '\f0d8';
+        font-family: 'FontAwesome';
+        padding-right: 4px;
+      }
+
+      &.increase:before {
+        content: '\f0d7';
+        font-family: 'FontAwesome';
+        padding-right: 4px;
+      }
+    }
+  }
+
+  main {
+    align-items: baseline;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+
+    i {
+      @include transition(color 0.4s ease-in-out);
+      color: rgba(#ffffff, 0.4);
+      font-size: 70px;
+
+      &:hover {
+        color: #fff;
+      }
+    }
+
+    p {
+      color: #fff;
+      font-size: 60px;
+      margin: 0;
+      padding: 0;
+    }
+
+    &:hover i {
+      color: #fff;
+    }
+  }
+
+  &.blue {
+    background: $blue-light;
+
+    header {
+      background: $blue-medium;
+    }
+  }
+
+  &.green {
+    background: $green-light;
+
+    header {
+      background: $green-medium;
+    }
+  }
+
+  &.red {
+    background: $red-light;
+
+    header {
+      background: $red-medium;
+    }
+  }
+
+  &.orange {
+    background: $orange-light;
+
+    header {
+      background: $orange-medium;
+    }
+  }
+
+  &.yellow {
+    background: $yellow-light;
+
+    header {
+      background: $yellow-medium;
+    }
+  }
+
+  &.purple {
+    background: $purple-light;
+
+    header {
+      background: $purple-medium;
+    }
+  }
+}

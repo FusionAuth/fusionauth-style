@@ -5,15 +5,16 @@
  * Copyright (c) 2017, Inversoft Inc., All Rights Reserved
  */
 
-$font-stack: 'Open Sans', 'Avenir', Helvetica, sans-serif;
+//$font-stack: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+$font-stack: 'Open Sans', sans-serif;
 
 @import 'application';
+@import 'cards';
 @import 'colors';
 @import 'mixins';
 @import 'buttons';
 @import 'forms';
 @import 'panels';
-@import 'sidebar';
 @import 'tables';
 @import 'tabs';
 @import 'tooltip';
