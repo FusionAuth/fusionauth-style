@@ -2,6 +2,7 @@
  * Copyright (c) 2017, Inversoft Inc., All Rights Reserved
  */
 
+@import 'colors';
 @import 'mixins';
 
 $tab-color: $gray-5;
@@ -10,39 +11,27 @@ $tab-border-color: $gray-3;
 
 .prime-tabs {
   border-bottom: 1px solid $tab-border-color;
+  font-size: 0;
   list-style: none;
   margin: 0 0 25px 0;
+  overflow-x: scroll;
   padding: 0;
-
-  &:before {
-    @include box-sizing(border-box);
-    content: ' ';
-    display: table;
-    height: 0;
-    width: 1px;
-  }
-
-  &:after {
-    @include box-sizing(border-box);
-    clear: both;
-    content: ' ';
-    display: table;
-    height: 0;
-    width: 1px;
-  }
+  white-space: nowrap;
+  width: 100%;
+  z-index: 1;
 
   li {
-    display: block;
-    float: left;
-    margin-bottom: -1px;
+    @include box-sizing(border-box);
+    @include transition(background 0.2s ease-in-out);
+    border-bottom: 2px solid transparent;
+    display: inline-block;
     position: relative;
+    z-index: 10;
 
     a {
-      border: 1px solid transparent;
-      border-radius: 3px 3px 0 0;
       color: $tab-color;
       display: block;
-      margin-right: 2px;
+      font-size: 12px;
       padding: 10px 15px;
       position: relative;
       text-decoration: none;
@@ -52,23 +41,22 @@ $tab-border-color: $gray-3;
       }
 
       &:hover {
-        background: #e6e6e6;
-        border-bottom: 1px solid $tab-border-color;
       }
+    }
+
+    &:hover {
+      background-color: #e6e6e6;
+      border-bottom-color: $blue-medium;
     }
 
     &.prime-active {
+      background: #fff;
+      border-bottom-color: $blue-medium;
+
       a {
-        background: #fff;
-        border: 1px solid $tab-border-color;
-        border-bottom-color: transparent;
         color: $tab-active-color;
         font-weight: 600;
       }
-    }
-
-    &:first-of-type {
-      margin-left: 4px;
     }
   }
 }

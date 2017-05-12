@@ -10,6 +10,18 @@
 $checkbox-border-color: $gray-4;
 $checkbox-check-color: $green-medium;
 $checkbox-list-border-color: $gray-4;
+$datetime-picker-cell-background-color: $gray-2;
+$datetime-picker-cell-border-color: $gray-3;
+$datetime-picker-cell-color: $gray-6;
+$datetime-picker-cell-highlight-background-color: $gray-1;
+$datetime-picker-cell-highlight-border-color: $gray-3;
+$datetime-picker-cell-highlight-color: $gray-6;
+$datetime-picker-cell-hover-background-color: $gray-3;
+$datetime-picker-cell-hover-border-color: $gray-5;
+$datetime-picker-cell-hover-color: $gray-6;
+$datetime-picker-inputs-background-color: $gray-2;
+$datetime-picker-inputs-border-color: $gray-3;
+$datetime-picker-inputs-input-border-color: $gray-2;
 $error-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(200, 27, 61, 0.6);
 $error-color: $red-medium;
 $error-highlight-color: $red-dark;
@@ -18,7 +30,10 @@ $fieldset-border-color: $gray-3;
 $fieldset-legend-color: $gray-7;
 $highlight-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(73, 144, 226, 0.6);
 $highlight-color: $blue-medium;
-$label-color: $gray-5;
+$input-addon-background-color: $gray-2;
+$input-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+$input-addon-color: $gray-6;
+$label-color: $gray-6;
 $multiple-select-border-color: $gray-4;
 $multiple-select-option-background-color: $gray-2;
 $multiple-select-option-border-color: $gray-3;
@@ -59,43 +74,7 @@ label {
   }
 }
 
-form.labels-left {
-  .form-row {
-    margin-bottom: 15px;
-
-    > label:first-child {
-      float: left;
-      margin-right: 20px;
-      margin-top: 8px;
-      text-align: right;
-      width: 12%;
-    }
-
-    > span.error {
-      color: $error-color;
-      display: block;
-      margin-left: calc(12% + 20px);
-    }
-
-    &:after {
-      clear: both;
-      content: '';
-      display: table;
-    }
-
-    .checkbox, .radio {
-      margin-top: 6px;
-    }
-
-    .checkbox + label, .radio + label {
-      margin-right: 10px;
-      margin-top: 9px;
-      vertical-align: top;
-    }
-  }
-}
-
-form.labels-above {
+form {
   .form-row {
     margin-bottom: 15px;
 
@@ -107,6 +86,44 @@ form.labels-above {
     span.error {
       color: $error-color;
       display: block;
+    }
+  }
+}
+
+form.labels-left {
+  .form-row {
+    margin-bottom: 15px;
+
+    @media (min-width: 550px) {
+      > label:first-child {
+        float: left;
+        margin-right: 20px;
+        margin-top: 8px;
+        text-align: right;
+        width: 12%;
+      }
+
+      > span.error {
+        color: $error-color;
+        display: block;
+        margin-left: calc(12% + 20px);
+      }
+
+      &:after {
+        clear: both;
+        content: '';
+        display: table;
+      }
+
+      .checkbox, .radio {
+        margin-top: 6px;
+      }
+
+      .checkbox + label, .radio + label {
+        margin-right: 10px;
+        margin-top: 9px;
+        vertical-align: top;
+      }
     }
   }
 }
@@ -147,11 +164,11 @@ input[type="password"],
 textarea {
   @include appearance(none);
   @include border-radius(2px);
-  @include box-shadow(inset 0 1px 1px rgba(0, 0, 0, 0.075));
+  @include box-shadow($input-box-shadow);
   @include transition(border 0.2s ease-in-out);
   background-color: #fff;
   border: 1px solid $text-border-color;
-  display: block;
+  display: inline-block;
   font-size: 12px;
   font-weight: normal;
   padding: 8px 13px;
@@ -170,6 +187,53 @@ textarea {
       @include box-shadow($error-box-shadow);
       border: 1px solid $error-highlight-color;
       color: $error-highlight-color;
+    }
+  }
+}
+
+.input-addon {
+  border-collapse: separate;
+  display: table;
+
+  .input-icon-left {
+    @include border-radius(2px 0 0 2px);
+    background-color: $input-addon-background-color;
+    border: 1px solid $text-border-color;
+    border-right: none;
+    display: table-cell;
+    line-height: 1;
+    padding: 8px 13px 9px 13px;
+    vertical-align: baseline;
+
+    i {
+      color: $input-addon-color;
+      font-size: 14px/1;
+    }
+
+    & + input {
+      @include border-radius(0 2px 2px 0);
+      display: table-cell;
+    }
+  }
+
+  input {
+    @include border-radius(2px 0 0 2px);
+    display: table-cell;
+
+    i {
+      color: $input-addon-color;
+      font-size: 14px/1;
+    }
+
+    & + .input-icon-right {
+      @include border-radius(0 2px 2px 0);
+      background-color: $input-addon-background-color;
+      border: 1px solid $text-border-color;
+      border-left: none;
+      display: table-cell;
+      line-height: 1;
+      padding: 8px 13px 9px 13px;
+      vertical-align: baseline;
     }
   }
 }
@@ -431,8 +495,8 @@ select {
   }
 
   ul.prime-multiple-select-option-list {
+    @include box-shadow($input-box-shadow);
     @include transition(border 0.2s ease-in-out);
-
     border: 1px solid $multiple-select-border-color;
     margin: 0;
     padding: 4px 4px;
@@ -453,7 +517,7 @@ select {
       &.prime-multiple-select-option {
         @include border-radius(3px);
         @include background-clip(padding-box, padding);
-        @include box-shadow(1px 1px 2px 0 rgba(0, 0, 0, 0.35));
+        @include box-shadow(0 2px 4px 0 rgba(0, 0, 0, 0.4));
 
         background-color: $multiple-select-option-background-color;
         cursor: default;
@@ -510,7 +574,7 @@ select {
   }
 
   .prime-multiple-select-search-result-list {
-    @include box-shadow(0 4px 5px rgba(0,0,0,.15));
+    @include box-shadow(0 2px 4px 0 rgba(0, 0, 0, 0.4));
     background-color: #fff;
     border: 1px solid $multiple-select-border-color;
     border-top: 0;
@@ -538,16 +602,16 @@ select {
 }
 // Float hack
 form.labels-left .prime-multiple-select-search-result-list {
-  margin-left: 14%;
-  width: 86%;
+  margin-left: calc(12% + 20px);
+  width: calc(88% - 20px);
 }
 
-$datetime-picker-border-color: $gray-2;
-$datetime-picker-highlight-color: $gray-1;
+$datetime-picker-border-color: $gray-3;
+$datetime-picker-highlight-color: $gray-2;
 
 .prime-date-picker {
   @include border-radius(4px);
-  @include box-shadow(1px 1px 2px 0 rgba(0, 0, 0, 0.35));
+  @include box-shadow(0 2px 4px 0 rgba(0, 0, 0, 0.4));
   background-color: #fff;
   border: 1px solid $datetime-picker-border-color;
   display: block;
@@ -602,9 +666,9 @@ $datetime-picker-highlight-color: $gray-1;
     }
   }
 
-  /* Month Drop Selector */
+  /* Month/Year Dropdown */
   .months, .years {
-    @include box-shadow(3px 3px 15px 0 rgba(204,204,204,1));
+    @include box-shadow(0 2px 4px 0 rgba(0, 0, 0, 0.4));
     background-color: #fff;
     border: 1px solid $datetime-picker-border-color;
     display: inline-block;
@@ -658,9 +722,9 @@ $datetime-picker-highlight-color: $gray-1;
       padding: 1px;
 
       a {
-        background: #e6e6e6;
-        border: 1px solid #d3d3d3;
-        color: #555555;
+        background: $datetime-picker-cell-background-color;
+        border: 1px solid $datetime-picker-cell-border-color;
+        color: $datetime-picker-cell-color;
         display: block;
         font-weight: normal;
         margin: 0;
@@ -672,18 +736,19 @@ $datetime-picker-highlight-color: $gray-1;
           opacity: 0.4;
         }
 
+
         &:hover {
-          border: 1px solid #999999;
-          background: #dadada;
-          color: #212121;
+          background: $datetime-picker-cell-hover-background-color;
+          border: 1px solid $datetime-picker-cell-hover-border-color;
+          color: $datetime-picker-cell-hover-color;
           font-weight: normal;
         }
 
         &.prime-selected {
-          border: 1px solid #4c4c4c;
-          background: #f3f3f3;
+          background: $datetime-picker-cell-highlight-background-color;
+          border: 1px solid $datetime-picker-cell-highlight-border-color;
+          color: $datetime-picker-cell-highlight-color;
           font-weight: normal;
-          color: #212121;
         }
       }
     }
@@ -692,8 +757,8 @@ $datetime-picker-highlight-color: $gray-1;
   /* Inputs */
   .inputs {
     @include border-radius(2px);
-    background: #e6e6e6;
-    border: 1px solid #d3d3d3;
+    background: $datetime-picker-inputs-background-color;
+    border: 1px solid $datetime-picker-inputs-border-color;
     display: block;
     margin: 20px auto 0;
     padding: 5px;
@@ -701,8 +766,8 @@ $datetime-picker-highlight-color: $gray-1;
 
     .date, .time {
       @include border-radius(4px);
-      background: white;
-      border: 1px inset #d3d3d3;
+      background: #fff;
+      border: 1px inset $datetime-picker-inputs-input-border-color;
       display: inline-block;
       margin: 0 auto;
       padding: 0;
@@ -714,7 +779,7 @@ $datetime-picker-highlight-color: $gray-1;
     }
 
     input {
-      background: white;
+      background: #fff;
       border: none;
       display: inline;
       height: 20px;

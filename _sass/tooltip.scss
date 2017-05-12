@@ -17,7 +17,7 @@ $tooltip-color: $gray-1;
   position: absolute;
   text-align: center;
   max-width: 150px;
-  z-index: 10000;
+  z-index: 1000;
 
   &:after {
     border: 6px solid rgba(0, 0, 0, 0);
@@ -31,8 +31,8 @@ $tooltip-color: $gray-1;
     top: 100%;
     width: 0;
   }
-}
 
-label .tooltip {
-  width: 150px;
+  &.label {
+    width: 150px;
+  }
 }
