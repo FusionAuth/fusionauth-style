@@ -2,12 +2,23 @@
  * Copyright (c) 2017, Inversoft Inc., All Rights Reserved
  */
 
+@import 'colors';
+
 /* Tables
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
+$table-body-link-color: $blue-dark;
+$table-border-color: $gray-2;
+$table-header-color: $gray-5;
+$table-header-link-color: $blue-medium;
+$table-header-sort-color: $blue-dark;
+$table-pagination-header-color: $gray-6;
+$table-pagination-hover-color: $gray-1;
+$table-pagination-link-color: $blue-medium;
+
 table {
   background: transparent;
-  border: 1px solid $gray-2;
+  border: 1px solid $table-border-color;
   border-collapse: collapse;
   border-spacing: 0;
   margin-bottom: 17px;
@@ -17,27 +28,27 @@ table {
   thead {
     tr {
       th {
-        border: 1px solid $gray-2;
+        border: 1px solid $table-border-color;
         border-bottom-width: 2px;
         border-top: 0;
-        color: $gray-5;
+        color: $table-header-color;
         padding: 8px;
         vertical-align: middle;
 
         a {
-          color: $blue-medium;
+          color: $table-header-link-color;
           text-decoration: none;
         }
 
         &.sort-up:after {
-          color: $blue-dark;
+          color: $table-header-sort-color;
           content: " \f106";
           font-family: FontAwesome;
           font-size: 14px;
         }
 
         &.sort-down:after {
-          color: $blue-dark;
+          color: $table-header-sort-color;
           content: " \f107";
           font-family: FontAwesome;
           font-size: 14px;
@@ -49,14 +60,14 @@ table {
   tbody {
     tr {
       td {
-        border: 1px solid $gray-2;
+        border: 1px solid $table-border-color;
         border-bottom-width: 2px;
         border-top: 0;
         padding: 8px;
         vertical-align: middle;
 
         a {
-          color: $blue-dark;
+          color: $table-body-link-color;
           text-decoration: none;
         }
       }
@@ -83,8 +94,8 @@ table {
 
   a, span {
     background: #fff;
-    border: 1px solid $gray-2;
-    color: $blue-medium;
+    border: 1px solid $table-border-color;
+    color: $table-pagination-link-color;
     display: inline-block;
     font-size: 12px;
     margin: 0 0 0 -1px;
@@ -93,20 +104,35 @@ table {
   }
 
   span.header {
-    color: $gray-6;
+    color: $table-pagination-header-color;
   }
 
   a:hover {
-    background: $gray-1;
+    background: $table-pagination-hover-color;
   }
 
   .current {
-    background: $blue-medium;
-    border-color: $blue-medium;
+    background: $table-pagination-link-color;
+    border-color: $table-pagination-link-color;
     color: #fff;
   }
 
   p {
     font-size: 12px;
+  }
+
+  .page-controls, .number-controls, .info {
+    margin-bottom: 10px;
+    text-align: left;
+  }
+
+  @media (min-width: 770px) {
+    .number-controls {
+      text-align: center;
+    }
+
+    .info {
+      text-align: right;
+    }
   }
 }

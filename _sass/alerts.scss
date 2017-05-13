@@ -1,0 +1,44 @@
+/*!
+ * Copyright (c) 2017, Inversoft Inc., All Rights Reserved
+ */
+
+@import 'colors';
+@import 'mixins';
+
+/* Alerts
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.alert {
+  @include border-radius(2px);
+  @include transition(opacity 0.3s ease-in-out);
+  color: #fff;
+  font-size: 14px;
+  padding: 10px 20px;
+  margin-bottom: 20px;
+
+  i {
+    display: inline-block;
+    font-size: 14px;
+    margin-right: 10px;
+    vertical-align: middle;
+  }
+
+  a {
+    color: #fff;
+    float: right;
+    font-size: 18px;
+    text-decoration: none;
+  }
+
+  &.info {
+    background: $blue-medium;
+  }
+
+  &.error {
+    background: $red-medium;
+  }
+
+  &.warning {
+    background: $orange-medium;
+  }
+}

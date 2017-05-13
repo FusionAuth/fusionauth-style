@@ -243,6 +243,12 @@
   align-items: flex-end;
 }
 
+.baseline-xs {
+  -webkit-box-align: end;
+  -ms-flex-align: end;
+  align-items: baseline;
+}
+
 .around-xs {
   -ms-flex-pack: distribute;
   justify-content: space-around;
@@ -478,6 +484,12 @@
     align-items: flex-end;
   }
 
+  .baseline-sm {
+    -webkit-box-align: baseline;
+    -ms-flex-align: baseline;
+    align-items: baseline;
+  }
+
   .around-sm {
     -ms-flex-pack: distribute;
     justify-content: space-around;
@@ -707,6 +719,12 @@
     -webkit-box-align: end;
     -ms-flex-align: end;
     align-items: flex-end;
+  }
+
+  .baseline-md {
+    -webkit-box-align: baseline;
+    -ms-flex-align: baseline;
+    align-items: baseline;
   }
 
   .around-md {
