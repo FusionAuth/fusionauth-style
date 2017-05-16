@@ -10,54 +10,9 @@
   <script type="text/javascript" src="/js/prime.js"></script>
   <script type="text/javascript" src="/js/Chart-2.5.0-min.js"></script>
   <script type="text/javascript">
-    function getCoords(elem) {
-      var box = elem.getBoundingClientRect();
-
-      var body = document.body;
-      var docEl = document.documentElement;
-
-      var scrollTop = window.pageYOffset || docEl.scrollTop || body.scrollTop;
-      var scrollLeft = window.pageXOffset || docEl.scrollLeft || body.scrollLeft;
-
-      var clientTop = docEl.clientTop || body.clientTop || 0;
-      var clientLeft = docEl.clientLeft || body.clientLeft || 0;
-
-      var top  = box.top +  scrollTop - clientTop;
-      var left = box.left + scrollLeft - clientLeft;
-
-      return { top: Math.round(top), left: Math.round(left) };
-    }
-
     Prime.Document.onReady(function() {
-      Prime.Document.query('[data-help]').each(function(e) {
-        e.addEventListener('mouseenter', function(event) {
-          var body = new Prime.Document.Element(document.body);
-          var target = new Prime.Document.Element(event.target);
-          var helpText = target.getDataSet()['help'];
-          event.target.tooltip = Prime.Document.newElement('<span>').appendTo(body).addClass('tooltip ' + target.getTagName().toLowerCase()).setHTML(helpText);
-          var offsetLeft = target.getOffsetLeft();
-          var offsetTop = getCoords(target.domElement).top;
-          var targetWidth = target.getWidth();
-          var tooltipHeight = event.target.tooltip.getHeight();
-          var tooltipWidth = event.target.tooltip.getWidth();
-          var textAlign = target.getComputedStyle()['textAlign'];
-          if (textAlign === 'right') {
-            event.target.tooltip.setLeft(offsetLeft + (targetWidth - 5) - (tooltipWidth / 2));
-            event.target.tooltip.setTop(offsetTop - tooltipHeight - 6);
-          } else if (targetWidth > tooltipWidth && (textAlign === 'left' || textAlign === 'start')) {
-            var left = offsetLeft - (tooltipWidth / 2);
-            event.target.tooltip.setLeft(left < 5 ? 5 : left);
-            event.target.tooltip.setTop(offsetTop - tooltipHeight - 6);
-          } else {
-            event.target.tooltip.setLeft(offsetLeft + (targetWidth / 2) - (tooltipWidth / 2));
-            event.target.tooltip.setTop(offsetTop - tooltipHeight - 6);
-          }
-        });
-        e.addEventListener('mouseleave', function() {
-          if (event.target.tooltip) {
-            event.target.tooltip.removeFromDOM();
-          }
-        });
+      Prime.Document.query('[data-tooltip]').each(function(e) {
+        new Prime.Widgets.Tooltip(e).render();
       });
 
       Prime.Document.query('.multiple-select').each(function(e) {
@@ -169,14 +124,22 @@
       </div>
     </form>
   </div>
+  <div class="right-menu">
+    <nav>
+      <ul>
+        <li><a href="#"><i class="fa fa-life-ring"></i> Help</a></li>
+        <li><a href="#"><i class="fa fa-sign-out"></i> Logout</a></li>
+      </ul>
+    </nav>
+  </div>
 </header>
 <div class="app-body">
   <div class="app-sidebar">
     <header>
       <img src="/images/avatar.jpg"/>
       <ul>
-        <li><a href="#" data-help="Edit Profile"><i class="fa fa-pencil-square-o"></i></a></li>
-        <li><a href="#" data-help="Logout"><i class="fa fa-sign-out"></i></a></li>
+        <li><a href="#" data-tooltip="Edit Profile"><i class="fa fa-pencil-square-o"></i></a></li>
+        <li><a href="#" data-tooltip="Logout"><i class="fa fa-sign-out"></i></a></li>
       </ul>
     </header>
 
@@ -224,10 +187,10 @@
       <div class="row baseline-xs">
         <h1 class="col-xs">The Page Header</h1>
         <div class="buttons col-xs end-xs">
-          <button class="blue button square" data-help="Save"><i class="fa fa-save"></i></button>
-          <a href="#" class="gray button square" data-help="Cancel"><i class="fa fa-reply"></i></a>
-          <a href="#" class="red button square" data-help="Delete"><i class="fa fa-trash"></i></a>
-          <a href="#" class="green button square" data-help="Add"><i class="fa fa-plus"></i></a>
+          <button class="blue button square" data-tooltip="Save"><i class="fa fa-save"></i></button>
+          <a href="#" class="gray button square" data-tooltip="Cancel"><i class="fa fa-reply"></i></a>
+          <a href="#" class="red button square" data-tooltip="Delete"><i class="fa fa-trash"></i></a>
+          <a href="#" class="green button square" data-tooltip="Add"><i class="fa fa-plus"></i></a>
         </div>
       </div>
       <div class="row">
@@ -260,6 +223,29 @@
     </header>
     <div class="container-fluid">
       <div class="row">
+        <div class="col-xs">
+          <div class="panel green">
+            <h2>Complete Passport Setup</h2>
+            <main class="row">
+              <div class="col-xs">
+                <div class="blue card">
+                  <header>
+                    <h3>Missing Application</h3>
+                  </header>
+                  <main>
+                    <p>
+                      To begin your integration, you must setup an application.
+                    </p>
+                  </main>
+                </div>
+              </div>
+            </main>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div class="row">
         <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
           <div class="blue card">
             <header>
@@ -268,7 +254,7 @@
             </header>
             <main>
               <i class="fa fa-user"></i>
-              <p>73.2K</p>
+              <p class="large">73.2K</p>
             </main>
           </div>
         </div>
@@ -280,7 +266,7 @@
             </header>
             <main>
               <i class="fa fa-sign-in"></i>
-              <p>382</p>
+              <p class="large">382</p>
             </main>
           </div>
         </div>
@@ -292,7 +278,7 @@
             </header>
             <main>
               <i class="fa fa-user-plus"></i>
-              <p>12</p>
+              <p class="large">12</p>
             </main>
           </div>
         </div>
@@ -304,7 +290,7 @@
             </header>
             <main>
               <i class="fa fa-user-times"></i>
-              <p>0</p>
+              <p class="large">0</p>
             </main>
           </div>
         </div>
@@ -315,17 +301,17 @@
         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
           <div class="panel">
             <h2>Bar Chart</h2>
-            <div class="body">
+            <main>
               <canvas id="bar-chart" width="400" height="400"></canvas>
-            </div>
+            </main>
           </div>
         </div>
         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
           <div class="panel">
             <h2>Line Chart</h2>
-            <div class="body">
+            <main>
               <canvas id="line-chart" width="400" height="400"></canvas>
-            </div>
+            </main>
           </div>
         </div>
       </div>
@@ -333,17 +319,17 @@
     <div class="container-fluid">
       <div class="panel">
         <h2>Form Panel</h2>
-        <div class="body">
+        <main>
           <form class="labels-left">
             <fieldset>
               <legend>Text boxes</legend>
               <div class="form-row">
-                <label for="text" data-help="Some tooltip help text that is very long and will wrap multiple lines and such."><span class="required">*</span> Text</label>
+                <label for="text" data-tooltip="Some tooltip help text that is very long and will wrap multiple lines and such."><span class="required">*</span> Text</label>
                 <input type="text" id="text" placeholder="Text input"/>
               </div>
 
               <div class="form-row">
-                <label for="text-left-icon" data-help="Some tooltip help text that is very long and will wrap multiple lines and such."><span class="required">*</span> Left Addon</label>
+                <label for="text-left-icon" data-tooltip="Some tooltip help text that is very long and will wrap multiple lines and such."><span class="required">*</span> Left Addon</label>
                 <div class="input-addon">
                   <span class="input-icon-left"><i class="fa fa-lock"></i></span>
                   <input type="text" id="text-left-icon" placeholder="Text input"/>
@@ -351,7 +337,7 @@
               </div>
 
               <div class="form-row">
-                <label for="text-right-icon" data-help="Some tooltip help text that is very long and will wrap multiple lines and such."><span class="required">*</span> Right Addon</label>
+                <label for="text-right-icon" data-tooltip="Some tooltip help text that is very long and will wrap multiple lines and such."><span class="required">*</span> Right Addon</label>
                 <div class="input-addon">
                   <input type="text" id="text-right-icon" placeholder="Text input"/>
                   <span class="input-icon-right"><i class="fa fa-lock"></i></span>
@@ -359,7 +345,7 @@
               </div>
 
               <div class="form-row">
-                <label for="error" class="error" data-help="Short">Error</label>
+                <label for="error" class="error" data-tooltip="Short">Error</label>
                 <input type="text" id="error" class="error" placeholder="Text input"/>
                 <span class="error">Error 1, error 2, error 3</span>
               </div>
@@ -460,7 +446,7 @@
               </div>
               <div class="form-row">
                 <label for="sean-toggle">Toggle</label>
-                <label class="sean-toggle"><input type="checkbox" id=sean-"toggle"/><span class="rail"></span><span class="pin"></span></label>
+                <label class="sean-toggle"><input type="checkbox" id="sean-toggle"/><span class="rail"></span><span class="pin"></span></label>
               </div>
               <div class="form-row">
                 <label for="multi-select">Multi-select</label>
@@ -492,22 +478,22 @@
               <button class="blue button">Back</button>
             </div>
           </form>
-        </div>
+        </main>
       </div>
 
       <div class="panel">
         <h2>Form Panel</h2>
-        <div class="body">
+        <main>
           <form class="labels-above">
             <fieldset>
               <legend>Text boxes</legend>
               <div class="form-row">
-                <label for="text-above" data-help="Some tooltip help text that is very long and will wrap multiple lines and such."><span class="required">*</span> Text</label>
+                <label for="text-above" data-tooltip="Some tooltip help text that is very long and will wrap multiple lines and such."><span class="required">*</span> Text</label>
                 <input type="text" id="text-above" placeholder="Text input"/>
               </div>
 
               <div class="form-row">
-                <label for="text-left-icon-above" data-help="Some tooltip help text that is very long and will wrap multiple lines and such."><span class="required">*</span> Left Addon</label>
+                <label for="text-left-icon-above" data-tooltip="Some tooltip help text that is very long and will wrap multiple lines and such."><span class="required">*</span> Left Addon</label>
                 <div class="input-addon">
                   <span class="input-icon-left"><i class="fa fa-lock"></i></span>
                   <input type="text" id="text-left-icon-above" placeholder="Text input"/>
@@ -515,7 +501,7 @@
               </div>
 
               <div class="form-row">
-                <label for="text-right-icon-above" data-help="Some tooltip help text that is very long and will wrap multiple lines and such."><span class="required">*</span> Right Addon</label>
+                <label for="text-right-icon-above" data-tooltip="Some tooltip help text that is very long and will wrap multiple lines and such."><span class="required">*</span> Right Addon</label>
                 <div class="input-addon">
                   <input type="text" id="text-right-icon-above" placeholder="Text input"/>
                   <span class="input-icon-right"><i class="fa fa-lock"></i></span>
@@ -523,7 +509,7 @@
               </div>
 
               <div class="form-row">
-                <label for="error-above" class="error" data-help="Short">Error</label>
+                <label for="error-above" class="error" data-tooltip="Short">Error</label>
                 <input type="text" id="error-above" class="error" placeholder="Text input"/>
                 <span class="error">Error 1, error 2, error 3</span>
               </div>
@@ -641,12 +627,12 @@
               <button class="blue button">Back</button>
             </div>
           </form>
-        </div>
+        </main>
       </div>
 
       <div class="panel">
         <h2>Table panel</h2>
-        <div class="body">
+        <main>
           <table>
             <thead>
             <tr>
@@ -661,19 +647,19 @@
               <td class="tight"><input type="checkbox"></td>
               <td class="text-left">Value 2</td>
               <td class="text-right">Value 3</td>
-              <td class="text-right"><a href="#" class="blue button square" data-help="Edit"><i class="fa fa-pencil"></i></a></td>
+              <td class="text-right"><a href="#" class="blue button square" data-tooltip="Edit"><i class="fa fa-pencil"></i></a></td>
             </tr>
             <tr>
               <td class="tight"><input type="checkbox"></td>
               <td class="text-left">Value 2</td>
               <td class="text-right">Value 3</td>
-              <td class="text-right"><a href="#" class="blue button square" data-help="Edit"><i class="fa fa-pencil"></i></a></td>
+              <td class="text-right"><a href="#" class="blue button square" data-tooltip="Edit"><i class="fa fa-pencil"></i></a></td>
             </tr>
             <tr>
               <td class="tight"><input type="checkbox"></td>
               <td class="text-left">Value 2</td>
               <td class="text-right">Value 3</td>
-              <td class="text-right"><a href="#" class="blue button square" data-help="Edit"><i class="fa fa-pencil"></i></a></td>
+              <td class="text-right"><a href="#" class="blue button square" data-tooltip="Edit"><i class="fa fa-pencil"></i></a></td>
             </tr>
             </tbody>
           </table>
@@ -698,12 +684,12 @@
               </p>
             </div>
           </div>
-        </div>
+        </main>
       </div>
 
       <div class="panel">
         <h2>Searchable table panel</h2>
-        <div class="body">
+        <main>
           <div class="gray-panel">
             <form action="#" class="labels-above row">
               <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
@@ -759,27 +745,27 @@
               <td class="tight"><input type="checkbox"></td>
               <td class="text-left">Value 2</td>
               <td class="text-right">Value 3</td>
-              <td class="text-right"><a href="#" class="blue button square" data-help="Edit"><i class="fa fa-pencil"></i></a></td>
+              <td class="text-right"><a href="#" class="blue button square" data-tooltip="Edit"><i class="fa fa-pencil"></i></a></td>
             </tr>
             <tr>
               <td class="tight"><input type="checkbox"></td>
               <td class="text-left">Value 2</td>
               <td class="text-right">Value 3</td>
-              <td class="text-right"><a href="#" class="blue button square" data-help="Edit"><i class="fa fa-pencil"></i></a></td>
+              <td class="text-right"><a href="#" class="blue button square" data-tooltip="Edit"><i class="fa fa-pencil"></i></a></td>
             </tr>
             <tr>
               <td class="tight"><input type="checkbox"></td>
               <td class="text-left">Value 2</td>
               <td class="text-right">Value 3</td>
-              <td class="text-right"><a href="#" class="blue button square" data-help="Edit"><i class="fa fa-pencil"></i></a></td>
+              <td class="text-right"><a href="#" class="blue button square" data-tooltip="Edit"><i class="fa fa-pencil"></i></a></td>
             </tr>
             </tbody>
           </table>
-        </div>
+        </main>
       </div>
       <div class="panel">
         <h2>Tabs</h2>
-        <div class="body">
+        <main>
           <ul id="tabs" class="tabs">
             <li><a href="#tab-1">Tab 1</a></li>
             <li><a href="#tab-2">Tab 2</a></li>
@@ -804,7 +790,7 @@
           <div id="tab-9"><p> Tab 9 contents </p></div>
           <div id="tab-10"><p> Tab 10 contents </p></div>
           <div id="tab-11"><p> Tab 11 contents </p></div>
-        </div>
+        </main>
       </div>
       <div id="buttons">
         <a class="blue button" href="#">Test</a>

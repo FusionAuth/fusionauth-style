@@ -41,7 +41,7 @@
     }
   }
 
-  main {
+  > main {
     align-items: baseline;
     display: flex;
     justify-content: space-between;
@@ -59,9 +59,12 @@
 
     p {
       color: #fff;
-      font-size: 50px;
       margin: 0;
       padding: 0;
+
+      &.large {
+        font-size: 50px;
+      }
     }
 
     &:hover i {

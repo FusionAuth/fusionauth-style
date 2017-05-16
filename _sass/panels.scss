@@ -2,6 +2,8 @@
  * Copyright (c) 2017, Inversoft Inc., All Rights Reserved
  */
 
+@import 'colors';
+
 /* Panels
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
@@ -24,8 +26,20 @@
     padding: 12px 20px;
   }
 
-  .body {
+  > main {
     padding: 15px;
+  }
+
+  &.blue h2 {
+    background: rgba($blue-medium, 0.2);
+  }
+
+  &.green h2 {
+    background: rgba($green-medium, 0.2);
+  }
+
+  &.red h2 {
+    background: rgba($red-medium, 0.2);
   }
 }
 

@@ -49,8 +49,6 @@ $text-border-color: $gray-4;
 $toggle-rail-color: $gray-5;
 $toggle-rail-highlight-color: $green-gray3;
 $toggle-check-color: $green-medium;
-$tooltip-background-color: $gray-7;
-$tooltip-color: $gray-1;
 
 label {
   color: $label-color;
@@ -62,7 +60,7 @@ label {
     color: $required-color;
   }
 
-  &[data-help]:after {
+  &[data-tooltip]:after {
     font-family: FontAwesome;
     color: #1E91CF;
     content: "\f059";
@@ -478,7 +476,7 @@ select {
 }
 
 .sean-toggle {
-  margin-top: 3px;
+  margin-top: 5px;
   position: relative;
 
   span.rail {
