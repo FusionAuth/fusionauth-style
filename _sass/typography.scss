@@ -2,6 +2,8 @@
  * Copyright (c) 2017, Inversoft Inc., All Rights Reserved
  */
 
+@import 'colors';
+
 /* Typography
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
@@ -45,4 +47,13 @@ h6 {
 
 .text-right {
   text-align: right;
+}
+
+a {
+  color: $blue-dark;
+  text-decoration: none;
+
+  &:hover, &:visited {
+    color: $blue-dark;
+  }
 }
