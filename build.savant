@@ -1,0 +1,48 @@
+/*
+ * Copyright (c) 2014-2016, Inversoft Inc., All Rights Reserved
+ */
+savantVersion = "1.0.0"
+
+project(group: "com.inversoft", name: "inversoft-style", version: "0.1.0", licenses: ["Commercial"]) {
+  workflow {
+    standard()
+  }
+
+  publishWorkflow {
+    subversion(repository: "http://svn.inversoft.com/internal/savant")
+  }
+
+  publications {
+    main {
+      publication(name: "inversoft-style", type: "css", file: "build/css/inversoft-style.css", source: "build/css/inversoft-style.css")
+    }
+  }
+}
+
+// Plugins
+dependency = loadPlugin(id: "org.savantbuild.plugin:dependency:${savantVersion}")
+file = loadPlugin(id: "org.savantbuild.plugin:file:${savantVersion}")
+idea = loadPlugin(id: "org.savantbuild.plugin:idea:${savantVersion}")
+release = loadPlugin(id: "org.savantbuild.plugin:release-git:${savantVersion}")
+
+target(name: "clean", description: "Deletes the build dir") {
+  file.prune(dir: "build")
+}
+
+target(name: "int", description: "Releases a local integration build of the project") {
+  file.mkdir(dir: "build/css")
+
+  if (new ProcessBuilder("sass", "_sass/inversoft-style.scss", "build/css/inversoft-style.css").inheritIO().start().waitFor() != 0) {
+    fail("Failed while calling sass")
+  }
+
+  dependency.integrate()
+}
+
+target(name: "idea", description: "Updates the IntelliJ IDEA module file") {
+  idea.iml()
+}
+
+target(name: "release", description: "Releases a full version of the project", dependsOn: ["int"]) {
+  release.release()
+}
