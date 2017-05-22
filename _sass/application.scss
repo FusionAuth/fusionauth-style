@@ -2,31 +2,47 @@
  * Copyright (c) 2017, Inversoft Inc., All Rights Reserved
  */
 
-@import 'colors';
+@import 'layers';
 @import 'mixins';
+@import 'variables';
 
 /* Overall application layout
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
 html {
   height: 100%;
+  min-height: 100%;
 }
 
 body {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  color: $default-text-color;
+  font: 12px/18px $font-stack;
   height: 100%;
+  min-height: 100%;
+  position: relative;
+  width: 100%;
 }
 
 .app-header {
   align-items: center;
   background: #fff;
-  border-bottom: 1px solid $gray-3;
+  border-bottom: 1px solid $header-border-color;
   display: flex;
   height: 45px;
   left: 0;
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 1000;
+  z-index: $layer-2;
 
   img {
     height: 100%;
@@ -38,7 +54,7 @@ body {
   }
 
   .app-sidebar-toggle {
-    color: $gray-3;
+    color: $hamburger-color;
     display: inline-block;
     font-size: 24px;
     padding: 0 10px;
@@ -57,7 +73,7 @@ body {
     }
 
     input {
-      border-color: $gray-3;
+      border-color: $search-border-color;
       width: 130px;
 
       @media (min-width: 480px) {
@@ -66,7 +82,7 @@ body {
     }
 
     .input-icon-right {
-      border-color: $gray-3;
+      border-color: $search-icon-color;
     }
   }
 
@@ -90,24 +106,24 @@ body {
         padding: 0;
 
         li {
-          border-left: 1px solid $gray-2;
+          border-left: 1px solid $left-nav-border-color;
           display: inline-block;;
           height: 100%;
           padding: 15px 20px;
           vertical-align: center;
 
           a {
-            color: $gray-5;
+            color: $left-nav-color;
             font-size: 15px;
             line-height: 15px;
             text-decoration: none;
 
             i.fa-life-ring {
-              color: $blue-medium;
+              color: $left-nav-help-color;
             }
 
             i.fa-sign-out {
-              color: $purple-medium;
+              color: $left-nav-logout-color;
             }
           }
         }
@@ -118,7 +134,7 @@ body {
 
 .app-body {
   overflow-x: hidden;
-  z-index: 980;
+  z-index: $layer-1;
 
   > main {
     @include transition(margin-left 0.2s ease-in-out, margin-right 0.2s ease-in-out);
@@ -127,7 +143,7 @@ body {
     margin-top: 60px;
 
     h1 {
-      color: $gray-5;
+      color: $page-header-color;
       font-size: 28px;
       line-height: 30px;
     }
@@ -141,8 +157,6 @@ body {
 
 /* Sidebar
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
-
-$sidebar-background-color: #2a2c36;
 
 body {
   &.app-sidebar-open {
@@ -181,7 +195,7 @@ body {
   padding-top: 30px;
   position: fixed;
   width: 250px;
-  z-index: 990;
+  z-index: $layer-1;
 
   @media (min-width: 770px) {
     margin-left: 0;
@@ -221,27 +235,30 @@ body {
   }
 
   nav {
-    background: #2a2c36;
-
     h2 {
-      color: $gray-1;
+      color: $sidebar-header-color;
       font-size: 12px;
       padding: 12px 20px;
       text-transform: uppercase;
     }
 
     ul {
-      @include transition(max-height 0.3s ease-in-out);
+      @include transition(max-height 0.5s ease-in-out);
       list-style: none;
       margin: 0;
+      overflow-y: hidden;
       padding: 0;
 
       li {
         position: relative;
 
+        li a {
+          padding-left: 30px;
+        }
+
         a {
-          @include transition(background 0.3s ease-in-out);
-          color: $gray-1;
+          @include transition(background 0.5s ease-in-out);
+          color: $sidebar-color;
           display: block;
           font-size: 12px;
           font-weight: 400;
@@ -253,7 +270,7 @@ body {
             margin-right: 10px;
           }
 
-          &:hover {
+          &:hover, &.active {
             background: darken($sidebar-background-color, 5%);
           }
 
@@ -267,31 +284,19 @@ body {
           }
         }
 
-        &.folder:not(.active) ul {
+        &.folder:not(.open) ul {
           max-height: 0;
-          overflow-y: hidden;
         }
 
-        &.folder.active {
-          background: darken($sidebar-background-color, 5%);
-
+        &.folder.open {
           a {
             &.folder-toggle:after {
               transform: rotate(-90deg);
             }
-
-            &:hover {
-              background: darken($sidebar-background-color, 10%);
-            }
           }
 
           ul {
-            background: darken($sidebar-background-color, 5%);
-            max-height: 1000px;
-
-            a:hover, a.active {
-              background: darken($sidebar-background-color, 10%);
-            }
+            max-height: 500px;
           }
         }
       }

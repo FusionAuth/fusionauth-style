@@ -2,8 +2,8 @@
  * Copyright (c) 2017, Inversoft Inc., All Rights Reserved
  */
 
-@import 'colors';
 @import 'mixins';
+@import 'variables';
 
 /* Alerts
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
@@ -36,14 +36,14 @@
   }
 
   &.info {
-    background: $blue-medium;
+    background: $info-alert-background-color;
   }
 
   &.error {
-    background: $red-medium;
+    background: $error-alert-background-color;
   }
 
   &.warning {
-    background: $orange-medium;
+    background: $warning-alert-background-color;
   }
 }

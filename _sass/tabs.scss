@@ -2,12 +2,8 @@
  * Copyright (c) 2017, Inversoft Inc., All Rights Reserved
  */
 
-@import 'colors';
 @import 'mixins';
-
-$tab-color: $gray-5;
-$tab-active-color: $gray-7;
-$tab-border-color: $gray-3;
+@import 'variables';
 
 .tabs {
   display: flex;
@@ -23,7 +19,7 @@ $tab-border-color: $gray-3;
   li {
     @include box-sizing(border-box);
     @include transition(background 0.2s ease-in-out);
-    background: $gray-1;
+    background: $tab-background-color;
     border: 1px solid $tab-border-color;
     flex: 0 0 auto;
     margin-right: -1px;
@@ -45,15 +41,15 @@ $tab-border-color: $gray-3;
       border-bottom-color: $tab-border-color;
     }
 
-    &.first-child {
+    &.first-visible-child {
       @include border-radius(3px 0 0 0);
     }
 
-    &.last-child {
+    &.last-visible-child {
       @include border-radius(0 3px 0 0);
     }
 
-    &.prime-active {
+    &.selected {
       background: #fff;
       border-top-color: $tab-border-color;
       border-left-color: $tab-border-color;
@@ -61,25 +57,9 @@ $tab-border-color: $gray-3;
       border-bottom-color: #fff;
 
       a {
-        color: $tab-active-color;
+        color: $tab-selected-color;
         font-weight: 600;
       }
-    }
-  }
-}
-
-.tab-mobile-helper {
-  position: relative;
-
-  .tab-mobile-scroll-indicator {
-    color: rgba(33, 33, 33, 0.07);
-    font-size: 24px;
-    position: absolute;
-    right: 0;
-    top: 7px;
-
-    @media (min-width: 550px) {
-      display: none;
     }
   }
 }

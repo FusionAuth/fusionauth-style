@@ -1,0 +1,17 @@
+/*!
+ * Copyright (c) 2017, Inversoft Inc., All Rights Reserved
+ */
+
+/* The single overlay
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+#prime-overlay {
+  background: rgba(#000000, 0.5);
+  content: '';
+  display: block;
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}

@@ -2,14 +2,14 @@
  * Copyright (c) 2017, Inversoft Inc., All Rights Reserved
  */
 
-@import 'colors';
 @import 'mixins';
+@import 'variables';
 
 /* Cards
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
 .card {
-  margin-bottom: 15px;
+  height: 100%;
 
   header {
     display: flex;
@@ -76,58 +76,58 @@
   }
 
   &.blue {
-    background: $blue-light;
+    background: $blue-card-background-color;
 
     header {
-      background: $blue-medium;
+      background: $blue-card-header-background-color;
     }
   }
 
   &.green {
-    background: $green-light;
+    background: $green-card-background-color;
 
     header {
-      background: $green-medium;
+      background: $green-card-header-background-color;
     }
   }
 
   &.red {
-    background: $red-light;
+    background: $red-card-background-color;
 
     header {
-      background: $red-medium;
+      background: $red-card-header-background-color;
     }
   }
 
   &.orange {
-    background: $orange-light;
+    background: $orange-card-background-color;
 
     header {
-      background: $orange-medium;
+      background: $orange-card-header-background-color;
     }
   }
 
   &.yellow {
-    background: $yellow-light;
+    background: $yellow-card-background-color;
 
     header {
-      background: $yellow-medium;
+      background: $yellow-card-header-background-color;
     }
   }
 
   &.purple {
-    background: $purple-light;
+    background: $purple-card-background-color;
 
     header {
-      background: $purple-medium;
+      background: $purple-card-header-background-color;
     }
   }
 
   &.gray {
-    background: $gray-4;
+    background: $gray-card-background-color;
 
     header {
-      background: $gray-5;
+      background: $gray-card-header-background-color;
     }
   }
 }

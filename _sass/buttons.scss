@@ -3,6 +3,7 @@
  */
 
 @import 'mixins';
+@import 'variables';
 
 /* Buttons
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
@@ -48,41 +49,41 @@
   }
 
   &.blue {
-    @include button-colors($blue-medium, #fff, transparent);
+    @include button-colors($blue-button-background-color, $blue-button-color, transparent);
 
     &:hover, &:focus {
-      @include button-colors($blue-dark, #fff, transparent);
+      @include button-colors($blue-button-hover-background-color, $blue-button-color, transparent);
     }
   }
 
   &.gray {
-    @include button-colors($gray-1, $gray-7, $gray-4);
+    @include button-colors($gray-button-background-color, $gray-button-color, $gray-button-border-color);
 
     &:hover, &:focus {
-      @include button-colors($gray-2, $gray-7, $gray-4);
+      @include button-colors($gray-button-hover-background-color, $gray-button-color, $gray-button-border-color);
     }
   }
 
   &.green {
-    @include button-colors($green-medium, #fff, transparent);
+    @include button-colors($green-button-background-color, $green-button-color, transparent);
 
     &:hover, &:focus {
-      @include button-colors($green-dark, #fff, transparent);
+      @include button-colors($green-button-hover-background-color, $green-button-color, transparent);
     }
   }
 
   &.red {
-    @include button-colors($red-medium, #fff, transparent);
+    @include button-colors($red-button-background-color, $red-button-color, transparent);
 
     &:hover, &:focus {
-      @include button-colors($red-dark, #fff, transparent);
+      @include button-colors($red-button-hover-background-color, $red-button-color, transparent);
     }
   }
 
   &.purple {
-    @include button-colors($purple-medium, #fff, transparent);
+    @include button-colors($purple-button-background-color, $purple-button-color, transparent);
 
     &:hover, &:focus {
-      @include button-colors($purple-dark, #fff, transparent);
+      @include button-colors($purple-button-hover-background-color, $purple-button-color, transparent);
     }
   }}

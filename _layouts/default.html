@@ -6,13 +6,12 @@
   <link rel="stylesheet" href="/css/normalize-4.1.1.css"/>
   <link rel="stylesheet" href="/css/flexboxgrid-6.3.1.css"/>
   <link rel="stylesheet" href="/css/inversoft-style.css"/>
-  <link rel="stylesheet" href="/css/layout.css"/>
   <script type="text/javascript" src="/js/prime.js"></script>
   <script type="text/javascript" src="/js/Chart-2.5.0-min.js"></script>
   <script type="text/javascript">
     Prime.Document.onReady(function() {
       Prime.Document.query('[data-tooltip]').each(function(e) {
-        new Prime.Widgets.Tooltip(e).render();
+        new Prime.Widgets.Tooltip(e).withClassName('tooltip').initialize();
       });
 
       Prime.Document.query('.multiple-select').each(function(e) {
@@ -20,27 +19,27 @@
             .withCustomAddEnabled(true)
             .withErrorClassHandling('error')
             .withRemoveIcon('')
-            .render();
+            .initialize();
       });
 
       Prime.Document.query('.alert').each(function(e) {
         new Prime.Widgets.Dismissable(e, e.queryFirst('a.dismiss-button'));
       });
 
-      new Prime.Widgets.Tabs(Prime.Document.queryById('tabs'))
-          .render();
+      new Prime.Widgets.Tabs(Prime.Document.queryById('tabs')).initialize();
 
       Prime.Document.query('.datetime-picker').each(function(e) {
-        new Prime.Widgets.DateTimePicker(e).render();
+        new Prime.Widgets.DateTimePicker(e).initialize();
       });
 
       new Prime.Widgets.SideMenu(Prime.Document.queryFirst('.app-sidebar-toggle'), Prime.Document.queryFirst('.app-sidebar'))
           .withOptions({
                         'closedClass': 'app-sidebar-closed',
                         'openClass': 'app-sidebar-open'
-                       });
+                       })
+          .initialize();
 
-      new Prime.Widgets.TreeView(Prime.Document.queryFirst('.treeview'));
+      new Prime.Widgets.TreeView(Prime.Document.queryFirst('.treeview')).withFolderToggleClassName('folder-toggle').initialize();
 
       // Inversoft brand colors as RGB integers
       var red = '235, 56, 92';
@@ -109,6 +108,22 @@
           }
         }
       });
+
+      Prime.Document.queryById('ajax-dialog-button').addEventListener('click', function(e) {
+        new Prime.Widgets.AJAXDialog().initialize().open(new Prime.Document.Element(e.target).getAttribute('href'));
+        Prime.Utils.stopEvent(e);
+      });
+
+      var dialogElement = Prime.Document.queryById('html-dialog');
+      var htmlDialog = new Prime.Widgets.HTMLDialog(dialogElement).initialize();
+      Prime.Document.queryById('element-dialog-button').addEventListener('click', function(e) {
+        htmlDialog.open();
+        Prime.Utils.stopEvent(e);
+      });
+      Prime.Document.queryById('html-dialog-button').addEventListener('click', function(e) {
+        htmlDialog.setHTML(dialogElement.getHTML().replace('Some dialog text goes here', 'This is HTML dialog text')).open();
+        Prime.Utils.stopEvent(e);
+      });
     });
   </script>
 </head>
@@ -146,7 +161,7 @@
     <nav>
       <h2>Navigation</h2>
       <ul class="treeview">
-        <li class="folder active">
+        <li class="folder open">
           <a href="#" class="folder-toggle active"><i class="fa fa-users"></i> Users</a>
           <ul>
             <li><a href="#" class="item active"><i class="fa fa-user-plus"></i> Add a User</a></li>
@@ -294,7 +309,7 @@
       </div>
     </div>
     <div class="container-fluid">
-      <div class="row">
+      <div class="row push-bottom">
         <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
           <div class="blue card">
             <header>
@@ -812,6 +827,7 @@
           </table>
         </main>
       </div>
+
       <div class="panel">
         <h2>Tabs</h2>
         <main>
@@ -841,6 +857,29 @@
           <div id="tab-11"><p> Tab 11 contents </p></div>
         </main>
       </div>
+
+      <div class="panel">
+        <h2>Dialogs</h2>
+        <main>
+          <a href="/ajax/dialog" class="blue button" id="ajax-dialog-button">Open AJAX Dialog</a>
+          <a href="#" class="blue button" id="html-dialog-button">Open HTML Dialog</a>
+          <a href="#html-dialog" class="blue button" id="element-dialog-button">Open Element Dialog</a>
+
+          <div id="html-dialog" class="prime-dialog">
+            <header><h2>Dialog header <a href="#" data-dialog-role="close-button">X</a></h2></header>
+            <main>
+              <p>
+                Some dialog text goes here.
+              </p>
+            </main>
+            <footer>
+              <a href="#" data-dialog-role="close-button"><strong>Close</strong></a>
+            </footer>
+          </div>
+
+        </main>
+      </div>
+
       <div id="buttons">
         <a class="blue button" href="#">Test</a>
         <a class="blue shadow button" href="#">Test</a>
@@ -850,6 +889,8 @@
         <a class="red shadow button" href="#">Test</a>
         <a class="purple button" href="#">Test</a>
         <a class="purple shadow button" href="#">Test</a>
+        <a class="gray button" href="#">Test</a>
+        <a class="gray shadow button" href="#">Test</a>
       </div>
       <div id="typography">
         <h1>Title 1</h1>

@@ -1,54 +1,12 @@
 /*!
  * Copyright (c) 2017, Inversoft Inc., All Rights Reserved
  */
-@import 'colors';
+
 @import 'mixins';
+@import 'variables';
 
 /* Forms
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
-
-$checkbox-border-color: $gray-4;
-$checkbox-check-color: $green-medium;
-$checkbox-list-border-color: $gray-4;
-$datetime-picker-cell-background-color: $gray-2;
-$datetime-picker-cell-border-color: $gray-3;
-$datetime-picker-cell-color: $gray-6;
-$datetime-picker-cell-highlight-background-color: $gray-1;
-$datetime-picker-cell-highlight-border-color: $gray-3;
-$datetime-picker-cell-highlight-color: $gray-6;
-$datetime-picker-cell-hover-background-color: $gray-3;
-$datetime-picker-cell-hover-border-color: $gray-5;
-$datetime-picker-cell-hover-color: $gray-6;
-$datetime-picker-inputs-background-color: $gray-2;
-$datetime-picker-inputs-border-color: $gray-3;
-$datetime-picker-inputs-input-border-color: $gray-2;
-$error-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(200, 27, 61, 0.6);
-$error-color: $red-medium;
-$error-highlight-color: $red-dark;
-$error-widget-color: $red-light;
-$fieldset-border-color: $gray-3;
-$fieldset-legend-color: $gray-7;
-$highlight-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(73, 144, 226, 0.6);
-$highlight-color: $blue-medium;
-$input-addon-background-color: $gray-2;
-$input-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-$input-addon-color: $gray-6;
-$label-color: $gray-6;
-$multiple-select-border-color: $gray-4;
-$multiple-select-option-background-color: $gray-2;
-$multiple-select-option-border-color: $gray-3;
-$multiple-select-option-highlight-background-color: $blue-medium;
-$option-background-color: $gray-1;
-$option-color: $gray-7;
-$required-color: $red-medium;
-$radio-border-color: $gray-4;
-$radio-check-color: $green-medium;
-$select-border-color: $gray-4;
-$select-background-color: $gray-3;
-$text-border-color: $gray-4;
-$toggle-rail-color: $gray-5;
-$toggle-rail-highlight-color: $green-gray3;
-$toggle-check-color: $green-medium;
 
 label {
   color: $label-color;
@@ -428,54 +386,54 @@ select {
     color: $option-color;
   }
 }
+//
+//.toggle {
+//  margin-top: 6px;
+//  position: relative;
+//
+//  span.rail {
+//    @include border-radius(10px);
+//    background: $toggle-rail-color;
+//    height: 15px;
+//    position: absolute;
+//    top: 0;
+//    width: 37px;
+//  }
+//
+//  span.pin {
+//    @include border-radius(50%);
+//    @include box-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
+//    @include transition(0.5s);
+//    background: white;
+//    height: 23px;
+//    left: -4px;
+//    position: absolute;
+//    top: -5px;
+//    width: 23px;
+//  }
+//
+//  input[type=checkbox] {
+//    height: 1px;
+//    opacity: 0;
+//    width: 1px;
+//
+//    &:checked ~ span.rail {
+//      background: $toggle-rail-highlight-color;
+//    }
+//
+//    &:checked ~ span.pin {
+//      background: $toggle-check-color;
+//      left: 20px;
+//    }
+//
+//    &:focus ~ span.pin {
+//      @include box-shadow($highlight-box-shadow);
+//      border: 1px solid $highlight-color;
+//    }
+//  }
+//}
 
 .toggle {
-  margin-top: 6px;
-  position: relative;
-
-  span.rail {
-    @include border-radius(10px);
-    background: $toggle-rail-color;
-    height: 15px;
-    position: absolute;
-    top: 0;
-    width: 37px;
-  }
-
-  span.pin {
-    @include border-radius(50%);
-    @include box-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
-    @include transition(0.5s);
-    background: white;
-    height: 23px;
-    left: -4px;
-    position: absolute;
-    top: -5px;
-    width: 23px;
-  }
-
-  input[type=checkbox] {
-    height: 1px;
-    opacity: 0;
-    width: 1px;
-
-    &:checked ~ span.rail {
-      background: $toggle-rail-highlight-color;
-    }
-
-    &:checked ~ span.pin {
-      background: $toggle-check-color;
-      left: 20px;
-    }
-
-    &:focus ~ span.pin {
-      @include box-shadow($highlight-box-shadow);
-      border: 1px solid $highlight-color;
-    }
-  }
-}
-
-.sean-toggle {
   margin-top: 5px;
   position: relative;
 
@@ -483,7 +441,7 @@ select {
     @include border-radius(12px);
     @include box-shadow(inset 0 1px 2px rgba(0, 0, 0, 0.4));
     @include transition(0.5s);
-    background: $gray-2;
+    background: $toggle-rail-color;
     height: 24px;
     position: absolute;
     top: 0;
@@ -508,7 +466,7 @@ select {
     width: 1px;
 
     &:checked ~ span.rail {
-      background: $blue-medium;
+      background: $toggle-rail-highlight-color;
     }
 
     &:checked ~ span.pin {
@@ -522,24 +480,24 @@ select {
   }
 }
 
-.prime-multiple-select-display {
+.prime-multiple-select {
   position: relative;
 
-  &.error ul.prime-multiple-select-option-list {
+  &.error ul.option-list {
     border: 1px solid $error-highlight-color;
   }
 
-  &.prime-focus ul.prime-multiple-select-option-list {
+  &.prime-focus ul.option-list {
     @include box-shadow($highlight-box-shadow);
     border: 1px solid $highlight-color;
   }
 
-  &.error.prime-focus ul.prime-multiple-select-option-list {
+  &.error.prime-focus ul.option-list {
     @include box-shadow($error-box-shadow);
     border: 1px solid $error-highlight-color;
   }
 
-  ul.prime-multiple-select-option-list {
+  ul.option-list {
     @include box-shadow($input-box-shadow);
     @include transition(border 0.2s ease-in-out);
     border: 1px solid $multiple-select-border-color;
@@ -559,7 +517,7 @@ select {
         margin-left: 0;
       }
 
-      &.prime-multiple-select-option {
+      &:not(:last-of-type) {
         @include border-radius(3px);
         @include background-clip(padding-box, padding);
         @include box-shadow(0 2px 4px 0 rgba(0, 0, 0, 0.4));
@@ -591,7 +549,7 @@ select {
         }
       }
 
-      &.prime-multiple-select-option-highlighted {
+      &.selected {
         background: $multiple-select-option-highlight-background-color;
         color: #fff;
 
@@ -618,7 +576,7 @@ select {
     }
   }
 
-  .prime-multiple-select-search-result-list {
+  .search-results {
     @include box-shadow(0 2px 4px 0 rgba(0, 0, 0, 0.4));
     background: #fff;
     border: 1px solid $multiple-select-border-color;
@@ -639,20 +597,17 @@ select {
       padding: 5px;
     }
 
-    .prime-searcher-highlighted-search-result {
+    .selected {
       background: $multiple-select-option-highlight-background-color;
       color: #fff;
     }
   }
 }
 // Float hack
-form.labels-left .prime-multiple-select-search-result-list {
+form.labels-left .search-results {
   margin-left: calc(12% + 20px);
   width: calc(88% - 20px);
 }
-
-$datetime-picker-border-color: $gray-3;
-$datetime-picker-highlight-color: $gray-2;
 
 .prime-date-picker {
   @include border-radius(4px);
@@ -680,7 +635,7 @@ $datetime-picker-highlight-color: $gray-2;
     width: 10px;
   }
 
-  .header {
+  header {
     @include user-select(none);
     display: block;
     margin-top: 5px;
@@ -727,7 +682,7 @@ $datetime-picker-highlight-color: $gray-2;
       cursor: pointer;
       padding: 4px 15px 4px 10px;
 
-      &.prime-selected {
+      &.selected {
         background: $datetime-picker-highlight-color;
         border: 1px solid $datetime-picker-border-color;
       }
@@ -777,10 +732,9 @@ $datetime-picker-highlight-color: $gray-2;
         text-align: right;
         text-decoration: none;
 
-        &.prime-inactive {
+        &.inactive {
           opacity: 0.4;
         }
-
 
         &:hover {
           background: $datetime-picker-cell-hover-background-color;
@@ -789,7 +743,7 @@ $datetime-picker-highlight-color: $gray-2;
           font-weight: normal;
         }
 
-        &.prime-selected {
+        &.selected {
           background: $datetime-picker-cell-highlight-background-color;
           border: 1px solid $datetime-picker-cell-highlight-border-color;
           color: $datetime-picker-cell-highlight-color;

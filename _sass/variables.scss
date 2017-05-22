@@ -1,0 +1,204 @@
+/*!
+ * Copyright (c) 2017, Inversoft Inc., All Rights Reserved
+ */
+
+@import 'colors';
+
+/* Font
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+$font-stack: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+
+
+/* General application and layout colors
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+$default-text-color: $gray-7;
+
+$header-border-color: $gray-3;
+
+$hamburger-color: $gray-3;
+
+$search-border-color: $gray-3;
+$search-icon-color: $gray-3;
+
+$left-nav-border-color: $gray-2;
+$left-nav-color: $gray-5;
+$left-nav-help-color: $blue-medium;
+$left-nav-logout-color: $purple-medium;
+
+$page-header-color: $gray-5;
+
+$sidebar-background-color: #2a2c36;
+$sidebar-color: $gray-1;
+$sidebar-header-color: $gray-1;
+
+
+/* Alerts
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+$error-alert-background-color: $red-medium;
+$info-alert-background-color: $blue-medium;
+$warning-alert-background-color: $orange-medium;
+
+
+/* Buttons
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+$blue-button-background-color: $blue-medium;
+$blue-button-hover-background-color: $blue-dark;
+$blue-button-color: #fff;
+
+$gray-button-background-color: $gray-1;
+$gray-button-border-color: $gray-4;
+$gray-button-hover-background-color: $gray-2;
+$gray-button-color: $gray-7;
+
+$green-button-background-color: $green-medium;
+$green-button-hover-background-color: $green-dark;
+$green-button-color: #fff;
+
+$purple-button-background-color: $purple-medium;
+$purple-button-hover-background-color: $purple-dark;
+$purple-button-color: #fff;
+
+$red-button-background-color: $red-medium;
+$red-button-hover-background-color: $red-dark;
+$red-button-color: #fff;
+
+
+/* Cards
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+$blue-card-background-color: $blue-light;
+$blue-card-header-background-color: $blue-medium;
+
+$gray-card-background-color: $gray-4;
+$gray-card-header-background-color: $gray-5;
+
+$green-card-background-color: $green-light;
+$green-card-header-background-color: $green-medium;
+
+$orange-card-background-color: $orange-light;
+$orange-card-header-background-color: $orange-medium;
+
+$purple-card-background-color: $purple-light;
+$purple-card-header-background-color: $purple-medium;
+
+$red-card-background-color: $red-light;
+$red-card-header-background-color: $red-medium;
+
+$yellow-card-background-color: $yellow-light;
+$yellow-card-header-background-color: $yellow-medium;
+
+
+/* Forms
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+$checkbox-border-color: $gray-4;
+$checkbox-check-color: $green-medium;
+$checkbox-list-border-color: $gray-4;
+
+$datetime-picker-border-color: $gray-3;
+$datetime-picker-cell-background-color: $gray-2;
+$datetime-picker-cell-border-color: $gray-3;
+$datetime-picker-cell-color: $gray-6;
+$datetime-picker-cell-highlight-background-color: $gray-1;
+$datetime-picker-cell-highlight-border-color: $gray-3;
+$datetime-picker-cell-highlight-color: $gray-6;
+$datetime-picker-cell-hover-background-color: $gray-3;
+$datetime-picker-cell-hover-border-color: $gray-5;
+$datetime-picker-cell-hover-color: $gray-6;
+$datetime-picker-highlight-color: $gray-2;
+$datetime-picker-inputs-background-color: $gray-2;
+$datetime-picker-inputs-border-color: $gray-3;
+$datetime-picker-inputs-input-border-color: $gray-2;
+
+$error-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(200, 27, 61, 0.6);
+$error-color: $red-medium;
+$error-highlight-color: $red-dark;
+$error-widget-color: $red-light;
+
+$fieldset-border-color: $gray-3;
+$fieldset-legend-color: $gray-7;
+
+$highlight-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(73, 144, 226, 0.6);
+$highlight-color: $blue-medium;
+
+$input-addon-background-color: $gray-2;
+$input-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+$input-addon-color: $gray-6;
+
+$label-color: $gray-6;
+
+$multiple-select-border-color: $gray-4;
+$multiple-select-option-background-color: $gray-2;
+$multiple-select-option-border-color: $gray-3;
+$multiple-select-option-highlight-background-color: $blue-medium;
+
+$option-background-color: $gray-1;
+$option-color: $gray-7;
+
+$required-color: $red-medium;
+
+$radio-border-color: $gray-4;
+$radio-check-color: $green-medium;
+
+$select-border-color: $gray-4;
+$select-background-color: $gray-3;
+
+$text-border-color: $gray-4;
+
+$toggle-rail-color: $gray-2;
+$toggle-rail-highlight-color: $blue-medium;
+$toggle-check-color: $green-medium;
+
+
+/* Panels
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+$panel-blue-background-color: $blue-medium;
+$panel-border-color: $gray-3;
+$panel-border-top-color: $gray-5;
+$panel-gray-background-color: $gray-1;
+$panel-gray-border-color: $gray-2;
+$panel-green-background-color: $green-medium;
+$panel-header-background-color: $gray-1;
+$panel-header-bottom-border-color: $gray-3;
+$panel-header-color: $gray-6;
+$panel-red-background-color: $red-medium;
+
+
+/* Tables
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+$table-body-link-color: $blue-dark;
+$table-border-color: $gray-2;
+$table-header-color: $gray-5;
+$table-header-link-color: $blue-medium;
+$table-header-sort-color: $blue-dark;
+$table-pagination-header-color: $gray-6;
+$table-pagination-hover-color: $gray-1;
+$table-pagination-link-color: $blue-medium;
+
+
+/* Tabs
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+$tab-background-color: $gray-1;
+$tab-border-color: $gray-3;
+$tab-color: $gray-5;
+$tab-selected-color: $gray-7;
+
+
+/* Tooltip
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+$tooltip-background-color: $gray-7;
+$tooltip-color: $gray-1;
+
+
+/* Typography
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+$link-color: $blue-dark;

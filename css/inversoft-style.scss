@@ -5,62 +5,19 @@
  * Copyright (c) 2017, Inversoft Inc., All Rights Reserved
  */
 
-//$font-stack: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-$font-stack: 'Open Sans', sans-serif;
-
 @import 'alerts';
 @import 'application';
 @import 'cards';
 @import 'colors';
+@import 'dialog';
 @import 'helpers';
 @import 'mixins';
 @import 'buttons';
 @import 'forms';
+@import 'overlay';
 @import 'panels';
 @import 'tables';
 @import 'tabs';
 @import 'tooltip';
 @import 'typography';
-
-html {
-  height: 100%;
-}
-
-body {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  color: $gray-7;
-  font: 12px/18px $font-stack;
-  height: 100%;
-  width: 100%;
-}
-
-* {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
-/* Page body
-–––––––––––––––––––––––––––––––––––––––––––––––––– */
-//
-//.page-body {
-//  header {
-//    margin: 15px 0;
-//
-//    h1 {
-//      color: $gray-5;
-//      display: inline-block;
-//      font-size: 30px;
-//      line-height: 30px;
-//      margin: 0 0 15px 0;
-//    }
-//
-//    .buttons {
-//      display: inline-block;
-//      float: right;
-//      vertical-align: middle;
-//    }
-//  }
-//}
+@import 'variables';
