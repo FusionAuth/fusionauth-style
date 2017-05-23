@@ -3,7 +3,7 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1, user-scalable=no">
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css"/>
-  <link rel="stylesheet" href="/css/normalize-4.1.1.css"/>
+  <link rel="stylesheet" href="/css/normalize-7.0.0.css"/>
   <link rel="stylesheet" href="/css/flexboxgrid-6.3.1.css"/>
   <link rel="stylesheet" href="/css/test.css"/>
   <script type="text/javascript" src="/js/prime.js"></script>
@@ -23,7 +23,7 @@
       });
 
       Prime.Document.query('.alert').each(function(e) {
-        new Prime.Widgets.Dismissable(e, e.queryFirst('a.dismiss-button'));
+        new Prime.Widgets.Dismissable(e, e.queryFirst('a.dismiss-button')).initialize();
       });
 
       new Prime.Widgets.Tabs(Prime.Document.queryById('tabs')).initialize();
@@ -130,7 +130,7 @@
 <body>
 <header class="app-header">
   <a href="#" class="app-sidebar-toggle">☰</a>
-  <img src="/images/logo.png"/>
+  <a href="/" class="logo"><img src="/images/logo.png"/></a>
   <div class="search">
     <form action="search">
       <div class="input-addon">
@@ -244,8 +244,8 @@
             <main class="row">
 
               <!-- Application setup step -->
-              <div class="col-md-4 col-xs-12">
-                <div class="gray card">
+              <div class="col-md-4 col-xs-12 stretch-xs">
+                <div class="gray card stretch-xs-child">
                   <header>
                     <h3>#1 Missing Application</h3>
                   </header>
@@ -264,8 +264,8 @@
               </div>
 
               <!-- API Key setup step -->
-              <div class="col-md-4 col-xs-12">
-                <div class="gray card">
+              <div class="col-md-4 col-xs-12 stretch-xs">
+                <div class="gray card stretch-xs-child">
                   <header>
                     <h3>#2 Missing API Key</h3>
                   </header>
@@ -284,8 +284,8 @@
               </div>
 
               <!-- Email setup step -->
-              <div class="col-md-4 col-xs-12">
-                <div class="gray card">
+              <div class="col-md-4 col-xs-12 stretch-xs">
+                <div class="gray card stretch-xs-child">
                   <header>
                     <h3>#3 Email Settings</h3>
                   </header>
@@ -308,6 +308,7 @@
         </div>
       </div>
     </div>
+
     <div class="container-fluid">
       <div class="row push-bottom">
         <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
@@ -360,6 +361,7 @@
         </div>
       </div>
     </div>
+
     <div class="container-fluid">
       <div class="row">
         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
@@ -380,6 +382,67 @@
         </div>
       </div>
     </div>
+
+    <div class="container">
+      <div class="row center-xs">
+        <div class="col-xs-12 col-md-6">
+          <div class="panel">
+            <h2>Centered panel</h2>
+            <main>
+              Panel contents
+
+              <form class="labels-left full">
+                <div class="form-row">
+                  <label for="full-1">Full 1</label>
+                  <input type="text" id="full-1"/>
+                </div>
+                <div class="form-row">
+                  <label for="full-2">Full 2</label>
+                  <div class="input-addon">
+                    <span class="input-icon-left"><i class="fa fa-lock"></i></span>
+                    <input type="text" id="full-2"/>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <label for="full-3">Full 3</label>
+                  <div class="input-addon">
+                    <input type="text" id="full-3"/>
+                    <span class="input-icon-right"><i class="fa fa-lock"></i></span>
+                  </div>
+                </div>
+              </form>
+
+              <form class="labels-above full">
+                <div class="form-row">
+                  <label for="full-4">Full 4</label>
+                  <input type="text" id="full-4"/>
+                </div>
+                <div class="form-row">
+                  <label for="full-5">Full 5</label>
+                  <div class="input-addon">
+                    <span class="input-icon-left"><i class="fa fa-lock"></i></span>
+                    <input type="text" id="full-5"/>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <label for="full-6">Full 6</label>
+                  <div class="input-addon">
+                    <input type="text" id="full-6"/>
+                    <span class="input-icon-right"><i class="fa fa-lock"></i></span>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <input type="submit" class="blue button" value="Submit"/>
+                  <a href="#" class="blue button">Cancel</a>
+                  <button class="blue button">Back</button>
+                </div>
+              </form>
+            </main>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="container-fluid">
       <div class="panel">
         <h2>Form Panel</h2>
@@ -902,6 +965,9 @@
       </div>
     </div>
   </main>
+  <footer>
+    &copy; Inversoft Inc. 2017
+  </footer>
 </div>
 </body>
 </html>

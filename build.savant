@@ -32,8 +32,23 @@ target(name: "clean", description: "Deletes the build dir") {
 target(name: "int", description: "Releases a local integration build of the project") {
   file.mkdir(dir: "build/css")
 
-  if (new ProcessBuilder("sass", "_sass/inversoft-style.scss", "build/css/inversoft-style.css").inheritIO().start().waitFor() != 0) {
+  file.delete {
+    fileSet(dir: "build/css", includePatterns: [~/.+/])
+  }
+
+  file.append(to: "build/css/inversoft-style.css") {
+    fileSet(dir: "css", includePatterns: [~/normalize.+.css/])
+  }
+  file.append(to: "build/css/inversoft-style.css") {
+    fileSet(dir: "css", includePatterns: [~/flexboxgrid.+.css/])
+  }
+
+  if (new ProcessBuilder("sass", "_sass/inversoft-style.scss", "build/css/output.css").inheritIO().start().waitFor() != 0) {
     fail("Failed while calling sass")
+  }
+
+  file.append(to: "build/css/inversoft-style.css") {
+    fileSet(dir: "build/css", includePatterns: [~/^output.css$/])
   }
 
   dependency.integrate()

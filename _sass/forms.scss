@@ -44,6 +44,16 @@ form {
       display: block;
     }
   }
+
+  &.full {
+    input:not([type='submit']), select {
+      width: 100%;
+    }
+
+    .input-addon span {
+      width: 1%;
+    }
+  }
 }
 
 form.labels-left {
@@ -82,6 +92,22 @@ form.labels-left {
       }
     }
   }
+
+  &.full {
+    input:not([type='submit']), select {
+      width: calc(100% - 12% - 20px);
+    }
+
+    .input-addon {
+      span {
+        width: 1%;
+      }
+
+      input:not([type='submit']), select {
+        width: 100%;
+      }
+    }
+  }
 }
 
 fieldset {
@@ -104,10 +130,6 @@ fieldset {
 
 input {
   position: relative;
-
-  &.full {
-    width: 100%;
-  }
 }
 
 input[type="email"],
@@ -159,7 +181,7 @@ textarea {
     display: table-cell;
     line-height: 1;
     padding: 8px 13px 9px 13px;
-    vertical-align: baseline;
+    vertical-align: middle;
 
     i {
       color: $input-addon-color;
@@ -189,7 +211,7 @@ textarea {
       display: table-cell;
       line-height: 1;
       padding: 8px 13px 9px 13px;
-      vertical-align: baseline;
+      vertical-align: middle;
     }
   }
 }
