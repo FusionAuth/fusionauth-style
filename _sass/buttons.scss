@@ -1,4 +1,4 @@
-/*!
+/*
  * Copyright (c) 2017, Inversoft Inc., All Rights Reserved
  */
 
@@ -15,8 +15,6 @@
 }
 
 .button {
-  @include transition(background 0.2s ease-in-out);
-
   border-radius: 2px;
   box-sizing: border-box;
   cursor: pointer;
@@ -30,6 +28,7 @@
   text-align: center;
   text-decoration: none;
   text-transform: none;
+  transition: background 0.2s ease-in-out;
   white-space: nowrap;
 
   &.square {
@@ -41,10 +40,10 @@
   }
 
   &.shadow {
-    @include box-shadow(1px 1px 1px 0 rgba(0, 0, 0, 0.35));
+    box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.35);
 
     &:hover, &:focus {
-      @include box-shadow(2px 2px 7px 0 rgba(0, 0, 0, 0.35));
+      box-shadow: 2px 2px 7px 0 rgba(0, 0, 0, 0.35);
     }
   }
 

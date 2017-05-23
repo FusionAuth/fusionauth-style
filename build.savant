@@ -36,19 +36,12 @@ target(name: "int", description: "Releases a local integration build of the proj
     fileSet(dir: "build/css", includePatterns: [~/.+/])
   }
 
-  file.append(to: "build/css/inversoft-style.css") {
-    fileSet(dir: "css", includePatterns: [~/normalize.+.css/])
-  }
-  file.append(to: "build/css/inversoft-style.css") {
-    fileSet(dir: "css", includePatterns: [~/flexboxgrid.+.css/])
-  }
-
-  if (new ProcessBuilder("sass", "_sass/inversoft-style.scss", "build/css/output.css").inheritIO().start().waitFor() != 0) {
+  if (new ProcessBuilder("sass", "_sass/inversoft-style.scss", "build/css/intermediate.css").inheritIO().start().waitFor() != 0) {
     fail("Failed while calling sass")
   }
 
-  file.append(to: "build/css/inversoft-style.css") {
-    fileSet(dir: "build/css", includePatterns: [~/^output.css$/])
+  if (new ProcessBuilder("postcss", "build/css/intermediate.css", "--use", "autoprefixer", "--use", "cssnano", "-o" , "build/css/inversoft-style.css").inheritIO().start().waitFor() != 0) {
+    fail("Failed while calling postcss")
   }
 
   dependency.integrate()

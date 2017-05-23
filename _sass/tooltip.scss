@@ -1,4 +1,4 @@
-/*!
+/*
  * Copyright (c) 2017, Inversoft Inc., All Rights Reserved
  */
 
@@ -6,7 +6,7 @@
 @import 'variables';
 
 .tooltip {
-  @include border-radius(5px);
+  border-radius: 5px;
   background: $tooltip-background-color;
   color: $tooltip-color;
   font-weight: normal;

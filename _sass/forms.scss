@@ -1,4 +1,4 @@
-/*!
+/*
  * Copyright (c) 2017, Inversoft Inc., All Rights Reserved
  */
 
@@ -140,20 +140,20 @@ input[type="tel"],
 input[type="url"],
 input[type="password"],
 textarea {
-  @include appearance(none);
-  @include border-radius(2px);
-  @include box-shadow($input-box-shadow);
-  @include transition(border 0.2s ease-in-out);
+  appearance: none;
   background: #fff;
   border: 1px solid $text-border-color;
+  border-radius: 2px;
+  box-shadow: $input-box-shadow;
   display: inline-block;
   font-size: 12px;
   font-weight: normal;
   padding: 8px 13px;
+  transition: border 0.2s ease-in-out;
 
   &:focus {
-    @include box-shadow($highlight-box-shadow);
     border-color: $highlight-color;
+    box-shadow: $highlight-box-shadow;
     outline: 0;
   }
 
@@ -162,8 +162,8 @@ textarea {
     color: $error-color;
 
     &:focus {
-      @include box-shadow($error-box-shadow);
       border: 1px solid $error-highlight-color;
+      box-shadow: $error-box-shadow;
       color: $error-highlight-color;
     }
   }
@@ -174,9 +174,9 @@ textarea {
   display: table;
 
   .input-icon-left {
-    @include border-radius(2px 0 0 2px);
     background: $input-addon-background-color;
     border: 1px solid $text-border-color;
+    border-radius: 2px 0 0 2px;
     border-right: none;
     display: table-cell;
     line-height: 1;
@@ -189,13 +189,13 @@ textarea {
     }
 
     & + input {
-      @include border-radius(0 2px 2px 0);
+      border-radius: 0 2px 2px 0;
       display: table-cell;
     }
   }
 
   input {
-    @include border-radius(2px 0 0 2px);
+    border-radius: 2px 0 0 2px;
     display: table-cell;
 
     i {
@@ -204,10 +204,10 @@ textarea {
     }
 
     & + .input-icon-right {
-      @include border-radius(0 2px 2px 0);
       background: $input-addon-background-color;
       border: 1px solid $text-border-color;
       border-left: none;
+      border-radius: 0 2px 2px 0;
       display: table-cell;
       line-height: 1;
       padding: 8px 13px 9px 13px;
@@ -223,7 +223,6 @@ textarea {
   position: relative;
 
   span.box {
-    @include transition(border 0.2s ease-in-out);
     background: #fff;
     border: 1px solid $checkbox-border-color;
     cursor: pointer;
@@ -231,6 +230,7 @@ textarea {
     left: 0;
     position: absolute;
     top: 0;
+    transition: border 0.2s ease-in-out;
     width: 20px;
 
     &.error {
@@ -271,13 +271,13 @@ textarea {
     width: 20px;
 
     &:focus + span.box {
-      @include box-shadow($highlight-box-shadow);
       border: 1px solid $highlight-color;
+      box-shadow: $highlight-box-shadow;
     }
 
     &:focus + span.error {
-      @include box-shadow($error-box-shadow);
       border: 1px solid $error-highlight-color;
+      box-shadow: $error-box-shadow;
     }
 
     &:checked + span.box:after {
@@ -305,10 +305,9 @@ textarea {
   position: relative;
 
   span.box {
-    @include border-radius(50px);
-    @include transition(border 0.2s ease-in-out);
     background: #fff;
     border: 1px solid $radio-border-color;
+    border-radius: 50px;
     cursor: pointer;
     height: 20px;
     left: 0;
@@ -316,6 +315,7 @@ textarea {
     padding: 0;
     position: absolute;
     top: 0;
+    transition: border 0.2s ease-in-out;
     width: 20px;
 
     &.error {
@@ -323,8 +323,8 @@ textarea {
     }
 
     &:after {
-      @include border-radius(50px);
       background: $radio-check-color;
+      border-radius: 50px;
       content: '';
       height: 12px;
       left: 3px;
@@ -354,13 +354,13 @@ textarea {
     width: 20px;
 
     &:focus + span.box {
-      @include box-shadow($highlight-box-shadow);
       border: 1px solid $highlight-color;
+      box-shadow: $highlight-box-shadow;
     }
 
     &:focus + span.error {
-      @include box-shadow($error-box-shadow);
       border: 1px solid $error-highlight-color;
+      box-shadow: $error-box-shadow;
     }
 
     &:checked + span.box:after {
@@ -370,22 +370,22 @@ textarea {
 }
 
 select {
-  @include appearance(none);
-  @include border-radius(2px);
-  @include box-shadow(none);
-  @include transition(border 0.2s ease-in-out);
+  appearance: none;
   background-color: $select-background-color;
   background-image: linear-gradient(45deg, transparent 50%, white 50%), linear-gradient(135deg, white 50%, transparent 50%), linear-gradient(to right, $gray-3, $gray-3);
   background-position: calc(100% - 20px) calc(1em + 2px), calc(100% - 15px) calc(1em + 2px), 100% 0;
   background-repeat: no-repeat;
   background-size: 5px 5px, 5px 5px, 2.5em 2.5em;
   border: 1px solid $select-border-color;
+  border-radius: 2px;
+  box-shadow: none;
   color: #fff;
   padding: 8px 50px 8px 13px;
+  transition: border 0.2s ease-in-out;
 
   &:focus {
-    @include box-shadow($highlight-box-shadow);
     border: 1px solid $highlight-color;
+    box-shadow: $highlight-box-shadow;
     outline: 0;
   }
 
@@ -400,7 +400,7 @@ select {
   }
 
   &.error:focus {
-    @include box-shadow($error-box-shadow);
+    box-shadow: $error-box-shadow;
   }
 
   option {
@@ -460,25 +460,25 @@ select {
   position: relative;
 
   span.rail {
-    @include border-radius(12px);
-    @include box-shadow(inset 0 1px 2px rgba(0, 0, 0, 0.4));
-    @include transition(0.5s);
     background: $toggle-rail-color;
+    border-radius: 12px;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4);
     height: 24px;
     position: absolute;
     top: 0;
+    transition: 0.5s;
     width: 50px;
   }
 
   span.pin {
-    @include border-radius(50%);
-    @include box-shadow(0 1px 2px rgba(0, 0, 0, 0.4));
-    @include transition(0.5s);
     background: white;
+    border-radius: 50%;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
     height: 15px;
     left: 6px;
     position: absolute;
     top: 4px;
+    transition: 0.5s;
     width: 15px;
   }
 
@@ -496,7 +496,7 @@ select {
     }
 
     &:focus ~ span.pin {
-      @include box-shadow($highlight-box-shadow);
+      box-shadow: $highlight-box-shadow;
       border: 1px solid $highlight-color;
     }
   }
@@ -510,19 +510,18 @@ select {
   }
 
   &.prime-focus ul.option-list {
-    @include box-shadow($highlight-box-shadow);
     border: 1px solid $highlight-color;
+    box-shadow: $highlight-box-shadow;
   }
 
   &.error.prime-focus ul.option-list {
-    @include box-shadow($error-box-shadow);
     border: 1px solid $error-highlight-color;
+    box-shadow: $error-box-shadow;
   }
 
   ul.option-list {
-    @include box-shadow($input-box-shadow);
-    @include transition(border 0.2s ease-in-out);
     border: 1px solid $multiple-select-border-color;
+    box-shadow: $input-box-shadow;
     margin: 0;
     padding: 4px 4px;
     list-style: none;
@@ -530,6 +529,7 @@ select {
     min-height: 25px;
     overflow-x: hidden;
     overflow-y: auto;
+    transition: border 0.2s ease-in-out;
 
     li {
       color: #000000;
@@ -540,11 +540,10 @@ select {
       }
 
       &:not(:last-of-type) {
-        @include border-radius(3px);
-        @include background-clip(padding-box, padding);
-        @include box-shadow(0 2px 4px 0 rgba(0, 0, 0, 0.4));
-
         background: $multiple-select-option-background-color;
+        background-clip: padding-box;
+        border-radius: 3px;
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.4);
         cursor: default;
         margin: 1px 4px;
         padding: 2px 9px;
@@ -583,26 +582,26 @@ select {
   }
 
   input {
-    @include box-shadow(none);
     border: none;
+    box-shadow: none;
     height: 26px;
     margin: 0;
     outline: none;
     padding: 0;
 
     &:focus {
-      @include box-shadow(none);
       background: none;
       border: none;
+      box-shadow: none;
       outline: none;
     }
   }
 
   .search-results {
-    @include box-shadow(0 2px 4px 0 rgba(0, 0, 0, 0.4));
     background: #fff;
     border: 1px solid $multiple-select-border-color;
     border-top: 0;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.4);
     height: 175px;
     left: 0;
     list-style: none;
@@ -632,10 +631,10 @@ form.labels-left .search-results {
 }
 
 .prime-date-picker {
-  @include border-radius(4px);
-  @include box-shadow(0 2px 4px 0 rgba(0, 0, 0, 0.4));
   background: #fff;
   border: 1px solid $datetime-picker-border-color;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.4);
   display: block;
   margin: 2px;
   padding: 5px;
@@ -658,11 +657,11 @@ form.labels-left .search-results {
   }
 
   header {
-    @include user-select(none);
     display: block;
     margin-top: 5px;
     padding: 0;
     text-align: center;
+    user-select: none;
 
     span {
       display: inline;
@@ -690,9 +689,9 @@ form.labels-left .search-results {
 
   /* Month/Year Dropdown */
   .months, .years {
-    @include box-shadow(0 2px 4px 0 rgba(0, 0, 0, 0.4));
     background: #fff;
     border: 1px solid $datetime-picker-border-color;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.4);
     display: inline-block;
     height: 150px;
     overflow: scroll;
@@ -717,11 +716,11 @@ form.labels-left .search-results {
 
   /* Calendar Table */
   table {
-    @include user-select(none);
     border-collapse: collapse;
     border: none;
     margin: 0 0 4px 0;
     padding: 0;
+    user-select: none;
     width: 100%;
 
     thead {
@@ -777,18 +776,18 @@ form.labels-left .search-results {
 
   /* Inputs */
   .inputs {
-    @include border-radius(2px);
     background: $datetime-picker-inputs-background-color;
     border: 1px solid $datetime-picker-inputs-border-color;
+    border-radius: 2px;
     display: block;
     margin: 20px auto 0;
     padding: 5px;
     text-align: center;
 
     .date, .time {
-      @include border-radius(4px);
       background: #fff;
       border: 1px inset $datetime-picker-inputs-input-border-color;
+      border-radius: 4px;
       display: inline-block;
       margin: 0 auto;
       padding: 0;
@@ -826,8 +825,8 @@ form.labels-left .search-results {
       }
 
       &:focus {
-        @include box-shadow(none);
         border: none;
+        box-shadow: none;
         outline: none;
       }
     }

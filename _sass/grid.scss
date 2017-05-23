@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2017, Inversoft Inc., All Rights Reserved
+ */
+
 //
 // Column mixins
 //
@@ -220,6 +224,41 @@
   flex-wrap: wrap;
   margin-right: -5px;
   margin-left: -5px;
+}
+
+.column {
+  align-content: stretch;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+
+  > * {
+    flex: 1 0 auto;
+  }
+
+  .baseline {
+    flex: 0;
+  }
+
+  &.around {
+    align-content: space-around;
+  }
+
+  &.between {
+    align-content: space-between;
+  }
+
+  &.center {
+    align-content: center;
+  }
+
+  &.end {
+    align-content: flex-end;
+  }
+
+  &.start {
+    align-content: flex-start;
+  }
 }
 
 .row.reverse {

@@ -1,4 +1,4 @@
-/*!
+/*
  * Copyright (c) 2017, Inversoft Inc., All Rights Reserved
  */
 
@@ -9,13 +9,13 @@
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
 .alert {
-  @include border-radius(2px);
-  @include transition(opacity 0.3s ease-in-out);
+  border-radius: 2px;
   color: #fff;
   font-size: 14px;
   opacity: 1;
   padding: 10px 20px;
   margin-bottom: 20px;
+  transition: opacity 0.3s ease-in-out;
 
   i {
     display: inline-block;

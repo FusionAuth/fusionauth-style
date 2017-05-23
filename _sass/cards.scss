@@ -1,4 +1,4 @@
-/*!
+/*
  * Copyright (c) 2017, Inversoft Inc., All Rights Reserved
  */
 
@@ -55,8 +55,8 @@
     }
 
     .hover {
-      @include transition(color 0.4s ease-in-out);
       color: rgba(#ffffff, 0.4);
+      transition: color 0.4s ease-in-out;
     }
 
     div {

@@ -1,4 +1,4 @@
-/*!
+/*
  * Copyright (c) 2017, Inversoft Inc., All Rights Reserved
  */
 
@@ -6,11 +6,11 @@
 
 .prime-dialog {
   @extend .panel;
-  @include transition(opacity 0.3s ease-in-out);
   display: flex;
   flex-direction: column;
   opacity: 0;
   position: absolute;
+  transition: opacity 0.3s ease-in-out;
   width: 300px;
 
   header {
@@ -34,7 +34,7 @@
   }
 
   &.open {
-    @include box-shadow(2px 2px 3px rgba(0, 0, 0, 0.5));
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
     opacity: 1;
   }
 }

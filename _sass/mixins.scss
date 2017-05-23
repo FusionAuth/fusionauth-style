@@ -1,62 +1,9 @@
-/*!
+/*
  * Copyright (c) 2017, Inversoft Inc., All Rights Reserved
  */
 
 /* Forms
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
-
-@mixin appearance($args...) {
-  -webkit-appearance: $args;
-  -moz-appearance: $args;
-  appearance: $args;
-}
-
-@mixin background-clip($value, $mozValue) {
-  -webkit-background-clip: $value;
-  -moz-background-clip: $mozValue;
-  background-clip: $value;
-}
-
-@mixin border-radius($args...) {
-  -webkit-border-radius: $args;
-  -moz-border-radius: $args;
-  border-radius: $args;
-}
-
-@mixin box-shadow($args...) {
-  -webkit-box-shadow: $args;
-  -moz-box-shadow: $args;
-  box-shadow: $args;
-}
-
-@mixin box-sizing($args...) {
-  -webkit-box-sizing: $args;
-  -moz-box-sizing: $args;
-  box-sizing: $args;
-}
-
-@mixin transform($args...) {
-  -webkit-transform: $args;
-  -moz-transform: $args;
-  -ms-transform: $args;
-  -o-transform: $args;
-  transform: $args;
-}
-
-@mixin transform-origin($args...) {
-  -webkit-transform-origin: $args;
-  -moz-transform-origin: $args;
-  -ms-transform-origin: $args;
-  -o-transform-origin: $args;
-  transform-origin: $args;
-}
-
-@mixin transition($args...) {
-  -webkit-transition: $args;
-  -moz-transition: $args;
-  -o-transition: $args;
-  transition: $args;
-}
 @mixin user-select($args...) {
   -webkit-user-select: $args;
   -moz-user-select: $args;
