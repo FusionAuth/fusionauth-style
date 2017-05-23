@@ -4,7 +4,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1, user-scalable=no">
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css"/>
   <link rel="stylesheet" href="/css/normalize-7.0.0.css"/>
-  <link rel="stylesheet" href="/css/flexboxgrid-6.3.1.css"/>
   <link rel="stylesheet" href="/css/test.css"/>
   <script type="text/javascript" src="/js/prime.js"></script>
   <script type="text/javascript" src="/js/Chart-2.5.0-min.js"></script>
@@ -201,7 +200,7 @@
     <header class="container-fluid">
       <div class="row baseline-xs">
         <h1 class="col-xs">The Page Header</h1>
-        <div class="buttons col-xs end-xs">
+        <div class="buttons col-xs text-right">
           <button class="blue button square" data-tooltip="Save"><i class="fa fa-save"></i></button>
           <a href="#" class="gray button square" data-tooltip="Cancel"><i class="fa fa-reply"></i></a>
           <a href="#" class="red button square" data-tooltip="Delete"><i class="fa fa-trash"></i></a>
@@ -241,11 +240,11 @@
         <div class="col-xs">
           <div class="panel green">
             <h2>Complete Passport Setup</h2>
-            <main class="row">
+            <main class="row ">
 
               <!-- Application setup step -->
-              <div class="col-md-4 col-xs-12 stretch-xs">
-                <div class="gray card stretch-xs-child">
+              <div class="col-md-4 col-xs-12 stretch-xs gray card">
+                <!--<div class="gray card stretch-xs-child">-->
                   <header>
                     <h3>#1 Missing Application</h3>
                   </header>
@@ -260,12 +259,12 @@
                       </p>
                     </div>
                   </main>
-                </div>
+                <!--</div>-->
               </div>
 
               <!-- API Key setup step -->
-              <div class="col-md-4 col-xs-12 stretch-xs">
-                <div class="gray card stretch-xs-child">
+              <div class="col-md-4 col-xs-12 stretch-xs gray card">
+                <!--<div class="gray card stretch-xs-child">-->
                   <header>
                     <h3>#2 Missing API Key</h3>
                   </header>
@@ -280,12 +279,12 @@
                       </p>
                     </div>
                   </main>
-                </div>
+                <!--</div>-->
               </div>
 
               <!-- Email setup step -->
-              <div class="col-md-4 col-xs-12 stretch-xs">
-                <div class="gray card stretch-xs-child">
+              <div class="col-md-4 col-xs-12 stretch-xs gray card">
+                <!--<div class="gray card stretch-xs-child">-->
                   <header>
                     <h3>#3 Email Settings</h3>
                   </header>
@@ -300,7 +299,7 @@
                       </p>
                     </div>
                   </main>
-                </div>
+                <!--</div>-->
               </div>
 
             </main>
@@ -311,53 +310,45 @@
 
     <div class="container-fluid">
       <div class="row push-bottom">
-        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
-          <div class="blue card">
-            <header>
-              <h3>Total Users</h3>
-              <span class="increase">42%</span>
-            </header>
-            <main>
-              <i class="fa fa-user background hover"></i>
-              <p class="large">73.2K</p>
-            </main>
-          </div>
+        <div class="col-lg-3 col-md-6 col-xs-12 blue card">
+          <header>
+            <h3>Total Users</h3>
+            <span class="increase">42%</span>
+          </header>
+          <main>
+            <i class="fa fa-user background hover"></i>
+            <p class="large">73.2K</p>
+          </main>
         </div>
-        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
-          <div class="green card">
-            <header>
-              <h3>Logins Yesterday</h3>
-              <span class="decrease">-53%</span>
-            </header>
-            <main>
-              <i class="fa fa-sign-in background hover"></i>
-              <p class="large">382</p>
-            </main>
-          </div>
+        <div class="col-lg-3 col-md-6 col-xs-12 green card">
+          <header>
+            <h3>Logins Yesterday</h3>
+            <span class="decrease">-53%</span>
+          </header>
+          <main>
+            <i class="fa fa-sign-in background hover"></i>
+            <p class="large">382</p>
+          </main>
         </div>
-        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
-          <div class="red card">
-            <header>
-              <h3>Registrations Yesterday</h3>
-              <span class="increase">3%</span>
-            </header>
-            <main>
-              <i class="fa fa-user-plus background hover"></i>
-              <p class="large">12</p>
-            </main>
-          </div>
+        <div class="col-lg-3 col-md-6 col-xs-12 red card">
+          <header>
+            <h3>Registrations Yesterday</h3>
+            <span class="increase">3%</span>
+          </header>
+          <main>
+            <i class="fa fa-user-plus background hover"></i>
+            <p class="large">12</p>
+          </main>
         </div>
-        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
-          <div class="orange card">
-            <header>
-              <h3>Deletions Yesterday</h3>
-              <span class="increase">0%</span>
-            </header>
-            <main>
-              <i class="fa fa-user-times background hover"></i>
-              <p class="large">0</p>
-            </main>
-          </div>
+        <div class="col-lg-3 col-md-6 col-xs-12 orange card">
+          <header>
+            <h3>Deletions Yesterday</h3>
+            <span class="increase">0%</span>
+          </header>
+          <main>
+            <i class="fa fa-user-times background hover"></i>
+            <p class="large">0</p>
+          </main>
         </div>
       </div>
     </div>
@@ -818,31 +809,31 @@
         <h2>Searchable table panel</h2>
         <main>
           <div class="gray-panel">
-            <form action="#" class="labels-above row">
+            <form action="#" class="labels-above row full">
               <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
                 <div class="form-row">
                   <label for="search-1">Search Field 1</label>
-                  <input type="text" id="search-1" class="full"/>
+                  <input type="text" id="search-1"/>
                 </div>
                 <div class="form-row">
                   <label for="search-2">Search Field 2</label>
-                  <input type="text" id="search-2" class="full"/>
+                  <input type="text" id="search-2"/>
                 </div>
               </div>
               <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
                 <div class="form-row">
                   <label for="search-3">Search Field 3</label>
-                  <input type="text" id="search-3" class="full"/>
+                  <input type="text" id="search-3"/>
                 </div>
                 <div class="form-row">
                   <label for="search-4">Search Field 4</label>
-                  <input type="text" id="search-4" class="full"/>
+                  <input type="text" id="search-4"/>
                 </div>
               </div>
               <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
                 <div class="form-row">
                   <label for="search-5">Search Field 5</label>
-                  <select id="search-5" class="full">
+                  <select id="search-5">
                     <option>Option</option>
                     <option>Option</option>
                     <option>Option</option>
@@ -850,7 +841,7 @@
                 </div>
                 <div class="form-row">
                   <label for="search-6">Search Field 6</label>
-                  <input type="text" id="search-6" class="full"/>
+                  <input type="text" id="search-6"/>
                 </div>
               </div>
               <div class="col-xs-12 text-right">

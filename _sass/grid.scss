@@ -1,0 +1,250 @@
+//
+// Column mixins
+//
+@mixin define-column($width) {
+  flex-basis: calc(#{$width} - 10px);
+  max-width: calc(#{$width} - 10px);
+}
+@mixin define-column-size($size) {
+  .col-#{$size},
+  .col-#{$size}-1,
+  .col-#{$size}-2,
+  .col-#{$size}-3,
+  .col-#{$size}-4,
+  .col-#{$size}-5,
+  .col-#{$size}-6,
+  .col-#{$size}-7,
+  .col-#{$size}-8,
+  .col-#{$size}-9,
+  .col-#{$size}-10,
+  .col-#{$size}-11,
+  .col-#{$size}-12,
+  .col-#{$size}-offset-0,
+  .col-#{$size}-offset-1,
+  .col-#{$size}-offset-2,
+  .col-#{$size}-offset-3,
+  .col-#{$size}-offset-4,
+  .col-#{$size}-offset-5,
+  .col-#{$size}-offset-6,
+  .col-#{$size}-offset-7,
+  .col-#{$size}-offset-8,
+  .col-#{$size}-offset-9,
+  .col-#{$size}-offset-10,
+  .col-#{$size}-offset-11,
+  .col-#{$size}-offset-12 {
+    box-sizing: border-box;
+    flex: 0 0 auto;
+    margin-right: 5px;
+    margin-left: 5px;
+  }
+
+  .col-#{$size} {
+    flex-grow: 1;
+    flex-basis: 0;
+    max-width: 100%;
+  }
+
+  .col-#{$size}-1 {
+    @include define-column(8.33333333%);
+  }
+
+  .col-#{$size}-2 {
+    @include define-column(16.66666667%);
+  }
+
+  .col-#{$size}-3 {
+    @include define-column(25%);
+  }
+
+  .col-#{$size}-4 {
+    @include define-column(33.33333333%);
+  }
+
+  .col-#{$size}-5 {
+    @include define-column(41.66666667%);
+  }
+
+  .col-#{$size}-6 {
+    @include define-column(50%);
+  }
+
+  .col-#{$size}-7 {
+    @include define-column(58.33333333%);
+  }
+
+  .col-#{$size}-8 {
+    @include define-column(66.66666667%);
+  }
+
+  .col-#{$size}-9 {
+    @include define-column(75%);
+  }
+
+  .col-#{$size}-10 {
+    @include define-column(83.33333333%);
+  }
+
+  .col-#{$size}-11 {
+    @include define-column(91.66666667%);
+  }
+
+  .col-#{$size}-12 {
+    @include define-column(100%);
+  }
+
+  .col-#{$size}-offset-0 {
+    margin-left: 0;
+  }
+
+  .col-#{$size}-offset-1 {
+    margin-left: 8.33333333%;
+  }
+
+  .col-#{$size}-offset-2 {
+    margin-left: 16.66666667%;
+  }
+
+  .col-#{$size}-offset-3 {
+    margin-left: 25%;
+  }
+
+  .col-#{$size}-offset-4 {
+    margin-left: 33.33333333%;
+  }
+
+  .col-#{$size}-offset-5 {
+    margin-left: 41.66666667%;
+  }
+
+  .col-#{$size}-offset-6 {
+    margin-left: 50%;
+  }
+
+  .col-#{$size}-offset-7 {
+    margin-left: 58.33333333%;
+  }
+
+  .col-#{$size}-offset-8 {
+    margin-left: 66.66666667%;
+  }
+
+  .col-#{$size}-offset-9 {
+    margin-left: 75%;
+  }
+
+  .col-#{$size}-offset-10 {
+    margin-left: 83.33333333%;
+  }
+
+  .col-#{$size}-offset-11 {
+    margin-left: 91.66666667%;
+  }
+
+  .start-#{$size} {
+    justify-content: flex-start;
+  }
+
+  .center-#{$size} {
+    justify-content: center;
+  }
+
+  .end-#{$size} {
+    justify-content: flex-end;
+  }
+
+  .top-#{$size} {
+    align-items: flex-start;
+  }
+
+  .middle-#{$size} {
+    align-items: center;
+  }
+
+  .bottom-#{$size} {
+    align-items: flex-end;
+  }
+
+  .baseline-#{$size} {
+    align-items: baseline;
+  }
+
+  .around-#{$size} {
+    justify-content: space-around;
+  }
+
+  .between-#{$size} {
+    justify-content: space-between;
+  }
+
+  .first-#{$size} {
+    order: -1;
+  }
+
+  .last-#{$size} {
+    order: 1;
+  }
+}
+
+//
+// Container mixin
+//
+@mixin define-container($width) {
+  .container {
+    width: $width;
+  }
+}
+
+//
+// Fluid Container mixin
+//
+@mixin define-container-fluid($padding) {
+  .container-fluid {
+    padding-right: $padding;
+    padding-left: $padding;
+  }
+}
+
+.container-fluid,
+.container {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+
+.row {
+  align-items: stretch;
+  box-sizing: border-box;
+  display: flex;
+  flex: 0 1 auto;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-right: -5px;
+  margin-left: -5px;
+}
+
+.row.reverse {
+  flex-direction: row-reverse;
+}
+
+.col.reverse {
+  flex-direction: column-reverse;
+}
+
+@include define-container-fluid(5px);
+@include define-column-size(xs);
+
+@media only screen and (min-width: 480px) {
+  @include define-container(490px);
+  @include define-container-fluid(20px);
+  @include define-column-size(sm);
+}
+
+@media only screen and (min-width: 640px) {
+  @include define-container(650px);
+  @include define-column-size(md);
+}
+
+@media only screen and (min-width: 750px) {
+  @include define-container(760px);
+  @include define-column-size(lg);
+}
