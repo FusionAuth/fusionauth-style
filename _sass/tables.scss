@@ -24,6 +24,7 @@ table {
         border-top: 0;
         color: $table-header-color;
         padding: 8px;
+        text-align: left;
         vertical-align: middle;
 
         a {
@@ -44,6 +45,10 @@ table {
           font-family: FontAwesome;
           font-size: 14px;
         }
+
+        &.action {
+          width: 200px;
+        }
       }
     }
   }
@@ -55,11 +60,16 @@ table {
         border-bottom-width: 2px;
         border-top: 0;
         padding: 8px;
+        text-align: left;
         vertical-align: middle;
 
         a {
           color: $table-body-link-color;
           text-decoration: none;
+        }
+
+        &.action {
+          width: 200px;
         }
       }
     }

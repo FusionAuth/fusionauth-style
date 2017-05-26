@@ -39,6 +39,12 @@
 
       new Prime.Widgets.TreeView(Prime.Document.queryFirst('.treeview')).withFolderToggleClassName('folder-toggle').initialize();
 
+      var slideOpen = Prime.Document.queryById('slide-open');
+      Prime.Document.queryById('slide-open-button').addEventListener('click', function(e) {
+        slideOpen.toggleClass('open');
+        Prime.Utils.stopEvent(e);
+      });
+
       // Inversoft brand colors as RGB integers
       var red = '235, 56, 92';
       var blue = '73, 144, 226';
@@ -440,6 +446,11 @@
               </div>
 
               <div class="form-row">
+                <label for="text-disabled" data-tooltip="Some tooltip help text that is very long and will wrap multiple lines and such."><span class="required">*</span> Text</label>
+                <input type="text" id="text-disabled" placeholder="Text input" disabled/>
+              </div>
+
+              <div class="form-row">
                 <label for="text-left-icon" data-tooltip="Some tooltip help text that is very long and will wrap multiple lines and such."><span class="required">*</span> Left Addon</label>
                 <div class="input-addon">
                   <span class="input-icon-left"><i class="fa fa-lock"></i></span>
@@ -554,10 +565,6 @@
               <div class="form-row">
                 <label for="toggle">Toggle</label>
                 <label class="toggle"><input type="checkbox" id="toggle"/><span class="rail"></span><span class="pin"></span></label>
-              </div>
-              <div class="form-row">
-                <label for="sean-toggle">Toggle</label>
-                <label class="sean-toggle"><input type="checkbox" id="sean-toggle"/><span class="rail"></span><span class="pin"></span></label>
               </div>
               <div class="form-row">
                 <label for="multi-select">Multi-select</label>
@@ -748,29 +755,29 @@
             <thead>
             <tr>
               <th class="tight"><input type="checkbox"></th>
-              <th class="sort-down text-left"><a href="#">Column 1 (down)</a></th>
+              <th class="sort-down"><a href="#">Column 1 (down)</a></th>
               <th class="sort-up text-right"><a href="#">Column 2 (up)</a></th>
-              <th class="text-right">Action</th>
+              <th class="action text-right">Action</th>
             </tr>
             </thead>
             <tbody>
             <tr>
               <td class="tight"><input type="checkbox"></td>
-              <td class="text-left">Value 2</td>
+              <td class="">Value 2</td>
               <td class="text-right">Value 3</td>
-              <td class="text-right"><a href="#" class="blue button square" data-tooltip="Edit"><i class="fa fa-pencil"></i></a></td>
+              <td class="action text-right"><a href="#" class="blue button square" data-tooltip="Edit"><i class="fa fa-pencil"></i></a></td>
             </tr>
             <tr>
               <td class="tight"><input type="checkbox"></td>
-              <td class="text-left">Value 2</td>
+              <td class="">Value 2</td>
               <td class="text-right">Value 3</td>
-              <td class="text-right"><a href="#" class="blue button square" data-tooltip="Edit"><i class="fa fa-pencil"></i></a></td>
+              <td class="action text-right"><a href="#" class="blue button square" data-tooltip="Edit"><i class="fa fa-pencil"></i></a></td>
             </tr>
             <tr>
               <td class="tight"><input type="checkbox"></td>
-              <td class="text-left">Value 2</td>
+              <td class="">Value 2</td>
               <td class="text-right">Value 3</td>
-              <td class="text-right"><a href="#" class="blue button square" data-tooltip="Edit"><i class="fa fa-pencil"></i></a></td>
+              <td class="action text-right"><a href="#" class="blue button square" data-tooltip="Edit"><i class="fa fa-pencil"></i></a></td>
             </tr>
             </tbody>
           </table>
@@ -924,6 +931,27 @@
             </footer>
           </div>
 
+        </main>
+      </div>
+
+      <div class="panel">
+        <h2>Effects</h2>
+        <main>
+          <a href="#slide-open" class="blue button" id="slide-open-button">Slide Open</a>
+          <div id="slide-open" class="slide-open">
+            <p>
+              Element to open
+            </p>
+            <p>
+              Element to open
+            </p>
+            <p>
+              Element to open
+            </p>
+            <p>
+              Element to open
+            </p>
+          </div>
         </main>
       </div>
 
