@@ -13,11 +13,13 @@ $font-stack: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, '
 /* General application and layout colors
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
+$breadcrumb-color: $gray-5;
+
 $default-text-color: $gray-7;
 
 $header-border-color: $gray-3;
 
-$hamburger-color: $gray-3;
+$hamburger-color: $gray-5;
 
 $search-border-color: $gray-3;
 $search-icon-color: $gray-3;
@@ -30,8 +32,11 @@ $left-nav-logout-color: $purple-medium;
 $page-header-color: $gray-5;
 $page-footer-color: $gray-4;
 
-$sidebar-background-color: #2a2c36;
+$sidebar-active-background-color: $gray-7;
+$sidebar-background-color: $gray-6;
+$sidebar-border-color: $gray-5;
 $sidebar-color: $gray-1;
+$sidebar-header-background-color: $gray-7;
 $sidebar-header-color: $gray-1;
 
 
@@ -74,6 +79,17 @@ $red-button-color: #fff;
 $blue-card-background-color: $blue-light;
 $blue-card-header-background-color: $blue-medium;
 
+$blue-gray-card-background-color: $gray-2;
+$blue-gray-card-color: $gray-7;
+$blue-gray-card-header-background-color: $blue-medium;
+$blue-gray-card-hover: $gray-3;
+//$blue-gray-card-hover-hover: darken($gray-3, 2%);
+
+$bordered-card-border-color: $purple-dark;
+
+$card-header-corner-background-color: #fff;
+$card-header-corner-color: $gray-7;
+
 $gray-card-background-color: $gray-4;
 $gray-card-header-background-color: $gray-5;
 
@@ -91,6 +107,13 @@ $red-card-header-background-color: $red-medium;
 
 $yellow-card-background-color: $yellow-light;
 $yellow-card-header-background-color: $yellow-medium;
+
+
+/* Cards
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+$dialog-section-header-background-color: $purple-light;
+$dialog-section-header-color: #fff;
 
 
 /* Forms
@@ -150,6 +173,7 @@ $select-background-color: $gray-3;
 
 $text-border-color: $gray-4;
 $text-disabled-border-color: $gray-2;
+$text-disabled-color: $gray-6;
 
 $toggle-rail-color: $gray-2;
 $toggle-rail-highlight-color: $blue-medium;

@@ -47,7 +47,16 @@ table {
         }
 
         &.action {
+          text-align: right;
           width: 200px;
+        }
+
+        &.hide-on-mobile {
+          display: none;
+
+          @media (min-width: 640px) {
+            display: table-cell;
+          }
         }
       }
     }
@@ -69,7 +78,16 @@ table {
         }
 
         &.action {
+          text-align: right;
           width: 200px;
+        }
+
+        &.hide-on-mobile {
+          display: none;
+
+          @media (min-width: 640px) {
+            display: table-cell;
+          }
         }
       }
     }

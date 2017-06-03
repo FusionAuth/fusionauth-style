@@ -177,6 +177,7 @@ textarea {
 
   &:disabled {
     border: 1px solid $text-disabled-border-color;
+    color: $text-disabled-color;
   }
 
   &:focus {

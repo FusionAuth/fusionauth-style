@@ -133,7 +133,7 @@
 </head>
 <body>
 <header class="app-header">
-  <a href="#" class="app-sidebar-toggle">☰</a>
+  <a href="#" class="app-sidebar-toggle"><i class="fa fa-dedent"></i></a>
   <a href="/" class="logo"><img src="/images/logo.png"/></a>
   <div class="search">
     <form action="search">
@@ -179,8 +179,8 @@
             <li><a href="#"><i class="fa fa-cube"></i> Applications</a></li>
             <li><a href="#"><i class="fa fa-cube"></i> Applications</a></li>
             <li><a href="#"><i class="fa fa-cube"></i> Applications</a></li>
-            <li><a href="#"><i class="fa fa-rss"></i> Webhooks</a></li>
-            <li><a href="#"><i class="fa fa-rss"></i> Webhooks</a></li>
+            <li><a href="#"><i class="fa fa-rss"></i> Monthly Active Users</a></li>
+            <li><a href="#"><i class="fa fa-rss"></i> User Action Reasons</a></li>
             <li><a href="#"><i class="fa fa-rss"></i> Webhooks</a></li>
           </ul>
         </li>
@@ -202,16 +202,7 @@
     </nav>
   </div>
   <main>
-    <header class="container-fluid">
-      <div class="row baseline-xs">
-        <h1 class="col-xs">The Page Header</h1>
-        <div class="buttons col-xs text-right">
-          <button class="blue button square" data-tooltip="Save"><i class="fa fa-save"></i></button>
-          <a href="#" class="gray button square" data-tooltip="Cancel"><i class="fa fa-reply"></i></a>
-          <a href="#" class="red button square" data-tooltip="Delete"><i class="fa fa-trash"></i></a>
-          <a href="#" class="green button square" data-tooltip="Add"><i class="fa fa-plus"></i></a>
-        </div>
-      </div>
+    <section class="container-fluid">
       <div class="row">
         <div class="col-xs">
           <div class="alert info">
@@ -239,7 +230,23 @@
           </div>
         </div>
       </div>
-    </header>
+    </section>
+    <section class="container-fluid">
+      <header>
+        <div class="buttons text-right">
+          <button class="blue button square" data-tooltip="Save"><i class="fa fa-save"></i></button>
+          <a href="#" class="gray button square" data-tooltip="Cancel"><i class="fa fa-reply"></i></a>
+          <a href="#" class="red button square" data-tooltip="Delete"><i class="fa fa-trash"></i></a>
+          <a href="#" class="green button square" data-tooltip="Add"><i class="fa fa-plus"></i></a>
+        </div>
+        <h1>The Page Header</h1>
+        <ul class="breadcrumbs">
+          <li><a href="#">Home</a></li>
+          <li>Settings</li>
+          <li><a href="#">Applications</a></li>
+        </ul>
+      </header>
+    </section>
     <div class="container-fluid">
       <div class="row push-more-bottom">
         <div class="col-xs">
@@ -248,21 +255,20 @@
             <main class="row ">
 
               <!-- Application setup step -->
-              <div class="col-md-4 col-xs-12 gray card">
+              <div class="col-md-4 col-xs-12 bordered blue-gray card">
                 <header>
-                  <h3>#1 Missing Application</h3>
+                  <span class="corner">#1</span>
+                  <h3>Missing Application</h3>
                 </header>
                 <main>
                   <i class="fa fa-cube background hover"></i>
-                  <div>
-                    <p>
-                      To begin your integration, you must setup an application.
-                    </p>
-                    <p class="text-right">
-                      <a href="#" class="blue button">Start <i class="fa fa-arrow-right"></i></a>
-                    </p>
-                  </div>
+                  <p>
+                    To begin your integration, you must setup an application.
+                  </p>
                 </main>
+                <footer class="text-right">
+                  <a href="#" class="blue button">Start <i class="fa fa-arrow-right"></i></a>
+                </footer>
               </div>
 
               <!-- API Key setup step -->
@@ -272,15 +278,13 @@
                 </header>
                 <main>
                   <i class="fa fa-key background hover"></i>
-                  <div>
-                    <p>
-                      To begin your integration, you must setup an API key.
-                    </p>
-                    <p class="text-right">
-                      <a href="#" class="blue button">Start <i class="fa fa-arrow-right"></i></a>
-                    </p>
-                  </div>
+                  <p>
+                    To begin your integration, you must setup an API key.
+                  </p>
                 </main>
+                <footer class="text-right">
+                  <a href="#" class="blue button">Start <i class="fa fa-arrow-right"></i></a>
+                </footer>
               </div>
 
               <!-- Email setup step -->
@@ -290,15 +294,13 @@
                 </header>
                 <main>
                   <i class="fa fa-envelope-o background hover"></i>
-                  <div>
-                    <p>
-                      To send emails, you must setup your SMTP server.
-                    </p>
-                    <p class="text-right">
-                      <a href="#" class="blue button">Start <i class="fa fa-arrow-right"></i></a>
-                    </p>
-                  </div>
+                  <p>
+                    To send emails, you must setup your SMTP server.
+                  </p>
                 </main>
+                <footer class="text-right">
+                  <a href="#" class="float-right blue button">Start <i class="fa fa-arrow-right"></i></a>
+                </footer>
               </div>
 
             </main>
@@ -316,7 +318,7 @@
           </header>
           <main>
             <i class="fa fa-user background hover"></i>
-            <p class="large">73.2K</p>
+            <p class="large text-right">73.2K</p>
           </main>
         </div>
         <div class="col-lg-3 col-md-6 col-xs-12 green card">

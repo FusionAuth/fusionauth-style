@@ -40,11 +40,12 @@
       border-bottom-color: $tab-border-color;
     }
 
-    &.first-visible-child {
+    &.first-visible-tab {
       border-radius: 3px 0 0 0;
+      margin-left: 10px;
     }
 
-    &.last-visible-child {
+    &.last-visible-tab {
       border-radius: 0 3px 0 0;
     }
 
@@ -68,4 +69,5 @@
   clear: both;
   display: none;
   margin-top: -1px;
+  padding: 10px;
 }

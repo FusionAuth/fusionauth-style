@@ -2,6 +2,7 @@
  * Copyright (c) 2017, Inversoft Inc., All Rights Reserved
  */
 
+@import 'layers';
 @import 'mixins';
 @import 'variables';
 
@@ -10,6 +11,8 @@
 
 .card {
   margin-bottom: 10px;
+  position: relative;
+
   @media only screen and (min-width: 480px) {
     margin-bottom: 0;
   }
@@ -17,18 +20,26 @@
   header {
     display: flex;
     justify-content: space-between;
-    padding: 10px;
 
     h3 {
       color: #fff;
       font-size: 14px;
       margin: 0;
-      padding: 0;
+      padding: 10px;
       text-transform: uppercase;
+      width: 100%;
     }
 
     span {
       color: #fff;
+      padding: 10px;
+
+      &.corner {
+        background: $card-header-corner-background-color;
+        color: $card-header-corner-color;
+        padding: 10px 15px;
+        height: 100%;
+      }
 
       &.decrease:before {
         content: '\f0d8';
@@ -44,19 +55,22 @@
     }
   }
 
+  .hover {
+    color: rgba(#ffffff, 0.2);
+    transition: color 0.4s ease-in-out;
+  }
+
   > main {
     align-items: center;
-    display: flex;
-    justify-content: space-between;
-    padding: 20px;
+    overflow: hidden;
+    padding: 40px;
+    position: relative;
 
     i.background {
-      font-size: 70px;
-    }
-
-    .hover {
-      color: rgba(#ffffff, 0.4);
-      transition: color 0.4s ease-in-out;
+      font-size: 150px;
+      left: -10px;
+      position: absolute;
+      top: -10px;
     }
 
     div {
@@ -72,9 +86,48 @@
         font-size: 50px;
       }
     }
+  }
+
+  > footer {
+    bottom: 0;
+    padding: 10px;
+    position: absolute;
+    width: 100%;
+  }
+
+  &:hover .hover {
+    color: rgba(#fff, 0.5);
+  }
+
+  &.bordered {
+    border: 1px solid $bordered-card-border-color;
+
+    header {
+      border-bottom: 1px solid $bordered-card-border-color;
+    }
+  }
+
+  &.blue-gray {
+    background: $blue-gray-card-background-color;
+    color: $blue-gray-card-color;
+
+    main {
+      p {
+        color: $blue-gray-card-color;
+      }
+    }
+
+    header {
+      background: $blue-gray-card-header-background-color;
+    }
+
+    .hover {
+      color: rgba($blue-gray-card-hover, 0.2);
+      transition: color 0.4s ease-in-out;
+    }
 
     &:hover .hover {
-      color: #fff;
+      color: rgba($blue-gray-card-hover, 0.4);
     }
   }
 
