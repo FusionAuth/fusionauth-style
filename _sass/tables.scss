@@ -101,16 +101,6 @@ table {
 .pagination {
   font-size: 0;
 
-  a:first-of-type, span:first-of-type {
-    border-top-left-radius: 3px;
-    border-bottom-left-radius: 3px;
-  }
-
-  a:last-of-type, span:last-of-type {
-    border-top-right-radius: 3px;
-    border-bottom-right-radius: 3px;
-  }
-
   a, span {
     background: #fff;
     border: 1px solid $table-border-color;
@@ -143,6 +133,16 @@ table {
   .page-controls, .number-controls, .info {
     margin-bottom: 10px;
     text-align: left;
+
+    :first-child {
+      border-top-left-radius: 3px;
+      border-bottom-left-radius: 3px;
+    }
+
+    :last-child {
+      border-top-right-radius: 3px;
+      border-bottom-right-radius: 3px;
+    }
   }
 
   @media (min-width: 770px) {
