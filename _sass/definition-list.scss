@@ -1,0 +1,36 @@
+/*
+ * Copyright (c) 2017, Inversoft Inc., All Rights Reserved
+ */
+
+@import 'mixins';
+@import 'variables';
+
+/* Definition List
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+dl {
+  //display: table;
+
+  dt {
+    display: block;
+    float: left;
+    font-weight: bold;
+    margin: 0 20px 10px 0;
+    padding: 0;
+
+    &:after {
+      content: ':';
+    }
+  }
+
+  dd {
+    display: block;
+    margin: 0 0 10px 0;
+    padding: 0;
+
+    &:after {
+      clear: both;
+      content: '';
+    }
+  }
+}

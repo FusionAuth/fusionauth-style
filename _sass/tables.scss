@@ -93,6 +93,23 @@ table {
     }
   }
 
+  &.properties {
+    border: none;
+
+    tr {
+      td {
+        border: none;
+        border-bottom: 1px solid $table-border-color;
+
+        &:first-child {
+          font-weight: bold;
+          white-space: nowrap;
+          width: 1px;
+        }
+      }
+    }
+  }
+
   .tight {
     width: 1px;
   }
