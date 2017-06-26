@@ -47,8 +47,9 @@ table {
         }
 
         &.action {
-          text-align: right;
-          width: 200px;
+          text-align: center;
+          white-space: nowrap;
+          width: 1px;
         }
 
         &.hide-on-mobile {
@@ -66,7 +67,6 @@ table {
     tr {
       td {
         border: 1px solid $table-border-color;
-        border-bottom-width: 2px;
         border-top: 0;
         padding: 8px;
         text-align: left;
@@ -78,8 +78,9 @@ table {
         }
 
         &.action {
-          text-align: right;
-          width: 200px;
+          text-align: center;
+          white-space: nowrap;
+          width: 1px;
         }
 
         &.hide-on-mobile {
@@ -97,9 +98,9 @@ table {
     border: none;
 
     tr {
+
       td {
-        border: none;
-        border-bottom: 1px solid $table-border-color;
+        border: 1px solid $table-border-color;
 
         &:first-child {
           font-weight: bold;
