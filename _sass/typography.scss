@@ -61,3 +61,71 @@ a {
     color: $link-color;
   }
 }
+
+.blue-text {
+  color: $blue-dark;
+}
+
+.green-text {
+  color: $green-dark;
+}
+
+.orange-text {
+  color: $orange-dark;
+}
+
+.purple-text {
+  color: $purple-dark;
+}
+
+.red-text {
+  color: $red-dark;
+}
+
+.yellow-text {
+  color: $yellow-dark;
+}
+
+.sm-text {
+  font-size: 8px;
+}
+
+.md-text {
+  font-size: 16px;
+}
+
+.lg-text {
+  font-size: 24px;
+}
+
+.xl-text {
+  font-size: 32px;
+}
+
+.xxl-text {
+  font-size: 48px;
+}
+
+// These are needed to override FontAwesome
+
+.fa {
+  &.sm-text {
+    font-size: 8px;
+  }
+
+  &.md-text {
+    font-size: 16px;
+  }
+
+  &.lg-text {
+    font-size: 24px;
+  }
+
+  &.xl-text {
+    font-size: 32px;
+  }
+
+  &.xxl-text {
+    font-size: 48px;
+  }
+}

@@ -1,7 +1,6 @@
 /*
  * Copyright (c) 2017, Inversoft Inc., All Rights Reserved
  */
-
 @import 'mixins';
 @import 'variables';
 
@@ -437,6 +436,7 @@ select {
     color: $option-color;
   }
 }
+
 //
 //.toggle {
 //  margin-top: 6px;
@@ -535,14 +535,12 @@ select {
 }
 
 .radio-card {
-  overflow: hidden;
+  border: 1px solid $radio-card-border;
+  border-radius: 2px;
   display: inline-block;
   height: 100px;
+  overflow: hidden;
   width: 75px;
-  border: 1px solid $radio-card-border;
-  -webkit-border-radius:2px;
-  -moz-border-radius:2px;
-  border-radius:2px;
 
   .card {
     width: 100%;
@@ -550,34 +548,36 @@ select {
 
   i.card {
     font-size: 60px;
-    text-align: center;
-    margin-top: 10px;
     margin-bottom: 10px;
+    margin-top: 10px;
+    text-align: center;
   }
 
   input[type="radio"] {
-    display: none;
+    display: block;
+    height: 1px;
+    opacity: 0;
+    width: 1px;
   }
 
   .title {
-    text-align: center;
-    font-weight: 400;
-    font-size: 12px;
-    height: 20px;
     background-color: $radio-card-title-color;
-    margin-left: -5px;
-    margin-right: -5px;
-    display: block;
     box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4);
+    display: block;
+    font-size: 12px;
+    font-weight: 400;
+    height: 20px;
+    margin-left: 0 -5px;
+    text-align: center;
   }
 
   input[type="radio"]:checked + span.title {
-    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4);
     background-color: $highlight-color;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4);
     color: $radio-card-title-color;
   }
 
-  &:hover {
+  &:hover, &.focus {
     border: 1px solid $highlight-color;
     box-shadow: $highlight-box-shadow;
   }
@@ -590,12 +590,12 @@ select {
     border: 1px solid $error-highlight-color;
   }
 
-  &.prime-focus ul.option-list {
+  &.focus ul.option-list {
     border: 1px solid $highlight-color;
     box-shadow: $highlight-box-shadow;
   }
 
-  &.error.prime-focus ul.option-list {
+  &.error.focus ul.option-list {
     border: 1px solid $error-highlight-color;
     box-shadow: $error-box-shadow;
   }
@@ -705,6 +705,7 @@ select {
     }
   }
 }
+
 // Float hack
 form.labels-left .search-results {
   margin-left: calc(12% + 20px);
