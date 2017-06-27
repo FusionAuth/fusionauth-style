@@ -133,7 +133,7 @@
         Prime.Utils.stopEvent(e);
       });
 
-      Prime.Document.query('.radio-card input').each(function (radio) {
+      Prime.Document.query('.trading-card input').each(function (radio) {
         radio.addEventListener('focus', function (event) {
           new Prime.Document.Element(event.target).getParent().addClass('focus');
         })
@@ -612,31 +612,49 @@
               <legend>Widgets</legend>
               <div class="form-row">
                 <label for="toggle">Toggle</label>
-                <label class="toggle"><input type="checkbox" id="toggle"/><span class="rail"></span><span
-                    class="pin"></span></label>
+                <label class="toggle"><input type="checkbox" id="toggle"/><span class="rail"></span><span class="pin"></span></label>
               </div>
               <div class="form-row">
                 <label>Radio Cards</label>
-                <label class="radio-card">
-                  <i class="card fa fa-firefox"></i>
+                <label class="trading-card">
+                  <i class="fa fa-firefox"></i>
                   <input name="browser" type="radio"/>
                   <span class="title">Firefox</span>
                 </label>
-                <label class="radio-card">
-                  <i class="card fa fa-safari"></i>
+                <label class="trading-card">
+                  <i class="fa fa-safari"></i>
                   <input name="browser" type="radio"/>
                   <span class="title">Safari</span>
                 </label>
-                <label class="radio-card">
-                  <i class="card fa fa-chrome"></i>
+                <label class="trading-card">
+                  <i class="fa fa-chrome"></i>
                   <input name="browser" type="radio"/>
                   <span class="title">Chrome</span>
                 </label>
-                <label class="radio-card">
-                  <i class="card fa fa-opera"></i>
+                <label class="trading-card">
+                  <i class="fa fa-opera"></i>
                   <input name="browser" type="radio"/>
                   <span class="title">Opera</span>
                 </label>
+              </div>
+              <div class="form-row">
+                <label>Anchor Cards</label>
+                <a href="#" class="trading-card">
+                  <i class="fa fa-firefox"></i>
+                  <span class="title">Firefox</span>
+                </a>
+                <a href="#" class="trading-card">
+                  <i class="fa fa-safari"></i>
+                  <span class="title">Safari</span>
+                </a>
+                <a href="#" class="trading-card">
+                  <i class="fa fa-chrome"></i>
+                  <span class="title">Chrome</span>
+                </a>
+                <a href="#" class="trading-card">
+                  <img src="/images/avatar.jpg"/>
+                  <span class="title">Opera</span>
+                </a>
               </div>
               <div class="form-row">
                 <label for="multi-select">Multi-select</label>
