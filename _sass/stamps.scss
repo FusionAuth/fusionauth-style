@@ -1,0 +1,47 @@
+/*
+ * Copyright (c) 2017, Inversoft Inc., All Rights Reserved
+ */
+
+@import 'mixins';
+@import 'variables';
+
+.stamp {
+  box-shadow: $stamp-box-shadow;
+  display: inline-block;
+  margin-left: 10px;
+  padding: 1px 5px;
+
+  &.blue {
+    background: $blue-stamp-background-color;
+    color: $blue-stamp-color;
+  }
+
+  &.green {
+    background: $green-stamp-background-color;
+    color: $green-stamp-color;
+  }
+
+  &.orange {
+    background: $orange-stamp-background-color;
+    color: $orange-stamp-color;
+  }
+
+  &.purple {
+    background: $purple-stamp-background-color;
+    color: $purple-stamp-color;
+  }
+
+  &.red {
+    background: $red-stamp-background-color;
+    color: $red-stamp-color;
+  }
+
+  &.small {
+    font-size: 11px;
+  }
+
+  &.yellow{
+    background: $yellow-stamp-background-color;
+    color: $yellow-stamp-color;
+  }
+}
