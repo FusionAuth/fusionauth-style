@@ -136,10 +136,16 @@
       Prime.Document.query('.trading-card input').each(function (radio) {
         radio.addEventListener('focus', function (event) {
           new Prime.Document.Element(event.target).getParent().addClass('focus');
+        }).addEventListener('blur', function (event) {
+          new Prime.Document.Element(event.target).getParent().removeClass('focus');
+        });
+      });
+
+      // Ignore the click on the example trading card anchor tags
+      Prime.Document.query('a.trading-card').each(function (a) {
+        a.addEventListener('click', function (event) {
+          Prime.Utils.stopEvent(event);
         })
-            .addEventListener('blur', function (event) {
-              new Prime.Document.Element(event.target).getParent().removeClass('focus');
-            });
       });
     });
   </script>
@@ -617,43 +623,71 @@
               <div class="form-row">
                 <label>Radio Cards</label>
                 <label class="trading-card">
-                  <i class="fa fa-firefox"></i>
+                  <span class="main">
+                    <i class="fa fa-firefox"></i>
+                  </span>
                   <input name="browser" type="radio"/>
-                  <span class="title">Firefox</span>
+                  <span class="footer">Firefox</span>
                 </label>
                 <label class="trading-card">
-                  <i class="fa fa-safari"></i>
+                  <span class="main">
+                    <i class="fa fa-safari"></i>
+                  </span>
                   <input name="browser" type="radio"/>
-                  <span class="title">Safari</span>
+                  <span class="footer">Safari</span>
                 </label>
                 <label class="trading-card">
-                  <i class="fa fa-chrome"></i>
+                  <span class="main">
+                    <i class="fa fa-chrome"></i>
+                  </span>
                   <input name="browser" type="radio"/>
-                  <span class="title">Chrome</span>
+                  <span class="footer">Chrome</span>
                 </label>
                 <label class="trading-card">
-                  <i class="fa fa-opera"></i>
+                  <span class="main">
+                    <i class="fa fa-opera"></i>
+                  </span>
                   <input name="browser" type="radio"/>
-                  <span class="title">Opera</span>
+                  <span class="footer">Opera</span>
                 </label>
               </div>
               <div class="form-row">
                 <label>Anchor Cards</label>
                 <a href="#" class="trading-card">
-                  <i class="fa fa-firefox"></i>
-                  <span class="title">Firefox</span>
+                  <main>
+                    <img src="/images/stormpath.jpg"/>
+                  </main>
+                  <footer>Stormpath</footer>
                 </a>
                 <a href="#" class="trading-card">
-                  <i class="fa fa-safari"></i>
-                  <span class="title">Safari</span>
+                  <main>
+                    <img src="/images/onelogin.svg"/>
+                  </main>
+                  <footer>OneLogin</footer>
                 </a>
                 <a href="#" class="trading-card">
-                  <i class="fa fa-chrome"></i>
-                  <span class="title">Chrome</span>
+                  <main>
+                    <img src="/images/okta.png"/>
+                  </main>
+                  <footer>Okta</footer>
                 </a>
                 <a href="#" class="trading-card">
-                  <img src="/images/avatar.jpg"/>
-                  <span class="title">Opera</span>
+                  <main>
+                    <i class="fa fa-chrome"></i>
+                  </main>
+                  <footer>Chrome</footer>
+                </a>
+                <a href="#" class="trading-card">
+                  <main>
+                    <img src="/images/avatar.jpg"/>
+                  </main>
+                  <footer>CEO</footer>
+                </a>
+                <a href="#" class="trading-card">
+                  <main>
+                    <i class="fa fa-database"></i>
+                  </main>
+                  <footer>Database</footer>
                 </a>
               </div>
               <div class="form-row">

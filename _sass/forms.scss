@@ -542,7 +542,8 @@ select {
     width: 1px;
   }
 
-  input[type="radio"]:checked + span.title {
+  input[type="radio"]:checked + footer,
+  input[type="radio"]:checked + span.footer {
     background-color: $highlight-color;
     box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4);
     color: $radio-card-title-color;
