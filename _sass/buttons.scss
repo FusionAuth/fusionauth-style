@@ -75,11 +75,11 @@
     }
   }
 
-  &.red {
-    @include button-colors($red-button-background-color, $red-button-color, transparent);
+  &.orange {
+    @include button-colors($orange-button-background-color, $orange-button-color, transparent);
 
     &:hover, &:focus {
-      @include button-colors($red-button-hover-background-color, $red-button-color, transparent);
+      @include button-colors($orange-button-hover-background-color, $orange-button-color, transparent);
     }
   }
 
@@ -89,4 +89,21 @@
     &:hover, &:focus {
       @include button-colors($purple-button-hover-background-color, $purple-button-color, transparent);
     }
-  }}
+  }
+
+  &.red {
+    @include button-colors($red-button-background-color, $red-button-color, transparent);
+
+    &:hover, &:focus {
+      @include button-colors($red-button-hover-background-color, $red-button-color, transparent);
+    }
+  }
+
+  &.yellow {
+    @include button-colors($yellow-button-background-color, $yellow-button-color, transparent);
+
+    &:hover, &:focus {
+      @include button-colors($yellow-button-hover-background-color, $yellow-button-color, transparent);
+    }
+  }
+}

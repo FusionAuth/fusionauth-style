@@ -2,8 +2,16 @@
  * Copyright (c) 2017, Inversoft Inc., All Rights Reserved
  */
 
+@import 'variables';
+
 /* Helpers
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.border {
+  &.gray {
+    border: 1px solid $gray-3;
+  }
+}
 
 .float-right {
   float: right;
@@ -13,10 +21,24 @@
   float: left;
 }
 
+.padded {
+  padding: 10px;
+}
+
 .push-bottom {
   margin-bottom: 35px;
 }
 
 .push-more-bottom {
   margin-bottom: 70px;
+}
+
+.scrollable {
+  &.horizontal {
+    overflow-x: scroll;
+  }
+
+  &.vertical {
+    overflow-y: scroll;
+  }
 }
