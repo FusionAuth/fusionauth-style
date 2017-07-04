@@ -17,32 +17,38 @@ $breadcrumb-color: $gray-5;
 
 $default-text-color: $gray-7;
 
-$header-border-color: $gray-3;
+$header-border-color: $gray-2;
 
-$hamburger-color: $gray-5;
+$hamburger-color: $gray-4;
 
-$search-border-color: $gray-3;
 $search-icon-color: $gray-3;
 
-$left-nav-border-color: $gray-2;
-$left-nav-color: $gray-5;
-$left-nav-help-color: $blue-medium;
-$left-nav-logout-color: $purple-medium;
+$right-nav-color: $gray-5;
+$right-nav-help-background-color: $purple-dark;
+$right-nav-help-color: white;
 
-$page-header-color: $gray-5;
+$page-body-background-color: #E7EDF2;
+$page-header-color: $gray-6;
+$page-header-background-color: white;
+$page-header-border-color: $gray-2;
 $page-footer-color: $gray-4;
 
-$sidebar-active-background-color: $gray-7;
-$sidebar-background-color: $gray-6;
-$sidebar-border-color: $gray-5;
-$sidebar-color: $gray-1;
-$sidebar-header-background-color: $gray-7;
-$sidebar-header-color: $gray-1;
+$sidebar-background-color: #35485D;
+$sidebar-header-border-color: #213344;
+$sidebar-nav-border-color: #5D6C7D;
+$sidebar-nav-active-border-color: #38E1BD;
+$sidebar-nav-active-color: white;
+$sidebar-nav-color: #38E1BD;
+$sidebar-nav-active-background-color: #253241;
+$sidebar-nav-open-background-color: #2A3A4A;
+
+$layered-box-shadow: inset 1px 1px 0 rgba(0, 0, 0, .1), inset 0 -1px 0 rgba(0, 0, 0, .07), 0 1px 2px 0 rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 2px 1px -1px rgba(0, 0, 0, .12);
 
 
 /* Alerts
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
+$alert-color: $gray-5;
 $error-alert-background-color: $red-medium;
 $info-alert-background-color: $blue-medium;
 $warning-alert-background-color: $orange-medium;

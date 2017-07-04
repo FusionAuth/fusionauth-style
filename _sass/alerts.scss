@@ -10,7 +10,8 @@
 
 .alert {
   border-radius: 2px;
-  color: #fff;
+  box-shadow: $layered-box-shadow;
+  color: $alert-color;
   font-size: 14px;
   opacity: 1;
   padding: 10px 20px;
@@ -19,13 +20,12 @@
 
   i {
     display: inline-block;
-    font-size: 14px;
+    font-size: 20px;
     margin-right: 10px;
     vertical-align: middle;
   }
 
   a {
-    color: #fff;
     float: right;
     font-size: 16px;
     font-weight: bold;
@@ -41,14 +41,26 @@
   }
 
   &.info {
-    background: $info-alert-background-color;
+    border-left: 5px solid $info-alert-background-color;
+
+    i, a {
+      color: $info-alert-background-color;
+    }
   }
 
   &.error {
-    background: $error-alert-background-color;
+    border-left: 5px solid $error-alert-background-color;
+
+    i, a {
+      color: $error-alert-background-color;
+    }
   }
 
   &.warning {
-    background: $warning-alert-background-color;
+    border-left: 5px solid $warning-alert-background-color;
+
+    i, a {
+      color: $warning-alert-background-color;
+    }
   }
 }

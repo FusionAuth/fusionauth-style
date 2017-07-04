@@ -19,144 +19,327 @@ html {
 }
 
 body {
-  box-sizing: border-box;
   color: $default-text-color;
   font: 12px/18px $font-stack;
   height: 100%;
   min-height: 100%;
+  overflow-x: hidden;
   position: relative;
   width: 100%;
+  z-index: $layer-1;
   -webkit-font-smoothing: antialiased;
-}
 
-.app-header {
-  align-items: center;
-  background: #fff;
-  border-bottom: 1px solid $header-border-color;
-  display: flex;
-  height: 45px;
-  left: 0;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: $layer-10;
-
-  .logo {
-    display: inline-block;
+  .app-sidebar {
+    background: $sidebar-background-color;
+    display: block;
     height: 100%;
-
-    img {
-      height: 100%;
-      padding: 2px 10px;
-
-      @media (min-width: 480px) {
-        padding: 2px 20px;
-      }
-    }
-  }
-
-  .app-sidebar-toggle {
-    border-right: 1px solid $header-border-color;
-    color: $hamburger-color;
-    display: inline-block;
-    font-size: 15px;
-    height: 100%;
-    line-height: 15px;
-    padding: 15px 10px;
-    text-decoration: none;
-    vertical-align: middle;
-
-    @media (min-width: 480px) {
-      padding: 15px 20px;
-    }
-  }
-
-  .search {
-    padding-left: 10px;
-
-    @media (min-width: 480px) {
-      padding-left: 45px;
-    }
-
-    input {
-      border-color: $search-border-color;
-      width: 130px;
-
-      @media (min-width: 480px) {
-        width: 300px;
-      }
-    }
-
-    .input-icon-right {
-      border-color: $search-icon-color;
-    }
-  }
-
-  .right-menu {
-    display: none;
-    flex: 1 0 auto;
-    height: 100%;
-    text-align: right;
+    left: 0;
+    margin-left: -225px;
+    position: fixed;
+    top: 0;
+    transition: margin-left 0.2s ease-in-out;
+    width: 225px;
+    z-index: $layer-1;
 
     @media (min-width: 770px) {
-      display: block;
+      margin-left: 0;
+    }
+
+    header {
+      border-bottom: 2px solid $sidebar-header-border-color;
+      padding: 15px 0 30px 0;
+      text-align: center;
+
+      .logo {
+        display: block;
+        line-height: 12px;
+        padding: 0 20px;
+
+        img {
+          width: 100%;
+
+          @media (min-width: 480px) {
+            padding: 2px 20px;
+          }
+        }
+      }
+
+      img.profile {
+        border: 2px solid white;
+        border-radius: 50px;
+        margin: 10px auto;
+        text-align: center;
+        width: 80px;
+      }
+
+      p {
+        color: white;
+        font-size: 14px;
+        margin: 0 auto;
+        padding: 0;
+
+        a {
+          color: white;
+          margin-left: 10px;
+          vertical-align: middle;
+        }
+      }
     }
 
     nav {
-      height: 100%;
+      border-top: 1px solid $sidebar-nav-border-color;
 
       ul {
-        height: 100%;
         list-style: none;
         margin: 0;
+        overflow-y: hidden;
         padding: 0;
+        transition: max-height 0.5s ease-in-out;
 
         li {
-          border-left: 1px solid $left-nav-border-color;
-          display: inline-block;;
-          height: 100%;
-          padding: 15px 20px;
-          vertical-align: middle;
+          position: relative;
+
+          li a {
+            padding-left: 30px;
+          }
 
           a {
-            color: $left-nav-color;
-            font-size: 15px;
-            line-height: 15px;
+            border-left: 5px solid transparent;
+            color: $sidebar-nav-color;
+            display: block;
+            font-size: 13px;
+            font-weight: 400;
+            padding: 15px 20px;
             text-decoration: none;
+            transition: background 0.5s ease-in-out;
 
-            i.fa-life-ring {
-              color: $left-nav-help-color;
+            i {
+              font-size: 16px;
+              margin-right: 8px;
             }
 
-            i.fa-sign-out {
-              color: $left-nav-logout-color;
+            &:hover {
+              background: $sidebar-nav-active-background-color;
+            }
+
+            &.folder-toggle:after {
+              content: "\2039";
+              font-size: 16px;
+              position: absolute;
+              right: 14px;
+              top: 15px;
+              transition: 0.3s;
             }
           }
+
+          &.folder:not(.open) ul {
+            max-height: 0;
+          }
+
+          &.folder.open {
+            a {
+              background: $sidebar-nav-open-background-color;
+
+              &.folder-toggle:after {
+                transform: rotate(-90deg);
+              }
+            }
+
+            ul {
+              max-height: 500px;
+            }
+          }
+
+          &.folder.active a {
+            color: $sidebar-nav-active-color;
+
+            &:hover, &.active {
+              background: $sidebar-nav-active-background-color;
+            }
+
+            &.active {
+              border-left: 5px solid $sidebar-nav-active-border-color;
+            }
+          }
+        }
+
+        &.treeview {
+          display: block;
+          height: calc(100vh - 280px) !important;
+          -ms-overflow-style: -ms-autohiding-scrollbar;
+          -webkit-overflow-scrolling: touch;
+          overflow-y: scroll;
         }
       }
     }
   }
-}
 
-.app-body {
-  overflow-x: hidden;
-  z-index: $layer-1;
+  &.app-sidebar-open {
+    .app-sidebar {
+      margin-left: 0;
+    }
+
+    > main, > footer {
+      margin-left: 225px;
+      margin-right: -225px;
+
+      @media (min-width: 770px) {
+        margin-right: 0;
+      }
+    }
+
+    > main .app-header {
+      margin-left: 225px;
+      width: calc(100% - 225px);
+    }
+  }
+
+  &.app-sidebar-closed {
+    .app-sidebar {
+      margin-left: -225px;
+    }
+
+    > main, > footer {
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+    > main .app-header {
+      margin-left: 0;
+      width: 100%;
+    }
+  }
+
 
   > main {
-    margin: 60px 0 0 0;
+    background: $page-body-background-color;
+    margin: 45px 0 0 0;
+    position: relative;
     transition: margin-left 0.2s ease-in-out, margin-right 0.2s ease-in-out;
 
-    header {
+    header.app-header {
+      align-items: center;
+      background: #fff;
+      border-bottom: 1px solid $header-border-color;
+      display: flex;
+      height: 45px;
+      left: 0;
+      margin: 0;
+      position: fixed;
+      top: 0;
+      transition: margin-left 0.2s ease-in-out, margin-right 0.2s ease-in-out, width 0.2s ease-in-out;
+      width: 100%;
+      z-index: $layer-10;
+
+      .app-sidebar-toggle {
+        border-right: 1px solid $header-border-color;
+        color: $hamburger-color;
+        display: inline-block;
+        font-size: 15px;
+        height: 100%;
+        line-height: 15px;
+        padding: 15px 10px;
+        text-decoration: none;
+        vertical-align: middle;
+
+        @media (min-width: 480px) {
+          padding: 15px 20px;
+        }
+      }
+
+      .search {
+        padding-left: 10px;
+
+        input {
+          background: transparent;
+          border-color: transparent;
+          box-shadow: none;
+          padding-left: 0;
+          padding-top: 10px;
+          width: 200px;
+
+          @media (min-width: 480px) {
+            width: 300px;
+          }
+        }
+
+        .input-icon-left {
+          background: transparent;
+          border-color: transparent;
+          font-size: 16px;
+
+          i {
+            color: $search-icon-color;
+          }
+        }
+      }
+
+      .right-menu {
+        display: none;
+        flex: 1 0 auto;
+        height: 100%;
+        text-align: right;
+
+        @media (min-width: 770px) {
+          display: block;
+        }
+
+        nav {
+          height: 100%;
+
+          ul {
+            height: 100%;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+
+            li {
+              display: inline-block;;
+              height: 100%;
+              padding: 15px 20px;
+              vertical-align: middle;
+
+              a {
+                color: $right-nav-color;
+                font-size: 15px;
+                line-height: 15px;
+                text-decoration: none;
+              }
+
+              &.help {
+                background: $right-nav-help-background-color;
+
+                a {
+                  color: $right-nav-help-color;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      @media (min-width: 770px) {
+        margin-left: 225px;
+        width: calc(100% - 225px);
+      }
+    }
+
+    header.page-header {
+      background: $page-header-background-color;
+      border-bottom: 2px solid $page-header-border-color;
+      padding: 30px 40px 20px 40px;
+
       h1 {
         color: $page-header-color;
         display: inline-block;
         font-size: 22px;
         line-height: 30px;
-        margin: 0 0 10px 0;
+        margin: 0;
+        //margin: 0 0 10px 0;
 
         @media (min-width: 640px) {
           font-size: 24px;
-          margin: 0 0 25px 0;
+          //margin: 0 0 25px 0;
         }
       }
 
@@ -171,6 +354,10 @@ body {
           display: inline-block;
           padding-left: 10px;
 
+          a {
+            color: $breadcrumb-color;
+          }
+
           &:not(:last-of-type):after {
             content: '/';
             padding-left: 10px;
@@ -183,187 +370,20 @@ body {
       }
 
       .buttons {
-        float: right;
-        margin: 0 0 0 0;
+        text-align: left;
+
+        @media (min-width: 680px) {
+          text-align: right;
+        }
       }
+    }
+
+    main.page-body {
+      padding: 35px 40px 20px 40px;
     }
 
     @media (min-width: 770px) {
       margin-left: 225px;
-    }
-  }
-
-  > footer {
-    color: $page-footer-color;
-    display: block;
-    font-size: 10px;
-    font-style: italic;
-    padding: 10px;
-    text-align: center;
-
-    @media (min-width: 770px) {
-      margin-left: 225px;
-    }
-  }
-}
-
-
-/* Sidebar
-–––––––––––––––––––––––––––––––––––––––––––––––––– */
-
-body {
-  &.app-sidebar-open {
-    .app-sidebar {
-      margin-left: 0;
-    }
-
-    .app-body > main, .app-body > footer {
-      margin-left: 225px;
-      margin-right: -225px;
-
-      @media (min-width: 770px) {
-        margin-right: 0;
-      }
-    }
-  }
-
-  &.app-sidebar-closed {
-    .app-sidebar {
-      margin-left: -225px;
-    }
-
-    .app-body > main, .app-body > footer {
-      margin-left: 0;
-      margin-right: 0;
-    }
-  }
-}
-
-.app-sidebar {
-  background: $sidebar-background-color;
-  display: block;
-  height: 100%;
-  margin-left: -225px;
-  padding-top: 30px;
-  position: fixed;
-  transition: margin-left 0.2s ease-in-out;
-  width: 225px;
-  z-index: $layer-1;
-
-  @media (min-width: 770px) {
-    margin-left: 0;
-  }
-
-  header {
-    background: $sidebar-header-background-color;
-    padding: 20px 0;
-    text-align: center;
-
-    img {
-      border-radius: 50px;
-      margin: 20px auto;
-      text-align: center;
-      width: 80px;
-    }
-
-    ul {
-      align-items: center;
-      display: flex;
-      justify-content: center;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-
-      li {
-        display: block;
-        margin: 0 20px;
-        padding: 0;
-
-        a {
-          color: #fff;
-          font-size: 18px;
-        }
-      }
-    }
-  }
-
-  nav {
-    border-top: 1px solid $sidebar-border-color;
-
-    h2 {
-      color: $sidebar-header-color;
-      font-size: 12px;
-      padding: 12px 20px;
-      text-transform: uppercase;
-    }
-
-    ul {
-      list-style: none;
-      margin: 0;
-      overflow-y: hidden;
-      padding: 0;
-      transition: max-height 0.5s ease-in-out;
-
-      li {
-        border-top: 1px solid $sidebar-border-color;
-        position: relative;
-
-        li a {
-          padding-left: 30px;
-        }
-
-        a {
-          color: $sidebar-color;
-          display: block;
-          font-size: 13px;
-          font-weight: 400;
-          padding: 15px 20px;
-          text-decoration: none;
-          transition: background 0.5s ease-in-out;
-
-          i {
-            font-size: 16px;
-            margin-right: 8px;
-          }
-
-          &:hover, &.active {
-            background: $sidebar-active-background-color;
-          }
-
-          &.folder-toggle:after {
-            content: "\2039";
-            font-size: 16px;
-            position: absolute;
-            right: 14px;
-            top: 15px;
-            transition: 0.3s;
-          }
-        }
-
-        &.folder:not(.open) ul {
-          max-height: 0;
-        }
-
-        &.folder.open {
-          a {
-            &.folder-toggle:after {
-              transform: rotate(-90deg);
-            }
-          }
-
-          ul {
-            max-height: 500px;
-          }
-        }
-      }
-
-      &.treeview {
-        display: block;
-        height: calc(100vh - 280px) !important;
-        -ms-overflow-style: -ms-autohiding-scrollbar;
-        -webkit-overflow-scrolling: touch;
-        overflow-y: scroll;
-      }
     }
   }
 }
