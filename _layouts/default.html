@@ -132,8 +132,8 @@
         Prime.Utils.stopEvent(e);
       });
 
-      Prime.Document.query('.trading-card input').each(function (radio) {
-        radio.addEventListener('focus', function (event) {
+      Prime.Document.query('input').each(function (input) {
+        input.addEventListener('focus', function (event) {
           new Prime.Document.Element(event.target).getParent().addClass('focus');
         }).addEventListener('blur', function (event) {
           new Prime.Document.Element(event.target).getParent().removeClass('focus');
@@ -150,7 +150,6 @@
   </script>
 </head>
 <body>
-<!--<div class="app-body">-->
   <div class="app-sidebar">
     <header>
       <a href="/" class="logo"><img src="images/logo.png"/></a>
@@ -201,15 +200,18 @@
       </ul>
     </nav>
   </div>
+
+  <!-- Main body that includes the fixed header and the footer -->
   <main>
 
+    <!-- Fixed app header -->
     <header class="app-header">
       <a href="#" class="app-sidebar-toggle"><i class="fa fa-dedent"></i></a>
       <div class="search">
         <form action="search">
-          <div class="input-addon">
+          <div class="input-addon flat">
             <span class="input-icon-left"><i class="fa fa-search"></i></span>
-            <input type="search" placeholder="Search for a User"/>
+            <input type="search" placeholder="Search for a User" class="flat"/>
           </div>
         </form>
       </div>
@@ -223,6 +225,7 @@
       </div>
     </header>
 
+    <!-- Page header -->
     <header class="page-header container-fluid">
       <div class="row">
         <div class="col-xs">
@@ -271,6 +274,7 @@
       </div>
     </header>
 
+    <!-- Nested main that includes the padding to push everything in -->
     <main class="page-body container-fluid">
       <div class="row push-more-bottom">
         <div class="col-xs">
@@ -331,9 +335,7 @@
           </div>
         </div>
       </div>
-    </main>
 
-    <div class="container-fluid">
       <div class="row push-bottom">
         <div class="col-lg-3 col-md-6 col-xs-12 blue card">
           <header>
@@ -376,9 +378,7 @@
           </main>
         </div>
       </div>
-    </div>
 
-    <div class="container-fluid">
       <div class="row">
         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
           <div class="panel">
@@ -397,69 +397,67 @@
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="container">
-      <div class="row center-xs">
-        <div class="col-xs-12 col-md-6">
-          <div class="panel">
-            <h2>Centered panel</h2>
-            <main>
-              Panel contents
+      <div class="container">
+        <div class="row center-xs">
+          <div class="col-xs-12 col-md-6">
+            <div class="panel">
+              <h2>Centered panel</h2>
+              <main>
+                Panel contents
 
-              <form class="labels-left full">
-                <div class="form-row">
-                  <label for="full-1">Full 1</label>
-                  <input type="text" id="full-1"/>
-                </div>
-                <div class="form-row">
-                  <label for="full-2">Full 2</label>
-                  <div class="input-addon">
-                    <span class="input-icon-left"><i class="fa fa-lock"></i></span>
-                    <input type="text" id="full-2"/>
+                <form class="labels-left full">
+                  <div class="form-row">
+                    <label for="full-1">Full 1</label>
+                    <input type="text" id="full-1"/>
                   </div>
-                </div>
-                <div class="form-row">
-                  <label for="full-3">Full 3</label>
-                  <div class="input-addon">
-                    <input type="text" id="full-3"/>
-                    <span class="input-icon-right"><i class="fa fa-lock"></i></span>
+                  <div class="form-row">
+                    <label for="full-2">Full 2</label>
+                    <div class="input-addon">
+                      <span class="input-icon-left"><i class="fa fa-lock"></i></span>
+                      <input type="text" id="full-2" placeholder="Placeholder"/>
+                    </div>
                   </div>
-                </div>
-              </form>
+                  <div class="form-row">
+                    <label for="full-3">Full 3</label>
+                    <div class="input-addon">
+                      <input type="text" id="full-3" class="input-icon-right"/>
+                      <span class="input-icon-right"><i class="fa fa-lock"></i></span>
+                    </div>
+                  </div>
+                </form>
 
-              <form class="labels-above full">
-                <div class="form-row">
-                  <label for="full-4">Full 4</label>
-                  <input type="text" id="full-4"/>
-                </div>
-                <div class="form-row">
-                  <label for="full-5">Full 5</label>
-                  <div class="input-addon">
-                    <span class="input-icon-left"><i class="fa fa-lock"></i></span>
-                    <input type="text" id="full-5"/>
+                <form class="labels-above full">
+                  <div class="form-row">
+                    <label for="full-4">Full 4</label>
+                    <input type="text" id="full-4"/>
                   </div>
-                </div>
-                <div class="form-row">
-                  <label for="full-6">Full 6</label>
-                  <div class="input-addon">
-                    <input type="text" id="full-6"/>
-                    <span class="input-icon-right"><i class="fa fa-lock"></i></span>
+                  <div class="form-row">
+                    <label for="full-5">Full 5</label>
+                    <div class="input-addon">
+                      <span class="input-icon-left"><i class="fa fa-lock"></i></span>
+                      <input type="text" id="full-5"/>
+                    </div>
                   </div>
-                </div>
-                <div class="form-row">
-                  <input type="submit" class="blue button" value="Submit"/>
-                  <a href="#" class="blue button">Cancel</a>
-                  <button class="blue button">Back</button>
-                </div>
-              </form>
-            </main>
+                  <div class="form-row">
+                    <label for="full-6">Full 6</label>
+                    <div class="input-addon">
+                      <input type="text" id="full-6"/>
+                      <span class="input-icon-right"><i class="fa fa-lock"></i></span>
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <input type="submit" class="blue button" value="Submit"/>
+                    <a href="#" class="blue button">Cancel</a>
+                    <button class="blue button">Back</button>
+                  </div>
+                </form>
+              </main>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="container-fluid">
       <div class="panel">
         <h2>Form Panel</h2>
         <main>
@@ -1101,9 +1099,7 @@
         <h5>Title 5</h5>
         <h6>Title 6</h6>
       </div>
-    </div>
 
-    <div class="container-fluid">
       <div class="row between-xs">
         <div class="col-xs-6 column between blue card">
           <header><h3>Header</h3></header>
@@ -1121,11 +1117,12 @@
           <footer class="baseline">Footer</footer>
         </div>
       </div>
-    </div>
+    </main>
+
+    <!-- Footer for the page -->
+    <footer>
+      &copy; Inversoft Inc. 2017
+    </footer>
   </main>
-  <footer>
-    &copy; Inversoft Inc. 2017
-  </footer>
-<!--</div>-->
 </body>
 </html>

@@ -135,9 +135,7 @@ $dialog-section-header-color: #fff;
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
 $checkbox-border-color: $gray-4;
-$checkbox-check-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2);
-$checkbox-check-color: white;
-$checkbox-checked-background-color: $blue-medium;
+$checkbox-check-color: $green-medium;
 $checkbox-list-border-color: $gray-4;
 
 $datetime-picker-border-color: $gray-3;
@@ -163,13 +161,10 @@ $error-widget-color: $red-light;
 $fieldset-border-color: $gray-3;
 $fieldset-legend-color: $gray-7;
 
-//$highlight-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(73, 144, 226, 0.6);
-$highlight-box-shadow: 0 0 0 2px rgba($blue-medium, 0.4);
-$highlight-color: rgba($blue-medium, 0.4);
+$highlight-color: $blue-medium;
 
-$input-addon-background-color: $gray-1;
-$input-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-$input-addon-color: $gray-6;
+$input-addon-background-color: $blue-medium;
+$input-addon-color: white;
 $input-background-color: #E7EDF2;
 //$input-box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, .2), inset 0 1px 1px 0 rgba(0, 0, 0, .14), inset 0 2px 1px -1px rgba(0, 0, 0, .12);
 //$input-box-shadow: inset 0 1px 1px 0 rgba(0, 0, 0, .2);
@@ -189,16 +184,12 @@ $option-color: $gray-7;
 $required-color: $red-medium;
 
 $radio-border-color: $gray-4;
-$radio-check-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2);
-$radio-pin-color: white;
-$radio-checked-border-color: $blue-medium;
+$radio-check-color: $green-medium;
 
-$select-background-color: $page-body-background-color;
-$select-border-color: $blue-medium;
-$select-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2);
-$select-color: $gray-6;
+$select-border-color: $gray-4;
+$select-background-color: $gray-3;
 
-$text-border-color: $gray-3;
+$text-border-color: $gray-4;
 $text-disabled-border-color: $gray-2;
 $text-disabled-color: $gray-6;
 
@@ -206,8 +197,6 @@ $toggle-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4);
 $toggle-check-color: $green-medium;
 $toggle-rail-color: $gray-2;
 $toggle-rail-highlight-color: $blue-medium;
-
-$trading-card-checked-background-color: $blue-medium;
 
 $radio-card-border: $gray-4;
 $radio-card-title-color: $gray-1;
