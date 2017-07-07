@@ -2,12 +2,14 @@
  * Copyright (c) 2017, Inversoft Inc., All Rights Reserved
  */
 
+@import 'variables';
+
 //
 // Column mixins
 //
 @mixin define-column($width) {
-  flex-basis: calc(#{$width} - 10px);
-  max-width: calc(#{$width} - 10px);
+  flex-basis: calc(#{$width} - #{$grid-spacing * 2});
+  max-width: calc(#{$width} - #{$grid-spacing * 2});
 }
 @mixin define-column-size($size) {
   .col-#{$size},
@@ -38,14 +40,14 @@
   .col-#{$size}-offset-12 {
     box-sizing: border-box;
     flex: 0 0 auto;
-    margin-right: 5px;
-    margin-left: 5px;
+    margin-right: $grid-spacing;
+    margin-left: $grid-spacing;
   }
 
   .col-#{$size} {
     flex-grow: 1;
     flex-basis: 0;
-    max-width: 100%;
+    width: calc(100% - #{$grid-spacing * 2});
   }
 
   .col-#{$size}-1 {
@@ -214,7 +216,6 @@
   margin-left: auto;
 }
 
-
 .row {
   align-items: stretch;
   box-sizing: border-box;
@@ -222,8 +223,6 @@
   flex: 0 1 auto;
   flex-direction: row;
   flex-wrap: wrap;
-  margin-right: -5px;
-  margin-left: -5px;
 }
 
 .column {

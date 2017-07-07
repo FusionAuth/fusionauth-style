@@ -10,7 +10,8 @@
 
 .alert {
   border-radius: 2px;
-  color: #fff;
+  box-shadow: $layered-box-shadow;
+  color: $alert-color;
   font-size: 14px;
   opacity: 1;
   padding: 10px 20px;
@@ -19,17 +20,20 @@
 
   i {
     display: inline-block;
-    font-size: 14px;
+    font-size: 20px;
     margin-right: 10px;
     vertical-align: middle;
   }
 
   a {
-    color: #fff;
     float: right;
     font-size: 16px;
     font-weight: bold;
     text-decoration: none;
+
+    i.fa {
+      color: $gray-4;
+    }
 
     &:hover, &:visited {
       color: #fff;
@@ -41,14 +45,26 @@
   }
 
   &.info {
-    background: $info-alert-background-color;
+    border-left: 7px solid $info-alert-background-color;
+
+    i {
+      color: $info-alert-background-color;
+    }
   }
 
   &.error {
-    background: $error-alert-background-color;
+    border-left: 7px solid $error-alert-background-color;
+
+    i {
+      color: $error-alert-background-color;
+    }
   }
 
   &.warning {
-    background: $warning-alert-background-color;
+    border-left: 7px solid $warning-alert-background-color;
+
+    i {
+      color: $warning-alert-background-color;
+    }
   }
 }

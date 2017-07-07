@@ -6,16 +6,26 @@
 @import 'variables';
 
 .prime-dialog {
-  @extend .panel;
+  background: #fff;
+  border-radius: 2px;
+  border: 2px solid $dialog-border-radius;
   display: flex;
   flex-direction: column;
+  left: calc(50vw - 150px);
   opacity: 0;
-  position: absolute;
-  transition: opacity 0.3s ease-in-out;
+  position: fixed;
+  top: calc(50vh - 150px);
+  transition: opacity 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
   width: 300px;
 
   header {
     h2 {
+      color: $dialog-header-color;
+      font-size: 16px;
+      font-weight: 500;
+      margin: 0;
+      padding: 10px;
+
       a {
         color: #000;
         font-size: 14px;
@@ -26,7 +36,10 @@
     }
   }
 
-  main {
+  > main {
+    overflow-y: scroll;
+    padding: 10px;
+
     h3 {
       background-color: $dialog-section-header-background-color;
       color: $dialog-section-header-color;
@@ -34,16 +47,13 @@
       margin: 10px 0 0 0;
       padding: 12px 15px;
     }
-
-    overflow-y: scroll;
   }
 
-  footer {
-    padding: 10px 15px;
+  > footer {
+    padding: 10px;
   }
 
   &.open {
-    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
     opacity: 1;
   }
 

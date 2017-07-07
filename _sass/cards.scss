@@ -185,8 +185,10 @@
 }
 
 .trading-card {
-  border: 1px solid $radio-card-border;
+  border: 1px solid $trading-card-border;
   border-radius: 2px;
+  box-shadow: $layered-box-shadow;
+  color: $label-color;
   display: inline-block;
   height: 100px;
   margin-right: 3px;
@@ -212,8 +214,8 @@
   }
 
   footer, span.footer {
-    background-color: $radio-card-title-color;
-    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4);
+    background-color: $trading-card-title-background-color;
+    box-shadow: $trading-card-footer-box-shadow;
     color: $label-color;
     display: block;
     font-size: 12px;
@@ -225,7 +227,6 @@
   }
 
   &:hover {
-    border: 1px solid $highlight-color;
     box-shadow: $highlight-box-shadow;
   }
 }

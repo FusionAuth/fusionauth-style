@@ -38,12 +38,12 @@ $sidebar-header-border-color: #213344;
 $sidebar-nav-border-color: #5D6C7D;
 $sidebar-nav-active-border-color: #38E1BD;
 $sidebar-nav-active-color: white;
+$sidebar-nav-color: #38E1BD;
 $sidebar-nav-active-background-color: #253241;
-$sidebar-nav-color: white;
-$sidebar-nav-icon-color: #38E1BD;
 $sidebar-nav-open-background-color: #2A3A4A;
 
 $fixed-box-shadow: 0 0 5px 0 rgba(0, 0, 0, .35);
+//$layered-box-shadow: inset 1px 1px 0 rgba(0, 0, 0, .1), inset 0 -1px 0 rgba(0, 0, 0, .07), 0 1px 3px 0 rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 2px 1px -1px rgba(0, 0, 0, .12);
 $layered-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 2px 1px 0 rgba(0, 0, 0, .12);
 
 
@@ -124,11 +124,9 @@ $yellow-card-background-color: $yellow-light;
 $yellow-card-header-background-color: $yellow-medium;
 
 
-/* Dialogs
+/* Cards
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
-$dialog-border-radius: $gray-5;
-$dialog-header-color: $gray-6;
 $dialog-section-header-background-color: $purple-light;
 $dialog-section-header-color: #fff;
 
@@ -137,9 +135,8 @@ $dialog-section-header-color: #fff;
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
 $checkbox-border-color: $gray-4;
-$checkbox-check-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2);
-$checkbox-check-color: white;
-$checkbox-checked-background-color: $blue-medium;
+$checkbox-check-color: $green-medium;
+$checkbox-list-border-color: $gray-4;
 
 $datetime-picker-border-color: $gray-3;
 $datetime-picker-cell-background-color: $gray-2;
@@ -164,23 +161,22 @@ $error-widget-color: $red-light;
 $fieldset-border-color: $gray-3;
 $fieldset-legend-color: $gray-7;
 
-$highlight-box-shadow: 0 0 0 2px rgba($blue-medium, 0.4);
-$highlight-color: rgba($blue-medium, 0.4);
+$highlight-color: $blue-medium;
 
-$input-addon-background-color: $gray-1;
-$input-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-$input-addon-color: $gray-6;
+$input-addon-background-color: $blue-medium;
+$input-addon-color: white;
 $input-background-color: #E7EDF2;
+//$input-box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, .2), inset 0 1px 1px 0 rgba(0, 0, 0, .14), inset 0 2px 1px -1px rgba(0, 0, 0, .12);
+//$input-box-shadow: inset 0 1px 1px 0 rgba(0, 0, 0, .2);
 $input-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4);
 
 $label-color: $gray-6;
 $label-font-size: 12px;
 
-$multiple-select-option-color: white;
-$multiple-select-option-background-color: $blue-medium;
-$multiple-select-option-highlight-background-color: $blue-dark;
-$multiple-select-search-border-color: $gray-4;
-$multiple-select-search-highlight-background-color: $blue-medium;
+$multiple-select-border-color: $gray-4;
+$multiple-select-option-background-color: $gray-2;
+$multiple-select-option-border-color: $gray-3;
+$multiple-select-option-highlight-background-color: $blue-medium;
 
 $option-background-color: $gray-1;
 $option-color: $gray-7;
@@ -188,16 +184,12 @@ $option-color: $gray-7;
 $required-color: $red-medium;
 
 $radio-border-color: $gray-4;
-$radio-check-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2);
-$radio-pin-color: white;
-$radio-checked-border-color: $blue-medium;
+$radio-check-color: $green-medium;
 
-$select-background-color: $page-body-background-color;
-$select-border-color: $blue-medium;
-$select-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2);
-$select-color: $gray-6;
+$select-border-color: $gray-4;
+$select-background-color: $gray-3;
 
-$text-border-color: $gray-3;
+$text-border-color: $gray-4;
 $text-disabled-border-color: $gray-2;
 $text-disabled-color: $gray-6;
 
@@ -206,13 +198,10 @@ $toggle-check-color: $green-medium;
 $toggle-rail-color: $gray-2;
 $toggle-rail-highlight-color: $blue-medium;
 
-$trading-card-border: $gray-2;
-$trading-card-checked-background-color: $blue-medium;
-$trading-card-footer-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4);
-$trading-card-hover-background-color: $blue-light;
-$trading-card-hover-border-color: $blue-medium;
-$trading-card-title-background-color: $gray-1;
-
+$radio-card-border: $gray-4;
+$radio-card-title-color: $gray-1;
+$radio-card-hover-border-color: $blue-medium;
+$radio-card-hover-background-color: $blue-light;
 
 /* Grid
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
@@ -258,8 +247,6 @@ $table-border-color: $gray-2;
 $table-header-color: $gray-5;
 $table-header-link-color: $blue-dark;
 $table-header-sort-color: $blue-dark;
-$table-pagination-background-color: $gray-1;
-$table-pagination-box-shadow: $layered-box-shadow;
 $table-pagination-header-color: $gray-6;
 $table-pagination-hover-color: $gray-1;
 $table-pagination-link-color: $blue-medium;
@@ -268,10 +255,10 @@ $table-pagination-link-color: $blue-medium;
 /* Tabs
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
+$tab-background-color: $gray-1;
 $tab-border-color: $gray-3;
 $tab-color: $gray-5;
-$tab-selected-color: $blue-medium;
-$tab-selected-border-color: $blue-medium;
+$tab-selected-color: $gray-7;
 
 
 /* Tooltip

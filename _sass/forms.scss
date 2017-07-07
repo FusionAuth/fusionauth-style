@@ -10,18 +10,22 @@
 label {
   color: $label-color;
   display: inline-block;
+  font-size: $label-font-size;
   font-weight: bold;
   position: relative;
+
+  i.fa {
+    font-family: FontAwesome;
+    color: #1E91CF;
+    font-size: 13px;
+    margin-left: 4px;
+  }
 
   span.required {
     color: $required-color;
   }
 
   &[data-tooltip]:after {
-    font-family: FontAwesome;
-    color: #1E91CF;
-    content: "\f059";
-    margin-left: 4px;
   }
 
   &.error {
@@ -73,13 +77,13 @@ form.labels-left {
         margin-right: 20px;
         margin-top: 8px;
         text-align: right;
-        width: 12%;
+        width: 18%;
       }
 
       > span.error {
         color: $error-color;
         display: block;
-        margin-left: calc(12% + 20px);
+        margin-left: calc(18% + 20px);
       }
 
       &:after {
@@ -110,7 +114,7 @@ form.labels-left {
     input[type="password"],
     textarea,
     select {
-      width: calc(100% - 12% - 20px);
+      width: calc(100% - 18% - 20px);
     }
 
     .input-addon {
@@ -164,15 +168,15 @@ input[type="url"],
 input[type="password"],
 textarea {
   appearance: none;
-  background: #fff;
-  border: 1px solid $text-border-color;
+  background: $input-background-color;
+  border: 1px solid white;
   border-radius: 2px;
   box-shadow: $input-box-shadow;
   display: inline-block;
   font-size: 12px;
   font-weight: normal;
   padding: 8px 13px;
-  transition: border 0.2s ease-in-out;
+  transition: box-shadow 0.2s ease-in-out;
 
   &:disabled {
     border: 1px solid $text-disabled-border-color;
@@ -181,20 +185,32 @@ textarea {
 
   &:focus {
     border-color: $highlight-color;
-    box-shadow: $highlight-box-shadow;
+    box-shadow: $input-box-shadow, $highlight-box-shadow;
     outline: 0;
   }
 
-  &.error {
-    border: 1px solid $error-color;
-    color: $error-color;
-
-    &:focus {
-      border: 1px solid $error-highlight-color;
-      box-shadow: $error-box-shadow;
-      color: $error-highlight-color;
-    }
+  &.flat {
+    background: transparent;
+    border: none;
+    box-shadow: none;
   }
+}
+
+@mixin input-icon() {
+  background: $input-addon-background-color;
+  border: 1px solid white;
+  display: table-cell;
+  line-height: 1;
+  transition: border 0.2s ease-in-out;
+  vertical-align: middle;
+}
+
+@mixin input-icon-i() {
+  border: 1px solid $text-border-color;
+  color: $input-addon-color;
+  font: normal normal normal 14px/1 FontAwesome;
+  padding: 7px 11px 7px 11px;
+  transition: border 0.2s ease-in-out;
 }
 
 .input-addon {
@@ -202,44 +218,44 @@ textarea {
   display: table;
 
   .input-icon-left {
-    background: $input-addon-background-color;
-    border: 1px solid $text-border-color;
+    @include input-icon();
     border-radius: 2px 0 0 2px;
     border-right: none;
-    display: table-cell;
-    line-height: 1;
-    padding: 8px 13px 9px 13px;
-    vertical-align: middle;
 
-    i {
-      color: $input-addon-color;
-      font-size: 14px/1;
+    i.fa {
+      @include input-icon-i();
+      border-radius: 2px 0 0 2px;
+      border-right: none;
     }
 
     & + input {
       border-radius: 0 2px 2px 0;
       display: table-cell;
+      border-left: none;
     }
   }
 
   input {
     border-radius: 2px 0 0 2px;
+    border-right: none;
     display: table-cell;
 
-    i {
-      color: $input-addon-color;
-      font-size: 14px/1;
-    }
-
     & + .input-icon-right {
-      background: $input-addon-background-color;
-      border: 1px solid $text-border-color;
+      @include input-icon();
       border-left: none;
       border-radius: 0 2px 2px 0;
-      display: table-cell;
-      line-height: 1;
-      padding: 8px 13px 9px 13px;
-      vertical-align: middle;
+
+      i.fa {
+        @include input-icon-i();
+        border-left: none;
+        border-radius: 0 2px 2px 0;
+      }
+    }
+  }
+
+  &.flat {
+    i.fa, input, input:focus {
+      border: none;
     }
   }
 }
@@ -253,35 +269,29 @@ textarea {
   span.box {
     background: #fff;
     border: 1px solid $checkbox-border-color;
+    border-radius: 2px;
     cursor: pointer;
-    height: 20px;
+    height: 15px;
     left: 0;
     position: absolute;
-    top: 0;
-    transition: border 0.2s ease-in-out;
-    width: 20px;
-
-    &.error {
-      border-color: $error-color;
-    }
+    top: 2px;
+    transition: box-shadow 0.2s ease-in-out;
+    width: 15px;
 
     &:after {
       background: transparent;
-      border: 3px solid $checkbox-check-color;
+      border: 2px solid $checkbox-check-color;
       border-right: none;
       border-top: none;
+      box-shadow: $checkbox-check-box-shadow;
       content: '';
-      height: 5px;
-      left: 1px;
+      height: 3px;
+      left: 2px;
       opacity: 0;
       position: absolute;
       top: 3px;
       transform: rotate(-55deg);
-      width: 14px;
-    }
-
-    &:hover::after {
-      opacity: 0.3;
+      width: 8px;
     }
   }
 
@@ -292,30 +302,31 @@ textarea {
   }
 
   input {
-    height: 20px;
+    height: 15px;
     margin-right: 7px;
     opacity: 0;
     vertical-align: middle;
-    width: 20px;
+    width: 15px;
 
     &:focus + span.box {
-      border: 1px solid $highlight-color;
       box-shadow: $highlight-box-shadow;
     }
 
-    &:focus + span.error {
-      border: 1px solid $error-highlight-color;
-      box-shadow: $error-box-shadow;
-    }
+    &:checked + span.box {
+      background: $checkbox-checked-background-color;
+      border-color: $checkbox-checked-background-color;
 
-    &:checked + span.box:after {
-      opacity: 1;
+      &:after {
+        opacity: 1;
+      }
     }
   }
 }
 
 .checkbox-list {
-  border: 1px solid $checkbox-list-border-color;
+  background: $input-background-color;
+  border: 1px solid white;
+  box-shadow: $input-box-shadow;
   max-height: 200px;
   overflow-y: scroll;
   padding: 0 10px;
@@ -337,29 +348,26 @@ textarea {
     border: 1px solid $radio-border-color;
     border-radius: 50px;
     cursor: pointer;
-    height: 20px;
+    height: 16px;
     left: 0;
     margin: 0;
     padding: 0;
     position: absolute;
-    top: 0;
-    transition: border 0.2s ease-in-out;
-    width: 20px;
-
-    &.error {
-      border-color: $error-color;
-    }
+    top: 2px;
+    transition: box-shadow 0.2s ease-in-out;
+    width: 16px;
 
     &:after {
-      background: $radio-check-color;
+      background: $radio-pin-color;
       border-radius: 50px;
+      box-shadow: $radio-check-box-shadow;
       content: '';
-      height: 12px;
-      left: 3px;
+      height: 6px;
+      left: -2px;
       opacity: 0;
       position: absolute;
-      top: 3px;
-      width: 12px;
+      top: -2px;
+      width: 6px;
     }
 
     &:hover::after {
@@ -375,45 +383,43 @@ textarea {
   }
 
   input {
-    height: 20px;
+    height: 16px;
     opacity: 0;
-    margin-right: 7px;
+    margin-right: 5px;
     vertical-align: middle;
-    width: 20px;
+    width: 16px;
 
     &:focus + span.box {
-      border: 1px solid $highlight-color;
       box-shadow: $highlight-box-shadow;
     }
 
-    &:focus + span.error {
-      border: 1px solid $error-highlight-color;
-      box-shadow: $error-box-shadow;
-    }
+    &:checked + span.box {
+      border: 7px solid $radio-checked-border-color;
 
-    &:checked + span.box:after {
-      opacity: 1;
+      &:after {
+        opacity: 1;
+      }
     }
   }
 }
 
 select {
   appearance: none;
+  -webkit-appearance: none;
   background-color: $select-background-color;
-  background-image: linear-gradient(45deg, transparent 50%, white 50%), linear-gradient(135deg, white 50%, transparent 50%), linear-gradient(to right, $gray-3, $gray-3);
+  background-image: linear-gradient(45deg, transparent 50%, $select-color 50%), linear-gradient(135deg, $select-color 50%, transparent 50%), linear-gradient(to right, $select-background-color, $select-background-color);
   background-position: calc(100% - 20px) calc(1em + 2px), calc(100% - 15px) calc(1em + 2px), 100% 0;
   background-repeat: no-repeat;
   background-size: 5px 5px, 5px 5px, 2.5em 2.5em;
-  border: 1px solid $select-border-color;
+  border: 1px solid transparent;
   border-radius: 2px;
-  box-shadow: none;
-  color: #fff;
+  box-shadow: $select-box-shadow;
+  color: $select-color;
   padding: 8px 50px 8px 13px;
-  transition: border 0.2s ease-in-out;
+  transition: box-shadow 0.2s ease-in-out;
 
   &:focus {
-    border: 1px solid $highlight-color;
-    box-shadow: $highlight-box-shadow;
+    box-shadow: $select-box-shadow, $highlight-box-shadow;
     outline: 0;
   }
 
@@ -421,68 +427,11 @@ select {
     width: 100%;
   }
 
-  &.error {
-    background-color: $error-widget-color;
-    background-image: linear-gradient(45deg, transparent 50%, white 50%), linear-gradient(135deg, white 50%, transparent 50%), linear-gradient(to right, $error-widget-color, $error-widget-color);
-    border: 1px solid $error-color;
-  }
-
-  &.error:focus {
-    box-shadow: $error-box-shadow;
-  }
-
   option {
     background: $option-background-color;
     color: $option-color;
   }
 }
-
-//
-//.toggle {
-//  margin-top: 6px;
-//  position: relative;
-//
-//  span.rail {
-//    @include border-radius(10px);
-//    background: $toggle-rail-color;
-//    height: 15px;
-//    position: absolute;
-//    top: 0;
-//    width: 37px;
-//  }
-//
-//  span.pin {
-//    @include border-radius(50%);
-//    @include box-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
-//    @include transition(0.5s);
-//    background: white;
-//    height: 23px;
-//    left: -4px;
-//    position: absolute;
-//    top: -5px;
-//    width: 23px;
-//  }
-//
-//  input[type=checkbox] {
-//    height: 1px;
-//    opacity: 0;
-//    width: 1px;
-//
-//    &:checked ~ span.rail {
-//      background: $toggle-rail-highlight-color;
-//    }
-//
-//    &:checked ~ span.pin {
-//      background: $toggle-check-color;
-//      left: 20px;
-//    }
-//
-//    &:focus ~ span.pin {
-//      @include box-shadow($highlight-box-shadow);
-//      border: 1px solid $highlight-color;
-//    }
-//  }
-//}
 
 .toggle {
   margin: 5px 0 0 0;
@@ -494,7 +443,7 @@ select {
   span.rail {
     background: $toggle-rail-color;
     border-radius: 12px;
-    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4);
+    box-shadow: $toggle-box-shadow;
     height: 24px;
     position: absolute;
     top: 0;
@@ -526,11 +475,10 @@ select {
     &:checked ~ span.pin {
       left: 30px;
     }
+  }
 
-    &:focus ~ span.pin {
-      border: 1px solid $highlight-color;
-      box-shadow: $highlight-box-shadow;
-    }
+  &.focus span.rail {
+    box-shadow: $toggle-box-shadow, $highlight-box-shadow;
   }
 }
 
@@ -545,13 +493,12 @@ select {
 
   input[type="radio"]:checked + footer,
   input[type="radio"]:checked + span.footer {
-    background-color: $highlight-color;
+    background-color: $trading-card-checked-background-color;
     box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4);
-    color: $radio-card-title-color;
+    color: white;
   }
 
   &.focus {
-    border: 1px solid $highlight-color;
     box-shadow: $highlight-box-shadow;
   }
 }
@@ -559,34 +506,19 @@ select {
 .prime-multiple-select {
   position: relative;
 
-  &.error ul.option-list {
-    border: 1px solid $error-highlight-color;
-  }
-
-  &.focus ul.option-list {
-    border: 1px solid $highlight-color;
-    box-shadow: $highlight-box-shadow;
-  }
-
-  &.error.focus ul.option-list {
-    border: 1px solid $error-highlight-color;
-    box-shadow: $error-box-shadow;
-  }
-
   ul.option-list {
-    border: 1px solid $multiple-select-border-color;
+    background: $input-background-color;
     box-shadow: $input-box-shadow;
-    margin: 0;
-    padding: 4px 4px;
+    height: 34px;
     list-style: none;
-    max-height: 80px;
-    min-height: 25px;
+    margin: 0;
     overflow-x: hidden;
     overflow-y: auto;
-    transition: border 0.2s ease-in-out;
+    padding: 4px 4px;
+    transition: box-shadow 0.2s ease-in-out;
 
     li {
-      color: #000000;
+      color: $multiple-select-option-color;
       display: inline-block;
 
       &:first-of-type {
@@ -597,7 +529,6 @@ select {
         background: $multiple-select-option-background-color;
         background-clip: padding-box;
         border-radius: 3px;
-        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.4);
         cursor: default;
         margin: 1px 4px;
         padding: 2px 9px;
@@ -605,10 +536,11 @@ select {
         span {
           display: inline-block;
           margin-right: 2px;
+          padding-bottom: 2px;
         }
 
         a {
-          color: #555;
+          color: $multiple-select-option-color;
           display: inline-block;
           font-family: FontAwesome;
           font-size: 14px;
@@ -636,6 +568,7 @@ select {
   }
 
   input {
+    background: transparent;
     border: none;
     box-shadow: none;
     height: 26px;
@@ -644,7 +577,6 @@ select {
     padding: 0;
 
     &:focus {
-      background: none;
       border: none;
       box-shadow: none;
       outline: none;
@@ -653,9 +585,8 @@ select {
 
   .search-results {
     background: #fff;
-    border: 1px solid $multiple-select-border-color;
-    border-top: 0;
-    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.4);
+    border: 1px solid $multiple-select-search-border-color;
+    border-radius: 2px;
     height: 175px;
     left: 0;
     list-style: none;
@@ -664,25 +595,31 @@ select {
     position: absolute;
     overflow-x: hidden;
     overflow-y: auto;
-    top: 100%;
+    top: 38px;
     width: 100%;
-    z-index: 1010;
+    z-index: 10;
 
     li {
       padding: 5px;
     }
 
     .selected {
-      background: $multiple-select-option-highlight-background-color;
+      background: $multiple-select-search-highlight-background-color;
       color: #fff;
     }
+  }
+
+  &.focus ul.option-list {
+    box-shadow: $highlight-box-shadow;
   }
 }
 
 // Float hack
-form.labels-left .search-results {
-  margin-left: calc(12% + 20px);
-  width: calc(88% - 20px);
+form.labels-left .prime-multiple-select .search-results {
+  @media(min-width: 550px) {
+    margin-left: calc(18% + 20px);
+    width: calc(82% - 20px);
+  }
 }
 
 .prime-date-picker {
@@ -856,6 +793,7 @@ form.labels-left .search-results {
     input {
       background: #fff;
       border: none;
+      box-shadow: none;
       display: inline;
       height: 20px;
       margin: 0;

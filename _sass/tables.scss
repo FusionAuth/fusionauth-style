@@ -9,7 +9,6 @@
 
 table {
   background: transparent;
-  border: 1px solid $table-border-color;
   border-collapse: collapse;
   border-spacing: 0;
   margin-bottom: 17px;
@@ -18,10 +17,9 @@ table {
 
   thead {
     tr {
+      border-bottom: 1px solid $table-border-color;
+
       th {
-        border: 1px solid $table-border-color;
-        border-bottom-width: 2px;
-        border-top: 0;
         color: $table-header-color;
         padding: 8px;
         text-align: left;
@@ -66,8 +64,6 @@ table {
   tbody {
     tr {
       td {
-        border: 1px solid $table-border-color;
-        border-top: 0;
         padding: 8px;
         text-align: left;
         vertical-align: middle;
@@ -91,6 +87,10 @@ table {
           }
         }
       }
+
+      &:not(:last-of-type) {
+        border-bottom: 1px solid $table-border-color;
+      }
     }
   }
 
@@ -98,10 +98,7 @@ table {
     border: none;
 
     tr {
-
       td {
-        border: 1px solid $table-border-color;
-
         &:first-child {
           font-weight: bold;
           white-space: nowrap;
@@ -117,58 +114,64 @@ table {
 }
 
 .pagination {
-  font-size: 0;
+  background: $table-pagination-background-color;
+  border-radius: 2px;
+  box-shadow: $table-pagination-box-shadow;
+  font-size: 12px;
+  margin-bottom: 20px;
+  padding: 10px 0;
 
-  a, span {
-    background: #fff;
-    border: 1px solid $table-border-color;
+  a {
     color: $table-pagination-link-color;
     display: inline-block;
-    font-size: 12px;
-    margin: 0 0 0 -1px;
-    padding: 8px 13px;
+    margin-right: 5px;
     text-decoration: none;
   }
 
-  span.header {
-    color: $table-pagination-header-color;
-  }
-
-  a:hover {
-    background: $table-pagination-hover-color;
-  }
-
-  .current {
-    background: $table-pagination-link-color;
-    border-color: $table-pagination-link-color;
-    color: #fff;
+  i.fa {
+    font-size: 14px;
+    font-weight: bold;
   }
 
   p {
-    font-size: 12px;
+    color: $gray-6;
+    margin: 0;
+    padding: 0;
+  }
+
+  span {
+    color: $gray-6;
+    margin-right: 5px;
+  }
+
+  span.header {
+    margin-right: 10px;
+    text-transform: uppercase;
+  }
+
+  .number-controls {
+    display: none;
+  }
+
+  .info {
+    margin-bottom: 10px;
   }
 
   .page-controls, .number-controls, .info {
-    margin-bottom: 10px;
     text-align: left;
-
-    :first-child {
-      border-top-left-radius: 3px;
-      border-bottom-left-radius: 3px;
-    }
-
-    :last-child {
-      border-top-right-radius: 3px;
-      border-bottom-right-radius: 3px;
-    }
   }
 
   @media (min-width: 770px) {
-    .number-controls {
+    .info {
+      margin-bottom: 0;
       text-align: center;
     }
 
-    .info {
+    .number-controls {
+      display: block;
+    }
+
+    .page-controls {
       text-align: right;
     }
   }
