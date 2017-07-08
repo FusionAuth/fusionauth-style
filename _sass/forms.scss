@@ -71,7 +71,7 @@ form.labels-left {
   .form-row {
     margin-bottom: 15px;
 
-    @media (min-width: 550px) {
+    @media (min-width: 640px) {
       > label:first-child {
         float: left;
         margin-right: 20px;
@@ -616,7 +616,7 @@ select {
 
 // Float hack
 form.labels-left .prime-multiple-select .search-results {
-  @media(min-width: 550px) {
+  @media(min-width: 640px) {
     margin-left: calc(18% + 20px);
     width: calc(82% - 20px);
   }

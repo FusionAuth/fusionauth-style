@@ -13,11 +13,12 @@ $font-stack: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, '
 /* General application and layout colors
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
+$app-header-background-color: white;
+$app-header-border-color: $gray-2;
+
 $breadcrumb-color: $gray-5;
 
 $default-text-color: $gray-7;
-
-$header-border-color: $gray-2;
 
 $hamburger-color: $gray-4;
 
