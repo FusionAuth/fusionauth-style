@@ -32,6 +32,8 @@ body {
   -webkit-font-smoothing: antialiased;
 
   &.app-sidebar-open {
+    overflow: hidden;
+
     .app-sidebar {
       margin-left: 0;
     }
