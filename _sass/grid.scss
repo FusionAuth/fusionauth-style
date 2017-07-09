@@ -24,20 +24,7 @@
   .col-#{$size}-9,
   .col-#{$size}-10,
   .col-#{$size}-11,
-  .col-#{$size}-12,
-  .col-#{$size}-offset-0,
-  .col-#{$size}-offset-1,
-  .col-#{$size}-offset-2,
-  .col-#{$size}-offset-3,
-  .col-#{$size}-offset-4,
-  .col-#{$size}-offset-5,
-  .col-#{$size}-offset-6,
-  .col-#{$size}-offset-7,
-  .col-#{$size}-offset-8,
-  .col-#{$size}-offset-9,
-  .col-#{$size}-offset-10,
-  .col-#{$size}-offset-11,
-  .col-#{$size}-offset-12 {
+  .col-#{$size}-12 {
     box-sizing: border-box;
     flex: 0 0 auto;
     margin-right: $grid-spacing;
