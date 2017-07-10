@@ -200,10 +200,12 @@
       </ul>
     </nav>
 
-    <footer>
-      &copy; Inversoft Inc. 2017<br>
-      Passport&#8482; version 1.0
-    </footer>
+    <div class="footer-container">
+      <footer>
+        &copy; Inversoft Inc. 2017<br>
+        Passport&#8482; version 1.0
+      </footer>
+    </div>
   </div>
 
   <!-- Main body that includes the fixed header and the footer -->
@@ -1128,9 +1130,30 @@
                 <li><a href="#tab-10">Tab 10</a></li>
                 <li><a href="#tab-11">Tab 11</a></li>
               </ul>
-              <div id="tab-1"><p> Tab 1 contents </p></div>
-              <div id="tab-2"><p> Tab 2 contents </p></div>
-              <div id="tab-3"><p> Tab 3 contents </p></div>
+              <div id="tab-1">
+                <div class="row">
+                  <div class="col-xs" style="border: 1px solid green">
+                    Column with margins
+                  </div>
+                </div>
+              </div>
+              <div id="tab-2">
+                <div class="row">
+                  <div class="col-xs tight-both" style="border: 1px solid green">
+                    Column no with margins
+                  </div>
+                </div>
+              </div>
+              <div id="tab-3">
+                <div class="row">
+                  <div class="col-xs-6 tight-left" style="border: 1px solid green">
+                    Column no left margin
+                  </div>
+                  <div class="col-xs-6 tight-right" style="border: 1px solid green">
+                    Column no right margin
+                  </div>
+                </div>
+              </div>
               <div id="tab-4"><p> Tab 4 contents </p></div>
               <div id="tab-5"><p> Tab 5 contents </p></div>
               <div id="tab-6"><p> Tab 6 contents </p></div>

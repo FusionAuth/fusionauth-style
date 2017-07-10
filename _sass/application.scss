@@ -87,7 +87,7 @@ body {
   }
 
   header {
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.25);
+    border-bottom: 2px solid $sidebar-header-border-color;
     height: 210px;
     padding-top: 15px;
     text-align: center;
@@ -129,19 +129,25 @@ body {
     }
   }
 
-  footer {
+  .footer-container {
+    border-top: 2px solid $sidebar-header-border-color;
     bottom: 0;
-    box-shadow: 0 -1px 3px 0 rgba(0, 0, 0, 0.25);
-    color: white;
-    height: 45px;
-    padding: 5px;
     position: fixed;
-    text-align: center;
-    vertical-align: middle;
-    width: 225px;
+
+    footer {
+      border-top: 1px solid $sidebar-nav-border-color;
+      color: white;
+      height: 45px;
+      padding: 5px;
+      text-align: center;
+      vertical-align: middle;
+      width: 225px;
+    }
   }
 
   nav {
+    padding-top: 1px;
+
     ul {
       list-style: none;
       margin: 0;

@@ -7,10 +7,11 @@
 //
 // Column mixins
 //
-@mixin define-column($width) {
-  flex-basis: calc(#{$width} - #{$grid-spacing * 2});
-  max-width: calc(#{$width} - #{$grid-spacing * 2});
+@mixin define-column($width, $multiplier) {
+  flex-basis: calc(#{$width} - #{$grid-spacing * $multiplier});
+  max-width: calc(#{$width} - #{$grid-spacing * $multiplier});
 }
+
 @mixin define-column-size($size) {
   .col-#{$size},
   .col-#{$size}-1,
@@ -29,60 +30,221 @@
     flex: 0 0 auto;
     margin-right: $grid-spacing;
     margin-left: $grid-spacing;
+
+    &.tight-left {
+      margin-left: 0;
+    }
+
+    &.tight-right {
+      margin-right: 0;
+    }
+
+    &.tight-both {
+      margin-left: 0;
+      margin-right: 0;
+    }
   }
 
   .col-#{$size} {
     flex-grow: 1;
     flex-basis: 0;
     width: calc(100% - #{$grid-spacing * 2});
+
+    &.tight-both {
+      width: calc(100%);
+    }
   }
 
   .col-#{$size}-1 {
-    @include define-column(8.33333333%);
+    @include define-column(8.33333333%, 2);
+
+    &.tight-left {
+      @include define-column(8.33333333%, 1);
+    }
+
+    &.tight-right {
+      @include define-column(8.33333333%, 1);
+    }
+
+    &.tight-both {
+      @include define-column(8.33333333%, 0);
+    }
   }
 
   .col-#{$size}-2 {
-    @include define-column(16.66666667%);
+    @include define-column(16.66666667%, 2);
+
+    &.tight-left {
+      @include define-column(16.66666667%, 1);
+    }
+
+    &.tight-right {
+      @include define-column(16.66666667%, 1);
+    }
+
+    &.tight-both {
+      @include define-column(16.66666667%, 0);
+    }
   }
 
   .col-#{$size}-3 {
-    @include define-column(25%);
+    @include define-column(25%, 2);
+
+    &.tight-left {
+      @include define-column(25%, 1);
+    }
+
+    &.tight-right {
+      @include define-column(25%, 1);
+    }
+
+    &.tight-both {
+      @include define-column(25%, 0);
+    }
   }
 
   .col-#{$size}-4 {
-    @include define-column(33.33333333%);
+    @include define-column(33.33333333%, 2);
+
+    &.tight-left {
+      @include define-column(33.33333333%, 1);
+    }
+
+    &.tight-right {
+      @include define-column(33.33333333%, 1);
+    }
+
+    &.tight-both {
+      @include define-column(33.33333333%, 0);
+    }
   }
 
   .col-#{$size}-5 {
-    @include define-column(41.66666667%);
+    @include define-column(41.66666667%, 2);
+
+    &.tight-left {
+      @include define-column(41.66666667%, 1);
+    }
+
+    &.tight-right {
+      @include define-column(41.66666667%, 1);
+    }
+
+    &.tight-both {
+      @include define-column(41.66666667%, 0);
+    }
   }
 
   .col-#{$size}-6 {
-    @include define-column(50%);
+    @include define-column(50%, 2);
+
+    &.tight-left {
+      @include define-column(50%, 1);
+    }
+
+    &.tight-right {
+      @include define-column(50%, 1);
+    }
+
+    &.tight-both {
+      @include define-column(50%, 0);
+    }
   }
 
   .col-#{$size}-7 {
-    @include define-column(58.33333333%);
+    @include define-column(58.33333333%, 2);
+
+    &.tight-left {
+      @include define-column(58.33333333%, 1);
+    }
+
+    &.tight-right {
+      @include define-column(58.33333333%, 1);
+    }
+
+    &.tight-both {
+      @include define-column(58.33333333%, 0);
+    }
   }
 
   .col-#{$size}-8 {
-    @include define-column(66.66666667%);
+    @include define-column(66.66666667%, 2);
+
+    &.tight-left {
+      @include define-column(66.66666667%, 1);
+    }
+
+    &.tight-right {
+      @include define-column(66.66666667%, 1);
+    }
+
+    &.tight-both {
+      @include define-column(66.66666667%, 0);
+    }
   }
 
   .col-#{$size}-9 {
-    @include define-column(75%);
+    @include define-column(75%, 2);
+
+    &.tight-left {
+      @include define-column(75%, 1);
+    }
+
+    &.tight-right {
+      @include define-column(75%, 1);
+    }
+
+    &.tight-both {
+      @include define-column(75%, 0);
+    }
   }
 
   .col-#{$size}-10 {
-    @include define-column(83.33333333%);
+    @include define-column(83.33333333%, 2);
+
+    &.tight-left {
+      @include define-column(83.33333333%, 1);
+    }
+
+    &.tight-right {
+      @include define-column(83.33333333%, 1);
+    }
+
+    &.tight-both {
+      @include define-column(83.33333333%, 0);
+    }
   }
 
   .col-#{$size}-11 {
-    @include define-column(91.66666667%);
+    @include define-column(91.66666667%, 2);
+
+    &.tight-left {
+      @include define-column(91.66666667%, 1);
+    }
+
+    &.tight-right {
+      @include define-column(91.66666667%, 1);
+    }
+
+    &.tight-both {
+      @include define-column(91.66666667%, 0);
+    }
   }
 
   .col-#{$size}-12 {
-    @include define-column(100%);
+    @include define-column(100%, 2);
+
+    &.tight-left {
+      @include define-column(100%, 1);
+    }
+
+    &.tight-right {
+      @include define-column(100%, 1);
+    }
+
+    &.tight-both {
+      @include define-column(100%, 0);
+    }
   }
 
   .col-#{$size}-offset-0 {

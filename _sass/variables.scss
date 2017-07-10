@@ -25,32 +25,32 @@ $hamburger-color: $gray-4;
 $search-icon-color: $gray-3;
 
 $right-nav-color: $gray-5;
-$right-nav-help-background-color: $purple-dark;
+$right-nav-help-background-color: $purple-medium;
 $right-nav-help-color: white;
 
-$page-body-background-color: #E7EDF2;
+$page-body-background-color: $body;
 $page-header-color: $gray-6;
 $page-header-background-color: white;
 $page-header-border-color: $gray-2;
 $page-footer-color: $gray-4;
 
-$sidebar-background-color: #35485D;
-$sidebar-header-border-color: #213344;
-$sidebar-nav-border-color: #5D6C7D;
-$sidebar-nav-active-border-color: #38E1BD;
+$sidebar-background-color: $purple-medium;
+$sidebar-header-border-color: $purple-dark;
+$sidebar-nav-border-color: rgba(white, 0.2);
+$sidebar-nav-active-border-color: $green-medium;
 $sidebar-nav-active-color: white;
-$sidebar-nav-active-background-color: #253241;
+$sidebar-nav-active-background-color: darken($purple-dark, 7);
 $sidebar-nav-color: white;
-$sidebar-nav-icon-color: #38E1BD;
-$sidebar-nav-open-background-color: #2A3A4A;
+$sidebar-nav-icon-color: $gray-2;
+$sidebar-nav-open-background-color: rgba($purple-dark, 0.7);
 
-$fixed-box-shadow: 0 0 5px 0 rgba(0, 0, 0, .35);
+$fixed-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .20);
 $layered-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 2px 1px 0 rgba(0, 0, 0, .12);
 
 /* Alerts
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
-$alert-color: $gray-5;
+$alert-color: $gray-6;
 $error-alert-background-color: $red-medium;
 $info-alert-background-color: $blue-medium;
 $warning-alert-background-color: $orange-medium;
@@ -170,7 +170,7 @@ $highlight-color: rgba($blue-medium, 0.4);
 $input-addon-background-color: $gray-1;
 $input-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
 $input-addon-color: $gray-6;
-$input-background-color: #E7EDF2;
+$input-background-color: $body;
 $input-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4);
 
 $label-color: $gray-6;
