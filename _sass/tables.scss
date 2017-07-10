@@ -73,6 +73,13 @@ table {
           text-decoration: none;
         }
 
+        img {
+          border: 2px solid white;
+          border-radius: 50px;
+          vertical-align: middle;
+          width: 35px;
+        }
+
         &.action {
           text-align: left;
           white-space: nowrap;
@@ -85,6 +92,10 @@ table {
           @media (min-width: 640px) {
             display: table-cell;
           }
+        }
+
+        &.icon {
+          padding: 2px 8px;
         }
       }
 
