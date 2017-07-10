@@ -179,10 +179,6 @@ body {
             margin-right: 8px;
           }
 
-          &:hover {
-            background: $sidebar-nav-active-background-color;
-          }
-
           &.folder-toggle:after {
             content: "\2039";
             font-size: 16px;
