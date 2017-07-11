@@ -156,7 +156,7 @@ table {
 
   a {
     border-radius: 2px;
-    box-shadow: $table-pagination-box-shadow;
+    box-shadow: $table-pagination-input-box-shadow;
     color: $table-pagination-link-color;
     display: inline-block;
     margin-right: 0;
@@ -191,7 +191,7 @@ table {
 
   select {
     background: $table-pagination-background-color;
-    box-shadow: $table-pagination-box-shadow;
+    box-shadow: $table-pagination-input-box-shadow;
     color: $table-pagination-link-color;
     font-weight: 500;
     padding: 4px 25px 4px 10px;
