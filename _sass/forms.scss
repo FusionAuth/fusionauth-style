@@ -48,6 +48,57 @@ form {
     }
   }
 
+  /*
+    A magic flexbox driven addon group
+
+    Allows any number of icons, labels, inputs, and buttons to be combined in any order.
+
+    Leave this here for specificity on css. If it is removed from the form,
+    other rules may gain precedence and break it.
+   */
+  .input-addon-group {
+    color: $input-addon-color;
+    border-radius: 0;
+    display: inline-flex;
+    > * {
+      border-radius: 0;
+      margin: 0;
+      flex: 1 0 auto;
+      &:first-child {
+        border-radius: 2px 0 0 2px;
+      }
+      &:last-child {
+        border-radius: 0 2px 2px 0;
+      }
+    }
+    .input-group-item { //Use this to make a button/icon the right size.
+      border: 1px solid $text-border-color;
+      flex: 0 0 auto;
+      &:not(:last-child) {
+        border-right: none;
+      }
+      .fa {
+        font: normal normal normal 14px/1 FontAwesome;
+        padding: 7px 11px 7px 11px;
+        transition: border 0.2s ease-in-out;
+      }
+      &.button {
+        padding: 0;
+      }
+    }
+    input + .input-group-item {
+      border-left: none;
+    }
+    label.select { //For select
+      display: inline-block; //Prevent the default labels from breaking inner labels.
+      margin: 0;
+      select {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+
   &.full {
     input[type="email"],
     input[type="number"],
@@ -75,6 +126,13 @@ form {
 
     .input-addon {
       width: 100%;
+    }
+
+    .input-addon-group {
+      display: flex;
+      label.select {
+        width: auto; //Select boxes would normally be 100% width;
+      }
     }
   }
 }
@@ -155,6 +213,13 @@ form.labels-left {
       select,
       label.select {
         width: 100%;
+      }
+    }
+
+    .input-addon-group {
+      display: flex;
+      label.select {
+        width: auto; //Select boxes would normally be 100% width;
       }
     }
   }
@@ -283,6 +348,13 @@ textarea {
       border: none;
     }
   }
+}
+
+.input-group-item {
+  background: $input-addon-background-color;
+  line-height: 1;
+  transition: border 0.2s ease-in-out;
+  vertical-align: middle;
 }
 
 .checkbox {
