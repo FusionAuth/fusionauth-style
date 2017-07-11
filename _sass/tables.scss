@@ -156,8 +156,10 @@ table {
 
   a {
     border-radius: 2px;
+    box-shadow: $table-pagination-box-shadow;
     color: $table-pagination-link-color;
     display: inline-block;
+    margin-right: 0;
     padding: 2px 7px;
     text-decoration: none;
 
@@ -189,10 +191,11 @@ table {
 
   select {
     background: $table-pagination-background-color;
-    box-shadow: 0 0 2px 0 rgba(0, 0, 0, .30);
+    box-shadow: $table-pagination-box-shadow;
     color: $table-pagination-link-color;
     font-weight: 500;
     padding: 4px 25px 4px 10px;
+    //width: 100% !important;
 
     &:focus {
       box-shadow: $select-box-shadow, $highlight-box-shadow;
@@ -200,9 +203,12 @@ table {
     }
   }
 
-  .select {
+  label.select {
+    //width: inherit !important;
+
     &:after {
       color: $table-pagination-link-color;
+      right: 7px;
       top: 5%;
     }
   }

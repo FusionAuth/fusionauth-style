@@ -57,12 +57,17 @@ form {
     input[type="url"],
     input[type="password"],
     textarea,
-    select {
+    select,
+    label.select {
       width: 100%;
-    }
 
-    .input-addon span {
-      width: 1%;
+      select {
+        width: 100%;
+      }
+
+      .input-addon span {
+        width: 1%;
+      }
     }
   }
 }
@@ -113,8 +118,13 @@ form.labels-left {
     input[type="url"],
     input[type="password"],
     textarea,
-    select {
+    select,
+    label.select {
       width: calc(100% - 18% - 20px);
+
+      select {
+        width: 100%;
+      }
     }
 
     .input-addon {
@@ -130,7 +140,8 @@ form.labels-left {
       input[type="url"],
       input[type="password"],
       textarea,
-      select {
+      select,
+      label.select {
         width: 100%;
       }
     }
@@ -429,16 +440,14 @@ select {
   }
 }
 
-.select {
+label.select {
   display: inline-block;
+  margin: 0;
+  padding: 0;
   position: relative;
-
-  select {
-    width: 100%;
-  }
 }
 
-.select:after {
+label.select:after {
   content: "\f107";
   display: inline-block;
   font-family: FontAwesome;
@@ -448,7 +457,7 @@ select {
   padding: 2px 2px;
   pointer-events: none;
   position: absolute;
-  right: 10%;
+  right: 15px;
   text-decoration: none;
   text-rendering: auto;
   top: 15%;
