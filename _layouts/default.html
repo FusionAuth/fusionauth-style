@@ -260,7 +260,9 @@
         <div class="col-xs">
           <div class="alert info">
             <i class="fa fa-info-circle"></i>
-            This is an informational message.
+            <p>
+              This is an informational message.
+            </p>
             <a href="#" class="dismiss-button"><i class="fa fa-times-circle"></i></a>
           </div>
         </div>
@@ -269,7 +271,9 @@
         <div class="col-xs">
           <div class="alert error">
             <i class="fa fa-exclamation-circle"></i>
-            This is an error message.
+            <p>
+              This is an error message.
+            </p>
             <a href="#" class="dismiss-button"><i class="fa fa-times-circle"></i></a>
           </div>
         </div>
@@ -278,7 +282,9 @@
         <div class="col-xs">
           <div class="alert warning">
             <i class="fa fa-exclamation-triangle"></i>
-            This is a warning message.
+            <p>
+              This is a warning message.
+            </p>
             <a href="#" class="dismiss-button"><i class="fa fa-times-circle"></i></a>
           </div>
         </div>
@@ -287,7 +293,9 @@
         <div class="col-xs">
           <div class="alert success">
             <i class="fa fa-check-circle"></i>
-            This is a success message, and a long message that wraps. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            <p>
+              This is a success message, and a long message that wraps. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </p>
             <a href="#" class="dismiss-button"><i class="fa fa-times-circle"></i></a>
           </div>
         </div>
@@ -459,6 +467,16 @@
                     </div>
                   </div>
                   <div class="form-row">
+                    <label for="full-select-1">Full Select 1</label>
+                    <label class="select">
+                      <select id="full-select-1">
+                        <option>One</option>
+                        <option>Two</option>
+                        <option>Three</option>
+                      </select>
+                    </label>
+                  </div>
+                  <div class="form-row">
                     <label for="full-3">Full 3</label>
                     <div class="input-addon">
                       <input type="text" id="full-3" class="input-icon-right"/>
@@ -503,16 +521,16 @@
           <div class="panel">
             <h2>Form Panel with Labels Left</h2>
               <main>
-                  <form class="labels-left">
-                      <fieldset>
-                          <div class="form-row">
-                              <label for="labels-left-toggle-full">Toggle Full Width For Testing</label>
-                              <label class="toggle">
-                                  <input type="checkbox" id="labels-left-toggle-full"><span class="rail"></span><span class="pin"></span>
-                              </label>
-                          </div>
-                      </fieldset>
-                  </form>
+                <form class="labels-left full">
+                  <fieldset>
+                    <div class="form-row">
+                      <label for="labels-left-toggle-full">Toggle Full Width For Testing</label>
+                      <label class="toggle">
+                        <input type="checkbox" id="labels-left-toggle-full"><span class="rail"></span><span class="pin"></span>
+                      </label>
+                    </div>
+                  </fieldset>
+                </form>
               </main>
 
               <main>
