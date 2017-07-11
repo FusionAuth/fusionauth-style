@@ -146,6 +146,28 @@
           Prime.Utils.stopEvent(event);
         })
       });
+
+      // Handle the toggle full width checkboxes
+      Prime.Document.queryById('labels-left-toggle-full').addEventListener('change', function(event) {
+        event.preventDefault();
+        var form = Prime.Document.queryById('form-labels-left');
+        if (form.hasClass('full')) {
+          form.removeClass('full');
+        } else {
+          form.addClass('full');
+        }
+      });
+
+      Prime.Document.queryById('labels-above-toggle-full').addEventListener('change', function(event) {
+        event.preventDefault();
+        var form = Prime.Document.queryById('form-labels-above');
+        if (form.hasClass('full')) {
+          form.removeClass('full');
+        } else {
+          form.addClass('full');
+        }
+      });
+
     });
   </script>
 </head>
@@ -257,6 +279,15 @@
           <div class="alert warning">
             <i class="fa fa-exclamation-triangle"></i>
             This is a warning message.
+            <a href="#" class="dismiss-button"><i class="fa fa-times-circle"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs">
+          <div class="alert success">
+            <i class="fa fa-check-circle"></i>
+            This is a success message, and a long message that wraps. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
             <a href="#" class="dismiss-button"><i class="fa fa-times-circle"></i></a>
           </div>
         </div>
@@ -470,9 +501,22 @@
       <div class="row">
         <div class="col-xs">
           <div class="panel">
-            <h2>Form Panel</h2>
-            <main>
-              <form class="labels-left">
+            <h2>Form Panel with Labels Left</h2>
+              <main>
+                  <form class="labels-left">
+                      <fieldset>
+                          <div class="form-row">
+                              <label for="labels-left-toggle-full">Toggle Full Width For Testing</label>
+                              <label class="toggle">
+                                  <input type="checkbox" id="labels-left-toggle-full"><span class="rail"></span><span class="pin"></span>
+                              </label>
+                          </div>
+                      </fieldset>
+                  </form>
+              </main>
+
+              <main>
+                <form class="labels-left" id="form-labels-left">
                 <fieldset>
                   <legend>Text boxes</legend>
                   <div class="form-row">
@@ -699,17 +743,29 @@
                   <button class="blue button">Back</button>
                 </div>
               </form>
-            </main>
+              </main>
           </div>
         </div>
       </div>
 
       <div class="row">
-        <div class="col-xs">
+      <div class="col-xs">
           <div class="panel">
-            <h2>Form Panel</h2>
+            <h2>Form Panel with Labels Above</h2>
+              <main>
+                  <form class="labels-above">
+                      <fieldset>
+                          <div class="form-row">
+                              <label for="labels-above-toggle-full">Toggle Full Width For Testing</label>
+                              <label class="toggle">
+                                  <input type="checkbox" id="labels-above-toggle-full"><span class="rail"></span><span class="pin"></span>
+                              </label>
+                          </div>
+                      </fieldset>
+                  </form>
+              </main>
             <main>
-              <form class="labels-above">
+              <form class="labels-above" id="form-labels-above">
                 <fieldset>
                   <legend>Text boxes</legend>
                   <div class="form-row">

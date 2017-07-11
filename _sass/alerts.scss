@@ -61,6 +61,14 @@
     }
   }
 
+  &.success {
+    border-left: 7px solid $success-alert-background-color;
+
+    i {
+      color: $success-alert-background-color;
+    }
+  }
+
   &.warning {
     border-left: 7px solid $warning-alert-background-color;
 
