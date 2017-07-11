@@ -140,8 +140,8 @@
         });
       });
 
-      // Ignore the click on the example trading card anchor tags
-      Prime.Document.query('a.trading-card').each(function (a) {
+      // Ignore the click on the example trading card anchor tags and pagination links
+      Prime.Document.query('a.trading-card, .pagination a').each(function (a) {
         a.addEventListener('click', function (event) {
           Prime.Utils.stopEvent(event);
         })
@@ -541,21 +541,25 @@
                   <legend>Select</legend>
                   <div class="form-row">
                     <label for="select"><span class="required">*</span> Select label</label>
-                    <select id="select">
-                      <option>Option 1</option>
-                      <option>Option 2</option>
-                      <option>Option 3</option>
-                      <option>Option 4</option>
-                    </select>
+                    <label class="select">
+                      <select id="select">
+                        <option>Option 1</option>
+                        <option>Option 2</option>
+                        <option>Option 3</option>
+                        <option>Option 4</option>
+                      </select>
+                    </label>
                   </div>
                   <div class="form-row">
                     <label for="select-2" class="error"><span class="required">*</span> Error Select label</label>
-                    <select id="select-2" class="error">
-                      <option>Option 1</option>
-                      <option>Option 2</option>
-                      <option>Option 3</option>
-                      <option>Option 4</option>
-                    </select>
+                    <label class="select">
+                      <select id="select-2" class="error">
+                        <option>Option 1</option>
+                        <option>Option 2</option>
+                        <option>Option 3</option>
+                        <option>Option 4</option>
+                      </select>
+                    </label>
                     <span class="error">Error 1, error 2, error 3</span>
                   </div>
                 </fieldset>
@@ -769,21 +773,25 @@
                   <legend>Select</legend>
                   <div class="form-row">
                     <label for="select-above"><span class="required">*</span> Select label</label>
-                    <select id="select-above">
-                      <option>Option 1</option>
-                      <option>Option 2</option>
-                      <option>Option 3</option>
-                      <option>Option 4</option>
-                    </select>
+                    <label class="select">
+                      <select id="select-above">
+                        <option>Option 1</option>
+                        <option>Option 2</option>
+                        <option>Option 3</option>
+                        <option>Option 4</option>
+                      </select>
+                    </label>
                   </div>
                   <div class="form-row">
                     <label for="select-2-above" class="error"><span class="required">*</span> Error Select label</label>
-                    <select id="select-2-above" class="error">
-                      <option>Option 1</option>
-                      <option>Option 2</option>
-                      <option>Option 3</option>
-                      <option>Option 4</option>
-                    </select>
+                    <label class="select">
+                      <select id="select-2-above" class="error">
+                        <option>Option 1</option>
+                        <option>Option 2</option>
+                        <option>Option 3</option>
+                        <option>Option 4</option>
+                      </select>
+                    </label>
                     <span class="error">Error 1, error 2, error 3</span>
                   </div>
                 </fieldset>
@@ -861,9 +869,16 @@
               <div class="pagination row middle-xs">
                 <div class="number-controls col-lg-4 col-xs-12">
                   <span class="header">Items per page:</span>
-                  <a href="#">25</a>
-                  <span class="current">50</span>
-                  <a href="#">100</a>
+                    <label for="rows-per-age"></label>
+                    <label class="select">
+                      <select id="rows-per-age">
+                          <option>25</option>
+                          <option>50</option>
+                          <option>100</option>
+                          <option>250</option>
+                          <option>500</option>
+                        </select>
+                    </label>
                 </div>
                 <div class="info col-lg-4 col-xs-12">
                   <p>
@@ -871,12 +886,12 @@
                   </p>
                 </div>
                 <div class="page-controls col-lg-4 col-xs-12">
-                  <span class="current">1</span>
+                  <a href="#" class="current">1</a>
                   <a href="#">2</a>
                   <a href="#">3</a>
                   <a href="#">4</a>
-                  <a href="#"><i class="fa fa-angle-right"></i></a>
-                  <a href="#"><i class="fa fa-angle-double-right"></i></a>
+                  <a href="#" data-tooltip="Next Page"><i class="fa fa-angle-right"></i></a>
+                  <a href="#" data-tooltip="Last Page"><i class="fa fa-angle-double-right"></i></a>
                 </div>
               </div>
               <table>
@@ -912,9 +927,16 @@
               <div class="pagination row middle-xs">
                 <div class="number-controls col-lg-4 col-xs-12">
                   <span class="header">Items per page:</span>
-                  <a href="#">25</a>
-                  <span class="current">50</span>
-                  <a href="#">100</a>
+                  <label for="rows-per-age"></label>
+                  <label class="select">
+                    <select>
+                    <option>25</option>
+                    <option>50</option>
+                    <option>100</option>
+                    <option>250</option>
+                    <option>500</option>
+                    </select>
+                  </label>
                 </div>
                 <div class="info col-lg-4 col-xs-12">
                   <p>
@@ -922,12 +944,12 @@
                   </p>
                 </div>
                 <div class="page-controls col-lg-4 col-xs-12">
-                  <span class="current">1</span>
+                  <a href="#" class="current">1</a>
                   <a href="#">2</a>
                   <a href="#">3</a>
                   <a href="#">4</a>
-                  <a href="#"><i class="fa fa-angle-right"></i></a>
-                  <a href="#"><i class="fa fa-angle-double-right"></i></a>
+                  <a href="#" data-tooltip="Next Page"><i class="fa fa-angle-right"></i></a>
+                  <a href="#" data-tooltip="Last Page"><i class="fa fa-angle-double-right"></i></a>
                 </div>
               </div>
             </main>
@@ -982,6 +1004,14 @@
                   <td class="text-right">Value 3</td>
                   <td class="action"><a href="#" class="blue button small-square" data-tooltip="Edit"><i class="fa fa-pencil"></i></a></td>
                 </tr>
+                <tr>
+                  <td class="tight icon">
+                    <img src="images/broken.jpg">
+                  </td>
+                  <td class="">Broken avatar link</td>
+                  <td class="text-right">Value 3</td>
+                  <td class="action"><a href="#" class="blue button small-square" data-tooltip="Edit"><i class="fa fa-pencil"></i></a></td>
+                </tr>
                 </tbody>
               </table>
             </main>
@@ -1019,11 +1049,13 @@
                   <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
                     <div class="form-row">
                       <label for="search-5">Search Field 5</label>
-                      <select id="search-5">
-                        <option>Option</option>
-                        <option>Option</option>
-                        <option>Option</option>
-                      </select>
+                      <label class="select">
+                        <select id="search-5">
+                          <option>Option</option>
+                          <option>Option</option>
+                          <option>Option</option>
+                        </select>
+                      </label>
                     </div>
                     <div class="form-row">
                       <label for="search-6">Search Field 6</label>
@@ -1039,7 +1071,7 @@
                 <div class="number-controls col-lg-4 col-xs-12">
                   <span class="header">Items per page:</span>
                   <a href="#">25</a>
-                  <span class="current">50</span>
+                  <a href="#" class="current">50</a>
                   <a href="#">100</a>
                 </div>
                 <div class="info col-lg-4 col-xs-12">
@@ -1048,12 +1080,12 @@
                   </p>
                 </div>
                 <div class="page-controls col-lg-4 col-xs-12">
-                  <span class="current">1</span>
+                  <a href="#" class="current">1</a>
                   <a href="#">2</a>
                   <a href="#">3</a>
                   <a href="#">4</a>
-                  <a href="#"><i class="fa fa-angle-right"></i></a>
-                  <a href="#"><i class="fa fa-angle-double-right"></i></a>
+                  <a href="#" data-tooltip="Next Page"><i class="fa fa-angle-right"></i></a>
+                  <a href="#" data-tooltip="Last Page"><i class="fa fa-angle-double-right"></i></a>
                 </div>
               </div>
               <table>
@@ -1090,7 +1122,7 @@
                 <div class="number-controls col-lg-4 col-xs-12">
                   <span class="header">Items per page:</span>
                   <a href="#">25</a>
-                  <span class="current">50</span>
+                  <a href="#" class="current">50</a>
                   <a href="#">100</a>
                 </div>
                 <div class="info col-lg-4 col-xs-12">
@@ -1099,12 +1131,12 @@
                   </p>
                 </div>
                 <div class="page-controls col-lg-4 col-xs-12">
-                  <span class="current">1</span>
+                  <a href="#" class="current">1</a>
                   <a href="#">2</a>
                   <a href="#">3</a>
                   <a href="#">4</a>
-                  <a href="#"><i class="fa fa-angle-right"></i></a>
-                  <a href="#"><i class="fa fa-angle-double-right"></i></a>
+                  <a href="#" data-tooltip="Next Page"><i class="fa fa-angle-right"></i></a>
+                  <a href="#" data-tooltip="Last Page"><i class="fa fa-angle-double-right"></i></a>
                 </div>
               </div>
             </main>
