@@ -76,9 +76,10 @@ table {
         img {
           border: 2px solid white;
           border-radius: 50px;
+          max-height: 37px;
+          max-width: 37px;
           position: relative;
           vertical-align: middle;
-          width: 35px;
         }
 
         // Handle broken avatar links w/ Font Awesome-ness.

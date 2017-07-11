@@ -55,65 +55,100 @@
       var purple = '52, 72, 94';
       var orange = '255, 156, 61';
 
-      var barChart = new Chart(document.getElementById("bar-chart"), {
-        type: 'bar',
-        data: {
-          labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-          datasets: [{
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
-            backgroundColor: [
-              'rgba(' + red + ', 0.2)',
-              'rgba(' + blue + ', 0.2)',
-              'rgba(' + yellow + ', 0.2)',
-              'rgba(' + green + ', 0.2)',
-              'rgba(' + purple + ', 0.2)',
-              'rgba(' + orange + ', 0.2)'
-            ],
-            borderColor: [
-              'rgba(' + red + ', 1)',
-              'rgba(' + blue + ', 1)',
-              'rgba(' + yellow + ', 1)',
-              'rgba(' + green + ', 1)',
-              'rgba(' + purple + ', 1)',
-              'rgba(' + orange + ', 1)'
-            ],
-            borderWidth: 1
-          }]
-        },
-        options: {
-          scales: {
-            yAxes: [{
-              ticks: {
-                beginAtZero: true
+      var barChartConfiguration = {
+          type: 'bar',
+          data: {
+              labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+              datasets: [{
+                  label: '# of Votes',
+                  data: [12, 19, 3, 5, 2, 3],
+                  backgroundColor: [
+                      'rgba(' + red + ', 0.2)',
+                      'rgba(' + blue + ', 0.2)',
+                      'rgba(' + yellow + ', 0.2)',
+                      'rgba(' + green + ', 0.2)',
+                      'rgba(' + purple + ', 0.2)',
+                      'rgba(' + orange + ', 0.2)'
+                  ],
+                  borderColor: [
+                      'rgba(' + red + ', 1)',
+                      'rgba(' + blue + ', 1)',
+                      'rgba(' + yellow + ', 1)',
+                      'rgba(' + green + ', 1)',
+                      'rgba(' + purple + ', 1)',
+                      'rgba(' + orange + ', 1)'
+                  ],
+                  borderWidth: 1
+              }]
+          },
+          options: {
+              responsive: true,
+              maintainAspectRatio: true,
+              scales: {
+                  yAxes: [{
+                      ticks: {
+                          beginAtZero: true
+                      }
+                  }]
               }
-            }]
           }
-        }
+      };
+      var barChart = new Chart(document.getElementById("bar-chart"), barChartConfiguration);
+
+      var lineChartConfiguration = {
+          type: 'line',
+          data: {
+              labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+              datasets: [{
+                  label: '# of Votes',
+                  data: [12, 19, 3, 5, 2, 3],
+                  backgroundColor: 'rgba(' + purple + ', 0.2)',
+                  borderColor: 'rgba(' + purple + ', 1)',
+                  borderWidth: 1
+              }]
+          },
+          options: {
+              responsive: true,
+              maintainAspectRatio: true,
+              scales: {
+                  yAxes: [{
+                      ticks: {
+                          beginAtZero: true
+                      }
+                  }]
+              }
+          }
+      };
+      var lineChart = new Chart(document.getElementById("line-chart"), lineChartConfiguration);
+
+      var barChartPanel = Prime.Document.queryById('bar-chart-panel');
+      barChartPanel.query('h2 a').addEventListener('click', function(event) {
+          event.preventDefault();
+          var target = new Prime.Document.Element(event.target);
+          if (!target.is('a')) {
+              target = target.queryUp('a');
+          }
+          barChart.destroy();
+          barChartConfiguration.type = target.getDataAttribute('chart');
+          barChart = new Chart(document.getElementById("bar-chart"), barChartConfiguration);
+
+          target.queryUp('h2').query('a').removeClass('current');
+          target.addClass('current');
       });
 
-      var lineChart = new Chart(document.getElementById("line-chart"), {
-        type: 'line',
-        data: {
-          labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-          datasets: [{
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
-            backgroundColor: 'rgba(' + purple + ', 0.2)',
-            borderColor: 'rgba(' + purple + ', 1)',
-            borderWidth: 1
-          }]
-        },
-        options: {
-          scales: {
-            yAxes: [{
-              ticks: {
-                beginAtZero: true
-              }
-            }]
+      var lineChartPanel = Prime.Document.queryById('line-chart-panel');
+        lineChartPanel.query('h2 a').addEventListener('click', function(event) {
+          event.preventDefault();
+          var target = new Prime.Document.Element(event.target);
+          if (!target.is('a')) {
+              target = target.queryUp('a');
           }
-        }
-      });
+          lineChart.destroy();
+          lineChartConfiguration.type = target.getDataAttribute('chart');
+          lineChart = new Chart(document.getElementById("line-chart"), lineChartConfiguration);
+          target.queryUp('h2').query('a').removeClass('current');
+          target.addClass('current');
+        });
 
       Prime.Document.queryById('ajax-dialog-button').addEventListener('click', function (e) {
         new Prime.Widgets.AJAXDialog().initialize().open(new Prime.Document.Element(e.target).getAttribute('href'));
@@ -429,8 +464,14 @@
 
       <div class="row">
         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-          <div class="panel">
-            <h2>Bar Chart</h2>
+          <div class="panel" id="bar-chart-panel">
+            <h2>
+              Bar Chart
+              <label>
+                <a data-chart="line" data-tooltip="Line Chart" href="#"><i class="fa fa-line-chart"></i></a>
+                <a class="current" data-chart="bar" data-tooltip="Bar Chart" href="#"><i class="fa fa-bar-chart"></i></a>
+              </label>
+            </h2>
             <main>
               <div class="report-controls">
                 <a href="#"><i class="fa fa-angle-left"></i></a>
@@ -442,8 +483,14 @@
           </div>
         </div>
         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-          <div class="panel">
-            <h2>Line Chart</h2>
+          <div class="panel" id="line-chart-panel">
+            <h2>
+              Line Chart
+              <label>
+                <a class="current" data-chart="line" data-tooltip="Line Chart" href="#"><i class="fa fa-line-chart"></i></a>
+                <a  data-chart="bar" data-tooltip="Bar Chart" href="#"><i class="fa fa-bar-chart"></i></a>
+              </label>
+            </h2>
             <main>
               <div class="report-controls">
                 <a href="#"><i class="fa fa-angle-left"></i></a>
@@ -534,7 +581,7 @@
                 <form class="labels-left full">
                   <fieldset>
                     <div class="form-row">
-                      <label for="labels-left-toggle-full">Toggle Full Width For Testing</label>
+                      <label for="labels-left-toggle-full">Enable Full Width For Testing</label>
                       <label class="toggle">
                         <input type="checkbox" id="labels-left-toggle-full"><span class="rail"></span><span class="pin"></span>
                       </label>
@@ -809,7 +856,7 @@
                   <form class="labels-above">
                       <fieldset>
                           <div class="form-row">
-                              <label for="labels-above-toggle-full">Toggle Full Width For Testing</label>
+                              <label for="labels-above-toggle-full">Enable Full Width For Testing</label>
                               <label class="toggle">
                                   <input type="checkbox" id="labels-above-toggle-full"><span class="rail"></span><span class="pin"></span>
                               </label>
