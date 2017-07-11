@@ -328,6 +328,14 @@ textarea {
   }
 }
 
+//Corrective code for label.select when a form is full width.
+form.full .input-addon-group {
+  display: flex;
+  label.select {
+    width: auto;
+  }
+}
+
 //Corrective code for label.select in a form that has an input-addon-group.
 form .form-row .input-addon-group label.select {
   display: inline-block;
