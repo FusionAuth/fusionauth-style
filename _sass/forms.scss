@@ -69,6 +69,10 @@ form {
         width: 1%;
       }
     }
+
+    .input-addon {
+      width: 100%;
+    }
   }
 }
 
@@ -128,6 +132,8 @@ form.labels-left {
     }
 
     .input-addon {
+      width: calc(100% - 18% - 20px);
+
       span {
         width: 1%;
       }
@@ -232,6 +238,7 @@ textarea {
     @include input-icon();
     border-radius: 2px 0 0 2px;
     border-right: none;
+    width: 32px;
 
     i.fa {
       @include input-icon-i();
@@ -255,6 +262,7 @@ textarea {
       @include input-icon();
       border-left: none;
       border-radius: 0 2px 2px 0;
+      width: 32px;
 
       i.fa {
         @include input-icon-i();
