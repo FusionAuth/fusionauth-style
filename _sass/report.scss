@@ -1,0 +1,27 @@
+/*
+ * Copyright (c) 2017, Inversoft Inc., All Rights Reserved
+ */
+
+@import 'variables';
+
+/* Report controls
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.report-controls {
+  padding-top: 5px;
+
+  a {
+    display: inline-block;
+    vertical-align: middle;
+
+    i.fa {
+      font-size: 18px;
+      font-weight: 600;
+    }
+  }
+
+  span {
+    display: inline-block;
+    padding: 0 10px;
+  }
+}
