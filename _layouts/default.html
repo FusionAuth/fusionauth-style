@@ -667,6 +667,22 @@
                     </div>
                   </div>
 
+                  <p>Assume the following is nested inside a label left but has no label (cases exist in the interface for this).</p>
+                  <table class="form-row">
+                    <tr>
+                      <td class="input-addon-group">
+                        <label class="select">
+                          <select class="select">
+                            <option selected="true">Selection 1</option>
+                            <option>Selection 2</option>
+                          </select>
+                        </label>
+                        <input type="text" id="text-middle-icon-5" placeholder="Text input"/>
+                        <button class="button red"><i class="fa fa-trash"></i></button>
+                      </td>
+                    </tr>
+                  </table>
+
                   <div class="form-row">
                     <label for="error" class="error">Error <i class="fa fa-info-circle" data-tooltip="Short"></i></label>
                     <input type="text" id="error" class="error" placeholder="Text input"/>

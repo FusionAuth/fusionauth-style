@@ -280,6 +280,11 @@ textarea {
   }
 }
 
+//An input group in a table cell can't have a label so make it 100% width
+form.labels-left.full td.input-addon-group {
+  width: 100%;
+}
+
 // Corrective code for label.select in a form that has an input-addon-group.
 form .form-row .input-addon-group label.select {
   display: inline-block;
