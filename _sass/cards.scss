@@ -37,13 +37,13 @@
       }
 
       &.decrease:before {
-        content: '\f0d8';
+        content: '\f0d7';
         font-family: 'FontAwesome';
         padding-right: 4px;
       }
 
       &.increase:before {
-        content: '\f0d7';
+        content: '\f0d8';
         font-family: 'FontAwesome';
         padding-right: 4px;
       }
