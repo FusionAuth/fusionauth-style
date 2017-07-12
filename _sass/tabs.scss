@@ -53,4 +53,8 @@
   display: none;
   margin-top: -1px;
   padding: 35px 10px;
+
+  &.tight-bottom {
+    padding-bottom: 10px;
+  }
 }
