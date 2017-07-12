@@ -15,3 +15,21 @@
   top: 0;
   width: 100%;
 }
+
+#prime-in-progress-overlay {
+  background: rgba(0, 0, 0, 0.5);
+  content: '';
+  display: block;
+  position: absolute;
+
+  i.fa {
+    color: white;
+    font-size: 64px;
+    left: 50%;
+    margin-left: -32px;
+    margin-top: -32px;
+    position: absolute;
+    top: 50%;
+  }
+}
+

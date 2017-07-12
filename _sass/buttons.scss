@@ -65,6 +65,15 @@
 
   &.gray {
     @include button-colors($gray-button-background-color, $gray-button-color, $gray-button-border-color);
+    padding: 7px 12px;
+
+    &.square {
+      padding: 11px;
+    }
+
+    &.small-square {
+      padding: 6px;
+    }
 
     &:hover, &:focus {
       @include button-colors($gray-button-hover-background-color, $gray-button-color, $gray-button-border-color);
