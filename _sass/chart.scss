@@ -10,41 +10,39 @@
 .panel {
 
   &:hover {
-    label {
+    label.chart-toggle {
       opacity: 1;
     }
   }
 
-  h2 {
+  label.chart-toggle {
+    background: $input-background-color;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 2px;
+    float: right;
+    opacity: 0;
+    padding: 0;
+    transition: opacity 0.3s ease-in-out;
+    z-index: 100;
 
-    label {
-      background: #E7EDF2;
-      border: 1px solid rgba(0, 0, 0, 0.2);
-      border-radius: 2px;
-      float: right;
-      opacity: 0;
-      padding: 0;
-      transition: opacity 0.3s ease-in-out;
+    a {
+      background: white;
+      display: inline-block;
+      margin: 0;
 
-      a {
-        background: white;
-        display: inline-block;
-        margin: 0;
-
-        &.current {
-          background: inherit;
-          pointer-events: none;
-
-          i {
-            box-shadow: inset 0 0 2px 0 rgba(0, 0, 0, 0.35);
-          }
-        }
+      &.current {
+        background: inherit;
+        pointer-events: none;
 
         i {
-          margin: 0;
-          padding: 5px 7px;
-          pointer-events: none;
+          box-shadow: inset 0 0 2px 0 rgba(0, 0, 0, 0.35);
         }
+      }
+
+      i {
+        margin: 0;
+        padding: 5px 7px;
+        pointer-events: none;
       }
     }
   }
