@@ -168,7 +168,7 @@ input[type="password"],
 textarea {
   appearance: none;
   background: $input-background-color;
-  border: 1px solid white;
+  border: none;
   border-radius: 2px;
   box-shadow: $input-box-shadow;
   display: inline-block;
@@ -178,12 +178,11 @@ textarea {
   transition: box-shadow 0.2s ease-in-out;
 
   &:disabled {
-    border: 1px solid $text-disabled-border-color;
+    background: rgba($input-background-color, 0.2);
     color: $text-disabled-color;
   }
 
   &:focus {
-    border-color: $highlight-color;
     box-shadow: $input-box-shadow, $highlight-box-shadow;
     outline: 0;
   }
@@ -204,17 +203,20 @@ textarea {
   color: $input-addon-color;
   display: inline-flex;
 
-  &.flat .input-group-item {
-    background: none;
-
-    i.fa {
+  &.flat {
+    .icon, input {
       background: none;
       border: none;
-    }
-  }
+      box-shadow: none;
 
-  > span {
-    flex: 0 0 auto;
+      &:first-child {
+        border: none;
+      }
+
+      &:last-child {
+        border: none;
+      }
+    }
   }
 
   > input, > label.select {
@@ -228,59 +230,49 @@ textarea {
 
     &:first-child {
       border-radius: 2px 0 0 2px;
+    }
 
-      i.fa {
-        border-left: 1px solid $text-border-color;
-        border-radius: 2px 0 0 2px;
-      }
+    &:last-child:not(.flat) {
+      border-radius: 0 2px 2px 0;
+    }
+  }
+
+  > input, > .icon {
+    &:first-child {
+      border-left: 1px solid $text-border-color;
     }
 
     &:last-child {
-      border-radius: 0 2px 2px 0;
-
-      i.fa {
-        border-right: 1px solid $text-border-color;
-        border-radius: 0 2px 2px 0;
-      }
+      border-right: 1px solid $text-border-color;
     }
   }
 
-  input + .input-group-item {
+  input + .icon {
     border-left: none;
   }
 
-  span.input-group-item {
+  span.icon {
     background: $input-addon-background-color;
   }
 
-  .input-group-item {
-    border-bottom: 1px solid white;
-    border-top: 1px solid white;
+  .icon {
+    border-bottom: 1px solid $text-border-color;
+    border-top: 1px solid $text-border-color;
     flex: 0 0 auto;
 
     &:not(:last-child) {
       border-right: none;
     }
 
-    &.button {
-      padding: 0;
-
-      i.fa {
-        color: inherit;
-      }
-    }
-
     &+ input {
       border-left: none;
     }
 
-    &+ .input-group-item i.fa {
+    &+ .icon {
       border-left: 1px solid $text-border-color;
     }
 
     i.fa {
-      border-bottom: 1px solid $text-border-color;
-      border-top: 1px solid $text-border-color;
       color: $input-addon-color;
       font: normal normal normal 14px/1 FontAwesome;
       padding: 7px 11px 7px 11px;
@@ -452,7 +444,7 @@ label.select {
     appearance: none;
     -webkit-appearance: none;
     background-color: $select-background-color;
-    border: 1px solid transparent;
+    border: none;
     border-radius: 2px;
     box-shadow: $select-box-shadow;
     color: $select-color;
