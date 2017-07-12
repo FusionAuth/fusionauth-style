@@ -125,9 +125,6 @@
       barChartPanel.query('h2 a').addEventListener('click', function(event) {
           event.preventDefault();
           var target = new Prime.Document.Element(event.target);
-          if (!target.is('a')) {
-              target = target.queryUp('a');
-          }
           barChart.destroy();
           barChartConfiguration.type = target.getDataAttribute('chart');
           barChart = new Chart(document.getElementById("bar-chart"), barChartConfiguration);
@@ -140,9 +137,6 @@
         lineChartPanel.query('h2 a').addEventListener('click', function(event) {
           event.preventDefault();
           var target = new Prime.Document.Element(event.target);
-          if (!target.is('a')) {
-              target = target.queryUp('a');
-          }
           lineChart.destroy();
           lineChartConfiguration.type = target.getDataAttribute('chart');
           lineChart = new Chart(document.getElementById("line-chart"), lineChartConfiguration);
@@ -468,8 +462,9 @@
             <h2>
               Bar Chart
               <label>
-                <a data-chart="line" data-tooltip="Line Chart" href="#"><i class="fa fa-line-chart"></i></a>
-                <a class="current" data-chart="bar" data-tooltip="Bar Chart" href="#"><i class="fa fa-bar-chart"></i></a>
+                <!-- No spaces between a tags -->
+                <a data-chart="line" data-tooltip="Line Chart" href="#"><i class="fa fa-line-chart"></i>
+                </a><a class="current" data-chart="bar" data-tooltip="Bar Chart" href="#"><i class="fa fa-bar-chart"></i></a>
               </label>
             </h2>
             <main>
@@ -487,8 +482,9 @@
             <h2>
               Line Chart
               <label>
-                <a class="current" data-chart="line" data-tooltip="Line Chart" href="#"><i class="fa fa-line-chart"></i></a>
-                <a  data-chart="bar" data-tooltip="Bar Chart" href="#"><i class="fa fa-bar-chart"></i></a>
+                <!-- No spaces between a tags -->
+                <a class="current" data-chart="line" data-tooltip="Line Chart" href="#"><i class="fa fa-line-chart"></i>
+                </a><a data-chart="bar" data-tooltip="Bar Chart" href="#"><i class="fa fa-bar-chart"></i></a>
               </label>
             </h2>
             <main>

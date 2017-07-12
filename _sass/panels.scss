@@ -23,31 +23,6 @@
     font-weight: 500;
     margin: 0;
     padding: 0 20px 20px 20px;
-
-    label {
-      float: right;
-
-      a {
-        display: inline-block;
-        margin: 0;
-      }
-
-      .current {
-        pointer-events: none;
-
-        i {
-          box-shadow: $layered-box-shadow;
-        }
-      }
-
-      i {
-        padding: 5px;
-
-        &:hover {
-          box-shadow: $layered-box-shadow;
-        }
-      }
-    }
   }
 
   > main {

@@ -1,0 +1,58 @@
+/*
+ * Copyright (c) 2017, Inversoft Inc., All Rights Reserved
+ */
+
+@import 'mixins';
+@import 'variables';
+
+/* Charts in Panels
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.panel {
+
+  &:hover {
+    label {
+      opacity: 1;
+    }
+  }
+
+  h2 {
+
+    label {
+      background: #E7EDF2;
+      border: 1px solid rgba(0, 0, 0, 0.4);
+      border-radius: 2px;
+      box-shadow: $minimal-box-shadow-inset;
+      float: right;
+      opacity: 0;
+      padding: 0;
+      transition: opacity 0.5s ease-in-out;
+
+      a {
+        background: white;
+        display: inline-block;
+        margin: 0;
+
+        &.current {
+          background: inherit;
+          pointer-events: none;
+
+          i {
+            box-shadow:  $input-box-shadow;
+          }
+        }
+
+        &:hover {
+          i {
+            box-shadow:  $input-box-shadow;
+          }
+        }
+
+        i {
+          margin: 0;
+          padding: 5px 7px;
+          pointer-events: none;
+        }
+      }
+    }
+  }
+}
