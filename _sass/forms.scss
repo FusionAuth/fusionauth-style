@@ -132,24 +132,6 @@ form.labels-left {
 
     .input-addon-group {
       width: calc(100% - 18% - 20px);
-
-      span {
-        width: 1%;
-      }
-
-      input[type="email"],
-      input[type="number"],
-      input[type="search"],
-      input[type="text"],
-      input[type="tel"],
-      input[type="url"],
-      input[type="password"],
-      textarea,
-      select,
-      label.select {
-        //width: 100%;
-        width: auto;
-      }
     }
   }
 }
@@ -222,10 +204,26 @@ textarea {
   color: $input-addon-color;
   display: inline-flex;
 
+  &.flat .input-group-item {
+    background: none;
+
+    i.fa {
+      background: none;
+      border: none;
+    }
+  }
+
+  > span {
+    flex: 0 0 auto;
+  }
+
+  > input, > label.select {
+    flex: 0 1 100%;
+  }
+
   > *, > input {
     border-radius: 0;
     border-right: none;
-    flex: 1 0 auto;
     margin: 0;
 
     &:first-child {
@@ -251,12 +249,14 @@ textarea {
     border-left: none;
   }
 
-  .input-group-item {
+  span.input-group-item {
     background: $input-addon-background-color;
+  }
+
+  .input-group-item {
     border-bottom: 1px solid white;
     border-top: 1px solid white;
     flex: 0 0 auto;
-    transition: border 0.2s ease-in-out;
 
     &:not(:last-child) {
       border-right: none;
@@ -264,6 +264,10 @@ textarea {
 
     &.button {
       padding: 0;
+
+      i.fa {
+        color: inherit;
+      }
     }
 
     &+ input {
@@ -281,15 +285,6 @@ textarea {
       font: normal normal normal 14px/1 FontAwesome;
       padding: 7px 11px 7px 11px;
     }
-  }
-}
-
-// Corrective code for label.select when a form is full width.
-form.full .input-addon-group {
-  display: flex;
-
-  label.select {
-    width: auto;
   }
 }
 

@@ -10,7 +10,11 @@
 
 @mixin button-colors($background-color, $color, $border-color) {
   background: $background-color;
-  border: 1px solid $border-color;
+  @if $border-color != none {
+    border: 1px solid $border-color;
+  } @else if $border-color == none {
+    border: none;
+  }
   color: $color;
 }
 
@@ -52,10 +56,10 @@
   }
 
   &.blue {
-    @include button-colors($blue-button-background-color, $blue-button-color, transparent);
+    @include button-colors($blue-button-background-color, $blue-button-color, none);
 
     &:hover, &:focus {
-      @include button-colors($blue-button-hover-background-color, $blue-button-color, transparent);
+      @include button-colors($blue-button-hover-background-color, $blue-button-color, exclude);
     }
   }
 
@@ -68,42 +72,42 @@
   }
 
   &.green {
-    @include button-colors($green-button-background-color, $green-button-color, transparent);
+    @include button-colors($green-button-background-color, $green-button-color, none);
 
     &:hover, &:focus {
-      @include button-colors($green-button-hover-background-color, $green-button-color, transparent);
+      @include button-colors($green-button-hover-background-color, $green-button-color, exclude);
     }
   }
 
   &.orange {
-    @include button-colors($orange-button-background-color, $orange-button-color, transparent);
+    @include button-colors($orange-button-background-color, $orange-button-color, none);
 
     &:hover, &:focus {
-      @include button-colors($orange-button-hover-background-color, $orange-button-color, transparent);
+      @include button-colors($orange-button-hover-background-color, $orange-button-color, exclude);
     }
   }
 
   &.purple {
-    @include button-colors($purple-button-background-color, $purple-button-color, transparent);
+    @include button-colors($purple-button-background-color, $purple-button-color, none);
 
     &:hover, &:focus {
-      @include button-colors($purple-button-hover-background-color, $purple-button-color, transparent);
+      @include button-colors($purple-button-hover-background-color, $purple-button-color, exclude);
     }
   }
 
   &.red {
-    @include button-colors($red-button-background-color, $red-button-color, transparent);
+    @include button-colors($red-button-background-color, $red-button-color, none);
 
     &:hover, &:focus {
-      @include button-colors($red-button-hover-background-color, $red-button-color, transparent);
+      @include button-colors($red-button-hover-background-color, $red-button-color, exclude);
     }
   }
 
   &.yellow {
-    @include button-colors($yellow-button-background-color, $yellow-button-color, transparent);
+    @include button-colors($yellow-button-background-color, $yellow-button-color, none);
 
     &:hover, &:focus {
-      @include button-colors($yellow-button-hover-background-color, $yellow-button-color, transparent);
+      @include button-colors($yellow-button-hover-background-color, $yellow-button-color, exclude);
     }
   }
 }
