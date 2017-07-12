@@ -25,9 +25,6 @@ label {
     color: $required-color;
   }
 
-  &[data-tooltip]:after {
-  }
-
   &.error {
     color: $error-color;
   }
@@ -59,10 +56,6 @@ form {
     textarea,
     select {
       width: 100%;
-
-      .input-addon span {
-        width: 1%;
-      }
     }
 
     label.select {
@@ -73,7 +66,7 @@ form {
       }
     }
 
-    .input-addon {
+    .input-addon-group {
       width: 100%;
     }
   }
@@ -137,7 +130,7 @@ form.labels-left {
       }
     }
 
-    .input-addon {
+    .input-addon-group {
       width: calc(100% - 18% - 20px);
 
       span {
@@ -154,7 +147,8 @@ form.labels-left {
       textarea,
       select,
       label.select {
-        width: 100%;
+        //width: 100%;
+        width: auto;
       }
     }
   }
@@ -219,91 +213,37 @@ textarea {
   }
 }
 
-@mixin input-icon() {
-  background: $input-addon-background-color;
-  border: 1px solid white;
-  display: table-cell;
-  line-height: 1;
-  transition: border 0.2s ease-in-out;
-  vertical-align: middle;
-}
-
-@mixin input-icon-i() {
-  border: 1px solid $text-border-color;
-  color: $input-addon-color;
-  font: normal normal normal 14px/1 FontAwesome;
-  padding: 7px 11px 7px 11px;
-  transition: border 0.2s ease-in-out;
-}
-
-.input-addon {
-  border-collapse: separate;
-  display: table;
-
-  .input-icon-left {
-    @include input-icon();
-    border-radius: 2px 0 0 2px;
-    border-right: none;
-    width: 32px;
-
-    i.fa {
-      @include input-icon-i();
-      border-radius: 2px 0 0 2px;
-      border-right: none;
-    }
-
-    & + input {
-      border-radius: 0 2px 2px 0;
-      display: table-cell;
-      border-left: none;
-    }
-  }
-
-  input {
-    border-radius: 2px 0 0 2px;
-    border-right: none;
-    display: table-cell;
-
-    & + .input-icon-right {
-      @include input-icon();
-      border-left: none;
-      border-radius: 0 2px 2px 0;
-      width: 32px;
-
-      i.fa {
-        @include input-icon-i();
-        border-left: none;
-        border-radius: 0 2px 2px 0;
-      }
-    }
-  }
-
-  &.flat {
-    i.fa, input, input:focus {
-      border: none;
-    }
-  }
-}
-
-.input-addon-group { //Doesn't make sense outside of form.
-  /*
-  A magic flexbox driven addon group
-
-  Allows any number of icons, labels, inputs, and buttons to be combined in any order.
- */
+/*
+ A magic flexbox driven addon group
+ Allows any number of icons, labels, inputs, and buttons to be combined in any order.
+*/
+.input-addon-group {
   border-radius: 0;
   color: $input-addon-color;
   display: inline-flex;
 
-  > * {
+  > *, > input {
     border-radius: 0;
+    border-right: none;
     flex: 1 0 auto;
     margin: 0;
+
     &:first-child {
       border-radius: 2px 0 0 2px;
+
+      i.fa {
+        border-left: 1px solid $text-border-color;
+        border-radius: 2px 0 0 2px;
+      }
     }
+
     &:last-child {
       border-radius: 0 2px 2px 0;
+
+      i.fa {
+        border-right: 1px solid $text-border-color;
+        border-radius: 0 2px 2px 0;
+      }
     }
   }
 
@@ -311,46 +251,57 @@ textarea {
     border-left: none;
   }
 
-  .input-group-item { //Use this to make a button/icon the right size.
-    border: 1px solid $text-border-color;
+  .input-group-item {
+    background: $input-addon-background-color;
+    border-bottom: 1px solid white;
+    border-top: 1px solid white;
     flex: 0 0 auto;
+    transition: border 0.2s ease-in-out;
+
     &:not(:last-child) {
       border-right: none;
     }
-    .fa {
-      font: normal normal normal 14px/1 FontAwesome;
-      padding: 7px 11px 7px 11px;
-      transition: border 0.2s ease-in-out;
-    }
+
     &.button {
       padding: 0;
+    }
+
+    &+ input {
+      border-left: none;
+    }
+
+    &+ .input-group-item i.fa {
+      border-left: 1px solid $text-border-color;
+    }
+
+    i.fa {
+      border-bottom: 1px solid $text-border-color;
+      border-top: 1px solid $text-border-color;
+      color: $input-addon-color;
+      font: normal normal normal 14px/1 FontAwesome;
+      padding: 7px 11px 7px 11px;
     }
   }
 }
 
-//Corrective code for label.select when a form is full width.
+// Corrective code for label.select when a form is full width.
 form.full .input-addon-group {
   display: flex;
+
   label.select {
     width: auto;
   }
 }
 
-//Corrective code for label.select in a form that has an input-addon-group.
+// Corrective code for label.select in a form that has an input-addon-group.
 form .form-row .input-addon-group label.select {
   display: inline-block;
-  margin-bottom: 0; //It would normally have 5px pushing the label up and giving it a weird look.
+  margin-bottom: 0; // It would normally have 5px pushing the label up and giving it a weird look.
+
   select {
     height: 100%;
     width: 100%;
   }
-}
-
-.input-group-item { //These are here to allow buttons/icons/etc to override these properties.
-  background: $input-addon-background-color;
-  line-height: 1;
-  transition: border 0.2s ease-in-out;
-  vertical-align: middle;
 }
 
 .checkbox {

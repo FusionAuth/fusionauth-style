@@ -86,7 +86,7 @@
     vertical-align: middle;
   }
 
-  p {
+  > p, > ul, > div, > span {
     flex: 0 1 100%;
     margin: 0;
     padding: 0;

@@ -1,0 +1,16 @@
+/*
+ * Copyright (c) 2017, Inversoft Inc., All Rights Reserved
+ */
+
+@import 'mixins';
+@import 'variables';
+
+/* IFrames
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+iframe.preview {
+  border: 1px solid $iframe-border-color;
+  height: 300px;
+  overflow: auto;
+  width: 100%;
+}
