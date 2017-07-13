@@ -5,45 +5,34 @@
 @import 'mixins';
 @import 'variables';
 
-/* Charts in Panels
+/* Charts and toggles
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
-.panel {
+label.chart-toggle {
+  background: $input-background-color;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 2px;
+  float: right;
+  padding: 0;
+  z-index: 100;
 
-  &:hover {
-    label.chart-toggle {
-      opacity: 1;
-    }
-  }
+  a {
+    background: white;
+    display: inline-block;
+    margin: 0;
 
-  label.chart-toggle {
-    background: $input-background-color;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    border-radius: 2px;
-    float: right;
-    opacity: 0;
-    padding: 0;
-    transition: opacity 0.3s ease-in-out;
-    z-index: 100;
-
-    a {
-      background: white;
-      display: inline-block;
-      margin: 0;
-
-      &.current {
-        background: inherit;
-        pointer-events: none;
-
-        i {
-          box-shadow: $input-box-shadow-light;
-        }
-      }
+    &.current {
+      background: inherit;
+      pointer-events: none;
 
       i {
-        margin: 0;
-        padding: 5px 7px;
-        pointer-events: none;
+        box-shadow: $input-box-shadow-light;
       }
+    }
+
+    i {
+      margin: 0;
+      padding: 5px 7px;
+      pointer-events: none;
     }
   }
 }
