@@ -1,0 +1,82 @@
+/*
+ * Copyright (c) 2017, Inversoft Inc., All Rights Reserved
+ */
+
+@import 'mixins';
+@import 'variables';
+
+.user-details {
+  .avatar {
+    text-align: center;
+
+    > div:first-of-type {
+      margin: 0 auto;
+      max-height: 150px;
+      max-width: 150px;
+      padding: 10px;
+
+      img {
+        border: 2px solid $table-border-color;
+        border-radius: 120px;
+        width: 100%;
+      }
+    }
+
+    div {
+      font-size: 16px;
+      padding: 5px 0;
+    }
+  }
+
+  > div {
+    padding: 10px 0 25px;
+  }
+
+  > div:first-of-type {
+    border-right: 1px solid $table-border-color;
+  }
+
+  > div:last-of-type {
+    h3 {
+      font-size: 18px;
+      padding: 10px 0 10px 20px;
+    }
+
+    table {
+      thead {
+        tr {
+          border: none;
+
+          th {
+            font-weight: 800;
+          }
+        }
+      }
+    }
+
+    > div {
+      padding: 20px;
+    }
+  }
+}
+
+table {
+  thead.light-header {
+    background-color: $table-pagination-hover-color;
+    box-shadow: $fixed-box-shadow;
+
+    tr {
+      th {
+        &:first-of-type {
+          border-bottom-left-radius: 2px;
+          border-top-left-radius: 2px;
+        }
+
+        &:last-of-type {
+          border-bottom-right-radius: 2px;
+          border-top-right-radius: 2px;
+        }
+      }
+    }
+  }
+}

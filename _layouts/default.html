@@ -1216,24 +1216,39 @@
       <div class="row">
         <div class="col-xs">
           <div class="panel">
-            <h2>Details Panel with multiple tables</h2>
             <main>
-              <header><h3>First Table Name</h3></header>
-
-              <div class="row push-bottom">
-                <div class="col-xs-4 tight-right" style="border-right: 1px solid black; border-bottom: 1px solid black;">
-                  <div>Avatar</div>
-                  <div>Detail 1</div>
-                  <div>Detail 2</div>
+              <div class="row push-bottom user-details">
+                <div class="col-xs-3 tight-left tight-right">
+                  <div class="avatar">
+                    <div><img src="images/avatar.jpg" class="profile"/></div>
+                    <div>Brian Pontarelli</div>
+                  </div>
                 </div>
-                <div class="col-xs-8 tight-left" style="border-bottom: 1px solid black;">
-                  <div style="border-bottom: 1px solid black;"> Row 1</div>
-                  <div> Row 2</div>
+                <div class="col-xs-9 tight-left">
+                  <h3>User Information</h3>
+                  <div>
+                    <table>
+                      <thead>
+                      <tr>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Birthday</th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                      <tr>
+                        <td>brian@inversoft.com</td>
+                        <td>555-555-5555</td>
+                        <td>05/30/1976</td>
+                      </tr>
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
               </div>
 
               <table class="push-bottom">
-                <thead class="solid-header">
+                <thead class="light-header">
                 <tr>
                   <th class="sort-down"><a href="#">Column 1 (down)</a></th>
                   <th class="sort-up"><a href="#">Column 2 (up)</a></th>
@@ -1261,7 +1276,7 @@
 
               <header><h3>Second Table Name</h3></header>
               <table class="push-bottom">
-                <thead class="solid-header">
+                <thead class="light-header">
                 <tr>
                   <th>Column 1</th>
                   <th >Column 2</th>
@@ -1300,7 +1315,7 @@
               </header>
 
               <table class="push-bottom">
-                <thead class="solid-header">
+                <thead class="light-header">
                 <tr>
                   <th>Column 1</th>
                   <th >Column 2</th>
