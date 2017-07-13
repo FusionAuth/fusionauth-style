@@ -601,6 +601,15 @@
                   </div>
 
                   <div class="form-row">
+                    <label for="error" class="error">Error <i class="fa fa-info-circle" data-tooltip="Short"></i></label>
+                    <input type="text" id="error" class="error" placeholder="Text input"/>
+                    <span class="error">Error 1, error 2, error 3</span>
+                  </div>
+                </fieldset>
+
+                <fieldset>
+                  <legend>Addon Groups</legend>
+                  <div class="form-row">
                     <label for="text-left-icon"><span class="required">*</span> Left Addon <i class="fa fa-info-circle" data-tooltip="Some tooltip help text that is very long and will wrap multiple lines and such."></i></label>
                     <div class="input-addon-group">
                       <span class="icon"><i class="fa fa-lock"></i></span>
@@ -667,6 +676,9 @@
                     </div>
                   </div>
 
+                </fieldset>
+                <fieldset>
+                  <legend>Example Edge Cases/Discovered Bugs</legend>
                   <p>Assume the following is nested inside a label left but has no label (cases exist in the interface for this).</p>
                   <table class="form-row">
                     <tr>
@@ -683,16 +695,11 @@
                     </tr>
                   </table>
 
+                  <p>The following has a hidden input before the label which can cause formatting errors.</p>
                   <div class="form-row">
                     <input type="hidden" name="s.end@dateTimeFormat" value="yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSSX"/>
                     <label for="s_end">Date Time Picker</label>
                     <input type="text" class="date-time-picker"  class="date-time-picker" id="s_end" name="s.end"/>
-                  </div>
-
-                  <div class="form-row">
-                    <label for="error" class="error">Error <i class="fa fa-info-circle" data-tooltip="Short"></i></label>
-                    <input type="text" id="error" class="error" placeholder="Text input"/>
-                    <span class="error">Error 1, error 2, error 3</span>
                   </div>
                 </fieldset>
 
