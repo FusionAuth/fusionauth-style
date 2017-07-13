@@ -104,8 +104,9 @@ table {
         img {
           border: 2px solid white;
           border-radius: 50px;
-          max-height: 37px;
-          max-width: 37px;
+          margin-right: 10px;
+          height: 37px;
+          width: 37px;
           position: relative;
           vertical-align: middle;
         }
@@ -119,7 +120,8 @@ table {
           font-family: FontAwesome;
           -webkit-font-smoothing: antialiased;
           -moz-osx-font-smoothing: grayscale;
-          font-size: 26px;
+          line-height: 30px;
+          font-size: 30px;
           height: 100%;
           left: 0;
           padding-top: 3px;

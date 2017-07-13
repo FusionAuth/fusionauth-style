@@ -362,6 +362,8 @@ form .form-row .input-addon-group label.select {
 .checkbox-list {
   background: $input-background-color;
   border: 1px solid white;
+  // per sean, intentionally using 3, 2 is not visible on the checkbox list
+  border-radius: 3px;
   box-shadow: $input-box-shadow;
   max-height: 200px;
   overflow-y: scroll;

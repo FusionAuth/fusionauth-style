@@ -676,7 +676,24 @@
                     </div>
                   </div>
 
+                  <div class="form-row">
+                    <label for="select-right-icon-1"><span class="required">*</span>Select with Addon<i class="fa fa-info-circle" data-tooltip="A select box with a right button."></i></label>
+                    <div class="input-addon-group">
+                      <label class="select">
+                        <select id="select-right-icon-1">
+                          <option>2048</option>
+                          <option>3072</option>
+                          <option>4096</option>
+                        </select>
+                      </label>
+                      <button class="button blue">
+                        <i class="fa fa-refresh"></i>
+                      </button>
+                    </div>
+                  </div>
+
                 </fieldset>
+
                 <fieldset>
                   <legend>Example Edge Cases/Discovered Bugs</legend>
                   <p>Assume the following is nested inside a label left but has no label (cases exist in the interface for this).</p>
@@ -1172,7 +1189,6 @@
               <table>
                 <thead>
                 <tr>
-                  <th class="tight"></th>
                   <th class="sort-down"><a href="#">Column 1 (down)</a></th>
                   <th class="sort-up text-right"><a href="#">Column 2 (up)</a></th>
                   <th class="action">Action</th>
@@ -1180,42 +1196,41 @@
                 </thead>
                 <tbody>
                 <tr>
-                  <td class="tight icon">
+                  <td>
                     <img src="images/avatar.jpg">
+                    Value 2
                   </td>
-                  <td class="">Value 2</td>
                   <td class="text-right">Value 3</td>
                   <td class="action"><a href="#" class="blue button small-square" data-tooltip="Edit"><i class="fa fa-pencil"></i></a></td>
                 </tr>
                 <tr>
-                  <td class="tight icon">
+                  <td>
                     <img src="images/okta.png">
-                  </td>
-                  <td class="">Value 2</td>
+                    Value 2</td>
                   <td class="text-right">Value 3</td>
                   <td class="action"><a href="#" class="blue button small-square" data-tooltip="Edit"><i class="fa fa-pencil"></i></a></td>
                 </tr>
                 <tr>
-                  <td class="tight icon">
+                  <td>
                     <img src="images/onelogin.svg">
+                    Value 2
                   </td>
-                  <td class="">Value 2</td>
                   <td class="text-right">Value 3</td>
                   <td class="action"><a href="#" class="blue button small-square" data-tooltip="Edit"><i class="fa fa-pencil"></i></a></td>
                 </tr>
                 <tr>
-                  <td class="tight icon">
+                  <td>
                     <img src="images/stormpath.jpg">
+                    Value 2
                   </td>
-                  <td class="">Value 2</td>
                   <td class="text-right">Value 3</td>
                   <td class="action"><a href="#" class="blue button small-square" data-tooltip="Edit"><i class="fa fa-pencil"></i></a></td>
                 </tr>
                 <tr>
-                  <td class="tight icon">
+                  <td>
                     <img src="images/broken.jpg">
+                    Broken avatar link
                   </td>
-                  <td class="">Broken avatar link</td>
                   <td class="text-right">Value 3</td>
                   <td class="action"><a href="#" class="blue button small-square" data-tooltip="Edit"><i class="fa fa-pencil"></i></a></td>
                 </tr>
@@ -1231,31 +1246,32 @@
           <div class="panel">
             <main>
               <div class="row push-bottom user-details">
-                <div class="col-xs-3 tight-left tight-right">
+                <div class="col-xs-12 col-md-3 tight-left tight-right">
                   <div class="avatar">
                     <div><img src="images/avatar.jpg" class="profile"/></div>
                     <div>Brian Pontarelli</div>
                   </div>
                 </div>
-                <div class="col-xs-9 tight-left">
-                  <h3>User Information</h3>
-                  <div>
-                    <table>
-                      <thead>
-                      <tr>
-                        <th>Email</th>
-                        <th>Phone</th>
-                        <th>Birthday</th>
-                      </tr>
-                      </thead>
-                      <tbody>
-                      <tr>
-                        <td>brian@inversoft.com</td>
-                        <td>555-555-5555</td>
-                        <td>05/30/1976</td>
-                      </tr>
-                      </tbody>
-                    </table>
+                <div class="col-xs-12 col-md-9 tight-left">
+                  <div class="row">
+                    <div class="col-xs-12 col-md-4">
+                      <dl>
+                        <dt>Email</dt>
+                        <dd>brian@inversoft.com</dd>
+                      </dl>
+                    </div>
+                    <div class="col-xs-12 col-md-4">
+                      <dl>
+                        <dt>Phone</dt>
+                        <dd>555-555-5555</dd>
+                      </dl>
+                    </div>
+                    <div class="col-xs-12 col-md-4">
+                      <dl>
+                        <dt>Birthday</dt>
+                        <dd>05/30/1976</dd>
+                      </dl>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -1558,16 +1574,33 @@
             <h2>Details</h2>
             <main>
               <h3>Definition List</h3>
-              <dl>
-                <dt>Company Name</dt>
-                <dd>Inversoft Inc.</dd>
-                <dt># of Employees</dt>
-                <dd>7</dd>
-                <dt>Corporate Headquarters Location City</dt>
-                <dd>Denver</dd>
-                <dt>Awesome</dt>
-                <dd>Yes</dd>
-              </dl>
+              <div class="row push-bottom">
+                <div class="col-xs-12 col-md-4">
+                  <dl>
+                    <dt>Company Name</dt>
+                    <dd>Inversoft Inc.</dd>
+                  </dl>
+                </div>
+                <div class="col-xs-12 col-md-4">
+                  <dl>
+                    <dt># of Employees</dt>
+                    <dd>7</dd>
+                  </dl>
+                </div>
+                <div class="col-xs-12 col-md-4">
+                  <dl>
+                    <dt>Corporate Headquarters Location City</dt>
+                    <dd>Denver</dd>
+                  </dl>
+                </div>
+                <div class="col-xs-12 col-md-4">
+                  <dl>
+                    <dt>Awesome</dt>
+                    <dd>Yes</dd>
+                  </dl>
+                </div>
+              </div>
+
               <h3>Table</h3>
               <table class="properties">
                 <tr>
