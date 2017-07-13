@@ -68,6 +68,25 @@ table {
         }
       }
     }
+
+    &.light-header {
+      background-color: $table-pagination-hover-color;
+      box-shadow: $fixed-box-shadow;
+
+      tr {
+        th {
+          &:first-of-type {
+            border-bottom-left-radius: 2px;
+            border-top-left-radius: 2px;
+          }
+
+          &:last-of-type {
+            border-bottom-right-radius: 2px;
+            border-top-right-radius: 2px;
+          }
+        }
+      }
+    }
   }
 
   tbody {
