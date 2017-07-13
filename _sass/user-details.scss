@@ -11,13 +11,12 @@
 
     > div:first-of-type {
       margin: 0 auto;
-      max-height: 150px;
-      max-width: 150px;
+      max-width: 200px;
       padding: 10px;
 
       img {
         border: 2px solid $table-border-color;
-        border-radius: 120px;
+        border-radius: 150px;
         width: 100%;
       }
     }
