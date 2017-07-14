@@ -302,6 +302,19 @@ form .form-row .input-addon-group label.select {
   padding: 0;
   position: relative;
 
+  input[type="checkbox"]:disabled {
+    pointer-events: none;
+
+    & ~ span.box {
+      background: rgba($input-background-color, 0.2);
+      color: $checkbox-disabled-color
+    }
+
+    & ~ span.label {
+      color: $checkbox-disabled-text-color;
+    }
+  }
+
   span.box {
     background: #fff;
     border: 1px solid $checkbox-border-color;
