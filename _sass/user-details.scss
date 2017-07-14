@@ -1,7 +1,6 @@
 /*
  * Copyright (c) 2017, Inversoft Inc., All Rights Reserved
  */
-
 @import 'mixins';
 @import 'variables';
 
@@ -63,31 +62,52 @@
     }
   }
 
-  .side-actions {
+  .panel-actions {
     border: none;
     font-size: 22px;
     padding: 0 5px;
     position: absolute;
-    right: 0;
+    right: 7px;
     text-align: center;
     top: 10px;
 
-    span {
-      display: block;
-      padding: 0 7px 15px 7px;
+    > div {
+      float: right;
+    }
 
-      i {
+    .status {
+      span {
+        border-left: none;
+        border-right: none;
+      }
+    }
+
+    span {
+      padding: 0 5px 5px 10px;
+      border-left: 1px solid $table-border-color;
+      border-right: 1px solid $table-border-color;
+
+      &:first-of-type {
+        border-right: none;
+      }
+
+      &.status {
+        border-left: none;
+        border-right: none;
+      }
+
+      a {
         opacity: 0.5;
 
         &:hover {
           opacity: 1.0;
-          transition: opacity 0.2s ease-in-out;
+          transition: opacity 0.1s ease-in-out;
         }
       }
     }
 
-    div:nth-child(2) {
-      margin-top: 25px;
+    div:first-child {
+      margin-left: 50px;
     }
   }
 }
