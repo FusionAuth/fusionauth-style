@@ -6,11 +6,19 @@
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
 dl {
+
+  &.horizontal {
+    dt {
+      float: left;
+      margin-right: 20px;
+    }
+  }
+
   dt {
     clear: both;
     display: block;
     font-weight: bold;
-    margin: 0 0 10px 0;
+    margin: 0 0 5px 0;
     padding: 0;
   }
 
