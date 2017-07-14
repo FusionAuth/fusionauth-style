@@ -33,6 +33,10 @@
   display: inline-block;
 }
 
+.not-padded {
+  padding: 0;
+}
+
 .padded {
   padding: 10px;
 }
@@ -53,6 +57,10 @@
   padding-top: 70px;
 }
 
+.not-pushed {
+  margin: 0;
+}
+
 .push-bottom {
   margin-bottom: 35px;
 }
@@ -67,6 +75,14 @@
 
 .push-more-top {
   margin-top: 70px;
+}
+
+.push-less-top {
+  margin-top: 15px;
+}
+
+.push-less-bottom {
+  margin-bottom: 15px;
 }
 
 .push-right{

@@ -280,9 +280,27 @@ textarea {
   }
 }
 
-//An input group in a table cell can't have a label so make it 100% width
-form.labels-left.full td.input-addon-group {
-  width: 100%;
+//Inputs inside a table cell shouldn't have limited width
+form.labels-left.full td {
+  &.input-addon-group {
+    width: 100%;
+  }
+
+  input[type="email"],
+  input[type="number"],
+  input[type="search"],
+  input[type="text"],
+  input[type="tel"],
+  input[type="url"],
+  input[type="password"],
+  textarea,
+  select {
+    width: 100%;
+  }
+
+  label.select {
+    width: 100%;
+  }
 }
 
 // Corrective code for label.select in a form that has an input-addon-group.
