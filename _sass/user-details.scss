@@ -79,6 +79,10 @@
       span {
         border-left: none;
         border-right: none;
+
+        i {
+          font-size: 24px;
+        }
       }
     }
 
@@ -107,7 +111,7 @@
     }
 
     div:first-child {
-      margin-left: 50px;
+      margin-left: 100px;
     }
   }
 }
