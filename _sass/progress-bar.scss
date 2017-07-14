@@ -1,0 +1,59 @@
+/*
+ * Copyright (c) 2017, Inversoft Inc., All Rights Reserved
+ */
+
+@import 'variables';
+
+/* Progress bars
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.progress-bar {
+  border: 1px solid $progress-bar-border-color;
+  height: 30px;
+  width: 100%;
+
+  div {
+    background: $progress-bar-color;
+    height: 30px;
+    -moz-animation-name: progressBar;
+    -moz-animation-iteration-count: 1;
+    -moz-animation-timing-function: ease-in;
+    -moz-animation-duration: 10s;
+    -webkit-animation-name: progressBar;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: ease-in;
+    -webkit-animation-duration: 10s;
+    animation-name: progressBar;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+    animation-duration: 10s;
+    width: 0;
+  }
+}
+
+
+@-moz-keyframes progressBar {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+@-webkit-keyframes progressBar {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+@keyframes progressBar {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
