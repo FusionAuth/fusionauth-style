@@ -6,79 +6,81 @@
 /* Icons
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
-.icon {
-  cursor: pointer;
-  display: inline-block;
-  font-size: 22px;
-  line-height: 22px;
-  padding: 8px 13px;
-  position: relative;
-  text-align: center;
-  text-decoration: none;
-  text-transform: none;
-  white-space: nowrap;
+a {
+  &.icon {
+    cursor: pointer;
+    display: inline-block;
+    font-size: 22px;
+    line-height: 22px;
+    padding: 8px 13px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    text-transform: none;
+    white-space: nowrap;
 
-  &.square {
-    padding: 12px;
-  }
-
-  &.small-square {
-    padding: 7px;
-  }
-
-  &.blue {
-    i {
-      color: $blue-button-background-color;
+    &.square {
+      padding: 12px;
     }
-  }
 
-  &.gray {
-    i {
-      color: $gray-button-background-color;
+    &.small-square {
+      padding: 7px;
     }
-  }
 
-  &.green {
-    i {
-      color: $green-button-background-color;
+    &.blue {
+      i {
+        color: $blue-button-background-color;
+      }
     }
-  }
 
-  &.orange {
-    i {
-      color: $orange-button-background-color;
+    &.gray {
+      i {
+        color: $gray-button-background-color;
+      }
     }
-  }
 
-  &.purple {
-    i {
-      color: $purple-button-background-color;
+    &.green {
+      i {
+        color: $green-button-background-color;
+      }
     }
-  }
 
-  &.red {
-    i {
-      color: $red-button-background-color;
+    &.orange {
+      i {
+        color: $orange-button-background-color;
+      }
     }
-  }
 
-  &.yellow {
-    i {
-      color: $yellow-button-background-color;
+    &.purple {
+      i {
+        color: $purple-button-background-color;
+      }
     }
-  }
 
-  &.small {
-    i {
-      font-size: 16px;
-      line-height: 16px;
+    &.red {
+      i {
+        color: $red-button-background-color;
+      }
     }
-  }
 
-  &.large {
-    i {
-      font-size: 26px;
-      line-height: 26px;
+    &.yellow {
+      i {
+        color: $yellow-button-background-color;
+      }
+    }
+
+    &.small {
+      i {
+        font-size: 16px;
+        line-height: 16px;
+      }
+    }
+
+    &.large {
+      i {
+        font-size: 26px;
+        line-height: 26px;
+      }
     }
   }
 }
