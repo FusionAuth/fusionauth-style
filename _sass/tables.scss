@@ -31,22 +31,24 @@ table {
           text-decoration: none;
         }
 
-        // maintain this width on the header to it doesn't move when you sort.
-        &:after {
-          color: transparent;
-          content: " \f106";
-          font-family: FontAwesome;
-          font-size: 14px;
-        }
+        &.sortable {
+          // maintain this width on the header even when it doesn't have a sort indicator
+          &:after {
+            color: transparent;
+            content: " \f106";
+            font-family: FontAwesome;
+            font-size: 14px;
+          }
 
-        &.sort-up:after {
-          color: $table-header-sort-color;
-          content: " \f106";
-        }
+          &.sort-up:after {
+            color: $table-header-sort-color;
+            content: " \f106";
+          }
 
-        &.sort-down:after {
-          color: $table-header-sort-color;
-          content: " \f107";
+          &.sort-down:after {
+            color: $table-header-sort-color;
+            content: " \f107";
+          }
         }
 
         &.action {
