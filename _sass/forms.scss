@@ -504,20 +504,22 @@ label.select {
     }
   }
 
-  &:after {
-    content: "\f107";
-    display: inline-block;
-    font-family: FontAwesome;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    font-size: 14px;
-    padding: 2px 2px;
-    pointer-events: none;
-    position: absolute;
-    right: 15px;
-    text-decoration: none;
-    text-rendering: auto;
-    top: 15%;
+  &:not(.multiple) {
+    &:after {
+      content: "\f107";
+      display: inline-block;
+      font-family: FontAwesome;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      font-size: 14px;
+      padding: 2px 2px;
+      pointer-events: none;
+      position: absolute;
+      right: 15px;
+      text-decoration: none;
+      text-rendering: auto;
+      top: 15%;
+    }
   }
 }
 
@@ -662,7 +664,7 @@ label.select {
     height: 26px;
     margin: 0;
     outline: none;
-    padding: 0;
+    padding: 0 0 0 5px;
 
     &:focus {
       border: none;
@@ -685,7 +687,7 @@ label.select {
     overflow-y: auto;
     top: 38px;
     width: 100%;
-    z-index: 10;
+    z-index: 100;
 
     li {
       padding: 5px;
@@ -699,14 +701,6 @@ label.select {
 
   &.focus ul.option-list {
     box-shadow: $highlight-box-shadow;
-  }
-}
-
-// Float hack
-form.labels-left .prime-multiple-select .search-results {
-  @media(min-width: 640px) {
-    margin-left: calc(18% + 20px);
-    width: calc(82% - 20px);
   }
 }
 
