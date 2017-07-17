@@ -52,7 +52,9 @@
   clear: both;
   display: none;
   margin-top: -1px;
+  overflow-x: scroll;
   padding: 35px 10px;
+  width: 100%;
 
   &.tight-bottom {
     padding-bottom: 10px;
