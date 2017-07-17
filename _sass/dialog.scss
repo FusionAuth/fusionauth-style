@@ -70,7 +70,12 @@
   }
 
   &.wide {
-    left: calc(50vw - 300px);
-    width: 600px;
+    left: 15px;
+    width: calc(100vw - 30px);
+
+    @media (min-width: 640px) {
+      left: calc(50vw - 300px);
+      width: 600px;
+    }
   }
 }
