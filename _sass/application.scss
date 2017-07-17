@@ -351,7 +351,7 @@ body > main {
   header.page-header {
     background: $page-header-background-color;
     border-bottom: 2px solid $page-header-border-color;
-    padding: 0;
+    padding: 0 0 15px 0;
 
     h1 {
       color: $page-header-color;
@@ -392,11 +392,7 @@ body > main {
     }
 
     .buttons {
-      text-align: left;
-
-      @media (min-width: 640px) {
-        text-align: right;
-      }
+      text-align: right;
     }
 
     @media (min-width: 750px) {
