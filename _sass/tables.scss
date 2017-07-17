@@ -318,37 +318,11 @@ table {
       text-align: right;
     }
   }
-}
 
-.simple-pagination {
-  position: relative;
-
-  :first-child {
-    float: left;
-  }
-
-  :last-child {
-    float: right;
-
-    a {
-      border-radius: 2px;
-      box-shadow: $table-pagination-box-shadow;
-      color: $table-pagination-link-color;
-      display: inline-block;
-      margin-right: 5px;
-      padding: 5px 10px;
-      text-decoration: none;
-
-      &.current {
-        background: $table-pagination-link-color;
-        pointer-events: none;
-        color: white;
-      }
-
-      &:hover {
-        background: $table-pagination-link-color;
-        color: white;
-      }
-    }
+  &.simple {
+    background: #fff;
+    border-radius: 0;
+    box-shadow: none;
+    margin-bottom: 0;
   }
 }
