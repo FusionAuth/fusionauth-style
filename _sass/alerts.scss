@@ -72,10 +72,6 @@
     i.fa {
       color: $gray-4;
     }
-
-    &:hover, &:visited {
-      color: #fff;
-    }
   }
 
   i {
@@ -84,6 +80,14 @@
     font-size: 20px;
     margin-right: 10px;
     vertical-align: middle;
+  }
+
+  p {
+    a {
+      display: inline;
+      font-size: inherit;
+      font-weight: inherit;
+    }
   }
 
   > p, > ul, > div, > span {
