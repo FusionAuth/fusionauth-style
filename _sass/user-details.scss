@@ -30,10 +30,6 @@
     padding: 10px 0 25px;
   }
 
-  > div:first-of-type {
-    border-right: 1px solid $table-border-color;
-  }
-
   > div:nth-of-type(2) {
 
     > div:first-child {
@@ -72,6 +68,12 @@
 
     .status {
       float: right;
+    }
+  }
+
+  @media (min-width: 750px) {
+    > div:first-of-type {
+      border-right: 1px solid $table-border-color;
     }
   }
 }

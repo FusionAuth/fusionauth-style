@@ -221,8 +221,9 @@ table {
     box-shadow: $table-pagination-input-box-shadow;
     color: $table-pagination-link-color;
     display: inline-block;
-    margin-right: 0;
-    padding: 2px 7px;
+    font-size: 12px;
+    margin-right: 5px;
+    padding: 6px 12px;
     text-decoration: none;
 
     &.current {
@@ -238,6 +239,12 @@ table {
 
     &:visited:not(.current, :hover) {
       color: $table-pagination-link-color;
+    }
+
+    @media (min-width: 750px) {
+      font-size: inherit;
+      margin-right: 0;
+      padding: 2px 7px;
     }
   }
 
@@ -292,8 +299,8 @@ table {
     margin-bottom: 10px;
   }
 
-  .page-controls, .number-controls, .info {
-    text-align: left;
+  .info, .number-controls, .page-controls {
+    text-align: center;
   }
 
   @media (min-width: 750px) {
@@ -304,6 +311,7 @@ table {
 
     .number-controls {
       display: block;
+      text-align: left;
     }
 
     .page-controls {

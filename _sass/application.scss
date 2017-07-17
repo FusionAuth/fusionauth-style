@@ -257,13 +257,9 @@ body > main {
       font-size: 15px;
       height: 100%;
       line-height: 15px;
-      padding: 15px 10px;
+      padding: 15px;
       text-decoration: none;
       vertical-align: middle;
-
-      @media (min-width: 480px) {
-        padding: 15px 15px;
-      }
     }
 
     .search {
@@ -355,7 +351,7 @@ body > main {
   header.page-header {
     background: $page-header-background-color;
     border-bottom: 2px solid $page-header-border-color;
-    padding: 10px 0 20px 0;
+    padding: 0;
 
     h1 {
       color: $page-header-color;
