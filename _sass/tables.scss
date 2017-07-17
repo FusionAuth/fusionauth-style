@@ -232,6 +232,11 @@ table {
       color: white;
     }
 
+    &.disabled {
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
     &:hover {
       background: $table-pagination-link-color;
       color: white;

@@ -403,6 +403,10 @@ form .form-row .input-addon-group label.select {
   .checkbox {
     display: block;
     margin-top: 6px;
+
+    &:last-of-type {
+      margin-bottom: 6px;
+    }
   }
 }
 
