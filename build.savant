@@ -12,6 +12,12 @@ project(group: "com.inversoft", name: "inversoft-style", version: "0.1.0", licen
     subversion(repository: "http://svn.inversoft.com/internal/savant")
   }
 
+  dependencies {
+    group(name: "prime.js", export: false) {
+      dependency(id: "org.inversoft.prime:prime.js:prime:0.36.0:js")
+    }
+  }
+
   publications {
     main {
       publication(name: "inversoft-style", type: "css", file: "build/css/inversoft-style.css", source: "build/css/inversoft-style.css")
@@ -29,7 +35,16 @@ target(name: "clean", description: "Deletes the build dir") {
   file.prune(dir: "build")
 }
 
-target(name: "int", description: "Releases a local integration build of the project") {
+target(name: "js", description: "Copies the Prime.js files to the js dir") {
+  file.delete {
+    fileSet(dir: "js", includePatterns: [~/prime.+\.js/])
+  }
+  dependency.copy(to: "js") {
+    dependencies(group: "prime.js", transitive: false, fetchSource: false)
+  }
+}
+
+target(name: "int", description: "Releases a local integration build of the project", dependsOn: ["js"]) {
   file.mkdir(dir: "build/css")
 
   file.delete {

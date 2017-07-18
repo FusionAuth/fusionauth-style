@@ -4,3 +4,4 @@ _site
 *.iws
 build
 node_modules
+js/prime*.js
