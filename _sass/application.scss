@@ -215,6 +215,12 @@ body {
             max-height: 500px;
           }
         }
+
+        &.show-on-mobile {
+          @media (min-width: 750px) {
+            display: none;
+          }
+        }
       }
 
       &.treeview {
