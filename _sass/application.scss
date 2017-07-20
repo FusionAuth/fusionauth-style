@@ -203,12 +203,12 @@ body {
         }
 
         &.folder.open {
+          a.folder-toggle:after {
+            transform: rotate(-90deg);
+          }
+
           a:not(.active) {
             background: $sidebar-nav-open-background-color;
-
-            &.folder-toggle:after {
-              transform: rotate(-90deg);
-            }
           }
 
           ul {
