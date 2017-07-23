@@ -36,6 +36,10 @@ body {
 
     .app-sidebar {
       margin-left: 0;
+
+      .footer-container {
+        left: 0;
+      }
     }
 
     > main {
@@ -56,6 +60,10 @@ body {
   &.app-sidebar-closed {
     .app-sidebar {
       margin-left: -225px;
+
+      .footer-container {
+        left: -225px;
+      }
     }
 
     > main {
@@ -133,6 +141,7 @@ body {
     border-top: 2px solid $sidebar-header-border-color;
     bottom: 0;
     position: fixed;
+    transition: left 0.2s ease-in-out;
 
     footer {
       border-top: 1px solid $sidebar-nav-border-color;
