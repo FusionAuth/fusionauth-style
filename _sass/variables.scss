@@ -43,6 +43,8 @@ $sidebar-nav-active-background-color: darken($purple-dark, 7);
 $sidebar-nav-color: white;
 $sidebar-nav-icon-color: $gray-2;
 $sidebar-nav-open-background-color: rgba($purple-dark, 0.7);
+$sidebar-scrollbar-thumb-background-color: darken($purple-dark, 20);
+$sidebar-scrollbar-track-background-color: lighten($sidebar-background-color, 10);
 
 $fixed-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .20);
 $layered-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 2px 1px 0 rgba(0, 0, 0, .12);
@@ -248,6 +250,7 @@ $panel-yellow-border-top-color: $yellow-medium;
 
 $progress-bar-border-color: $gray-2;
 $progress-bar-color: $purple-light;
+
 
 /* Stamps
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
