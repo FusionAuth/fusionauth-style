@@ -10,3 +10,27 @@
   -ms-user-select: $args;
   user-select: $args;
 }
+
+@mixin scrollbars($track-background-color, $track-box-shadow, $thumb-background-color) {
+  &::-webkit-scrollbar-track {
+    background-color: $track-background-color;
+    box-shadow: $track-box-shadow;
+
+    &:horizontal {
+      height: 6px;
+    }
+
+    &:vertical {
+      width: 6px;
+    }
+  }
+
+  &::-webkit-scrollbar {
+    height: 6px;
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $thumb-background-color;
+  }
+}

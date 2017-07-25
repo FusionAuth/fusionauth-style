@@ -1,6 +1,7 @@
 /*
  * Copyright (c) 2017, Inversoft Inc., All Rights Reserved
  */
+
 @import 'mixins';
 @import 'variables';
 
@@ -393,14 +394,16 @@ form .form-row .input-addon-group label.select {
 }
 
 .checkbox-list {
+  @include scrollbars($scrollbar-track-background-color, $scrollbar-vertical-track-box-shadow, $scrollbar-thumb-background-color);
+
   background: $input-background-color;
   border: 1px solid white;
   // per sean, intentionally using 3, 2 is not visible on the checkbox list
   border-radius: 3px;
   box-shadow: $input-box-shadow;
   max-height: 200px;
-  overflow-y: scroll;
-  padding: 0 10px;
+  overflow-y: auto;
+  padding-left: 10px;
 
   .checkbox {
     display: block;
@@ -510,22 +513,20 @@ label.select {
     }
   }
 
-  &:not(.multiple) {
-    &:after {
-      content: "\f107";
-      display: inline-block;
-      font-family: FontAwesome;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      font-size: 14px;
-      padding: 2px 2px;
-      pointer-events: none;
-      position: absolute;
-      right: 15px;
-      text-decoration: none;
-      text-rendering: auto;
-      top: 15%;
-    }
+  &:after {
+    content: "\f107";
+    display: inline-block;
+    font-family: FontAwesome;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 14px;
+    padding: 2px 2px;
+    pointer-events: none;
+    position: absolute;
+    right: 15px;
+    text-decoration: none;
+    text-rendering: auto;
+    top: 15%;
   }
 }
 
@@ -603,6 +604,8 @@ label.select {
   position: relative;
 
   ul.option-list {
+    @include scrollbars($scrollbar-track-background-color, $scrollbar-vertical-track-box-shadow, $scrollbar-thumb-background-color);
+
     background: $input-background-color;
     box-shadow: $input-box-shadow;
     height: 34px;
@@ -680,6 +683,8 @@ label.select {
   }
 
   .search-results {
+    @include scrollbars($scrollbar-track-background-color, $scrollbar-vertical-track-box-shadow, $scrollbar-thumb-background-color);
+
     background: #fff;
     border: 1px solid $multiple-select-search-border-color;
     border-radius: 2px;
@@ -707,6 +712,14 @@ label.select {
 
   &.focus ul.option-list {
     box-shadow: $highlight-box-shadow;
+  }
+}
+
+// Float hack
+form.labels-left .prime-multiple-select .search-results {
+  @media(min-width: 640px) {
+    margin-left: calc(18% + 20px);
+    width: calc(82% - 20px);
   }
 }
 

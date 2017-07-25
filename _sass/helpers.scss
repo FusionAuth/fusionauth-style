@@ -2,6 +2,7 @@
  * Copyright (c) 2017, Inversoft Inc., All Rights Reserved
  */
 
+@import 'mixins';
 @import 'variables';
 
 /* Helpers
@@ -95,10 +96,14 @@
 
 .scrollable {
   &.horizontal {
+    @include scrollbars($scrollbar-track-background-color, $scrollbar-vertical-track-box-shadow, $scrollbar-thumb-background-color);
+
     overflow-x: scroll;
   }
 
   &.vertical {
+    @include scrollbars($scrollbar-track-background-color, $scrollbar-vertical-track-box-shadow, $scrollbar-thumb-background-color);
+
     overflow-y: scroll;
   }
 }

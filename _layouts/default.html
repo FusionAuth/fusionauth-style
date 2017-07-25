@@ -3,7 +3,7 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1, user-scalable=no">
   <link rel="stylesheet" href="css/test.css"/>
-  <script type="text/javascript" src="https://use.fontawesome.com/54deec06c9.js"></script>
+  <link rel="stylesheet" href="css/font-awesome-4.7.0.min.css"/>
   <script type="text/javascript" src="js/prime-0.36.0.js"></script>
   <script type="text/javascript" src="js/Chart-2.5.0-min.js"></script>
   <script type="text/javascript">
@@ -38,8 +38,9 @@
           })
           .initialize();
 
-      new Prime.Widgets.TreeView(Prime.Document.queryFirst('.treeview')).withFolderToggleClassName(
-          'folder-toggle').initialize();
+      new Prime.Widgets.TreeView(Prime.Document.queryFirst('.treeview'))
+          .withFolderToggleClassName('folder-toggle')
+          .initialize();
 
       var slideOpen = Prime.Document.queryById('slide-open');
       Prime.Document.queryById('slide-open-button').addEventListener('click', function (e) {
@@ -231,7 +232,7 @@
     </header>
 
     <nav>
-      <ul class="treeview scrollbar">
+      <ul class="treeview">
         <li>
           <a href="/" class=""><i class="fa fa-columns"></i> Dashboard</a>
         </li>
@@ -804,7 +805,7 @@
                   <legend>Checkbox list</legend>
                   <div class="form-row">
                     <label for="checkbox-list">Checkbox list</label>
-                    <div id="checkbox-list" class="checkbox-list">
+                    <div id="checkbox-list" class="checkbox-list" data-simplebar="init">
                       <label class="checkbox"><input type="checkbox" id="cbl-1"/><span class="box"></span><span class="label">Checkbox list info</span></label>
                       <label class="checkbox"><input type="checkbox" id="cbl-2"/><span class="box"></span><span class="label">Checkbox list info</span></label>
                       <label class="checkbox"><input type="checkbox" id="cbl-3" disabled/><span class="box"></span><span class="label">Checkbox list info (DISABLED)</span></label>
@@ -819,7 +820,7 @@
                   </div>
                   <div class="form-row">
                     <label for="checkbox-list" class="error">Checkbox list</label>
-                    <div id="checkbox-list-2" class="checkbox-list error">
+                    <div id="checkbox-list-2" class="checkbox-list error" data-simplebar="init">
                       <label class="checkbox"><input type="checkbox" id="cbl-11"/><span class="box"></span><span class="label">Checkbox list info</span></label>
                       <label class="checkbox"><input type="checkbox" id="cbl-22"/><span class="box"></span><span class="label">Checkbox list info</span></label>
                       <label class="checkbox"><input type="checkbox" id="cbl-33"/><span class="box"></span><span class="label">Checkbox list info</span></label>
@@ -907,17 +908,13 @@
                   </div>
                   <div class="form-row">
                     <label for="multi-select">Multi-select</label>
-                    <label class="select multiple">
-                      <select id="multi-select" multiple="multiple" class="multiple-select">
-                      </select>
-                    </label>
+                    <select id="multi-select" multiple="multiple" class="multiple-select">
+                    </select>
                   </div>
                   <div class="form-row">
                     <label for="error-multi-select" class="error">Error multi-select</label>
-                    <label class="select multiple">
-                      <select id="error-multi-select" multiple="multiple" class="error multiple-select">
-                      </select>
-                    </label>
+                    <select id="error-multi-select" multiple="multiple" class="error multiple-select">
+                    </select>
                     <span class="error">Error 1, error 2, error 3</span>
                   </div>
                   <div class="form-row">
@@ -1099,16 +1096,12 @@
                   </div>
                   <div class="form-row">
                     <label for="multi-select-above">Multi-select</label>
-                    <label class="select multiple">
-                      <select id="multi-select-above" multiple="multiple" class="multiple-select"></select>
-                    </label>
+                    <select id="multi-select-above" multiple="multiple" class="multiple-select"></select>
                   </div>
                   <div class="form-row">
                     <label for="error-multi-select-above" class="error">Error multi-select</label>
-                    <label class="select multiple">
-                      <select id="error-multi-select-above" multiple="multiple" class="error multiple-select">
-                      </select>
-                    </label>
+                    <select id="error-multi-select-above" multiple="multiple" class="error multiple-select">
+                    </select>
                     <span class="error">Error 1, error 2, error 3</span>
                   </div>
                 </fieldset>
