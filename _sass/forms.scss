@@ -490,6 +490,7 @@ label.select {
   select {
     appearance: none;
     -webkit-appearance: none;
+    -moz-appearance: none;
     background-color: $select-background-color;
     border: none;
     border-radius: 2px;
