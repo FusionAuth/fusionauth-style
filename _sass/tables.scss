@@ -95,6 +95,27 @@ table {
     }
   }
 
+  &.checkboxes {
+    tbody {
+      tr td {
+        .checkbox {
+          &.icon {
+            img {
+              visibility: hidden;
+              transition: opacity 0.2s ease;
+            }
+
+            span.box {
+              opacity: 1.0;
+              visibility: visible;
+              transition: opacity 0.2s ease;
+            }
+          }
+        }
+      }
+    }
+  }
+
   tbody {
     tr {
       td {
@@ -107,14 +128,53 @@ table {
           text-decoration: none;
         }
 
+        .checkbox {
+          &.icon {
+            min-width: 45px;
+
+            img {
+              position: absolute;
+              opacity: 1.0;
+              top: -50%;
+              transition: opacity 0.2s ease;
+            }
+
+            input[type="checkbox"] {
+              height: 0;
+              margin-right: 0;
+              width: 0;
+            }
+
+            span.box {
+              opacity: 0;
+              margin-left: 10px;
+              transition: opacity 0.2s ease;
+              visibility: hidden;
+            }
+
+            input[type="checkbox"]:checked {
+              ~ img {
+                visibility: hidden;
+                transition: opacity 0.2s ease;
+              }
+
+              ~ span.box {
+                opacity: 1.0;
+                visibility: visible;
+                transition: opacity 0.2s ease;
+              }
+            }
+          }
+        }
+
         img {
           border: 2px solid white;
           border-radius: 50px;
           margin-right: 10px;
           height: 37px;
-          width: 37px;
           position: relative;
           vertical-align: middle;
+          width: 37px;
         }
 
         // Handle broken avatar links w/ Font Awesome-ness.

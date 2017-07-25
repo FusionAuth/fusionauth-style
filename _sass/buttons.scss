@@ -35,6 +35,11 @@
   transition: background 0.2s ease-in-out;
   white-space: nowrap;
 
+  &.disabled {
+    opacity: 0.4;
+    pointer-events: none;
+  }
+
   &.square {
     padding: 12px;
   }

@@ -197,6 +197,24 @@
         }
       });
 
+      // Avatars Checkbox table
+        var checkBoxCount = 0;
+        var avatarsCheckBoxTable = Prime.Document.queryById('avatars-with-checkboxes');
+        avatarsCheckBoxTable.addEventListener('click', function (event) {
+            var target = new Prime.Document.Element(event.target);
+            if (target.is('input[type="checkbox"]')) {
+                if (target.isChecked()) {
+                    checkBoxCount++;
+                } else {
+                    checkBoxCount--;
+                }
+                if (checkBoxCount === 0) {
+                    avatarsCheckBoxTable.removeClass('checkboxes');
+                } else {
+                    avatarsCheckBoxTable.addClass('checkboxes');
+                }
+            }
+        });
     });
   </script>
 </head>
@@ -341,7 +359,7 @@
             <button class="blue button square" data-tooltip="Save"><i class="fa fa-save"></i></button>
             <a href="#" class="gray button square" data-tooltip="Cancel"><i class="fa fa-reply"></i></a>
             <a href="#" class="red button square" data-tooltip="Delete"><i class="fa fa-trash"></i></a>
-            <a href="#" class="green button square" data-tooltip="Add"><i class="fa fa-plus"></i></a>
+            <a href="#" class="green button square disabled" data-tooltip="Add"><i class="fa fa-plus"></i></a>
           </div>
         </div>
       </div>
@@ -1205,7 +1223,7 @@
           <div class="panel">
             <h2>Table panel with Avatars</h2>
             <main>
-              <table>
+              <table id="avatars-with-checkboxes">
                 <thead>
                 <tr>
                   <th class="sortable sort-down"><a href="#">Column 1 (down)</a></th>
@@ -1216,7 +1234,11 @@
                 <tbody>
                 <tr>
                   <td>
-                    <img src="images/avatar.jpg">
+                    <label class="checkbox icon">
+                      <input name="userId" type="checkbox" value="avatar"/>
+                      <span class="box"></span>
+                      <img src="images/avatar.jpg">
+                    </label>
                     Value 2
                   </td>
                   <td class="text-right">Value 3</td>
@@ -1224,14 +1246,11 @@
                 </tr>
                 <tr>
                   <td>
-                    <img src="images/okta.png">
-                    Value 2</td>
-                  <td class="text-right">Value 3</td>
-                  <td class="action"><a href="#" class="blue button small-square" data-tooltip="Edit"><i class="fa fa-pencil"></i></a></td>
-                </tr>
-                <tr>
-                  <td>
-                    <img src="images/onelogin.svg">
+                    <label class="checkbox icon">
+                      <input name="userId" type="checkbox" value="okta"/>
+                      <span class="box"></span>
+                      <img src="images/okta.png">
+                    </label>
                     Value 2
                   </td>
                   <td class="text-right">Value 3</td>
@@ -1239,7 +1258,11 @@
                 </tr>
                 <tr>
                   <td>
-                    <img src="images/stormpath.jpg">
+                    <label class="checkbox icon">
+                      <input name="userId" type="checkbox" value="onelogin"/>
+                      <span class="box"></span>
+                      <img src="images/onelogin.svg">
+                    </label>
                     Value 2
                   </td>
                   <td class="text-right">Value 3</td>
@@ -1247,7 +1270,23 @@
                 </tr>
                 <tr>
                   <td>
-                    <img src="images/broken.jpg">
+                    <label class="checkbox icon">
+                      <input name="userId" type="checkbox" value="stormpath"/>
+                      <span class="box"></span>
+                      <img src="images/stormpath.jpg">
+                    </label>
+                    Value 2 (check-able)
+                  </td>
+                  <td class="text-right">Value 3</td>
+                  <td class="action"><a href="#" class="blue button small-square" data-tooltip="Edit"><i class="fa fa-pencil"></i></a></td>
+                </tr>
+                <tr>
+                  <td>
+                    <label class="checkbox icon">
+                      <input name="userId" type="checkbox" value="broken"/>
+                      <span class="box"></span>
+                     <img src="images/broken.jpg">
+                    </label>
                     Broken avatar link
                   </td>
                   <td class="text-right">Value 3</td>
