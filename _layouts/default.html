@@ -31,11 +31,11 @@
       });
 
       new Prime.Widgets.SideMenu(Prime.Document.queryFirst('.app-sidebar-toggle'),
-                                 Prime.Document.queryFirst('.app-sidebar'))
+          Prime.Document.queryFirst('.app-sidebar'))
           .withOptions({
-                         'closedClass': 'app-sidebar-closed',
-                         'openClass': 'app-sidebar-open'
-                       })
+            'closedClass': 'app-sidebar-closed',
+            'openClass': 'app-sidebar-open'
+          })
           .initialize();
 
       new Prime.Widgets.TreeView(Prime.Document.queryFirst('.treeview')).withFolderToggleClassName(
@@ -56,93 +56,93 @@
       var orange = '255, 156, 61';
 
       var barChartConfiguration = {
-          type: 'bar',
-          data: {
-              labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-              datasets: [{
-                  label: '# of Votes',
-                  data: [12, 19, 3, 5, 2, 3],
-                  backgroundColor: [
-                      'rgba(' + red + ', 0.2)',
-                      'rgba(' + blue + ', 0.2)',
-                      'rgba(' + yellow + ', 0.2)',
-                      'rgba(' + green + ', 0.2)',
-                      'rgba(' + purple + ', 0.2)',
-                      'rgba(' + orange + ', 0.2)'
-                  ],
-                  borderColor: [
-                      'rgba(' + red + ', 1)',
-                      'rgba(' + blue + ', 1)',
-                      'rgba(' + yellow + ', 1)',
-                      'rgba(' + green + ', 1)',
-                      'rgba(' + purple + ', 1)',
-                      'rgba(' + orange + ', 1)'
-                  ],
-                  borderWidth: 1
-              }]
-          },
-          options: {
-              responsive: true,
-              maintainAspectRatio: true,
-              scales: {
-                  yAxes: [{
-                      ticks: {
-                          beginAtZero: true
-                      }
-                  }]
+        type: 'bar',
+        data: {
+          labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+          datasets: [{
+            label: '# of Votes',
+            data: [12, 19, 3, 5, 2, 3],
+            backgroundColor: [
+              'rgba(' + red + ', 0.2)',
+              'rgba(' + blue + ', 0.2)',
+              'rgba(' + yellow + ', 0.2)',
+              'rgba(' + green + ', 0.2)',
+              'rgba(' + purple + ', 0.2)',
+              'rgba(' + orange + ', 0.2)'
+            ],
+            borderColor: [
+              'rgba(' + red + ', 1)',
+              'rgba(' + blue + ', 1)',
+              'rgba(' + yellow + ', 1)',
+              'rgba(' + green + ', 1)',
+              'rgba(' + purple + ', 1)',
+              'rgba(' + orange + ', 1)'
+            ],
+            borderWidth: 1
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: true,
+          scales: {
+            yAxes: [{
+              ticks: {
+                beginAtZero: true
               }
+            }]
           }
+        }
       };
       var barChart = new Chart(document.getElementById("bar-chart"), barChartConfiguration);
 
       var lineChartConfiguration = {
-          type: 'line',
-          data: {
-              labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-              datasets: [{
-                  label: '# of Votes',
-                  data: [12, 19, 3, 5, 2, 3],
-                  backgroundColor: 'rgba(' + purple + ', 0.2)',
-                  borderColor: 'rgba(' + purple + ', 1)',
-                  borderWidth: 1
-              }]
-          },
-          options: {
-              responsive: true,
-              maintainAspectRatio: true,
-              scales: {
-                  yAxes: [{
-                      ticks: {
-                          beginAtZero: true
-                      }
-                  }]
+        type: 'line',
+        data: {
+          labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+          datasets: [{
+            label: '# of Votes',
+            data: [12, 19, 3, 5, 2, 3],
+            backgroundColor: 'rgba(' + purple + ', 0.2)',
+            borderColor: 'rgba(' + purple + ', 1)',
+            borderWidth: 1
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: true,
+          scales: {
+            yAxes: [{
+              ticks: {
+                beginAtZero: true
               }
+            }]
           }
+        }
       };
       var lineChart = new Chart(document.getElementById("line-chart"), lineChartConfiguration);
 
       var barChartPanel = Prime.Document.queryById('bar-chart-panel');
-      barChartPanel.query('h2 a').addEventListener('click', function(event) {
-          event.preventDefault();
-          var target = new Prime.Document.Element(event.target);
-          barChart.destroy();
-          barChartConfiguration.type = target.getDataAttribute('chart');
-          barChart = new Chart(document.getElementById("bar-chart"), barChartConfiguration);
+      barChartPanel.query('h2 a').addEventListener('click', function (event) {
+        event.preventDefault();
+        var target = new Prime.Document.Element(event.target);
+        barChart.destroy();
+        barChartConfiguration.type = target.getDataAttribute('chart');
+        barChart = new Chart(document.getElementById("bar-chart"), barChartConfiguration);
 
-          target.queryUp('h2').query('a').removeClass('current');
-          target.addClass('current');
+        target.queryUp('h2').query('a').removeClass('current');
+        target.addClass('current');
       });
 
       var lineChartPanel = Prime.Document.queryById('line-chart-panel');
-        lineChartPanel.query('h2 a').addEventListener('click', function(event) {
-          event.preventDefault();
-          var target = new Prime.Document.Element(event.target);
-          lineChart.destroy();
-          lineChartConfiguration.type = target.getDataAttribute('chart');
-          lineChart = new Chart(document.getElementById("line-chart"), lineChartConfiguration);
-          target.queryUp('h2').query('a').removeClass('current');
-          target.addClass('current');
-        });
+      lineChartPanel.query('h2 a').addEventListener('click', function (event) {
+        event.preventDefault();
+        var target = new Prime.Document.Element(event.target);
+        lineChart.destroy();
+        lineChartConfiguration.type = target.getDataAttribute('chart');
+        lineChart = new Chart(document.getElementById("line-chart"), lineChartConfiguration);
+        target.queryUp('h2').query('a').removeClass('current');
+        target.addClass('current');
+      });
 
       Prime.Document.queryById('ajax-dialog-button').addEventListener('click', function (e) {
         new Prime.Widgets.AJAXDialog().initialize().open(new Prime.Document.Element(e.target).getAttribute('href'));
@@ -177,7 +177,7 @@
       });
 
       // Handle the toggle full width checkboxes
-      Prime.Document.queryById('labels-left-toggle-full').addEventListener('change', function(event) {
+      Prime.Document.queryById('labels-left-toggle-full').addEventListener('change', function (event) {
         event.preventDefault();
         var form = Prime.Document.queryById('form-labels-left');
         if (form.hasClass('full')) {
@@ -187,7 +187,7 @@
         }
       });
 
-      Prime.Document.queryById('labels-above-toggle-full').addEventListener('change', function(event) {
+      Prime.Document.queryById('labels-above-toggle-full').addEventListener('change', function (event) {
         event.preventDefault();
         var form = Prime.Document.queryById('form-labels-above');
         if (form.hasClass('full')) {
@@ -198,23 +198,25 @@
       });
 
       // Avatars Checkbox table
-        var checkBoxCount = 0;
-        var avatarsCheckBoxTable = Prime.Document.queryById('avatars-with-checkboxes');
-        avatarsCheckBoxTable.addEventListener('click', function (event) {
-            var target = new Prime.Document.Element(event.target);
-            if (target.is('input[type="checkbox"]')) {
-                if (target.isChecked()) {
-                    checkBoxCount++;
-                } else {
-                    checkBoxCount--;
-                }
-                if (checkBoxCount === 0) {
-                    avatarsCheckBoxTable.removeClass('checkboxes');
-                } else {
-                    avatarsCheckBoxTable.addClass('checkboxes');
-                }
-            }
-        });
+      var checkBoxCount = 0;
+      var avatarsCheckBoxTable = Prime.Document.queryById('avatars-with-checkboxes');
+      avatarsCheckBoxTable.addEventListener('click', function (event) {
+        var target = new Prime.Document.Element(event.target);
+        if (target.is('input[type="checkbox"]')) {
+          if (target.isChecked()) {
+            checkBoxCount++;
+          } else {
+            checkBoxCount--;
+          }
+          if (checkBoxCount === 0) {
+            avatarsCheckBoxTable.removeClass('checkboxes');
+          } else {
+            avatarsCheckBoxTable.addClass('checkboxes');
+          }
+        } else if (target.is('td.icon')) {
+          target.queryFirst('input[type="checkbox"]').fireEvent('click');
+        }
+      });
     });
   </script>
 </head>
@@ -1233,8 +1235,8 @@
                 </thead>
                 <tbody>
                 <tr>
-                  <td>
-                    <label class="checkbox icon">
+                  <td class="icon">
+                    <label class="checkbox">
                       <input name="userId" type="checkbox" value="avatar"/>
                       <span class="box"></span>
                       <img src="images/avatar.jpg">
@@ -1245,8 +1247,8 @@
                   <td class="action"><a href="#" class="blue button small-square" data-tooltip="Edit"><i class="fa fa-pencil"></i></a></td>
                 </tr>
                 <tr>
-                  <td>
-                    <label class="checkbox icon">
+                  <td class="icon">
+                    <label class="checkbox">
                       <input name="userId" type="checkbox" value="okta"/>
                       <span class="box"></span>
                       <img src="images/okta.png">
@@ -1257,8 +1259,8 @@
                   <td class="action"><a href="#" class="blue button small-square" data-tooltip="Edit"><i class="fa fa-pencil"></i></a></td>
                 </tr>
                 <tr>
-                  <td>
-                    <label class="checkbox icon">
+                  <td class="icon">
+                    <label class="checkbox">
                       <input name="userId" type="checkbox" value="onelogin"/>
                       <span class="box"></span>
                       <img src="images/onelogin.svg">
@@ -1269,8 +1271,8 @@
                   <td class="action"><a href="#" class="blue button small-square" data-tooltip="Edit"><i class="fa fa-pencil"></i></a></td>
                 </tr>
                 <tr>
-                  <td>
-                    <label class="checkbox icon">
+                  <td class="icon">
+                    <label class="checkbox">
                       <input name="userId" type="checkbox" value="stormpath"/>
                       <span class="box"></span>
                       <img src="images/stormpath.jpg">
@@ -1281,8 +1283,8 @@
                   <td class="action"><a href="#" class="blue button small-square" data-tooltip="Edit"><i class="fa fa-pencil"></i></a></td>
                 </tr>
                 <tr>
-                  <td>
-                    <label class="checkbox icon">
+                  <td class="icon">
+                    <label class="checkbox">
                       <input name="userId" type="checkbox" value="broken"/>
                       <span class="box"></span>
                      <img src="images/broken.jpg">

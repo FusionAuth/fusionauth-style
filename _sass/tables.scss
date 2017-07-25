@@ -1,7 +1,6 @@
 /*
  * Copyright (c) 2017, Inversoft Inc., All Rights Reserved
  */
-
 @import 'variables';
 
 /* Tables
@@ -98,17 +97,15 @@ table {
   &.checkboxes {
     tbody {
       tr td {
-        .checkbox {
-          &.icon {
+        &.icon {
+          .checkbox {
             img {
               visibility: hidden;
-              transition: opacity 0.2s ease;
             }
 
             span.box {
               opacity: 1.0;
               visibility: visible;
-              transition: opacity 0.2s ease;
             }
           }
         }
@@ -128,15 +125,28 @@ table {
           text-decoration: none;
         }
 
-        .checkbox {
-          &.icon {
+        &.icon {
+          &:hover {
+            .checkbox {
+              img {
+                visibility: hidden;
+                opacity: 0;
+              }
+
+              span.box {
+                visibility: visible;
+              }
+            }
+          }
+
+          .checkbox {
             min-width: 45px;
 
             img {
               position: absolute;
               opacity: 1.0;
               top: -50%;
-              transition: opacity 0.2s ease;
+              transition: opacity 0.3s ease-in-out;
             }
 
             input[type="checkbox"] {
@@ -146,22 +156,17 @@ table {
             }
 
             span.box {
-              opacity: 0;
               margin-left: 10px;
-              transition: opacity 0.2s ease;
               visibility: hidden;
             }
 
             input[type="checkbox"]:checked {
               ~ img {
                 visibility: hidden;
-                transition: opacity 0.2s ease;
               }
 
               ~ span.box {
-                opacity: 1.0;
                 visibility: visible;
-                transition: opacity 0.2s ease;
               }
             }
           }
