@@ -30,6 +30,14 @@ table {
           text-decoration: none;
         }
 
+        &.icon {
+          .checkbox {
+            transition: width 0.1s ease-out;
+            width: 0;
+            visibility: hidden;
+          }
+        }
+
         &.sortable {
           // maintain this width on the header even when it doesn't have a sort indicator
           &:after {
@@ -95,6 +103,25 @@ table {
   }
 
   &.checkboxes {
+    thead {
+      tr {
+        th {
+          &.icon {
+            .checkbox {
+              margin-right: 20px;
+              transition: width 0.1s ease-out;
+              width: 22px;
+              visibility: visible;
+            }
+
+            span.box {
+              margin-left: 10px;
+            }
+          }
+        }
+      }
+    }
+
     tbody {
       tr td {
         &.icon {
