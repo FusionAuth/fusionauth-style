@@ -338,6 +338,11 @@
   .last-#{$size} {
     order: 1;
   }
+
+  .shrink {
+    flex-grow: 0;
+    flex-shrink: 1;
+  }
 }
 
 //

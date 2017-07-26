@@ -147,13 +147,31 @@ table {
         text-align: left;
         vertical-align: middle;
 
-        a {
-          color: $table-body-link-color;
-          text-decoration: none;
+        &.action {
+          text-align: left;
+          white-space: nowrap;
+          width: 1px;
+        }
+
+        &.hide-on-mobile {
+          display: none;
+
+          @media (min-width: 640px) {
+            display: table-cell;
+          }
+        }
+
+        &.show-on-mobile {
+          display: none;
+
+          @media (max-width: 640px) {
+            display: table-cell;
+          }
         }
 
         &.icon {
           cursor: pointer;
+          padding: 2px 8px;
 
           &:hover {
             .checkbox {
@@ -233,34 +251,17 @@ table {
           }
         }
 
+        &.top {
+          vertical-align: top;
+        }
+
+        a {
+          color: $table-body-link-color;
+          text-decoration: none;
+        }
+
         img.large {
           width: 75px;
-        }
-
-        &.action {
-          text-align: left;
-          white-space: nowrap;
-          width: 1px;
-        }
-
-        &.hide-on-mobile {
-          display: none;
-
-          @media (min-width: 640px) {
-            display: table-cell;
-          }
-        }
-
-        &.show-on-mobile {
-          display: none;
-
-          @media (max-width: 640px) {
-            display: table-cell;
-          }
-        }
-
-        &.icon {
-          padding: 2px 8px;
         }
       }
 
