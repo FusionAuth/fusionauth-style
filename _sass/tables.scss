@@ -170,38 +170,42 @@ table {
               }
             }
           }
+
+          img {
+            border: 2px solid white;
+            border-radius: 50%;
+            margin-right: 10px;
+            height: 37px;
+            position: relative;
+            vertical-align: middle;
+            width: 37px;
+
+            // Handle broken avatar links w/ Font Awesome-ness.
+            &:after {
+              background-color: white;
+              color: $table-body-link-color;
+              content: "\f2be";
+              display: block;
+              font-family: FontAwesome;
+              -webkit-font-smoothing: antialiased;
+              -moz-osx-font-smoothing: grayscale;
+              line-height: 30px;
+              font-size: 30px;
+              height: 100%;
+              left: 0;
+              padding-top: 3px;
+              position: absolute;
+              text-align: center;
+              text-decoration: none;
+              text-rendering: auto;
+              top: 0;
+              width: 100%;
+            }
+          }
         }
 
-        img {
-          border: 2px solid white;
-          border-radius: 50px;
-          margin-right: 10px;
-          height: 37px;
-          position: relative;
-          vertical-align: middle;
-          width: 37px;
-        }
-
-        // Handle broken avatar links w/ Font Awesome-ness.
-        img:after {
-          background-color: white;
-          color: $table-body-link-color;
-          content: "\f2be";
-          display: block;
-          font-family: FontAwesome;
-          -webkit-font-smoothing: antialiased;
-          -moz-osx-font-smoothing: grayscale;
-          line-height: 30px;
-          font-size: 30px;
-          height: 100%;
-          left: 0;
-          padding-top: 3px;
-          position: absolute;
-          text-align: center;
-          text-decoration: none;
-          text-rendering: auto;
-          top: 0;
-          width: 100%;
+        img.large {
+          width: 75px;
         }
 
         &.action {
