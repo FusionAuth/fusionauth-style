@@ -14,7 +14,7 @@
   }
 }
 
-.code {
+pre.code {
   @include scrollbars($scrollbar-track-background-color, $scrollbar-vertical-track-box-shadow, $scrollbar-thumb-background-color);
 
   &.pre-wrap {
