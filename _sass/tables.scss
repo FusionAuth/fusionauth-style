@@ -126,6 +126,8 @@ table {
         }
 
         &.icon {
+          cursor: pointer;
+
           &:hover {
             .checkbox {
               img {
