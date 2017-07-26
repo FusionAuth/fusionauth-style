@@ -602,7 +602,9 @@ label.select {
 }
 
 .prime-multiple-select {
+  display: inline-block;
   position: relative;
+  width: calc(100% - 18% - 20px);
 
   ul.option-list {
     @include scrollbars($scrollbar-track-background-color, $scrollbar-vertical-track-box-shadow, $scrollbar-thumb-background-color);
@@ -713,14 +715,6 @@ label.select {
 
   &.focus ul.option-list {
     box-shadow: $highlight-box-shadow;
-  }
-}
-
-// Float hack
-form.labels-left .prime-multiple-select .search-results {
-  @media(min-width: 640px) {
-    margin-left: calc(18% + 20px);
-    width: calc(82% - 20px);
   }
 }
 
