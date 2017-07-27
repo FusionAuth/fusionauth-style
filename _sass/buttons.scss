@@ -60,6 +60,10 @@
     }
   }
 
+  &.stack {
+    margin-bottom: 10px;
+  }
+
   &.blue {
     @include button-colors($blue-button-background-color, $blue-button-color, none);
 
