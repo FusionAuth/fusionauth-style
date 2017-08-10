@@ -39,6 +39,8 @@ table {
         }
 
         &.sortable {
+          cursor: pointer;
+
           // maintain this width on the header even when it doesn't have a sort indicator
           &:after {
             color: transparent;
