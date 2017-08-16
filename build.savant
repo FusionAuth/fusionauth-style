@@ -1,9 +1,9 @@
 /*
- * Copyright (c) 2014-2016, Inversoft Inc., All Rights Reserved
+ * Copyright (c) 2014-2017, Inversoft Inc., All Rights Reserved
  */
 savantVersion = "1.0.0"
 
-project(group: "com.inversoft", name: "inversoft-style", version: "0.1.5", licenses: ["Commercial"]) {
+project(group: "com.inversoft", name: "inversoft-style", version: "0.1.6", licenses: ["Commercial"]) {
   workflow {
     standard()
   }
