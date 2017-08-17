@@ -3,7 +3,7 @@
  */
 savantVersion = "1.0.0"
 
-project(group: "com.inversoft", name: "inversoft-style", version: "0.1.6", licenses: ["Commercial"]) {
+project(group: "com.inversoft", name: "inversoft-style", version: "0.1.7", licenses: ["Commercial"]) {
   workflow {
     standard()
   }
@@ -14,7 +14,7 @@ project(group: "com.inversoft", name: "inversoft-style", version: "0.1.6", licen
 
   dependencies {
     group(name: "prime.js", export: false) {
-      dependency(id: "org.inversoft.prime:prime.js:prime:0.36.0:js")
+      dependency(id: "org.inversoft.prime:prime.js:prime:0.37.0:js")
     }
   }
 
