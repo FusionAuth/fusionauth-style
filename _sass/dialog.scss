@@ -83,5 +83,10 @@
       left: calc(50vw - 300px);
       width: 600px;
     }
+
+    @media (min-width: 1280px) {
+      left: calc(50vw - 400px);
+      width: 800px;
+    }
   }
 }
