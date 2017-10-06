@@ -93,10 +93,13 @@ form.labels-left {
         width: 18%;
       }
 
+      > label ~ span.error {
+        margin-left: calc(18% + 20px);
+      }
+
       > span.error {
         color: $error-color;
         display: block;
-        margin-left: calc(18% + 20px);
       }
 
       &:after {
