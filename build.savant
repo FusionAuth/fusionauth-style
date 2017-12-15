@@ -3,7 +3,7 @@
  */
 savantVersion = "1.0.0"
 
-project(group: "com.inversoft", name: "inversoft-style", version: "0.1.10", licenses: ["Commercial"]) {
+project(group: "com.inversoft", name: "inversoft-style", version: "0.1.11", licenses: ["Commercial"]) {
   workflow {
     standard()
   }
