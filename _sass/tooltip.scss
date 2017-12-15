@@ -16,10 +16,6 @@
   max-width: 150px;
   z-index: 1000;
 
-  @media (max-width: 640px) {
-    display: none;
-  }
-
   &:after {
     border: 6px solid rgba(0, 0, 0, 0);
     border-top-color: $tooltip-background-color;
