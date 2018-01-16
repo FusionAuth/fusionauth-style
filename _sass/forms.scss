@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017, Inversoft Inc., All Rights Reserved
+ * Copyright (c) 2017-2018, Inversoft Inc., All Rights Reserved
  */
 
 @import 'mixins';
@@ -250,7 +250,7 @@ textarea {
     }
   }
 
-  > input, > .icon {
+  > input, > .icon,.text {
     &:first-child {
       border-left: 1px solid $text-border-color;
     }
@@ -264,7 +264,7 @@ textarea {
     border-left: none;
   }
 
-  span.icon {
+  span.icon, span.text {
     background: $input-addon-background-color;
   }
 
@@ -290,6 +290,14 @@ textarea {
       font: normal normal normal 14px/1 FontAwesome;
       padding: 7px 11px 7px 11px;
     }
+  }
+
+  /* Text Addon */
+  .text {
+    border-bottom: 1px solid $text-border-color;
+    border-top: 1px solid $text-border-color;
+    flex: 0 0 auto;
+    padding: 4px 12px;
   }
 }
 
@@ -322,6 +330,10 @@ form .form-row .input-addon-group label.select {
   margin-bottom: 0; // It would normally have 5px pushing the label up and giving it a weird look.
 
   select {
+    border-bottom: 1px solid $text-border-color;
+    border-left: 1px solid $text-border-color;
+    border-top: 1px solid $text-border-color;
+    box-shadow: none;
     height: 100%;
     width: 100%;
   }
