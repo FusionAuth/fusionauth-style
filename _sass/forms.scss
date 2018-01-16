@@ -250,7 +250,7 @@ textarea {
     }
   }
 
-  > input, > .icon,.text {
+  > input, > .icon,span.text {
     &:first-child {
       border-left: 1px solid $text-border-color;
     }
@@ -293,7 +293,7 @@ textarea {
   }
 
   /* Text Addon */
-  .text {
+  span.text {
     border-bottom: 1px solid $text-border-color;
     border-top: 1px solid $text-border-color;
     flex: 0 0 auto;
