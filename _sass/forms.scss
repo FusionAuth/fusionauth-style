@@ -260,6 +260,27 @@ textarea {
     }
   }
 
+  > label.select {
+
+    &:first-child {
+      > select {
+        border-radius: 2px 0 0 2px;
+      }
+    }
+
+    &:last-child:not(.flat) {
+      > select {
+        border-radius: 0 2px 2px 0;
+      }
+    }
+
+    &:last-child {
+      > select {
+        border-right: 1px solid $text-border-color;
+      }
+    }
+  }
+
   input + .icon {
     border-left: none;
   }
