@@ -217,7 +217,7 @@ textarea {
   display: inline-flex;
 
   &.flat {
-    .icon, input {
+    input, span {
       background: none;
       border: none;
       box-shadow: none;
@@ -250,7 +250,7 @@ textarea {
     }
   }
 
-  > input, > .icon,span.text {
+  > input, > span {
     &:first-child {
       border-left: 1px solid $text-border-color;
     }
@@ -281,18 +281,19 @@ textarea {
     }
   }
 
-  input + .icon {
+  input + span {
     border-left: none;
   }
 
-  span.icon, span.text {
+  span {
     background: $input-addon-background-color;
-  }
-
-  .icon {
     border-bottom: 1px solid $text-border-color;
     border-top: 1px solid $text-border-color;
     flex: 0 0 auto;
+
+    &.text {
+      padding: 4px 12px;
+    }
 
     &:not(:last-child) {
       border-right: none;
@@ -302,7 +303,7 @@ textarea {
       border-left: none;
     }
 
-    &+ .icon {
+    &+ span {
       border-left: 1px solid $text-border-color;
     }
 
@@ -311,14 +312,6 @@ textarea {
       font: normal normal normal 14px/1 FontAwesome;
       padding: 7px 11px 7px 11px;
     }
-  }
-
-  /* Text Addon */
-  span.text {
-    border-bottom: 1px solid $text-border-color;
-    border-top: 1px solid $text-border-color;
-    flex: 0 0 auto;
-    padding: 4px 12px;
   }
 }
 
