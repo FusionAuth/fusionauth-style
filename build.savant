@@ -2,6 +2,7 @@
  * Copyright (c) 2014-2018, Inversoft Inc., All Rights Reserved
  */
 savantVersion = "1.0.0"
+primejsVersion = "1.0.1"
 
 project(group: "com.inversoft", name: "inversoft-style", version: "0.1.12", licenses: ["Commercial"]) {
   workflow {
@@ -14,7 +15,7 @@ project(group: "com.inversoft", name: "inversoft-style", version: "0.1.12", lice
 
   dependencies {
     group(name: "prime.js", export: false) {
-      dependency(id: "org.inversoft.prime:prime.js:prime:0.37.0:js")
+      dependency(id: "org.inversoft.prime:prime.js:prime-es6:${primejsVersion}:js")
     }
   }
 
@@ -37,10 +38,14 @@ target(name: "clean", description: "Deletes the build dir") {
 
 target(name: "js", description: "Copies the Prime.js files to the js dir") {
   file.delete {
-    fileSet(dir: "js", includePatterns: [~/prime.+\.js/])
+    fileSet(dir: "js", includePatterns: [~/prime.+\.js/, ~/prime-es6.js/])
   }
   dependency.copy(to: "js") {
     dependencies(group: "prime.js", transitive: false, fetchSource: false)
+  }
+  file.rename {
+    fileSet(dir: "js")
+    filter(token: "prime-es6-${primejsVersion}", value: "prime-es6")
   }
 }
 
