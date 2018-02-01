@@ -40,6 +40,7 @@ table {
 
         &.sortable {
           cursor: pointer;
+          white-space: nowrap;
 
           // maintain this width on the header even when it doesn't have a sort indicator
           &:after {
