@@ -543,6 +543,11 @@ label.select {
     padding: 8px 50px 8px 13px;
     transition: box-shadow 0.2s ease-in-out;
 
+    &:disabled {
+      background: rgba($input-background-color, 0.2);
+      color: $select-option-disabled-color;
+    }
+
     &:focus {
       box-shadow: $select-box-shadow, $highlight-box-shadow;
       outline: 0;

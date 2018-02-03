@@ -49,6 +49,12 @@ target(name: "js", description: "Copies the Prime.js files to the js dir") {
   }
 }
 
+target(name: "run") {
+  if (new ProcessBuilder('bundle', 'exec', 'jekyll', 'serve').inheritIO().start().waitFor() != 0) {
+    fail("run failed")
+  }
+}
+
 target(name: "int", description: "Releases a local integration build of the project", dependsOn: ["js"]) {
   file.mkdir(dir: "build/css")
 
