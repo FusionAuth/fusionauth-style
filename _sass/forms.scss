@@ -650,6 +650,23 @@ label.select {
   }
 }
 
+.multiSelectPills {
+  span {
+    background: $multiple-select-option-background-color;
+    background-clip: padding-box;
+    border-radius: 3px;
+    cursor: default;
+    margin: 1px 4px;
+    padding: 4px 9px;
+    color: white;
+    display: inline-block;
+  }
+
+  &.clickable span {
+    cursor: pointer;
+  }
+}
+
 .prime-multiple-select {
   display: inline-block;
   position: relative;
