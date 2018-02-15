@@ -42,7 +42,7 @@ form {
   .form-row {
     margin-bottom: 15px;
 
-    label:first-of-type {
+    > label:first-of-type {
       display: block;
       margin-bottom: 5px;
     }
@@ -129,27 +129,7 @@ form.labels-left {
   }
 
   &.full {
-    input[type="email"],
-    input[type="number"],
-    input[type="search"],
-    input[type="text"],
-    input[type="tel"],
-    input[type="url"],
-    input[type="password"],
-    textarea,
-    select {
-      width: calc(100% - 18% - 20px);
-    }
-
-    label.select {
-      width: calc(100% - 18% - 20px);
-
-      select {
-        width: 100%;
-      }
-    }
-
-    .input-addon-group {
+    .form-row > label:first-of-type + * {
       width: calc(100% - 18% - 20px);
     }
   }
