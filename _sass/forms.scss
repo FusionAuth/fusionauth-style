@@ -634,16 +634,13 @@ label.select {
   span {
     background: $multiple-select-option-background-color;
     background-clip: padding-box;
+    border: 1px solid transparent; // ensure a border when they wrap
     border-radius: 3px;
+    color: $blue-button-color;
     cursor: default;
-    margin: 1px 4px;
-    padding: 4px 9px;
-    color: white;
     display: inline-block;
-  }
-
-  &.clickable span {
-    cursor: pointer;
+    font-weight: 500;
+    padding: 3px 9px;
   }
 }
 
