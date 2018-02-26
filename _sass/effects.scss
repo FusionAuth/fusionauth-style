@@ -1,6 +1,8 @@
 /*
- * Copyright (c) 2017, Inversoft Inc., All Rights Reserved
+ * Copyright (c) 2017-2018, Inversoft Inc., All Rights Reserved
  */
+
+@import 'variables';
 
 .slide-open {
   height: 0;
@@ -9,5 +11,38 @@
 
   &.open {
     height: auto;
+
+    + .slide-open-toggle {
+      i {
+        transition: rotate 0.3s ease-in-out;
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  + .slide-open-toggle {
+    background-color: $table-header-light-color;
+    display: inline-block;
+    height: 1px;
+    margin: 3px 0;
+    position: relative;
+    text-align: center;
+    width: 100%;
+
+    > span {
+      background-color: white;
+      display: inline-block;
+      left: 50%;
+      padding: 0 10px;
+      position: absolute;
+      transform: translate(-50%, 0);
+      top: -0.8em;
+
+      i {
+        transform: rotate(0deg);
+        transition: all 0.3s ease-in-out;
+      }
+    }
   }
 }
+

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017, Inversoft Inc., All Rights Reserved
+ * Copyright (c) 2017-2018, Inversoft Inc., All Rights Reserved
  */
 @import 'variables';
 
@@ -268,8 +268,8 @@ table {
         }
       }
 
-      &:not(:last-of-type) {
-        border-bottom: 1px solid $table-border-color;
+      &:not(:first-of-type) {
+        border-top: 1px solid $table-border-color;
       }
     }
   }

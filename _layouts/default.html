@@ -48,6 +48,15 @@
         Prime.Utils.stopEvent(e);
       });
 
+      Prime.Document.query('.slide-open-toggle').each(function(element) {
+        element.addEventListener('click', function(event) {
+          Prime.Utils.stopEvent(event);
+          var dataSet = element.getDataSet();
+          var container = Prime.Document.queryById(dataSet.slideOpen);
+          new Prime.Effects.SlideOpen(container).toggle();
+        });
+      });
+
       // Inversoft brand colors as RGB integers
       var red = '235, 56, 92';
       var blue = '73, 144, 226';
@@ -1885,6 +1894,51 @@
                   &nbsp;
                 </div>
               </div>
+            </main>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs">
+          <div class="panel">
+            <h2>Advanced Form Controls</h2>
+            <main>
+              <form class="full">
+                <div class="form-row">
+                  <input type="text" class="text" placeholder="Search">
+                </div>
+
+                <div id="bottom-expanding-form" class="slide-open">
+                  <div class="row">
+                    <div class="col-xs-12 col-md-4 tight-left">
+                      <div class="form-row">
+                        <label class="text">Language</label>
+                        <label class="text"><input type="text" class="text"></label>
+                      </div>
+                    </div>
+                    <div class="col-xs-12 col-md-4 tight-left">
+                      <div class="form-row">
+                        <label class="text">Type</label>
+                        <label class="text"><input type="text" class="text"></label>
+                      </div>
+                    </div>
+                    <div class="col-xs-12 col-md-4 tight-left">
+                      <div class="form-row">
+                        <label class="text">Tags</label>
+                        <label class="text"><input type="text" class="text"></label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <a href="#" class="slide-open-toggle" data-slide-open="bottom-expanding-form">
+                  <span>
+                    Advanced
+                    <i class="fa fa-angle-down"></i>
+                  </span>
+                </a>
+              </form>
             </main>
           </div>
         </div>
