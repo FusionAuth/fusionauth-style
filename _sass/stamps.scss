@@ -8,8 +8,11 @@
 .stamp {
   box-shadow: $stamp-box-shadow;
   display: inline-block;
-  margin-left: 10px;
   padding: 1px 5px;
+
+  &:not(:first-child) {
+    margin-left: 10px;
+  }
 
   &.blue {
     background: $blue-stamp-background-color;
