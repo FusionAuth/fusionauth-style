@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017, Inversoft Inc., All Rights Reserved
+ * Copyright (c) 2017-2018, Inversoft Inc., All Rights Reserved
  */
 
 @import 'variables';
@@ -68,6 +68,14 @@ a {
   &:hover, &:visited {
     color: $link-color;
   }
+}
+
+.code {
+  font-family: "Lucida Console", Monaco, monospace;
+}
+
+.code-light {
+  font-family: "Courier New", Courier, monospace;
 }
 
 .blue-text {

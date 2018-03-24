@@ -266,6 +266,10 @@ table {
         img.large {
           width: 75px;
         }
+
+        .nested {
+          box-shadow: $layered-box-shadow;
+        }
       }
 
       &:not(:first-of-type) {
