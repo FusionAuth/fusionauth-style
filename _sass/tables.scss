@@ -18,6 +18,15 @@ table {
     box-shadow: $layered-box-shadow;
   }
 
+  /* Fixed layout table */
+  &.fixed-layout {
+    table-layout: fixed;
+
+    > tbody > tr > td {
+      overflow-x: auto;
+    }
+  }
+
   thead {
 
     tr {
