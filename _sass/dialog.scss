@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017, Inversoft Inc., All Rights Reserved
+ * Copyright (c) 2017-2018, Inversoft Inc., All Rights Reserved
  */
 
 @import 'mixins';
@@ -56,6 +56,10 @@
       font-size: 14px;
       margin: 10px 0 0 0;
       padding: 12px 15px;
+    }
+
+    .buttons {
+      text-align: right;
     }
 
     div.disabled {

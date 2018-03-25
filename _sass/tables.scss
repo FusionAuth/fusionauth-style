@@ -14,6 +14,10 @@ table {
   max-width: 100%;
   width: 100%;
 
+  .nested {
+    box-shadow: $layered-box-shadow;
+  }
+
   thead {
 
     tr {
@@ -28,6 +32,17 @@ table {
         a {
           color: $table-header-link-color;
           text-decoration: none;
+        }
+
+        > label.checkbox {
+          width: 100%;
+        }
+
+        /* Tooltips for column headings */
+        i.fa {
+          color: #1E91CF;
+          font-size: 13px;
+          margin-left: 4px;
         }
 
         &.icon {
@@ -230,7 +245,7 @@ table {
             vertical-align: middle;
             width: 37px;
 
-            // Handle broken avatar links w/ Font Awesome-ness.
+            /* Handle broken avatar links w/ Font Awesome-ness. */
             &:after {
               background-color: white;
               color: $table-body-link-color;
@@ -265,10 +280,6 @@ table {
 
         img.large {
           width: 75px;
-        }
-
-        .nested {
-          box-shadow: $layered-box-shadow;
         }
       }
 
