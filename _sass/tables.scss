@@ -18,6 +18,21 @@ table {
     box-shadow: $layered-box-shadow;
   }
 
+  /* Odd rows colored */
+  &.striped {
+    > tbody > tr:nth-child(odd) {
+      background-color: $gray-1;
+    }
+  }
+
+  /* Hover row color */
+  &.hover {
+    > tbody > tr:hover {
+      background-color: $gray-1;
+      transition: background-color 0.2s ease-out;
+    }
+  }
+
   /* Fixed layout table */
   &.fixed-layout {
     table-layout: fixed;

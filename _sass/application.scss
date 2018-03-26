@@ -285,6 +285,11 @@ body > main {
       padding-right: 10px;
       width: 100%;
 
+      /* Additional search forms in the header */
+      &:not(:first-of-type) {
+        border-left: 1px solid $app-header-border-color;
+      }
+
       main {
         width: 100%;
       }
