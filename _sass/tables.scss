@@ -14,8 +14,10 @@ table {
   max-width: 100%;
   width: 100%;
 
-  .nested {
+  &.nested {
     box-shadow: $layered-box-shadow;
+    margin: 2px;
+    width: calc(100% - 4px);
   }
 
   /* Odd rows colored */
