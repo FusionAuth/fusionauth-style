@@ -58,6 +58,11 @@ table {
         text-align: left;
         vertical-align: middle;
 
+        &.bottom {
+          vertical-align: bottom;
+        }
+
+
         a {
           color: $table-header-link-color;
           text-decoration: none;
