@@ -355,8 +355,8 @@ form .form-row .input-addon-group label.select {
     pointer-events: none;
 
     & ~ span.box {
-      background: rgba($input-background-color, 0.2);
-      color: $checkbox-disabled-color
+      background: $gray-2;
+      color: $checkbox-disabled-color;
     }
 
     & ~ span.label {
