@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017, Inversoft Inc., All Rights Reserved
+ * Copyright (c) 2017-2018, Inversoft Inc., All Rights Reserved
  */
 
 @import 'mixins';
@@ -27,6 +27,26 @@
     position: absolute;
     top: 100%;
     width: 0;
+  }
+
+  &.inverted {
+    &:after {
+      border: 0;
+      content: '';
+    }
+
+    &:before {
+      border: 6px solid rgba(0, 0, 0, 0);
+      border-bottom-color: $tooltip-background-color;
+      content: ' ';
+      height: 0;
+      left: 50%;
+      margin-left: -6px;
+      pointer-events: none;
+      position: absolute;
+      bottom: 100%;
+      width: 0;
+    }
   }
 
   &.label {
