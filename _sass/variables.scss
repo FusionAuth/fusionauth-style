@@ -145,6 +145,7 @@ $checkbox-border-color: $gray-4;
 $checkbox-check-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2);
 $checkbox-check-color: white;
 $checkbox-checked-background-color: $blue-medium;
+$checkbox-disabled-background-color: rgba($gray-2, 0.7);
 $checkbox-disabled-color: $gray-6;
 $checkbox-disabled-text-color: $gray-4;
 
@@ -198,6 +199,9 @@ $radio-border-color: $gray-4;
 $radio-check-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2);
 $radio-pin-color: white;
 $radio-checked-border-color: $blue-medium;
+$radio-disabled-background-color: rgba($gray-2, 0.7);
+$radio-disabled-color: $gray-6;
+$radio-disabled-text-color: $gray-4;
 
 $select-background-color: $gray-2;
 $select-border-color: $blue-medium;

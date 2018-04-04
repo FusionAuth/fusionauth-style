@@ -361,8 +361,9 @@ form .form-row .input-addon-group label.select {
     pointer-events: none;
 
     & ~ span.box {
-      background: $gray-2;
+      background: $checkbox-disabled-background-color;
       color: $checkbox-disabled-color;
+      pointer-events: none;
     }
 
     & ~ span.label {
@@ -454,6 +455,20 @@ form .form-row .input-addon-group label.select {
   margin: 0;
   padding: 0;
   position: relative;
+
+  input[type="radio"]:disabled {
+    pointer-events: none;
+
+    & ~ span.box {
+      background: $radio-disabled-background-color;
+      color: $radio-disabled-color;
+      pointer-events: none;
+    }
+
+    & ~ span.label {
+      color: $radio-disabled-text-color;
+    }
+  }
 
   span.box {
     background: #fff;
