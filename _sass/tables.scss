@@ -312,6 +312,12 @@ table {
           text-decoration: none;
         }
 
+        hr {
+          background-color: $table-border-color;
+          border: 0;
+          height: 1px;
+        }
+
         img.large {
           width: 75px;
         }

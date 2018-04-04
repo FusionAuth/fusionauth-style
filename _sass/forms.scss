@@ -120,15 +120,21 @@ form.labels-left {
         display: table;
       }
 
-      .checkbox, .radio {
-        margin-top: 6px;
-      }
-
       .checkbox + label {
         margin-right: 10px;
         margin-top: 9px;
         vertical-align: top;
       }
+    }
+  }
+
+  @media (min-width: 640px) {
+    .checkbox {
+      margin-top: 6px;
+    }
+
+    .radio {
+      margin-top: 5px;
     }
   }
 
