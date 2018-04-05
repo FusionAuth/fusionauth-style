@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017, Inversoft Inc., All Rights Reserved
+ * Copyright (c) 2017-2018, Inversoft Inc., All Rights Reserved
  */
 
 @import 'mixins';
@@ -10,8 +10,8 @@
   display: inline-block;
   padding: 1px 5px;
 
-  &:not(:first-child) {
-    margin-left: 10px;
+  &:not(:last-child) {
+    margin-right: 10px;
   }
 
   &.blue {
