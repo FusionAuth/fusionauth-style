@@ -32,9 +32,18 @@ table {
 
   /* Hover row color */
   &.hover {
-    > tbody > tr:hover {
+    > tbody > tr:not(:only-child):hover {
       background-color: $gray-1;
+      color: $black;
       transition: background-color 0.2s ease-out;
+    }
+
+    /*
+      Tables usually have a transparent background, but if there is a nested table in a 'table.hover' - assume
+      the panel background color - #fff
+     */
+    table.nested {
+      background: #fff;
     }
   }
 
