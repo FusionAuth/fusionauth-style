@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017, Inversoft Inc., All Rights Reserved
+ * Copyright (c) 2017-2018, Inversoft Inc., All Rights Reserved
  */
 
 @import 'mixins';
@@ -7,13 +7,14 @@
 
 /* Charts and toggles
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
-label.chart-toggle {
+label.chart-toggle,
+label.panel-toggle {
   background: $input-background-color;
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 2px;
   float: right;
   padding: 0;
-  z-index: 100;
+  z-index: 1;
 
   a {
     background: white;
