@@ -70,12 +70,12 @@ a {
   }
 }
 
-.code {
+.monospace {
   font-family: "Lucida Console", Monaco, monospace;
-}
 
-.code-light {
-  font-family: "Courier New", Courier, monospace;
+  &.light {
+    font-family: "Courier New", Courier, monospace;
+  }
 }
 
 .blue-text {
