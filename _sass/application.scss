@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017, Inversoft Inc., All Rights Reserved
+ * Copyright (c) 2017-2018, Inversoft Inc., All Rights Reserved
  */
 
 @import 'layers';
@@ -411,6 +411,12 @@ body > main {
 
     .buttons {
       text-align: right;
+    }
+
+    &.sticky {
+      position: fixed;
+      width: calc(100% - 225px);
+      z-index: 2; /* One higher than panel / chart toggle */
     }
 
     @media (min-width: 750px) {

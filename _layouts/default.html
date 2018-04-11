@@ -57,6 +57,23 @@
         });
       });
 
+      window.onscroll = function() {_handlePageScroll()};
+      var header = Prime.Document.queryFirst('header.page-header');
+      var appHeader = Prime.Document.queryFirst('header.app-header');
+      var pageBody = Prime.Document.queryFirst('main.page-body');
+      // Get the offset position of the navbar
+      var stickyHeight = header.getOffsetTop() - appHeader.getHeight();
+
+      function _handlePageScroll() {
+        if (window.pageYOffset >= stickyHeight) {
+          header.addClass("sticky").setStyle('top', appHeader.getHeight() + 'px');
+          pageBody.setStyle('padding-top', '99px');
+        } else {
+          header.removeClass("sticky").setStyle('top', null);
+          pageBody.setStyle('padding-top', null);
+        }
+      }
+
       // Inversoft brand colors as RGB integers
       var red = '235, 56, 92';
       var blue = '73, 144, 226';
