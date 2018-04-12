@@ -414,9 +414,14 @@ body > main {
     }
 
     &.sticky {
+      padding-top: 10px;
       position: fixed;
-      width: calc(100% - 225px);
+      width: 100%;
       z-index: 2; /* One higher than panel / chart toggle */
+
+      @media (min-width: 750px) {
+        width: calc(100% - 225px);
+      }
     }
 
     @media (min-width: 750px) {
