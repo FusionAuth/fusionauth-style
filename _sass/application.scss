@@ -416,11 +416,20 @@ body > main {
     &.sticky {
       padding-top: 10px;
       position: fixed;
+      top: 45px; /* height of header.app-header */
       width: 100%;
       z-index: 2; /* One higher than panel / chart toggle */
 
       @media (min-width: 750px) {
         width: calc(100% - 225px);
+      }
+
+      + main.page-body {
+        padding-top: 98px; /* panel padding of 30px + sticky header height on mobile */
+
+        @media (min-width: 750px) {
+          padding-top: 103px; /* panel padding of 35px + sticky header height */
+        }
       }
     }
 
