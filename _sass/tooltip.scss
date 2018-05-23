@@ -16,6 +16,27 @@
   max-width: 150px;
   z-index: 1000;
 
+  &.wide {
+    max-width: 300px;
+    padding: 10px;
+    text-align: left;
+
+    h1 {
+      font-size: 18px;
+      font-weight: normal;
+    }
+
+    h2 {
+      font-size: 16px;
+      font-weight: normal;
+    }
+
+    h3 {
+      font-size: 14px;
+      font-weight: 400;
+    }
+  }
+
   &:after {
     border: 6px solid rgba(0, 0, 0, 0);
     border-top-color: $tooltip-background-color;

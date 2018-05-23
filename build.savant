@@ -2,9 +2,9 @@
  * Copyright (c) 2014-2018, Inversoft Inc., All Rights Reserved
  */
 savantVersion = "1.0.0"
-primejsVersion = "1.0.1"
+primejsVersion = "1.2.0"
 
-project(group: "com.inversoft", name: "inversoft-style", version: "0.1.14", licenses: ["Commercial"]) {
+project(group: "com.inversoft", name: "inversoft-style", version: "0.1.15", licenses: ["Commercial"]) {
   workflow {
     standard()
   }
