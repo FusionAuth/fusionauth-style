@@ -440,6 +440,14 @@ form .form-row .input-addon-group label.select {
   overflow-y: auto;
   padding-left: 10px;
 
+  &.shorter {
+    max-height: 130px;
+  }
+
+  &.taller {
+    max-height: 500px;
+  }
+
   .checkbox {
     display: block;
     margin-top: 6px;
@@ -626,6 +634,10 @@ label.select {
 
     &:checked ~ span.pin {
       left: 30px;
+    }
+
+    &:disabled ~ span.rail {
+      opacity: 0.5;
     }
   }
 
