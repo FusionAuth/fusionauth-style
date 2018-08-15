@@ -54,6 +54,7 @@ form {
   }
 
   &.full {
+    .prime-multiple-select,
     input[type="email"],
     input[type="number"],
     input[type="search"],
@@ -92,11 +93,11 @@ form.labels-left {
   .form-row {
     margin-bottom: 15px;
 
-    .prime-multiple-select {
-      width: calc(100% - 18% - 20px);
-    }
-
     @media (min-width: 640px) {
+      .prime-multiple-select {
+        width: calc(100% - 18% - 20px);
+      }
+
       > label:first-of-type {
         float: left;
         margin-right: 20px;
@@ -139,19 +140,9 @@ form.labels-left {
   }
 
   &.full {
-    .form-row > label:first-of-type + * {
-      width: calc(100% - 18% - 20px);
-    }
-  }
-
-  &.full {
-    @media (max-width: 640px) {
+    @media (min-width: 640px) {
       .form-row > label:first-of-type + * {
-        width: 100%;
-      }
-
-      .prime-multiple-select {
-        width: 100%;
+        width: calc(100% - 18% - 20px);
       }
     }
   }
@@ -215,6 +206,11 @@ textarea {
     border: none;
     box-shadow: none;
   }
+}
+
+/* Set a default max width so that it does not overflow */
+textarea {
+  max-width: calc(100%);
 }
 
 /*
