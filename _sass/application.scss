@@ -69,11 +69,11 @@ body {
     > main {
       margin-left: 0;
       margin-right: 0;
-    }
 
-    > main .app-header {
-      margin-left: 0;
-      width: 100%;
+      .app-header, .page-header.sticky {
+        margin-left: 0;
+        width: 100%;
+      }
     }
   }
 }
