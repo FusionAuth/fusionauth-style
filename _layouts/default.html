@@ -1093,6 +1093,38 @@
                 </fieldset>
 
                 <fieldset>
+                  <legend>Text boxes (side by side)</legend>
+                  <div class="row">
+                    <div class="tight-left col-xs-12 col-sm-6 form-row">
+                      <label for="text-above-2"><span class="required">*</span> Text <i class="fa fa-info-circle" data-tooltip="Some tooltip help text that is very long and will wrap multiple lines and such."></i></label>
+                      <input type="text" id="text-above-2" placeholder="Text input"/>
+                    </div>
+
+                    <div class="tight-left col-xs-12 col-sm-6 form-row">
+                      <label for="text-left-icon-above-2"><span class="required">*</span> Left Addon <i class="fa fa-info-circle" data-tooltip="Some tooltip help text that is very long and will wrap multiple lines and such."></i></label>
+                      <div class="input-addon-group">
+                        <span class="icon"><i class="fa fa-lock"></i></span>
+                        <input type="text" id="text-left-icon-above-2" placeholder="Text input"/>
+                      </div>
+                    </div>
+
+                    <div class="tight-left col-xs-12 col-sm-6 form-row">
+                      <label for="text-right-icon-above-2"><span class="required">*</span> Right Addon <i class="fa fa-info-circle" data-tooltip="Some tooltip help text that is very long and will wrap multiple lines and such."></i></label>
+                      <div class="input-addon-group">
+                        <input type="text" id="text-right-icon-above-2" placeholder="Text input"/>
+                        <span class="icon"><i class="fa fa-lock"></i></span>
+                      </div>
+                    </div>
+
+                    <div class="tight-left col-xs-12 col-sm-6 form-row">
+                      <label for="error-above-2" class="error">Error <i class="fa fa-info-circle" data-tooltip="Short"></i></label>
+                      <input type="text" id="error-above-2" class="error" placeholder="Text input"/>
+                      <span class="error">Error 1, error 2, error 3</span>
+                    </div>
+                  </div>
+                </fieldset>
+
+                <fieldset>
                   <legend>Checkboxes</legend>
                   <div class="form-row">
                     <label for="foo-above"><span class="required">*</span> Checkbox label</label>

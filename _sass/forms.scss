@@ -143,6 +143,18 @@ form.labels-left {
       width: calc(100% - 18% - 20px);
     }
   }
+
+  &.full {
+    @media (max-width: 640px) {
+      .form-row > label:first-of-type + * {
+        width: 100%;
+      }
+
+      .prime-multiple-select {
+        width: 100%;
+      }
+    }
+  }
 }
 
 fieldset {
