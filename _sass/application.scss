@@ -46,7 +46,7 @@ body {
       margin-left: 225px;
       margin-right: -225px;
 
-      @media (min-width: 750px) {
+      @media (min-width: 992px) {
         margin-right: 0;
       }
     }
@@ -90,7 +90,7 @@ body {
   width: 225px;
   z-index: $layer-1;
 
-  @media (min-width: 750px) {
+  @media (min-width: 992px) {
     margin-left: 0;
   }
 
@@ -109,7 +109,7 @@ body {
         max-height: 56px;
         width: 100%;
 
-        @media (min-width: 480px) {
+        @media (min-width: 576px) {
           padding: 2px 20px;
         }
       }
@@ -227,7 +227,7 @@ body {
         }
 
         &.show-on-mobile {
-          @media (min-width: 750px) {
+          @media (min-width: 992px) {
             display: none;
           }
         }
@@ -313,7 +313,7 @@ body > main {
       height: 100%;
       text-align: right;
 
-      @media (min-width: 750px) {
+      @media (min-width: 992px) {
         display: block;
       }
 
@@ -351,7 +351,7 @@ body > main {
       }
     }
 
-    @media (min-width: 750px) {
+    @media (min-width: 992px) {
       margin-left: 225px;
       width: calc(100% - 225px);
     }
@@ -361,7 +361,7 @@ body > main {
     background: $page-header-background-color;
     padding-top: 30px;
 
-    @media (min-width: 750px) {
+    @media (min-width: 992px) {
       padding: 30px 40px 0 40px;
     }
   }
@@ -378,7 +378,7 @@ body > main {
       line-height: 30px;
       margin: 0;
 
-      @media (min-width: 640px) {
+      @media (min-width: 576px) {
         font-size: 24px;
       }
     }
@@ -404,7 +404,7 @@ body > main {
         }
       }
 
-      @media (min-widtH: 640px) {
+      @media (min-width: 576px) {
         margin: 0;
       }
     }
@@ -420,20 +420,20 @@ body > main {
       width: 100%;
       z-index: 2; /* One higher than panel / chart toggle */
 
-      @media (min-width: 750px) {
+      @media (min-width: 992px) {
         width: calc(100% - 225px);
       }
 
       + main.page-body {
         padding-top: 98px; /* panel padding of 30px + sticky header height on mobile */
 
-        @media (min-width: 750px) {
+        @media (min-width: 992px) {
           padding-top: 103px; /* panel padding of 35px + sticky header height */
         }
       }
     }
 
-    @media (min-width: 750px) {
+    @media (min-width: 992px) {
       padding: 10px 40px 20px 40px;
     }
   }
@@ -441,7 +441,7 @@ body > main {
   main.page-body {
     padding: 35px 0 20px 0;
 
-    @media (min-width: 750px) {
+    @media (min-width: 992px) {
       padding: 35px 40px 20px 40px;
     }
   }
@@ -451,7 +451,7 @@ body > main {
     text-align: center;
   }
 
-  @media (min-width: 750px) {
+  @media (min-width: 992px) {
     margin-left: 225px;
   }
 }

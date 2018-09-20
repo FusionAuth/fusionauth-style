@@ -93,7 +93,7 @@ form.labels-left {
   .form-row {
     margin-bottom: 15px;
 
-    @media (min-width: 640px) {
+    @media (min-width: 576px) {
       .prime-multiple-select {
         width: calc(100% - 18% - 20px);
       }
@@ -129,7 +129,7 @@ form.labels-left {
     }
   }
 
-  @media (min-width: 640px) {
+  @media (min-width: 576px) {
     .checkbox {
       margin-top: 6px;
     }
@@ -140,7 +140,7 @@ form.labels-left {
   }
 
   &.full {
-    @media (min-width: 640px) {
+    @media (min-width: 576px) {
       .form-row > label:first-of-type + * {
         width: calc(100% - 18% - 20px);
       }
