@@ -186,7 +186,7 @@ textarea {
   border-radius: 2px;
   box-shadow: $input-box-shadow;
   display: inline-block;
-  font-size: 12px;
+  font-size: 16px;
   font-weight: normal;
   padding: 8px 13px;
   transition: box-shadow 0.2s ease-in-out;
@@ -205,6 +205,20 @@ textarea {
     background: transparent;
     border: none;
     box-shadow: none;
+  }
+}
+
+@media (min-width: 576px) {
+  input[type="email"],
+  input[type="file"],
+  input[type="number"],
+  input[type="search"],
+  input[type="text"],
+  input[type="tel"],
+  input[type="url"],
+  input[type="password"],
+  textarea {
+    font-size: 12px;
   }
 }
 
@@ -298,7 +312,7 @@ textarea {
     flex: 0 0 auto;
 
     &.text {
-      padding: 4px 12px;
+      padding: 7px 12px;
     }
 
     &:not(:last-child) {
@@ -316,7 +330,17 @@ textarea {
     i.fa {
       color: $input-addon-color;
       font: normal normal normal 14px/1 FontAwesome;
-      padding: 7px 11px 7px 11px;
+      padding: 9px 13px;
+    }
+
+    @media (min-width: 576px) {
+      i.fa {
+        padding: 7px 11px;
+      }
+
+      &.text {
+        padding: 4px 12px;
+      }
     }
   }
 }
@@ -561,6 +585,7 @@ label.select {
     border-radius: 2px;
     box-shadow: $select-box-shadow;
     color: $select-color;
+    font-size: 16px;
     padding: 8px 50px 8px 13px;
     transition: box-shadow 0.2s ease-in-out;
 
@@ -581,6 +606,10 @@ label.select {
     option {
       background: $option-background-color;
       color: $option-color;
+    }
+
+    @media (min-width: 576px) {
+      font-size: 12px;
     }
   }
 
