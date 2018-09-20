@@ -252,6 +252,10 @@ textarea {
     }
   }
 
+  input {
+    width: 100%;
+  }
+
   > input, > label.select {
     flex: 0 1 100%;
   }
@@ -312,6 +316,7 @@ textarea {
     flex: 0 0 auto;
 
     &.text {
+      font-size: 16px;
       padding: 7px 12px;
     }
 
@@ -339,6 +344,7 @@ textarea {
       }
 
       &.text {
+        font-size: 12px;
         padding: 4px 12px;
       }
     }
