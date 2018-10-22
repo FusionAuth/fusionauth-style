@@ -418,7 +418,7 @@ body > main {
       position: fixed;
       top: 45px; /* height of header.app-header */
       width: 100%;
-      z-index: 2; /* One higher than panel / chart toggle */
+      z-index: $layer-9; /* One higher than panel / chart toggle */
 
       @media (min-width: 992px) {
         width: calc(100% - 225px);

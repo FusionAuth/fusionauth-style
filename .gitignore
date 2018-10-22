@@ -5,3 +5,4 @@ _site
 build
 node_modules
 js/prime*.js
+package-lock.json

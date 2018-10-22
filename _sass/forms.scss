@@ -2,6 +2,7 @@
  * Copyright (c) 2017-2018, Inversoft Inc., All Rights Reserved
  */
 
+@import 'layers';
 @import 'mixins';
 @import 'variables';
 
@@ -822,7 +823,7 @@ label.select {
     overflow-y: auto;
     top: 38px;
     width: 100%;
-    z-index: 100;
+    z-index: $layer-multiple-select;
 
     li {
       padding: 5px;
@@ -849,7 +850,7 @@ label.select {
   padding: 5px;
   position: absolute;
   width: 250px;
-  z-index: 3000;
+  z-index: $layer-date-picker;
 
   &:before {
     background: #fff;
@@ -905,7 +906,7 @@ label.select {
     height: 150px;
     overflow: scroll;
     position: absolute;
-    z-index: 3001;
+    z-index: $layer-date-picker-fields;
 
     > div {
       border-bottom: 1px solid $datetime-picker-border-color;

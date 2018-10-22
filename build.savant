@@ -4,7 +4,7 @@
 savantVersion = "1.0.0"
 primejsVersion = "1.2.0"
 
-project(group: "com.inversoft", name: "inversoft-style", version: "0.1.19", licenses: ["Commercial"]) {
+project(group: "com.inversoft", name: "inversoft-style", version: "0.1.20", licenses: ["Commercial"]) {
   workflow {
     standard()
   }
@@ -66,7 +66,7 @@ target(name: "int", description: "Releases a local integration build of the proj
     fail("Failed while calling sass")
   }
 
-  if (new ProcessBuilder("postcss", "build/css/intermediate.css", "--use", "autoprefixer", "--use", "cssnano", "-o" , "build/css/inversoft-style.css").inheritIO().start().waitFor() != 0) {
+  if (new ProcessBuilder("node_modules/postcss-cli/bin/postcss", "build/css/intermediate.css", "--use", "autoprefixer", "--use", "cssnano", "-o" , "build/css/inversoft-style.css").inheritIO().start().waitFor() != 0) {
     fail("Failed while calling postcss")
   }
 
@@ -77,6 +77,6 @@ target(name: "idea", description: "Updates the IntelliJ IDEA module file") {
   idea.iml()
 }
 
-target(name: "release", description: "Releases a full version of the project", dependsOn: ["int"]) {
+target(name: "release", description: "Releases a full version of the project", dependsOn: ["clean", "int"]) {
   release.release()
 }
