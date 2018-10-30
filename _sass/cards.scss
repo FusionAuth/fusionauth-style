@@ -12,6 +12,7 @@
 .card {
   margin-bottom: 10px;
   position: relative;
+  overflow: hidden;
 
   header {
     display: flex;
@@ -55,7 +56,6 @@
 
   > main {
     align-items: center;
-    overflow: hidden;
     padding: 40px;
     position: relative;
 
