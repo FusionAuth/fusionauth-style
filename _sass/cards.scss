@@ -67,6 +67,7 @@
     }
 
     p {
+      position: relative; // Keeps the background behind the text
       color: #fff;
       margin: 0 0 5px 0;
       padding: 0;
