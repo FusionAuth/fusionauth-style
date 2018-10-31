@@ -1046,8 +1046,72 @@
         </div>
       </div>
 
+      <!-- Trading cards v2 -->
+      {% assign brands = site.data.brands %}
       <div class="row">
-      <div class="col-xs">
+        <div class="col-xs panel">
+          <h2>Trading cards v2</h2>
+          <div class="row pad-bottom">
+            {% for brand in brands %}
+            <a class="trading-card-2 col-xs-2" id="{{brand.name | downcase}}-link" href="#{{brand.name | downcase}}-link">
+              <div class="trading-card-image">
+                {{brand.logo}}
+              </div>
+              <div class="trading-card-text">
+                <span>{{brand.name}}</span>
+              </div>
+            </a>
+            {% endfor %}
+          </div>
+          <div class="row pad-bottom">
+            {% for brand in brands %}
+            <a class="trading-card-2 col-xs-2" id="{{brand.name | downcase}}-link-2" href="#{{brand.name |downcase}}-link-2">
+              <div class="trading-card-text">
+                <span>{{brand.name}}</span>
+              </div>
+              <div class="trading-card-image">
+                {{brand.logo}}
+              </div>
+              {% if brand.hideEnable != true %}
+              <div class="trading-card-text">
+                <div class="form-row">
+                  <label for="{{brand.name | downcase}}-enable"><span class="required">*</span> Enable:</label>
+                  <label class="checkbox"><input type="checkbox" id="{{brand.name | downcase}}-enable"/><span class="box"></span></label>
+                </div>
+              </div>
+              {% endif %}
+            </a>
+            {% endfor %}
+          </div>
+          <div class="row pad-bottom">
+            {% for brand in brands %}
+            <a class="trading-card-2 col-xs-2" id="{{brand.name | downcase}}-link-3" href="#{{brand.name |downcase}}-link-3">
+              {% if brand.name %}
+              <div class="trading-card-text">
+                <span>{{brand.name}}</span>
+              </div>
+              {% endif %}
+              <div class="trading-card-image">
+                {{brand.logo}}
+              </div>
+              {% if brand.hideEnable != true %}
+              <div class="trading-card-text">
+                <div class="form-row">
+                  <label for="{{brand.name | downcase}}-enable-2">Enable: </label>
+                  <label class="toggle">
+                    <input type="checkbox" id="{{brand.name | downcase}}-enable-2"><span class="rail"></span><span class="pin"></span>
+                  </label>
+                </div>
+              </div>
+              {% endif %}
+            </a>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs">
           <div class="panel">
             <h2>Form Panel with Labels Above</h2>
               <main>
