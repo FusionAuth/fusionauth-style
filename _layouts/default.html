@@ -1107,6 +1107,20 @@
             </a>
             {% endfor %}
           </div>
+          <div class="row pad-bottom">
+            {% for brand in brands %}
+            <a class="trading-card-2 col-xs-2" id="{{brand.name | downcase}}-link-4" href="#{{brand.name |downcase}}-link-4">
+              <div class="trading-card-image">
+                {{brand.logo}}
+              </div>
+              {% if brand.hideEnable != true %}
+              <div class="trading-card-button">
+                <strong>Configure</strong> <i class="fa fa-gear"></i>
+              </div>
+              {% endif %}
+            </a>
+            {% endfor %}
+          </div>
         </div>
       </div>
 
