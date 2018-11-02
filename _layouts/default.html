@@ -2195,6 +2195,24 @@ kickass(); // consider it done.
                   <p>
                     Some dialog text goes here.
                   </p>
+                  <h3>Dialog Buttons</h3>
+                  <div class="row trading-card-2-stack">
+                    {% for brand in brands %}
+                    {% if brand.hideEnable != true %}
+                    <a class="trading-card-2 col-xs-12" id="{{brand.name | downcase}}-link-dialog" href="#{{brand.name |downcase}}-link-dialog">
+                      <div class="trading-card-image">
+                        {{brand.logo}}
+                      </div>
+
+                      <div class="trading-card-button">
+                        <span>
+                          <strong>Create</strong> <i class="fa fa-plus green-text"></i>
+                        </span>
+                      </div>
+                    </a>
+                    {% endif %}
+                    {% endfor %}
+                  </div>
                 </main>
                 <footer>
                   <a href="#" data-dialog-role="close-button"><strong>Close</strong></a>

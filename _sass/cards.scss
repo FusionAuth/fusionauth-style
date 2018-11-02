@@ -1,7 +1,6 @@
 /*
  * Copyright (c) 2017, Inversoft Inc., All Rights Reserved
  */
-
 @import 'layers';
 @import 'mixins';
 @import 'variables';
@@ -191,7 +190,7 @@
 
   main, span.main {
     color: $label-color;
-    display:block;
+    display: block;
     height: 80px;
     padding: 5px;
     text-align: center;
@@ -251,6 +250,10 @@
     > * {
       flex: 1 1 auto;
     }
+
+    img {
+      max-height: 100%;
+    }
   }
 
   .trading-card-text {
@@ -271,5 +274,32 @@
 
   &:hover {
     box-shadow: $highlight-box-shadow;
+  }
+}
+
+.trading-card-2-stack {
+  display: flex;
+
+  .trading-card-2 {
+    height: 75px;
+    flex-direction: row;
+
+    .trading-card-image > * {
+      max-height: 100%;
+    }
+
+    .trading-card-button {
+      flex: 1 0 auto;
+      padding: 0;
+      display: flex;
+
+      > * {
+        &:first-child {
+          flex: 1;
+        }
+
+        align-self: center;
+      }
+    }
   }
 }
