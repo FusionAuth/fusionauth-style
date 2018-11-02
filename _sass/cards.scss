@@ -279,6 +279,7 @@
 
 .trading-card-2-stack {
   display: flex;
+  flex-direction: column;
 
   .trading-card-2 {
     height: 75px;
