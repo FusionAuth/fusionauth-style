@@ -1,0 +1,33 @@
+/*
+ * Copyright (c) 2017, Inversoft Inc., All Rights Reserved
+ */
+@import 'variables';
+
+.address-label {
+  align-items: center;
+  background-color: $trading-card-title-background-color;
+  border: 1px solid $trading-card-border;
+  border-radius: 2px;
+  box-shadow: $layered-box-shadow;
+  color: $label-color;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 15px;
+
+  .image {
+    padding: 5px 5px 0 5px;
+    width: 75px;
+  }
+
+  .heading {
+    color: $link-color;
+    font-size: 24px;
+    font-weight: 700;
+    padding: 0 20px;
+    width: 100%;
+  }
+
+  &:hover {
+    box-shadow: $highlight-box-shadow;
+  }
+}

@@ -220,6 +220,7 @@ $toggle-rail-highlight-color: $blue-medium;
 
 $trading-card-border: $gray-2;
 $trading-card-checked-background-color: $blue-medium;
+$trading-card-header-box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.4);
 $trading-card-footer-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4);
 $trading-card-hover-background-color: $blue-light;
 $trading-card-hover-border-color: $blue-medium;
@@ -230,6 +231,7 @@ $trading-card-title-background-color: $gray-1;
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
 $grid-spacing: 15px;
+$grid-sizes: (sm, 576, 540), (md, 768, 720), (lg, 992, 960), (xl, 1200, 1140);
 
 
 /* IFrames

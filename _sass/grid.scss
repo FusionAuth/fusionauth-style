@@ -248,51 +248,51 @@
   }
 
   .col-#{$size}-offset-0 {
-    margin-left: 0;
+    margin-left: $grid-spacing;
   }
 
   .col-#{$size}-offset-1 {
-    margin-left: 8.33333333%;
+    margin-left: calc(8.33333333% + #{$grid-spacing});
   }
 
   .col-#{$size}-offset-2 {
-    margin-left: 16.66666667%;
+    margin-left: calc(16.66666667% + #{$grid-spacing});
   }
 
   .col-#{$size}-offset-3 {
-    margin-left: 25%;
+    margin-left: calc(25% + #{$grid-spacing});
   }
 
   .col-#{$size}-offset-4 {
-    margin-left: 33.33333333%;
+    margin-left: calc(33.33333333% + #{$grid-spacing});
   }
 
   .col-#{$size}-offset-5 {
-    margin-left: 41.66666667%;
+    margin-left: calc(41.66666667% + #{$grid-spacing});
   }
 
   .col-#{$size}-offset-6 {
-    margin-left: 50%;
+    margin-left: calc(50% + #{$grid-spacing});
   }
 
   .col-#{$size}-offset-7 {
-    margin-left: 58.33333333%;
+    margin-left: calc(58.33333333% + #{$grid-spacing});
   }
 
   .col-#{$size}-offset-8 {
-    margin-left: 66.66666667%;
+    margin-left: calc(66.66666667% + #{$grid-spacing});
   }
 
   .col-#{$size}-offset-9 {
-    margin-left: 75%;
+    margin-left: calc(75% + #{$grid-spacing});
   }
 
   .col-#{$size}-offset-10 {
-    margin-left: 83.33333333%;
+    margin-left: calc(83.33333333% + #{$grid-spacing});
   }
 
   .col-#{$size}-offset-11 {
-    margin-left: 91.66666667%;
+    margin-left: calc(91.66666667% + #{$grid-spacing});
   }
 
   .start-#{$size} {
@@ -422,21 +422,27 @@
   flex-direction: column-reverse;
 }
 
+//
+// Grid helpers
+//
+.align-items-center {
+  align-items: center;
+}
+
 @include define-container-fluid(5px);
 @include define-column-size(xs);
 
-@media only screen and (min-width: 480px) {
-  @include define-container(490px);
-  @include define-container-fluid(20px);
-  @include define-column-size(sm);
-}
+//
+// Define the main grid
+//
+@each $break, $width, $container in $grid-sizes {
+  @media only screen and (min-width: #{$width}px) {
+    @include define-container(#{$container}px);
+    @include define-column-size(#{$break});
 
-@media only screen and (min-width: 640px) {
-  @include define-container(650px);
-  @include define-column-size(md);
-}
-
-@media only screen and (min-width: 750px) {
-  @include define-container(760px);
-  @include define-column-size(lg);
+    // Only need a fluid container at sm
+    @if $break == sm {
+      @include define-container-fluid(20px);
+    }
+  }
 }

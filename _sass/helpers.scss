@@ -1,7 +1,6 @@
 /*
  * Copyright (c) 2017-2018, Inversoft Inc., All Rights Reserved
  */
-
 @import 'mixins';
 @import 'variables';
 
@@ -151,5 +150,163 @@ pre.code {
     @include scrollbars($scrollbar-track-background-color, $scrollbar-vertical-track-box-shadow, $scrollbar-thumb-background-color);
 
     overflow-y: scroll;
+  }
+}
+
+//
+// Width and height
+//
+@each $name, $size in (25, 25%), (50, 50%), (75, 75%), (100, 100%) {
+  .h-#{$name}, .h-xs-#{$name} {
+    height: #{$size};
+  }
+
+  .w-#{$name}, .w-xs-#{$name} {
+    width: #{$size};
+  }
+}
+
+@each $break, $width in $grid-sizes {
+  @media only screen and (min-width: #{$width}px) {
+    @each $name, $size in (25, 25%), (50, 50%), (75, 75%), (100, 100%), (auto, auto) {
+      .h-#{$break}-#{$name} {
+        height: #{$size};
+      }
+
+      .w-#{$break}-#{$name} {
+        width: #{$size};
+      }
+    }
+  }
+}
+
+//
+// Margin and padding
+//
+@each $name, $size in (1, 0.25rem), (2, 0.5rem), (3, 1rem), (4, 1.5rem), (5, 3rem), (auto, auto) {
+  .m-#{$name}, .m-xs-#{$name} {
+    margin: #{$size};
+  }
+
+  .mb-#{$name}, .mb-xs-#{$name} {
+    margin-bottom: #{$size};
+  }
+
+  .ml-#{$name}, .ml-xs-#{$name} {
+    margin-left: #{$size};
+  }
+
+  .mr-#{$name}, .mr-xs-#{$name} {
+    margin-right: #{$size};
+  }
+
+  .mt-#{$name}, .mt-xs-#{$name} {
+    margin-top: #{$size};
+  }
+
+  .mx-#{$name}, .mx-xs-#{$name} {
+    margin-left: #{$size};
+    margin-right: #{$size};
+  }
+
+  .my-#{$name}, .my-xs-#{$name} {
+    margin-bottom: #{$size};
+    margin-top: #{$size};
+  }
+
+  .p-#{$name}, .p-xs-#{$name} {
+    padding: #{$size};
+  }
+
+  .pb-#{$name}, .pb-xs-#{$name} {
+    padding-bottom: #{$size};
+  }
+
+  .pl-#{$name}, .pl-xs-#{$name} {
+    padding-left: #{$size};
+  }
+
+  .pr-#{$name}, .pr-xs-#{$name} {
+    padding-right: #{$size};
+  }
+
+  .pt-#{$name}, .pt-xs-#{$name} {
+    padding-top: #{$size};
+  }
+
+  .px-#{$name}, .px-xs-#{$name} {
+    padding-left: #{$size};
+    padding-right: #{$size};
+  }
+
+  .py-#{$name}, .py-xs-#{$name} {
+    padding-bottom: #{$size};
+    padding-top: #{$size};
+  }
+}
+
+@each $break, $width in $grid-sizes {
+  @media only screen and (min-width: #{$width}px) {
+    @each $name, $size in (1, 0.25rem), (2, 0.5rem), (3, 1rem), (4, 1.5rem), (5, 3rem), (auto, auto) {
+      .m-#{$break}-#{$name} {
+        margin: #{$size};
+      }
+
+      .mb-#{$break}-#{$name} {
+        margin-bottom: #{$size};
+      }
+
+      .ml-#{$break}-#{$name} {
+        margin-left: #{$size};
+      }
+
+      .mr-#{$break}-#{$name} {
+        margin-right: #{$size};
+      }
+
+      .mt-#{$break}-#{$name} {
+        margin-top: #{$size};
+      }
+
+      .mx-#{$break}-#{$name} {
+        margin-left: #{$size};
+        margin-right: #{$size};
+      }
+
+      .my-#{$break}-#{$name} {
+        margin-bottom: #{$size};
+        margin-top: #{$size};
+      }
+
+      .p-#{$break}-#{$name} {
+        padding: #{$size};
+      }
+
+      .pb-#{$break}-#{$name} {
+        padding-bottom: #{$size};
+      }
+
+      .pl-#{$break}-#{$name} {
+        padding-left: #{$size};
+      }
+
+      .pr-#{$break}-#{$name} {
+        padding-right: #{$size};
+      }
+
+      .pt-#{$break}-#{$name} {
+        padding-top: #{$size};
+      }
+
+      .px-#{$break}-#{$name} {
+        padding-left: #{$size};
+        padding-right: #{$size};
+      }
+
+      .py-#{$break}-#{$name} {
+        padding-bottom: #{$size};
+        padding-top: #{$size};
+      }
+    }
   }
 }
