@@ -1,0 +1,70 @@
+<!-- Page header -->
+<header class="page-alerts container-fluid">
+{% if page.show-alerts == true" %}
+    <div class="row">
+      <div class="col-xs">
+        <div class="alert info">
+          <i class="fa fa-info-circle"></i>
+          <p>
+            This is an informational message.
+          </p>
+          <a href="#" class="dismiss-button"><i class="fa fa-times-circle"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs">
+        <div class="alert error">
+          <i class="fa fa-exclamation-circle"></i>
+          <p>
+            This is an error message.
+          </p>
+          <a href="#" class="dismiss-button"><i class="fa fa-times-circle"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs">
+        <div class="alert warning">
+          <i class="fa fa-exclamation-triangle"></i>
+          <p>
+            This is a warning message. This contains a link to <a href="https://www.inversoft.com">www.inversoft.com</a> I hear they make great software.
+          </p>
+          <a href="#" class="dismiss-button"><i class="fa fa-times-circle"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs">
+        <div class="alert success">
+          <i class="fa fa-check-circle"></i>
+          <p>
+            This is a success message, and a long message that wraps. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          </p>
+          <a href="#" class="dismiss-button"><i class="fa fa-times-circle"></i></a>
+        </div>
+      </div>
+    </div>
+{% endif %}
+</header>
+
+<header class="page-header container-fluid">
+  <div class="row">
+    <div class="col-xs-12 col-md-8">
+      <h1>The Page Header</h1>
+      <ul class="breadcrumbs">
+        <li><a href="#">Home</a></li>
+        <li>Settings</li>
+        <li><a href="#">Applications</a></li>
+      </ul>
+    </div>
+    <div class="col-xs-12 col-md-4">
+      <div class="buttons">
+        <button class="blue button square" data-tooltip="Save"><i class="fa fa-save"></i></button>
+        <a href="#" class="gray button square" data-tooltip="Cancel"><i class="fa fa-reply"></i></a>
+        <a href="#" class="red button square" data-tooltip="Delete"><i class="fa fa-trash"></i></a>
+        <a href="#" class="green button square disabled" data-tooltip="Add"><i class="fa fa-plus"></i></a>
+      </div>
+    </div>
+  </div>
+</header>

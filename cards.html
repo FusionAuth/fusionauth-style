@@ -1,0 +1,71 @@
+---
+layout: default
+title: Cards
+nav: cards
+---
+
+<!-- Trading cards v2 -->
+{% assign brands = site.data.brands %}
+<div class="row">
+  <div class="col-xs panel">
+    <h2>Trading cards v2</h2>
+
+    <div class="row pad-bottom">
+      {% for brand in brands %}
+      <a class="grid-trading-card col-xs-8 col-xs-offset-2 col-sm-4 col-md-3 col-lg-2" id="{{brand.name | downcase}}-link-4" href="#{{brand.name |downcase}}-link-4">
+        <header>
+          {{brand.name}}
+        </header>
+        <div class="main">
+          {{brand.logo}}
+        </div>
+        <!--<div class="trading-card-image">-->
+        <!--</div>-->
+        <footer>
+          <!--<span class="blue button"><i class="fa fa-gear"></i> Configure</span>-->
+          <span>
+          <i class="fa fa-gear"></i> Configure
+          </span>
+        </footer>
+        <!--<div class="trading-card-button">-->
+          <!--<strong>Configure</strong> <i class="fa fa-gear"></i>-->
+        <!--</div>-->
+      </a>
+      {% endfor %}
+      <a href="#" class="grid-trading-card col-xs-8 col-xs-offset-2 col-sm-4 col-md-3 col-lg-2">
+        <header>Add provider</header>
+        <div class="main">
+          <svg aria-hidden="true" data-prefix="fal" data-icon="plus-circle" class="svg-inline--fa fa-plus-circle fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M384 250v12c0 6.6-5.4 12-12 12h-98v98c0 6.6-5.4 12-12 12h-12c-6.6 0-12-5.4-12-12v-98h-98c-6.6 0-12-5.4-12-12v-12c0-6.6 5.4-12 12-12h98v-98c0-6.6 5.4-12 12-12h12c6.6 0 12 5.4 12 12v98h98c6.6 0 12 5.4 12 12zm120 6c0 137-111 248-248 248S8 393 8 256 119 8 256 8s248 111 248 248zm-32 0c0-119.9-97.3-216-216-216-119.9 0-216 97.3-216 216 0 119.9 97.3 216 216 216 119.9 0 216-97.3 216-216z"></path></svg>
+          <!--<img src="/images/plus-circle-light.svg" class="svg-gray"/>-->
+          <!--<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" data-prefix="fas" data-icon="plus" class="svg-inline&#45;&#45;fa fa-plus fa-w-14" role="img" viewBox="0 0 448 512"><path fill="currentColor" d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"/></svg>-->
+        </div>
+        <div class="footer">
+          &nbsp;
+        </div>
+      </a>
+    </div>
+
+    <!-- Another example with a wider button and flex box layout -->
+    <div class="row pad-bottom">
+      <!-- One Card -->
+
+      <div class="col-xs col-md-4">
+        {% for brand in brands %}
+        <div class="row">
+          <div class="col-xs">
+            <a class="address-label" href="#">
+              <div class="image">
+                {{brand.logo}}
+              </div>
+              <div class="heading">
+                {{brand.name}}
+              </div>
+            </a>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
+  </div>
+</div>

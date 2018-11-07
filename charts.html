@@ -1,0 +1,52 @@
+---
+layout: default
+title: Charts
+nav: charts
+---
+
+
+<div class="row">
+  <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+    <div class="panel" id="bar-chart-panel">
+      <h2>
+        Bar Chart
+        <label class="chart-toggle">
+          <!-- No spaces between a tags -->
+          <a data-chart="line" data-tooltip="Line Chart" href="#"><i class="fa fa-line-chart"></i>
+          </a><a class="current" data-chart="bar" data-tooltip="Bar Chart" href="#"><i class="fa fa-bar-chart"></i></a>
+        </label>
+      </h2>
+      <main>
+        <div class="report-controls">
+          <a href="#"><i class="fa fa-angle-left"></i></a>
+          <span>July 2017</span>
+          <a href="#"><i class="fa fa-angle-right"></i></a>
+        </div>
+        <canvas id="bar-chart" width="400" height="400"></canvas>
+      </main>
+    </div>
+  </div>
+  <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+    <div class="panel" id="line-chart-panel">
+      <h2>
+        Line Chart
+        <label class="chart-toggle">
+          <!-- No spaces between a tags -->
+          <a class="current" data-chart="line" data-tooltip="Line Chart" href="#"><i class="fa fa-line-chart"></i>
+          </a><a data-chart="bar" data-tooltip="Bar Chart" href="#"><i class="fa fa-bar-chart"></i></a>
+        </label>
+      </h2>
+      <main>
+        <div class="report-controls">
+          <a href="#"><i class="fa fa-angle-left"></i></a>
+          <span>July 2017</span>
+          <a href="#"><i class="fa fa-angle-right"></i></a>
+        </div>
+        <canvas id="line-chart" width="400" height="400"></canvas>
+      </main>
+    </div>
+  </div>
+</div>
+
+
+

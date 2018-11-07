@@ -1,0 +1,57 @@
+<div class="app-sidebar">
+  <header>
+    <a href="/" class="logo"><img src="images/logo.svg"/></a>
+    <img src="images/avatar.jpg" class="profile"/>
+    <p>
+      Brian Pontarelli <a href="#" data-tooltip="Manage Profile"><i class="fa fa-address-card"></i></a>
+    </p>
+  </header>
+
+  <nav>
+    <ul class="treeview">
+      <li>
+        <a href="/" {% if page.nav == "dashboard" %} class="active" {% endif %} ><i class="fa fa-columns"></i> Dashboard</a>
+      </li>
+      <li>
+
+        <a href="/cards" {% if page.nav == "cards" %} class="active" {% endif %} ><i class="fa fa-ticket"></i> Cards</a>
+      </li>
+      <li>
+        <a href="/charts" {% if page.nav == "charts" %} class="active" {% endif %} ><i class="fa fa-area-chart"></i> Charts</a>
+      </li>
+      <li>
+        <a href="#"><i class="fa fa-users"></i> Users</a>
+      </li>
+      <li class="folder">
+        <a href="#" class="folder-toggle"><i class="fa fa-gear"></i> Settings</a>
+        <ul>
+          <li><a href="#"><i class="fa fa-cube"></i> Applications</a></li>
+          <li><a href="#"><i class="fa fa-cube"></i> Applications</a></li>
+          <li><a href="#"><i class="fa fa-cube"></i> Applications</a></li>
+          <li><a href="#"><i class="fa fa-cube"></i> Applications</a></li>
+          <li><a href="#"><i class="fa fa-rss"></i> Monthly Active Users</a></li>
+          <li><a href="#"><i class="fa fa-rss"></i> User Action Reasons</a></li>
+          <li><a href="#"><i class="fa fa-rss"></i> Webhooks</a></li>
+        </ul>
+      </li>
+      <li class="folder">
+        <a href="#" class="folder-toggle"><i class="fa fa-gear"></i> Settings</a>
+        <ul>
+          <li><a href="#"><i class="fa fa-cube"></i> Applications</a></li>
+          <li><a href="#"><i class="fa fa-cube"></i> Applications</a></li>
+          <li><a href="#"><i class="fa fa-cube"></i> Applications</a></li>
+          <li><a href="#"><i class="fa fa-cube"></i> Applications</a></li>
+          <li><a href="#"><i class="fa fa-cube"></i> Applications</a></li>
+          <li><a href="#"><i class="fa fa-rss"></i> Webhooks</a></li>
+          <li><a href="#"><i class="fa fa-rss"></i> Webhooks</a></li>
+          <li><a href="#"><i class="fa fa-rss"></i> Webhooks</a></li>
+          <li><a href="#"><i class="fa fa-rss"></i> Webhooks</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="footer-container">
+    {% include _footer.html %}
+  </div>
+</div>
