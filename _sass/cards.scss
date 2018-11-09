@@ -232,6 +232,10 @@
   display: block;
   margin-bottom: 15px;
 
+  @media (min-width: 992px) {
+    max-width: 170px;
+  }
+
   header {
     border-bottom: 1px solid $gray-2;
     color: $label-color;
@@ -239,6 +243,7 @@
     font-size: 14px;
     font-weight: 700;
     margin: 0 -1px;
+    overflow-x: scroll;
     padding: 3px 0;
     text-align: center;
     text-decoration: none;
