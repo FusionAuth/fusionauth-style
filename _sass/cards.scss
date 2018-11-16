@@ -237,15 +237,18 @@
   }
 
   &.disabled {
-    .main {
-      filter: grayscale(100%);
-
-      img {
+    &:not(:hover) {
+      .main {
         filter: grayscale(100%);
-        opacity: 0.8;
+
+        img {
+          filter: grayscale(100%);
+          opacity: 0.8;
+        }
       }
     }
   }
+
 
   header {
     &:after {
