@@ -237,20 +237,35 @@
   }
 
   header {
-    border-bottom: 1px solid $gray-2;
+    &:after {
+      background: transparent;
+      background: linear-gradient(to top, rgba(0,0,0,0.22) 0%,rgba(0,0,0,0) 50%);
+      content: "";
+      display: block;
+      height: 4px;
+    }
+
+    background-color: $trading-card-title-background-color;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
     color: $label-color;
     display: block;
     font-size: 14px;
     font-weight: 700;
     margin: 0 -1px;
     overflow-x: scroll;
-    padding: 3px 0;
+    padding: 3px 0 0 0;
     text-align: center;
     text-decoration: none;
   }
 
   .main {
     padding: 10% 15%;
+  }
+
+  .footer {
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
   }
 
   footer {
