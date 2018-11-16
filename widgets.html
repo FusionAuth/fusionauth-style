@@ -1,0 +1,163 @@
+---
+layout: default
+title: Widgets
+nav: widgets
+---
+
+
+<div class="row">
+  <div class="col-xs">
+    <div class="panel">
+      <h2>Form Panel with Labels Left</h2>
+      <main>
+        <form class="labels-left full">
+          <fieldset>
+            <div class="form-row">
+              <label for="labels-left-toggle-full">Enable Full Width For Testing</label>
+              <label class="toggle">
+                <input type="checkbox" id="labels-left-toggle-full"><span class="rail"></span><span class="pin"></span>
+              </label>
+            </div>
+          </fieldset>
+        </form>
+      </main>
+
+      <main>
+        <form class="labels-left" id="form-labels-left">
+
+
+          <fieldset>
+            <legend>Widgets</legend>
+            <div class="form-row">
+              <label for="toggle">Toggle</label>
+              <label class="toggle"><input type="checkbox" id="toggle"/><span class="rail"></span><span class="pin"></span></label>
+            </div>
+            <div class="form-row">
+              <label>Radio Cards</label>
+              <div>
+                <label class="trading-card">
+                        <span class="main">
+                          <i class="fa fa-firefox"></i>
+                        </span>
+                  <input name="browser" type="radio"/>
+                  <span class="footer">Firefox</span>
+                </label>
+                <label class="trading-card">
+                        <span class="main">
+                          <i class="fa fa-safari"></i>
+                        </span>
+                  <input name="browser" type="radio"/>
+                  <span class="footer">Safari</span>
+                </label>
+                <label class="trading-card">
+                        <span class="main">
+                          <i class="fa fa-chrome"></i>
+                        </span>
+                  <input name="browser" type="radio"/>
+                  <span class="footer">Chrome</span>
+                </label>
+                <label class="trading-card">
+                        <span class="main">
+                          <i class="fa fa-opera"></i>
+                        </span>
+                  <input name="browser" type="radio"/>
+                  <span class="footer">Opera</span>
+                </label>
+              </div>
+            </div>
+            <div class="form-row">
+              <label>Anchor Cards</label>
+              <div>
+                <a href="#" class="trading-card">
+                  <main>
+                    <img src="/images/stormpath.jpg"/>
+                  </main>
+                  <footer>Stormpath</footer>
+                </a>
+                <a href="#" class="trading-card">
+                  <main>
+                    <img src="/images/onelogin.svg"/>
+                  </main>
+                  <footer>OneLogin</footer>
+                </a>
+                <a href="#" class="trading-card">
+                  <main>
+                    <img src="/images/okta.png"/>
+                  </main>
+                  <footer>Okta</footer>
+                </a>
+                <a href="#" class="trading-card">
+                  <main>
+                    <img src="/images/avatar.jpg"/>
+                  </main>
+                  <footer>CEO</footer>
+                </a>
+                <a href="#" class="trading-card">
+                  <main>
+                    <i class="fa fa-database"></i>
+                  </main>
+                  <footer>Database</footer>
+                </a>
+              </div>
+            </div>
+            <div class="form-row">
+              <label for="multi-select">Multi-select</label>
+              <select id="multi-select" multiple="multiple" class="multiple-select">
+              </select>
+            </div>
+            <div class="form-row">
+              <label>Multi-select Pills</label>
+              <div class="multiple-select-pills">
+                <span>Pill 1</span>
+                <span>Pill 2</span>
+              </div>
+            </div>
+            <div class="form-row">
+              <label for="error-multi-select" class="error">Error multi-select</label>
+              <select id="error-multi-select" multiple="multiple" class="error multiple-select">
+              </select>
+              <span class="error">Error 1, error 2, error 3</span>
+            </div>
+            <div class="form-row">
+              <label for="datetime">Datetime</label>
+              <input type="text" id="datetime" class="datetime-picker"/>
+            </div>
+            <div class="form-row">
+              <label for="error-datetime">Datetime</label>
+              <input type="text" id="error-datetime" class="error datetime-picker"/>
+              <span class="error">Error 1, error 2, error 3</span>
+            </div>
+            <div class="form-row">
+              <!-- No Label -->
+              <textarea cols="75" class="error textarea">Text Area without a label. It should align left, make sure errors are correctly aligned.</textarea>
+              <span class="error">Error 1, error 2, error 3.</span>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>CodeMirror</legend>
+
+            <div class="form-row">
+              <textarea name="code-mirror" class="text-editor">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</textarea>
+            </div>
+
+          </fieldset>
+
+          <br class="clear"/>
+        </form>
+      </main>
+    </div>
+  </div>
+</div>
+
+
+
+<script>
+  Prime.Document.query('textarea.text-editor').each(function(element) {
+    CodeMirror.fromTextArea(element.domElement, {
+      autofocus: false,
+      lineNumbers: true,
+      lineWrapping: true
+    });
+  });
+</script>

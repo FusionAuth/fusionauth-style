@@ -1044,3 +1044,21 @@ label.select {
     }
   }
 }
+
+/* Style a code mirror textarea to match our text input */
+.CodeMirror {
+  background: $input-background-color;
+  border: none;
+  border-bottom: 1px solid $gray-2;
+  border-radius: 2px;
+  box-shadow: $input-box-shadow;
+  transition: box-shadow 0.2s ease-in-out;
+
+  .CodeMirror-gutters {
+    /* Pull the gutters in two pixels so we see the box shadow on the main editor */
+    min-height: calc(100% - 2px);
+    left: 2px;
+    overflow-y: hidden;
+    top: 2px;
+  }
+}
