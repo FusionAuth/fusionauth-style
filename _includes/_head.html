@@ -1,291 +1,296 @@
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.41.0/codemirror.min.css">
-    <link rel="stylesheet" href="css/font-awesome-4.7.0.min.css"/>
-    <script type="text/javascript" src="js/Chart-2.5.0-min.js"></script>
-    <link rel="stylesheet" href="css/test.css"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.41.0/codemirror.min.css">
+  <link rel="stylesheet" href="css/font-awesome-4.7.0.min.css"/>
+  <script type="text/javascript" src="js/Chart-2.5.0-min.js"></script>
+  <link rel="stylesheet" href="css/test.css"/>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.41.0/codemirror.min.js"></script>
-    <script type="text/javascript" src="js/prime-es6.js"></script>
-    <script type="text/javascript">
-      Prime.Document.onReady(function () {
-        Prime.Document.query('[data-tooltip]').each(function (e) {
-          new Prime.Widgets.Tooltip(e).withClassName('tooltip').initialize();
-        });
-
-        Prime.Document.query('.multiple-select').each(function (e) {
-          new Prime.Widgets.MultipleSelect(e)
-              .withCustomAddEnabled(true)
-              .withErrorClassHandling('error')
-              .withRemoveIcon('')
-              .initialize();
-        });
-
-        Prime.Document.query('.alert').each(function (e) {
-          new Prime.Widgets.Dismissable(e, e.queryFirst('a.dismiss-button')).initialize();
-        });
-
-        var horizontalTabs = Prime.Document.queryById('tabs');
-        if (horizontalTabs !== null) {
-          new Prime.Widgets.Tabs(horizontalTabs).initialize();
-        }
-
-        var verticalTabs = Prime.Document.queryById('vertical-tabs');
-        if (verticalTabs !== null) {
-          new Prime.Widgets.Tabs(verticalTabs).initialize();
-        }
-
-        Prime.Document.query('.datetime-picker').each(function (e) {
-          new Prime.Widgets.DateTimePicker(e).initialize();
-        });
-
-        new Prime.Widgets.SideMenu(Prime.Document.queryFirst('.app-sidebar-toggle'),
-            Prime.Document.queryFirst('.app-sidebar'))
-            .withOptions({
-              'closedClass': 'app-sidebar-closed',
-              'openClass': 'app-sidebar-open'
-            })
-            .initialize();
-
-        new Prime.Widgets.TreeView(Prime.Document.queryFirst('.treeview'))
-            .withFolderToggleClassName('folder-toggle')
-            .initialize();
-
-        var slideOpen = Prime.Document.queryById('slide-open');
-        if (slideOpen !== null) {
-          Prime.Document.queryById('slide-open-button').addEventListener('click', function (e) {
-            slideOpen.toggleClass('open');
-            Prime.Utils.stopEvent(e);
-          });
-        }
-
-        Prime.Document.query('.slide-open-toggle').each(function(element) {
-          element.addEventListener('click', function(event) {
-            Prime.Utils.stopEvent(event);
-            var dataSet = element.getDataSet();
-            var container = Prime.Document.queryById(dataSet.slideOpen);
-            new Prime.Effects.SlideOpen(container).toggle();
-          });
-        });
-
-        window.onscroll = function() {_handlePageScroll()};
-        var header = Prime.Document.queryFirst('header.page-header');
-        // app header height is 45
-        var stickyHeight = header.getOffsetTop() - 45;
-
-        function _handlePageScroll() {
-          if (window.pageYOffset >= stickyHeight) {
-            header.addClass("sticky");
-          } else {
-            header.removeClass("sticky");
-          }
-        }
-
-        // Inversoft brand colors as RGB integers
-        var red = '235, 56, 92';
-        var blue = '73, 144, 226';
-        var yellow = '240, 219, 79';
-        var green = '1, 187, 150';
-        var purple = '52, 72, 94';
-        var orange = '255, 156, 61';
-
-        var barChartConfiguration = {
-          type: 'bar',
-          data: {
-            labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-            datasets: [{
-              label: '# of Votes',
-              data: [12, 19, 3, 5, 2, 3],
-              backgroundColor: [
-                'rgba(' + red + ', 0.2)',
-                'rgba(' + blue + ', 0.2)',
-                'rgba(' + yellow + ', 0.2)',
-                'rgba(' + green + ', 0.2)',
-                'rgba(' + purple + ', 0.2)',
-                'rgba(' + orange + ', 0.2)'
-              ],
-              borderColor: [
-                'rgba(' + red + ', 1)',
-                'rgba(' + blue + ', 1)',
-                'rgba(' + yellow + ', 1)',
-                'rgba(' + green + ', 1)',
-                'rgba(' + purple + ', 1)',
-                'rgba(' + orange + ', 1)'
-              ],
-              borderWidth: 1
-            }]
-          },
-          options: {
-            responsive: true,
-            maintainAspectRatio: true,
-            scales: {
-              yAxes: [{
-                ticks: {
-                  beginAtZero: true
-                }
-              }]
-            }
-          }
-        };
-        var barChartElement = document.getElementById("bar-chart");
-        if (barChartElement) {
-          var barChart = new Chart(document.getElementById("bar-chart"), barChartConfiguration);
-        }
-
-        var lineChartConfiguration = {
-          type: 'line',
-          data: {
-            labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-            datasets: [{
-              label: '# of Votes',
-              data: [12, 19, 3, 5, 2, 3],
-              backgroundColor: 'rgba(' + purple + ', 0.2)',
-              borderColor: 'rgba(' + purple + ', 1)',
-              borderWidth: 1
-            }]
-          },
-          options: {
-            responsive: true,
-            maintainAspectRatio: true,
-            scales: {
-              yAxes: [{
-                ticks: {
-                  beginAtZero: true
-                }
-              }]
-            }
-          }
-        };
-        var lineChartElement = document.getElementById("line-chart");
-        if (lineChartElement) {
-           var lineChart = new Chart(document.getElementById("line-chart"), lineChartConfiguration);
-        }
-
-        var barChartPanel = Prime.Document.queryById('bar-chart-panel');
-        if (barChartPanel !== null) {
-          barChartPanel.query('h2 a').addEventListener('click', function (event) {
-            event.preventDefault();
-            var target = new Prime.Document.Element(event.target);
-            barChart.destroy();
-            barChartConfiguration.type = target.getDataAttribute('chart');
-            barChart = new Chart(document.getElementById("bar-chart"), barChartConfiguration);
-
-            target.queryUp('h2').query('a').removeClass('current');
-            target.addClass('current');
-          });
-        }
-
-        var lineChartPanel = Prime.Document.queryById('line-chart-panel');
-        if (lineChartPanel !== null) {
-          lineChartPanel.query('h2 a').addEventListener('click', function (event) {
-            event.preventDefault();
-            var target = new Prime.Document.Element(event.target);
-            lineChart.destroy();
-            lineChartConfiguration.type = target.getDataAttribute('chart');
-            lineChart = new Chart(document.getElementById("line-chart"), lineChartConfiguration);
-            target.queryUp('h2').query('a').removeClass('current');
-            target.addClass('current');
-          });
-        }
-
-
-        var ajaxDialogButton = Prime.Document.queryById('ajax-dialog-button');
-        if (ajaxDialogButton !== null) {
-          ajaxDialogButton.addEventListener('click', function (e) {
-            new Prime.Widgets.AJAXDialog().initialize().open(new Prime.Document.Element(e.target).getAttribute('href'));
-            Prime.Utils.stopEvent(e);
-          });
-        }
-
-        var dialogElement = Prime.Document.queryById('html-dialog');
-        if (dialogElement !== null) {
-          var htmlDialog = new Prime.Widgets.HTMLDialog(dialogElement).initialize();
-
-        }
-
-        var elementDialogButton = Prime.Document.queryById('element-dialog-button');
-        if (elementDialogButton !== null) {
-          Prime.Document.queryById('element-dialog-button').addEventListener('click', function (e) {
-            htmlDialog.open();
-            Prime.Utils.stopEvent(e);
-          });
-        }
-
-        var htmlDialogButton = Prime.Document.queryById('html-dialog-button');
-        if (htmlDialogButton !== null) {
-          htmlDialogButton.addEventListener('click', function (e) {
-            Prime.Utils.stopEvent(e);
-            htmlDialog.setHTML(
-                dialogElement.getHTML().replace('Some dialog text goes here', 'This is HTML dialog text'))
-                .open();
-          });
-        }
-
-
-        Prime.Document.query('input').each(function (input) {
-          input.addEventListener('focus', function (event) {
-            new Prime.Document.Element(event.target).getParent().addClass('focus');
-          }).addEventListener('blur', function (event) {
-            new Prime.Document.Element(event.target).getParent().removeClass('focus');
-          });
-        });
-
-        // Ignore the click on the example trading card anchor tags and pagination links
-        Prime.Document.query('a.trading-card, .pagination a').each(function (a) {
-          a.addEventListener('click', function (event) {
-            Prime.Utils.stopEvent(event);
-          })
-        });
-
-        // Handle the toggle full width checkboxes
-        var leftToggleFull =  Prime.Document.queryById('labels-left-toggle-full');
-        if (leftToggleFull !== null) {
-          leftToggleFull.addEventListener('change', function (event) {
-            event.preventDefault();
-            var form = Prime.Document.queryById('form-labels-left');
-            if (form.hasClass('full')) {
-              form.removeClass('full');
-            } else {
-              form.addClass('full');
-            }
-          });
-        }
-
-        var aboveToggleFull =  Prime.Document.queryById('labels-above-toggle-full');
-        if (aboveToggleFull !== null) {
-          aboveToggleFull.addEventListener('change', function (event) {
-            event.preventDefault();
-            var form = Prime.Document.queryById('form-labels-above');
-            if (form.hasClass('full')) {
-              form.removeClass('full');
-            } else {
-              form.addClass('full');
-            }
-          });
-        }
-
-        // Avatars Checkbox table
-        var checkBoxCount = 0;
-        var avatarsCheckBoxTable = Prime.Document.queryById('avatars-with-checkboxes');
-        if (avatarsCheckBoxTable !== null) {
-          avatarsCheckBoxTable.addEventListener('click', function (event) {
-            var target = new Prime.Document.Element(event.target);
-            if (target.is('input[type="checkbox"]')) {
-              if (target.isChecked()) {
-                checkBoxCount++;
-              } else {
-                checkBoxCount--;
-              }
-              if (checkBoxCount === 0) {
-                avatarsCheckBoxTable.removeClass('checkboxes');
-              } else {
-                avatarsCheckBoxTable.addClass('checkboxes');
-              }
-            } else if (target.is('td.icon')) {
-              target.queryFirst('input[type="checkbox"]').fireEvent('click');
-            }
-          });
-        }
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.41.0/codemirror.min.js"></script>
+  <script type="text/javascript" src="js/prime-es6.js"></script>
+  <script type="text/javascript">
+    Prime.Document.onReady(function () {
+      Prime.Document.query('[data-tooltip]').each(function (e) {
+        new Prime.Widgets.Tooltip(e).withClassName('tooltip').initialize();
       });
-    </script>
+
+      Prime.Document.query('.multiple-select').each(function (e) {
+        new Prime.Widgets.MultipleSelect(e)
+            .withCustomAddEnabled(true)
+            .withErrorClassHandling('error')
+            .withRemoveIcon('')
+            .initialize();
+      });
+
+      Prime.Document.query('.alert').each(function (e) {
+        new Prime.Widgets.Dismissable(e, e.queryFirst('a.dismiss-button')).initialize();
+      });
+
+      var horizontalTabs = Prime.Document.queryById('tabs');
+      if (horizontalTabs !== null) {
+        new Prime.Widgets.Tabs(horizontalTabs).initialize();
+      }
+
+      var verticalTabs = Prime.Document.queryById('vertical-tabs');
+      if (verticalTabs !== null) {
+        new Prime.Widgets.Tabs(verticalTabs).initialize();
+      }
+
+      Prime.Document.query('.datetime-picker').each(function (e) {
+        new Prime.Widgets.DateTimePicker(e).initialize();
+      });
+
+      new Prime.Widgets.SideMenu(Prime.Document.queryFirst('.app-sidebar-toggle'),
+          Prime.Document.queryFirst('.app-sidebar'))
+          .withOptions({
+            'closedClass': 'app-sidebar-closed',
+            'openClass': 'app-sidebar-open'
+          })
+          .initialize();
+
+      new Prime.Widgets.TreeView(Prime.Document.queryFirst('.treeview'))
+          .withFolderToggleClassName('folder-toggle')
+          .initialize();
+
+      var slideOpen = Prime.Document.queryById('slide-open');
+      if (slideOpen !== null) {
+        Prime.Document.queryById('slide-open-button').addEventListener('click', function (e) {
+          slideOpen.toggleClass('open');
+          Prime.Utils.stopEvent(e);
+        });
+      }
+
+      Prime.Document.query('.slide-open-toggle').each(function (element) {
+        element.addEventListener('click', function (event) {
+          Prime.Utils.stopEvent(event);
+          var dataSet = element.getDataSet();
+          var container = Prime.Document.queryById(dataSet.slideOpen);
+          new Prime.Effects.SlideOpen(container).toggle();
+        });
+      });
+
+      window.onscroll = function () {
+        _handlePageScroll()
+      };
+      var header = Prime.Document.queryFirst('header.page-header');
+      // app header height is 45
+      var stickyHeight = header.getOffsetTop() - 45;
+
+      function _handlePageScroll() {
+        if (window.pageYOffset >= stickyHeight) {
+          header.addClass("sticky");
+        } else {
+          header.removeClass("sticky");
+        }
+      }
+
+      // Inversoft brand colors as RGB integers
+      var red = '235, 56, 92';
+      var blue = '73, 144, 226';
+      var yellow = '240, 219, 79';
+      var green = '1, 187, 150';
+      var purple = '52, 72, 94';
+      var orange = '255, 156, 61';
+
+      var barChartConfiguration = {
+        type: 'bar',
+        data: {
+          labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+          datasets: [{
+            label: '# of Votes',
+            data: [12, 19, 3, 5, 2, 3],
+            backgroundColor: [
+              'rgba(' + red + ', 0.2)',
+              'rgba(' + blue + ', 0.2)',
+              'rgba(' + yellow + ', 0.2)',
+              'rgba(' + green + ', 0.2)',
+              'rgba(' + purple + ', 0.2)',
+              'rgba(' + orange + ', 0.2)'
+            ],
+            borderColor: [
+              'rgba(' + red + ', 1)',
+              'rgba(' + blue + ', 1)',
+              'rgba(' + yellow + ', 1)',
+              'rgba(' + green + ', 1)',
+              'rgba(' + purple + ', 1)',
+              'rgba(' + orange + ', 1)'
+            ],
+            borderWidth: 1
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: true,
+          scales: {
+            yAxes: [{
+              ticks: {
+                beginAtZero: true
+              }
+            }]
+          }
+        }
+      };
+      var barChartElement = document.getElementById("bar-chart");
+      if (barChartElement) {
+        var barChart = new Chart(document.getElementById("bar-chart"), barChartConfiguration);
+      }
+
+      var lineChartConfiguration = {
+        type: 'line',
+        data: {
+          labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+          datasets: [{
+            label: '# of Votes',
+            data: [12, 19, 3, 5, 2, 3],
+            backgroundColor: 'rgba(' + purple + ', 0.2)',
+            borderColor: 'rgba(' + purple + ', 1)',
+            borderWidth: 1
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: true,
+          scales: {
+            yAxes: [{
+              ticks: {
+                beginAtZero: true
+              }
+            }]
+          }
+        }
+      };
+      var lineChartElement = document.getElementById("line-chart");
+      if (lineChartElement) {
+        var lineChart = new Chart(document.getElementById("line-chart"), lineChartConfiguration);
+      }
+
+      var barChartPanel = Prime.Document.queryById('bar-chart-panel');
+      if (barChartPanel !== null) {
+        barChartPanel.query('h2 a').addEventListener('click', function (event) {
+          event.preventDefault();
+          var target = new Prime.Document.Element(event.target);
+          barChart.destroy();
+          barChartConfiguration.type = target.getDataAttribute('chart');
+          barChart = new Chart(document.getElementById("bar-chart"), barChartConfiguration);
+
+          target.queryUp('h2').query('a').removeClass('current');
+          target.addClass('current');
+        });
+      }
+
+      var lineChartPanel = Prime.Document.queryById('line-chart-panel');
+      if (lineChartPanel !== null) {
+        lineChartPanel.query('h2 a').addEventListener('click', function (event) {
+          event.preventDefault();
+          var target = new Prime.Document.Element(event.target);
+          lineChart.destroy();
+          lineChartConfiguration.type = target.getDataAttribute('chart');
+          lineChart = new Chart(document.getElementById("line-chart"), lineChartConfiguration);
+          target.queryUp('h2').query('a').removeClass('current');
+          target.addClass('current');
+        });
+      }
+
+
+      var ajaxDialogButton = Prime.Document.queryById('ajax-dialog-button');
+      if (ajaxDialogButton !== null) {
+        ajaxDialogButton.addEventListener('click', function (e) {
+          new Prime.Widgets.AJAXDialog().initialize().open(new Prime.Document.Element(e.target).getAttribute('href'));
+          Prime.Utils.stopEvent(e);
+        });
+      }
+
+      var dialogElement = Prime.Document.queryById('html-dialog');
+      if (dialogElement !== null) {
+        var htmlDialog = new Prime.Widgets.HTMLDialog(dialogElement).initialize();
+
+      }
+
+      var elementDialogButton = Prime.Document.queryById('element-dialog-button');
+      if (elementDialogButton !== null) {
+        Prime.Document.queryById('element-dialog-button').addEventListener('click', function (e) {
+          htmlDialog.open();
+          Prime.Utils.stopEvent(e);
+        });
+      }
+
+      var htmlDialogButton = Prime.Document.queryById('html-dialog-button');
+      if (htmlDialogButton !== null) {
+        htmlDialogButton.addEventListener('click', function (e) {
+          Prime.Utils.stopEvent(e);
+          htmlDialog.setHTML(
+              dialogElement.getHTML().replace('Some dialog text goes here', 'This is HTML dialog text'))
+              .open();
+        });
+      }
+
+
+      Prime.Document.query('input').each(function (input) {
+        input.addEventListener('focus', function (event) {
+          new Prime.Document.Element(event.target).getParent().addClass('focus');
+        }).addEventListener('blur', function (event) {
+          new Prime.Document.Element(event.target).getParent().removeClass('focus');
+        });
+      });
+
+      // Ignore the click on the example trading card anchor tags and pagination links
+      Prime.Document.query('a.trading-card, .pagination a').each(function (a) {
+        a.addEventListener('click', function (event) {
+          Prime.Utils.stopEvent(event);
+        })
+      });
+
+      // Handle the toggle full width checkboxes
+      var leftToggleFull = Prime.Document.queryById('labels-left-toggle-full');
+      if (leftToggleFull !== null) {
+        leftToggleFull.addEventListener('change', function (event) {
+          event.preventDefault();
+          var form = Prime.Document.queryById('form-labels-left');
+          if (form.hasClass('full')) {
+            form.removeClass('full');
+          } else {
+            form.addClass('full');
+          }
+        });
+      }
+
+      var aboveToggleFull = Prime.Document.queryById('labels-above-toggle-full');
+      if (aboveToggleFull !== null) {
+        aboveToggleFull.addEventListener('change', function (event) {
+          event.preventDefault();
+          var form = Prime.Document.queryById('form-labels-above');
+          if (form.hasClass('full')) {
+            form.removeClass('full');
+          } else {
+            form.addClass('full');
+          }
+        });
+      }
+
+      // Avatars Checkbox table
+      var checkBoxCount = 0;
+      var avatarsCheckBoxTable = Prime.Document.queryById('avatars-with-checkboxes');
+      if (avatarsCheckBoxTable !== null) {
+        avatarsCheckBoxTable.addEventListener('click', function (event) {
+          var target = new Prime.Document.Element(event.target);
+          if (target.is('input[type="checkbox"]')) {
+            if (target.isChecked()) {
+              checkBoxCount++;
+            } else {
+              checkBoxCount--;
+            }
+            if (checkBoxCount === 0) {
+              avatarsCheckBoxTable.removeClass('checkboxes');
+            } else {
+              avatarsCheckBoxTable.addClass('checkboxes');
+            }
+          } else if (target.is('td.icon')) {
+            target.queryFirst('input[type="checkbox"]').fireEvent('click');
+          }
+        });
+      }
+
+      // Split button
+      new Prime.Widgets.SplitButton(Prime.Document.queryFirst('.split-button'));
+    });
+  </script>
 </head>

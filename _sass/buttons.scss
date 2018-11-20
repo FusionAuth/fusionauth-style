@@ -2,6 +2,7 @@
  * Copyright (c) 2017, Inversoft Inc., All Rights Reserved
  */
 
+@import 'layers';
 @import 'mixins';
 @import 'variables';
 
@@ -68,7 +69,7 @@
     @include button-colors($blue-button-background-color, $blue-button-color, none);
 
     &:hover, &:focus {
-      @include button-colors($blue-button-hover-background-color, $blue-button-color, exclude);
+      @include button-colors($blue-button-hover-background-color, $blue-button-color, none);
     }
   }
 
@@ -93,7 +94,7 @@
     @include button-colors($green-button-background-color, $green-button-color, none);
 
     &:hover, &:focus {
-      @include button-colors($green-button-hover-background-color, $green-button-color, exclude);
+      @include button-colors($green-button-hover-background-color, $green-button-color, none);
     }
   }
 
@@ -101,7 +102,7 @@
     @include button-colors($orange-button-background-color, $orange-button-color, none);
 
     &:hover, &:focus {
-      @include button-colors($orange-button-hover-background-color, $orange-button-color, exclude);
+      @include button-colors($orange-button-hover-background-color, $orange-button-color, none);
     }
   }
 
@@ -109,7 +110,7 @@
     @include button-colors($purple-button-background-color, $purple-button-color, none);
 
     &:hover, &:focus {
-      @include button-colors($purple-button-hover-background-color, $purple-button-color, exclude);
+      @include button-colors($purple-button-hover-background-color, $purple-button-color, none);
     }
   }
 
@@ -117,7 +118,7 @@
     @include button-colors($red-button-background-color, $red-button-color, none);
 
     &:hover, &:focus {
-      @include button-colors($red-button-hover-background-color, $red-button-color, exclude);
+      @include button-colors($red-button-hover-background-color, $red-button-color, none);
     }
   }
 
@@ -125,7 +126,74 @@
     @include button-colors($yellow-button-background-color, $yellow-button-color, none);
 
     &:hover, &:focus {
-      @include button-colors($yellow-button-hover-background-color, $yellow-button-color, exclude);
+      @include button-colors($yellow-button-hover-background-color, $yellow-button-color, none);
+    }
+  }
+}
+
+.split-button {
+  display: inline-flex;
+  position: relative;
+
+  > a {
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+    flex: 0 1 auto;
+    margin-right: -1px;
+  }
+
+  button {
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    flex: 0 1 auto;
+
+    &:before {
+      content: "\f107";
+      display: inline-block;
+      font-family: FontAwesome;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    &:focus {
+      box-shadow: 0 0 0 0.2rem rgba(108, 117, 125, 0.5);
+    }
+  }
+
+  .menu {
+    background: white;
+    border: 1px solid $gray-button-border-color;
+    border-radius: 3px;
+    display: none;
+    min-width: 200px;
+    position: absolute;
+    right: 0;
+    text-align: left;
+    top: 38px;
+    z-index: $layer-3;
+
+    .item {
+      color: $gray-button-color;
+      display: block;
+      padding: 10px 12px;
+      transition: background 0.2s ease-in-out;
+
+      &:visited, &:hover {
+        color: $gray-button-color;
+      }
+
+      &:hover {
+        background: $gray-button-hover-background-color;
+      }
+
+      i.fa {
+        color: $gray-button-color;
+        margin-right: 8px;
+      }
+    }
+
+    .divider {
+      border-top: 1px solid lighten($gray-button-border-color, 20%);
     }
   }
 }
