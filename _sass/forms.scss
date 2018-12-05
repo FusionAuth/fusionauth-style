@@ -253,6 +253,17 @@ textarea {
     }
   }
 
+  .button {
+    span.text {
+      background: inherit;
+      border: inherit;
+      /* This will already be right padded by the button */
+      padding-left: 0;
+      padding-right: 0;
+      vertical-align: middle;
+    }
+  }
+
   input {
     width: 100%;
   }
