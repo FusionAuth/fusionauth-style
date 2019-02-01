@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017-2018, Inversoft Inc., All Rights Reserved
+ * Copyright (c) 2017-2019, Inversoft Inc., All Rights Reserved
  */
 
 @import 'layers';
@@ -15,6 +15,9 @@ label.panel-toggle {
   border-radius: 2px;
   float: right;
   padding: 0;
+  position: absolute;
+  right: 15px;
+  top: 15px;
   z-index: $layer-1;
 
   a {
