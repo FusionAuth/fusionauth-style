@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017-2018, Inversoft Inc., All Rights Reserved
+ * Copyright (c) 2017-2019, Inversoft Inc., All Rights Reserved
  */
 
 @import 'layers';
@@ -157,6 +157,13 @@ fieldset {
   width: 100%;
 
   legend {
+
+    /* Adjacent p remove the top margin and increase the bottom margin */
+    + p {
+      margin-top: 0;
+      margin-bottom: 20px;
+    }
+
     border: none;
     border-bottom: 1px solid $fieldset-border-color;
     color: $fieldset-legend-color;
@@ -250,6 +257,12 @@ textarea {
       &:last-child {
         border: none;
       }
+    }
+  }
+
+  a {
+    i.fa {
+      vertical-align: middle;
     }
   }
 
