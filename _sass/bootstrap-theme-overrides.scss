@@ -1,0 +1,11 @@
+// Fonts
+html {
+  font: 1rem/1.25rem $font-family-sans-serif; // 16/20px
+}
+
+@include media-breakpoint-up(md) {
+  html {
+    font: 0.75rem/1.125rem $font-family-sans-serif; // 12/18
+  }
+}
+

@@ -2,8 +2,17 @@
  * Copyright (c) 2017, Inversoft Inc., All Rights Reserved
  */
 
-@import 'normalize';
-@import 'grid';
+// Bootstrap Inversoft-Style Theme
+@import 'bootstrap-theme-variables';
+
+// Import Bootstrap
+@import '../node_modules/bootstrap/scss/bootstrap';
+
+// Override Bootstrap defaults
+@import 'bootstrap-theme-overrides';
+
+//@import 'normalize';
+//@import 'grid';
 @import 'address-label';
 @import 'alerts';
 @import 'application';

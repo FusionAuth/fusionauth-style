@@ -1,0 +1,66 @@
+// We are using Bootstrap greys now
+
+$blue-light: #5EB4EE;
+$blue-medium: #3998DB;
+$blue-dark: #156AA3;
+$blue: $blue-medium;
+
+$yellow-light: #F4F286;
+$yellow-medium: #F0DB4F;
+$yellow-dark: #E7C901;
+$yellow: $yellow-medium;
+
+$green-gray3: rgba(31, 158, 129, 0.51);
+$green-light: #28E2BD;
+$green-medium: #0BB796;
+$green-dark: #0F8B72;
+$green: $green-medium;
+
+$orange-light: #FFC287;
+$orange-medium: #FF9C3D;
+$orange-dark: #FF6A00;
+$orange: $orange-medium;
+
+$red-light: #FF6A7D;
+$red-medium: #EE3E54;
+$red-dark: #C81B3D;
+$red: $red-medium;
+
+$purple-light: #577494;
+$purple-medium: #34485E;
+$purple-dark: #213246;
+$purple: $purple-medium;
+
+$theme-colors: (
+  'blue-light': $blue-light,
+  'blue-medium': $blue-medium,
+  'blue-dark': $blue-dark,
+
+  'yellow-light': $yellow-light,
+  'yellow-medium': $yellow-medium,
+  'yellow-dark': $yellow-dark,
+
+  'green-gray3': $green-gray3,
+  'green-light': $green-light,
+  'green-medium': $green-medium,
+  'green-dark': $green-dark,
+
+  'orange-light': $orange-light,
+  'orange-medium': $orange-medium,
+  'orange-dark': $orange-dark,
+
+  'red-light': $red-light,
+  'red-medium': $red-medium,
+  'red-dark': $red-dark,
+
+  'purple-light': $purple-light,
+  'purple-medium': $purple-medium,
+  'purple-dark': $purple-dark
+);
+
+$body-bg: #E7EDF2;
+
+$font-12: 1rem;
+$font-14: 1.16666rem;
+$font-16: 1.25rem;
+$font-18:
