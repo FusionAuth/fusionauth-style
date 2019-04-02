@@ -4,7 +4,7 @@
 savantVersion = "1.0.0"
 primejsVersion = "1.2.0"
 
-project(group: "com.inversoft", name: "inversoft-style", version: "0.1.26", licenses: ["Commercial"]) {
+project(group: "com.inversoft", name: "inversoft-style", version: "0.1.27", licenses: ["Commercial"]) {
   workflow {
     standard()
   }
@@ -21,7 +21,8 @@ project(group: "com.inversoft", name: "inversoft-style", version: "0.1.26", lice
 
   publications {
     main {
-      publication(name: "inversoft-style", type: "css", file: "build/css/inversoft-style.css", source: "build/css/inversoft-style.css")
+      publication(name: project.name, type: "css", file: "build/css/inversoft-style.css", source: "build/css/inversoft-style.css")
+      publication(name: project.name, type: "zip", file: "build/inversoft-style.zip")
     }
   }
 }
@@ -57,6 +58,19 @@ target(name: "run") {
 
 target(name: "int", description: "Releases a local integration build of the project", dependsOn: ["js"]) {
   file.mkdir(dir: "build/css")
+  file.mkdir(dir: "build/sass")
+
+  file.copy(to: "build/sass") {
+    fileSet(dir: "_sass")
+  }
+
+  file.delete {
+    fileSet(dir: "build", includePatterns: [~/inversoft-style.+\.zip/])
+  }
+
+  file.zip(file: "build/inversoft-style.zip") {
+    fileSet(dir: "build/sass", includePatterns: [])
+  }
 
   file.delete {
     fileSet(dir: "build/css", includePatterns: [~/.+/])
