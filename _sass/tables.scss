@@ -229,6 +229,15 @@ table {
           white-space: nowrap;
         }
 
+        &.overflow-ellipsis-on-mobile {
+          @media (max-width: 576px) {
+            max-width: 100px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
+        }
+
         &.show-on-mobile {
           display: none;
 
