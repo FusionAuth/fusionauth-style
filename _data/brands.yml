@@ -28,4 +28,7 @@
 - name: OneLogin
   enabled: false
   logo: <img src="images/onelogin.svg" alt="One Login">
+- name: Long title for a brand header here
+  enabled: false
+  logo: <img src="images/onelogin.svg" alt="One Login">
 
