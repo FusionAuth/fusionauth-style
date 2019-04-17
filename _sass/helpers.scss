@@ -183,7 +183,7 @@ pre.code {
 //
 // Margin and padding
 //
-@each $name, $size in (1, 0.25rem), (2, 0.5rem), (3, 1rem), (4, 1.5rem), (5, 3rem), (auto, auto) {
+@each $name, $size in (0, 0), (1, 0.25rem), (2, 0.5rem), (3, 1rem), (4, 1.5rem), (5, 3rem), (auto, auto) {
   .m-#{$name}, .m-xs-#{$name} {
     margin: #{$size};
   }
@@ -247,7 +247,7 @@ pre.code {
 
 @each $break, $width in $grid-sizes {
   @media only screen and (min-width: #{$width}px) {
-    @each $name, $size in (1, 0.25rem), (2, 0.5rem), (3, 1rem), (4, 1.5rem), (5, 3rem), (auto, auto) {
+    @each $name, $size in (0, 0), (1, 0.25rem), (2, 0.5rem), (3, 1rem), (4, 1.5rem), (5, 3rem), (auto, auto) {
       .m-#{$break}-#{$name} {
         margin: #{$size};
       }
