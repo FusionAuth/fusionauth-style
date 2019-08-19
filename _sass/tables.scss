@@ -23,6 +23,15 @@ table {
     width: calc(100% - 4px);
   }
 
+  /*
+    A table without an action columns with buttons so increase the padding to make the rows not quite so tight
+    This makes the row height ~ 43 px just like a normal table with row actions
+   */
+  &.no-actions > tbody > tr > td {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+
   /* Odd rows colored */
   &.striped {
     > tbody > tr:nth-child(odd) {

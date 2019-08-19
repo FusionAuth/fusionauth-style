@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017, Inversoft Inc., All Rights Reserved
+ * Copyright (c) 2017-2019, Inversoft Inc., All Rights Reserved
  */
 
 @import 'mixins';
@@ -111,5 +111,14 @@
 
   &.tight-left {
     padding-left: 0;
+  }
+}
+
+// When tabs are inside of a fieldset inside of a form, line up the input fields to the right with the ones outside of the tabs
+form {
+  fieldset {
+    .tabs + .prime-tab-content {
+      padding-right: 0;
+    }
   }
 }

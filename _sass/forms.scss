@@ -1069,6 +1069,13 @@ label.select {
   }
 }
 
+/* No-wrap options list on a multi-select box */
+select.no-wrap {
+  + .prime-multiple-select ul.option-list {
+    height: inherit;
+  }
+}
+
 /* Style a code mirror textarea to match our text input */
 .CodeMirror {
   background: $input-background-color;
