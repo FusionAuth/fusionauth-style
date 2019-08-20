@@ -117,8 +117,10 @@
 // When tabs are inside of a fieldset inside of a form, line up the input fields to the right with the ones outside of the tabs
 form {
   fieldset {
-    .tabs + .prime-tab-content {
-      padding-right: 0;
+    .tabs {
+      &~ .prime-tab-content {
+        padding-right: 0;
+      }
     }
   }
 }
