@@ -695,6 +695,7 @@ label.select {
   input[type=checkbox] {
     height: 1px;
     opacity: 0;
+    position: absolute;
     width: 1px;
 
     &:checked ~ span.rail {
