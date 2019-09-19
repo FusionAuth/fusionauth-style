@@ -96,7 +96,7 @@ form.labels-left {
 
     @media (min-width: 576px) {
       .prime-multiple-select {
-        width: calc(100% - 18% - 20px);
+        width: calc(100% - 18% - 22px);
       }
 
       > label:first-of-type {
@@ -108,7 +108,7 @@ form.labels-left {
       }
 
       > label ~ span.error {
-        margin-left: calc(18% + 20px);
+        margin-left: calc(18% + 22px);
       }
 
       > span.error {
@@ -143,7 +143,7 @@ form.labels-left {
   &.full {
     @media (min-width: 576px) {
       .form-row > label:first-of-type + * {
-        width: calc(100% - 18% - 20px);
+        width: calc(100% - 18% - 22px);
       }
     }
   }
@@ -758,18 +758,21 @@ label.select {
     @include scrollbars($scrollbar-track-background-color, $scrollbar-vertical-track-box-shadow, $scrollbar-thumb-background-color);
 
     background: $input-background-color;
+    border-radius: 2px 0 0 2px;
     box-shadow: $input-box-shadow;
-    height: 34px;
+    height: 30px;
     list-style: none;
     margin: 0;
     overflow-x: hidden;
     overflow-y: auto;
-    padding: 4px 4px;
+    padding: 1px 4px 1px 0;
     transition: box-shadow 0.2s ease-in-out;
 
     li {
       color: $multiple-select-option-color;
       display: inline-block;
+      margin: 0 0 0 2px;
+      padding: 2px 1px 1px 5px;
 
       &:first-of-type {
         margin-left: 0;
@@ -780,13 +783,14 @@ label.select {
         background-clip: padding-box;
         border-radius: 3px;
         cursor: default;
-        margin: 1px 4px;
-        padding: 2px 9px;
+        margin: 1px 0 1px 3px;
+        padding: 2px 9px 3px 9px;
 
         span {
           display: inline-block;
           margin-right: 2px;
-          padding-bottom: 2px;
+          padding-bottom: 1px;
+          padding-top: 2px;
         }
 
         a {
@@ -821,7 +825,7 @@ label.select {
     background: transparent;
     border: none;
     box-shadow: none;
-    height: 26px;
+    height: 23px;
     margin: 0;
     outline: none;
     padding: 0 0 0 5px;
@@ -847,7 +851,7 @@ label.select {
     position: absolute;
     overflow-x: hidden;
     overflow-y: auto;
-    top: 38px;
+    top: calc(100% + 4px);
     width: 100%;
     z-index: $layer-multiple-select;
 
@@ -1073,6 +1077,7 @@ label.select {
 /* No-wrap options list on a multi-select box */
 select.no-wrap {
   + .prime-multiple-select ul.option-list {
+    border-radius: 2px;
     height: inherit;
   }
 }
