@@ -4,7 +4,7 @@
 savantVersion = "1.0.0"
 primejsVersion = "1.2.0"
 
-project(group: "com.inversoft", name: "inversoft-style", version: "0.1.31", licenses: ["Commercial"]) {
+project(group: "com.inversoft", name: "inversoft-style", version: "0.1.31", licenses: ["ApacheV2_0"]) {
   workflow {
     standard()
   }
