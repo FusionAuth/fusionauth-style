@@ -136,7 +136,7 @@
   </component>
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/inversoft-style.iml" filepath="$PROJECT_DIR$/inversoft-style.iml" />
+      <module fileurl="file://$PROJECT_DIR$/fusionauth-style.iml" filepath="$PROJECT_DIR$/fusionauth-style.iml" />
     </modules>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_6">

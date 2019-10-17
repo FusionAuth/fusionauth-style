@@ -1,4 +1,14 @@
-To build this sucker, install this junk:
+## FusionAuth Style
 
-  * `npm install postcss-cli autoprefixer cssnano`
-  * `gem install sass`
+## Setup
+
+```
+bundle install
+```
+
+
+## Building
+
+```
+bundle exec jekyll serve
+```
