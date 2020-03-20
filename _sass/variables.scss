@@ -22,47 +22,30 @@
 $font-stack: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 
 
-/* General application and layout colors
+/* Typography
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
-$app-header-background-color: white;
-$app-header-border-color: $gray-2;
+$h1-size: 36px !default;
+$h1-weight: normal !default;
+$h2-size: 30px !default;
+$h2-weight: normal !default;
+$h3-size: 26px !default;
+$h3-weight: 400 !default;
+$h4-size: 20px !default;
+$h4-weight: 500 !default;
+$h5-size: 18px !default;
+$h5-weight: 500 !default;
+$h6-size: 16px !default;
+$h6-weight: 500 !default;
 
-$breadcrumb-color: $gray-5;
 
-$default-text-color: $gray-7;
-
-$hamburger-color: $gray-4;
-
-$search-icon-color: $gray-3;
-
-$right-nav-color: $gray-5;
-$right-nav-help-background-color: $purple-medium;
-$right-nav-help-color: white;
-
-$page-body-background-color: $body;
-$page-header-color: $gray-6;
-$page-header-background-color: white;
-$page-header-border-color: $gray-2;
-$page-footer-color: $gray-4;
-
-/* Use !default so they can more easily be modified by a user */
-$sidebar-background-color: $fa-dark !default;
-$sidebar-header-border-color: #1f2427 !default;
-$sidebar-nav-border-color: rgba(white, 0.2) !default;
-$sidebar-nav-active-border-color: $fa-orange !default;
-$sidebar-nav-active-color: white !default;
-$sidebar-nav-active-background-color: darken($fa-dark, 12) !default;
-$sidebar-nav-color: white !default;
-$sidebar-nav-icon-color: $gray-2 !default;
-$sidebar-nav-open-background-color: darken($fa-dark, 6) !default;
-$sidebar-scrollbar-thumb-background-color: darken($fa-dark, 20) !default;
-$sidebar-scrollbar-track-background-color: lighten($sidebar-background-color, 10) !default;
-$sidebar-scrollbar-track-box-shadow: inset 1px 0 2px rgba(0, 0, 0, 0.4) !default;
+/* Shadows
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
 
 $fixed-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .20);
 $layered-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 2px 1px 0 rgba(0, 0, 0, .12);
 $light-box-shadow: 0 0 2px 0 rgba(0, 0, 0, .30);
+
 
 /* Alerts
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
@@ -243,8 +226,22 @@ $trading-card-title-background-color: $gray-1;
 /* Grid
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
-$grid-spacing: 15px;
-$grid-sizes: (sm, 576, 540), (md, 768, 720), (lg, 992, 960), (xl, 1200, 1140);
+$grid-settings: (
+  'containers': (
+    'sm': 540px,
+    'md': 720px,
+    'lg': 960px,
+    'xl': 1140px
+  ),
+  'spacing': 15px,
+  'widths': (
+    'sm': 576px,
+    'md': 768px,
+    'lg': 992px,
+    'xl': 1200px
+  )
+);
+$grid-spacing: map-get($grid-settings, 'spacing');
 
 
 /* IFrames

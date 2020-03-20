@@ -13,6 +13,7 @@
  * either express or implied. See the License for the specific
  * language governing permissions and limitations under the License.
  */
+@import 'functions';
 @import 'mixins';
 @import 'variables';
 
@@ -173,9 +174,9 @@ pre.code {
   }
 }
 
-//
-// Width and height
-//
+/* Width and height
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
 @each $name, $size in (25, 25%), (50, 50%), (55, 55%), (60, 60%), (65, 65%), (70, 70%), (75, 75%), (80, 80%), (85, 85%), (90, 90%), (95, 95%), (100, 100%) {
   .h-#{$name}, .h-xs-#{$name} {
     height: #{$size};
@@ -196,8 +197,8 @@ pre.code {
   }
 }
 
-@each $break, $width in $grid-sizes {
-  @media only screen and (min-width: #{$width}px) {
+@each $break, $width in map-deep-get($grid-settings, 'widths') {
+  @media only screen and (min-width:$width) {
     @each $name, $size in (25, 25%), (50, 50%), (75, 75%), (100, 100%), (auto, auto) {
       .h-#{$break}-#{$name} {
         height: #{$size};
@@ -210,9 +211,9 @@ pre.code {
   }
 }
 
-//
-// Margin and padding
-//
+/* Margin and padding
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
 @each $name, $size in (0, 0), (1, 0.25rem), (2, 0.5rem), (3, 1rem), (4, 1.5rem), (5, 3rem), (auto, auto) {
   .m-#{$name}, .m-xs-#{$name} {
     margin: #{$size};
@@ -275,8 +276,8 @@ pre.code {
   }
 }
 
-@each $break, $width in $grid-sizes {
-  @media only screen and (min-width: #{$width}px) {
+@each $break, $width in map-deep-get($grid-settings, 'widths') {
+  @media only screen and (min-width: $width) {
     @each $name, $size in (0, 0), (1, 0.25rem), (2, 0.5rem), (3, 1rem), (4, 1.5rem), (5, 3rem), (auto, auto) {
       .m-#{$break}-#{$name} {
         margin: #{$size};
@@ -337,6 +338,38 @@ pre.code {
         padding-bottom: #{$size};
         padding-top: #{$size};
       }
+    }
+  }
+}
+
+
+/* Display
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.d-block {
+  display: block;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.d-inline-block {
+  display: inline-block;
+}
+
+@each $break, $width in map-deep-get($grid-settings, 'widths') {
+  @media only screen and (min-width: $width) {
+    .d-#{break}-block {
+      display: block;
+    }
+
+    .d-#{break}-flex {
+      display: flex;
+    }
+
+    .d-#{break}-inline-block {
+      display: inline-block;
     }
   }
 }

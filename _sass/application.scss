@@ -18,6 +18,45 @@
 @import 'mixins';
 @import 'variables';
 
+
+/* General application and layout variables
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+$app-header-background-color: white;
+$app-header-border-color: $gray-2;
+
+$breadcrumb-color: $gray-5;
+
+$default-text-color: $gray-7;
+
+$hamburger-color: $gray-4;
+
+$search-icon-color: $gray-3;
+
+$right-nav-color: $gray-5;
+$right-nav-help-background-color: $purple-medium;
+$right-nav-help-color: white;
+
+$page-body-background-color: $body;
+$page-header-color: $gray-6;
+$page-header-background-color: white;
+$page-header-border-color: $gray-2;
+
+/* Use !default so they can more easily be modified by a user */
+$sidebar-background-color: $fa-dark !default;
+$sidebar-header-border-color: #1f2427 !default;
+$sidebar-nav-border-color: rgba(white, 0.2) !default;
+$sidebar-nav-active-border-color: $fa-orange !default;
+$sidebar-nav-active-color: white !default;
+$sidebar-nav-active-background-color: darken($fa-dark, 12) !default;
+$sidebar-nav-color: white !default;
+$sidebar-nav-icon-color: $gray-2 !default;
+$sidebar-nav-open-background-color: darken($fa-dark, 6) !default;
+$sidebar-scrollbar-thumb-background-color: darken($fa-dark, 20) !default;
+$sidebar-scrollbar-track-background-color: lighten($sidebar-background-color, 10) !default;
+$sidebar-scrollbar-track-box-shadow: inset 1px 0 2px rgba(0, 0, 0, 0.4) !default;
+
+
 /* Overall application layout
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 

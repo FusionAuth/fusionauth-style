@@ -14,6 +14,8 @@
  * language governing permissions and limitations under the License.
  */
 
+@import 'functions';
+@import 'mixins';
 @import 'variables';
 
 //
@@ -357,6 +359,51 @@
   }
 }
 
+.start {
+  justify-content: flex-start;
+}
+
+.center {
+  justify-content: center;
+}
+
+.end {
+  justify-content: flex-end;
+}
+
+.top {
+  align-items: flex-start;
+}
+
+.middle {
+  align-items: center;
+}
+
+.bottom {
+  align-items: flex-end;
+}
+
+.baseline {
+  align-items: baseline;
+}
+
+.around {
+  justify-content: space-around;
+}
+
+.between {
+  justify-content: space-between;
+}
+
+.first {
+  order: -1;
+}
+
+.last {
+  order: 1;
+}
+
+
 //
 // Container mixin
 //
@@ -447,13 +494,13 @@
 //
 // Define the main grid
 //
-@each $break, $width, $container in $grid-sizes {
-  @media only screen and (min-width: #{$width}px) {
-    @include define-container(#{$container}px);
-    @include define-column-size(#{$break});
+@each $break, $width in map-deep-get($grid-settings, 'widths') {
+  $container: map-deep-get($grid-settings, 'containers', $break);
+  @media only screen and (min-width:$width) {
+    @include define-container($container);
+    @include define-column-size($break);
 
-    // Only need a fluid container at sm
-    @if $break == sm {
+    @if $break == 'sm' {
       @include define-container-fluid(20px);
     }
   }

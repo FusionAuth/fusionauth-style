@@ -1,0 +1,32 @@
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.41.0/codemirror.min.css">
+  <link rel="stylesheet" href="/css/test-website.css"/>
+  <link rel="stylesheet" href="/css/font-awesome-5.12.1.min.css"/>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.41.0/codemirror.min.js"></script>
+<!--  <script src="https://kit.fontawesome.com/807acfa91f.js" crossorigin="anonymous"></script>-->
+<!--  <script src="https://kit.fontawesome.com/d11b20d46a.js" crossorigin="anonymous"></script>-->
+  <script type="text/javascript" src="/js/prime-es6.js"></script>
+  <script type="text/javascript">
+
+    // When the user scrolls the page, execute myFunction
+    window.onscroll = function() {
+      const header = Prime.Document.queryFirst('header');
+      if (window.pageYOffset > 500) {
+        header.addClass('sticky');
+      } else {
+        header.removeClass('sticky');
+      }
+    };
+
+    Prime.Document.onReady(function() {
+      Prime.Document.queryFirst('.menu-open').addEventListener('click', function() {
+        Prime.Document.queryFirst('.page-header nav').show();
+      });
+      Prime.Document.queryFirst('.menu-close').addEventListener('click', function() {
+        Prime.Document.queryFirst('.page-header nav').hide();
+      });
+    })
+  </script>
+</head>

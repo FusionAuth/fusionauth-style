@@ -14,6 +14,9 @@
  * language governing permissions and limitations under the License.
  */
 
+@import 'functions';
+@import 'variables';
+
 /* Forms
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 @mixin user-select($args...) {
@@ -46,5 +49,12 @@
 
   &::-webkit-scrollbar-thumb {
     background-color: $thumb-background-color;
+  }
+}
+
+@mixin media($size) {
+  $width: map-deep-get($grid-settings, 'widths', $size);
+  @media only screen and (min-width: $width) {
+    @content;
   }
 }

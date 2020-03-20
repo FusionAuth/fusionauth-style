@@ -16,7 +16,7 @@
 savantVersion = "1.0.0"
 primejsVersion = "1.2.0"
 
-project(group: "io.fusionauth", name: "fusionauth-style", version: "0.1.33", licenses: ["ApacheV2_0"]) {
+project(group: "io.fusionauth", name: "fusionauth-style", version: "0.2.0", licenses: ["ApacheV2_0"]) {
   workflow {
     standard()
   }
@@ -33,7 +33,8 @@ project(group: "io.fusionauth", name: "fusionauth-style", version: "0.1.33", lic
 
   publications {
     main {
-      publication(name: project.name, type: "css", file: "build/css/fusionauth-style.css", source: "build/css/fusionauth-style.css")
+      publication(name: project.name, type: "css", file: "build/css/fusionauth-application-style.css", source: "build/css/fusionauth-application-style.css")
+      publication(name: project.name, type: "css", file: "build/css/fusionauth-website-style.css", source: "build/css/fusionauth-website-style.css")
       publication(name: project.name, type: "zip", file: "build/fusionauth-style.zip")
     }
   }
@@ -88,11 +89,19 @@ target(name: "int", description: "Releases a local integration build of the proj
     fileSet(dir: "build/css", includePatterns: [~/.+/])
   }
 
-  if (new ProcessBuilder("sass", "_sass/fusionauth-style.scss", "build/css/intermediate.css").inheritIO().start().waitFor() != 0) {
+  if (new ProcessBuilder("sass", "_sass/fusionauth-application-style.scss", "build/css/intermediate.css").inheritIO().start().waitFor() != 0) {
     fail("Failed while calling sass")
   }
 
-  if (new ProcessBuilder("node_modules/postcss-cli/bin/postcss", "build/css/intermediate.css", "--use", "autoprefixer", "--use", "cssnano", "-o" , "build/css/fusionauth-style.css").inheritIO().start().waitFor() != 0) {
+  if (new ProcessBuilder("node_modules/postcss-cli/bin/postcss", "build/css/intermediate.css", "--use", "autoprefixer", "--use", "cssnano", "-o" , "build/css/fusionauth-application-style.css").inheritIO().start().waitFor() != 0) {
+    fail("Failed while calling postcss")
+  }
+
+  if (new ProcessBuilder("sass", "_sass/fusionauth-website-style.scss", "build/css/intermediate.css").inheritIO().start().waitFor() != 0) {
+    fail("Failed while calling sass")
+  }
+
+  if (new ProcessBuilder("node_modules/postcss-cli/bin/postcss", "build/css/intermediate.css", "--use", "autoprefixer", "--use", "cssnano", "-o" , "build/css/fusionauth-website-style.css").inheritIO().start().waitFor() != 0) {
     fail("Failed while calling postcss")
   }
 

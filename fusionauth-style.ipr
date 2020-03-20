@@ -91,7 +91,7 @@
   </component>
   <component name="PhpUnit">
     <phpunit_settings>
-      <PhpUnitSettings load_method="CUSTOM_LOADER" />
+      <PhpUnitSettings />
     </phpunit_settings>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
@@ -110,6 +110,18 @@
       <codeStyleSettings language="JavaScript">
         <indentOptions>
           <option name="INDENT_SIZE" value="2" />
+          <option name="TAB_SIZE" value="2" />
+        </indentOptions>
+      </codeStyleSettings>
+      <codeStyleSettings language="SASS">
+        <indentOptions>
+          <option name="CONTINUATION_INDENT_SIZE" value="2" />
+          <option name="TAB_SIZE" value="2" />
+        </indentOptions>
+      </codeStyleSettings>
+      <codeStyleSettings language="SCSS">
+        <indentOptions>
+          <option name="CONTINUATION_INDENT_SIZE" value="2" />
           <option name="TAB_SIZE" value="2" />
         </indentOptions>
       </codeStyleSettings>

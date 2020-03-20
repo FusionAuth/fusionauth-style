@@ -20,33 +20,33 @@
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
 h1 {
-  font-size: 36px;
-  font-weight: normal;
+  font-size: $h1-size;
+  font-weight: $h1-weight;
 }
 
 h2 {
-  font-size: 30px;
-  font-weight: normal;
+  font-size: $h2-size;
+  font-weight: $h2-weight;
 }
 
 h3 {
-  font-size: 26px;
-  font-weight: 400;
+  font-size: $h3-size;
+  font-weight: $h3-weight;
 }
 
 h4 {
-  font-size: 20px;
-  font-weight: 500;
+  font-size: $h4-size;
+  font-weight: $h4-weight;
 }
 
 h5 {
-  font-size: 18px;
-  font-weight: 500;
+  font-size: $h5-size;
+  font-weight: $h5-weight;
 }
 
 h6 {
-  font-size: 16px;
-  font-weight: 500;
+  font-size: $h6-size;
+  font-weight: $h6-weight;
 }
 
 p {
@@ -79,6 +79,22 @@ a {
 
   &:hover, &:visited {
     color: $link-color;
+  }
+
+  &.gray {
+    color: $gray-7;
+
+    &:hover, &:visited {
+      color: $gray-7;
+    }
+  }
+
+  &.gray-light {
+    color: $gray-5;
+
+    &:hover, &:visited {
+      color: $gray-5;
+    }
   }
 }
 

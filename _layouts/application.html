@@ -1,18 +1,18 @@
 <!doctype html>
 <html>
-  {% include _head.html %}
+  {% include application/_head.html %}
   <body>
 
-  {% include _navigation.html %}
+  {% include application/_navigation.html %}
 
   <!-- Main body that includes the fixed header and the footer -->
     <main>
 
       <!-- Fixed app header -->
-      {% include _top_search_bar.html %}
+      {% include application/_top_search_bar.html %}
 
       <!-- Fixed page header -->
-      {% include _page_header.html %}
+      {% include application/_page_header.html %}
 
       <main class="page-body container-fluid">
         {{ content }}
