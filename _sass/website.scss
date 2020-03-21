@@ -14,6 +14,7 @@
  * language governing permissions and limitations under the License.
  */
 
+@import 'buttons';
 @import 'colors';
 @import 'mixins';
 @import 'variables';
@@ -34,14 +35,23 @@ html {
 
 body {
   background: #fff;
-  color: $gray-7;
-  font: 12px/18px $font-stack;
+  color: $body-font-color;
+  font: 14px/20px $font-stack;
   height: 100%;
   min-height: 100%;
   overflow-x: hidden;
   position: relative;
   width: 100%;
   -webkit-font-smoothing: antialiased;
+
+  main.nav-open {
+    overflow-y: hidden;
+    height: 1vh;
+  }
+}
+
+:root {
+  --super-dropdown-arrow-left: 0px;
 }
 
 
@@ -62,18 +72,18 @@ header.page-header {
     top: 0;
     width: 100%;
 
-    img {
+    img.logo {
       filter: brightness(1) invert(0);
     }
   }
 
-  .container {
+  > .container {
     align-items: center;
     display: flex;
     justify-content: space-between;
   }
 
-  img {
+  img.logo {
     filter: brightness(0) invert(1);
     height: 45px;
     padding-left: 5px;
@@ -96,8 +106,12 @@ header.page-header {
     @include media('lg') {
       background: transparent;
       display: inline-block !important;
-      position: relative;
+      position: inherit;
       width: unset;
+    }
+
+    &.open {
+      display: block;
     }
 
     header {
@@ -109,19 +123,20 @@ header.page-header {
         display: none;
       }
 
-      img {
+      img.logo {
         filter: none;
         height: 45px;
         margin: 15px 0 15px 20px;
         padding: 0;
       }
 
-      a {
+      a, a:hover, a:visited, a:link {
+        color: $gray-7;
         margin-right: 20px;
       }
     }
 
-    ul {
+    > ul {
       border-top: 1px solid $gray-4;
       list-style: none;
       margin-block-start: 0;
@@ -144,7 +159,7 @@ header.page-header {
           vertical-align: middle;
         }
 
-        a {
+        a, a:hover, a:visited, a:link {
           color: $gray-7;
           font-size: 24px;
           font-weight: 600;
@@ -155,6 +170,105 @@ header.page-header {
             font-weight: 600;
           }
         }
+      }
+    }
+
+    .super-dropdown {
+      background: transparent;
+      color: $gray-7;
+      display: none;
+
+      @include media('lg') {
+        background: white;
+        box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
+        position: absolute;
+        left: 0;
+        top: 65px;
+        padding: 20px 0;
+        width: 100%
+      }
+
+      &::after {
+        border-color: transparent transparent #ffffff transparent;
+        border-style: solid;
+        border-width: 0 18px 10px 18px;
+        content: '';
+        height: 0;
+        position: absolute;
+        left: var(--super-dropdown-arrow-left);
+        top: -10px;
+        width: 0;
+        z-index: 9998;
+      }
+
+      &.open {
+        display: block;
+      }
+
+      .container {
+        margin-top: 20px;
+        width: 100%;
+
+        @include media('lg') {
+          display: flex;
+          justify-content: center;
+          width: 900px;
+        }
+      }
+
+      .promo {
+        display: none;
+        font-size: 12px;
+
+        img {
+          display: block;
+          margin: 20px 0;
+          width: 200px;
+        }
+
+        @include media('lg') {
+          display: block;
+          padding: 0 20px;
+        }
+      }
+
+      .items {
+        margin: 0;
+        padding: 0;
+
+        @include media('lg') {
+          border-left: 1px solid $gray-4;
+        }
+
+        ul {
+          padding: 0;
+          width: 275px;
+
+          li {
+            display: block;
+            padding-bottom: 20px;
+
+            a, a:hover, a:visited, a:link {
+              color: $gray-7;
+              font-size: 18px;
+
+              @include media('lg') {
+                font-size: 12px;
+              }
+            }
+          }
+        }
+      }
+
+      .animate {
+        opacity: 0;
+        transform: translate3d(20px, 0px, 0px);
+        transition: opacity 250ms linear, transform 250ms linear;
+      }
+
+      .animate-apply {
+        opacity: 1;
+        transform: translate3d(0px, 0px, 0px);
       }
     }
   }
@@ -169,21 +283,67 @@ header.page-header {
 }
 
 
-/* Heros
+/* Sections (except heroes)
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+section {
+  padding-bottom: 50px;
+  padding-top: 50px;
+
+  &.blue {
+    background: linear-gradient($blue-7, $blue-1);
+    color: white;
+
+    a, a:hover, a:visited, a:link {
+      color: white;
+    }
+  }
+
+  &.gray {
+    background: $gray-7;
+    color: white;
+
+    a, a:hover, a:visited, a:link {
+      color: white;
+    }
+  }
+
+  &.orange {
+    background: linear-gradient($orange-7, $orange-1);
+    color: white;
+
+    a, a:hover, a:visited, a:link {
+      color: white;
+    }
+  }
+
+  &.purple {
+    background: linear-gradient($purple-7, $purple-1);
+    color: white;
+
+    a, a:hover, a:visited, a:link {
+      color: white;
+    }
+  }
+
+  &.white {
+    background: transparent;
+    color: $gray-7;
+  }
+}
+
+
+/* Heroes
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
 .hero {
-  &.purple {
-    background: linear-gradient($purple-dark, $purple-light);
-  }
+  padding: 0;
 
   .content {
     padding: 75px 0;
   }
 
   .text {
-    color: white;
-
     p {
       font-size: 16px;
       font-weight: 500;
@@ -192,6 +352,7 @@ header.page-header {
     }
 
     a.button {
+      @include button-colors($purple-4, white, none);
       margin-top: 20px;
     }
   }

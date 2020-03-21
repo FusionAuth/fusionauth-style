@@ -18,12 +18,20 @@
 @import 'variables';
 
 .stamp {
+  border-radius: $stamp-border-radius;
   box-shadow: $stamp-box-shadow;
+  font-size: $stamp-font-size;
+  font-weight: $stamp-font-weight;
   display: inline-block;
-  padding: 1px 5px;
+  padding: $stamp-padding;
 
   &:not(:last-child) {
     margin-right: 10px;
+  }
+
+  &.circle {
+    border-radius: $stamp-circle-border-radius;
+    padding: $stamp-circle-padding;
   }
 
   &.blue {
@@ -55,7 +63,7 @@
     font-size: 11px;
   }
 
-  &.yellow{
+  &.yellow {
     background: $yellow-stamp-background-color;
     color: $yellow-stamp-color;
   }

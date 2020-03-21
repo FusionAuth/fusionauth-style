@@ -19,7 +19,7 @@
 /* Font
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
-$font-stack: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+$font-stack: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !default;
 
 
 /* Typography
@@ -27,200 +27,206 @@ $font-stack: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, '
 
 $h1-size: 36px !default;
 $h1-weight: normal !default;
+$h1-line-height: 46px !default;
 $h2-size: 30px !default;
 $h2-weight: normal !default;
+$h2-line-height: 38px !default;
 $h3-size: 26px !default;
 $h3-weight: 400 !default;
+$h3-line-height: 32px !default;
 $h4-size: 20px !default;
 $h4-weight: 500 !default;
+$h4-line-height: 26px !default;
 $h5-size: 18px !default;
 $h5-weight: 500 !default;
+$h5-line-height: 22px !default;
 $h6-size: 16px !default;
 $h6-weight: 500 !default;
+$h6-line-height: 20px !default;
 
 
 /* Shadows
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
-$fixed-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .20);
-$layered-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 2px 1px 0 rgba(0, 0, 0, .12);
-$light-box-shadow: 0 0 2px 0 rgba(0, 0, 0, .30);
+$fixed-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .20) !default;
+$layered-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 2px 1px 0 rgba(0, 0, 0, .12) !default;
+$light-box-shadow: 0 0 2px 0 rgba(0, 0, 0, .30) !default;
 
 
 /* Alerts
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
-$alert-color: $gray-6;
-$error-alert-background-color: $red-medium;
-$info-alert-background-color: $blue-medium;
-$success-alert-background-color: $green-dark;
-$warning-alert-background-color: $orange-medium;
+$alert-color: $gray-6 !default;
+$error-alert-background-color: $red-medium !default;
+$info-alert-background-color: $blue-medium !default;
+$success-alert-background-color: $green-dark !default;
+$warning-alert-background-color: $orange-medium !default;
 
 
 /* Buttons
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
-$blue-button-background-color: $blue-medium;
-$blue-button-hover-background-color: $blue-dark;
-$blue-button-color: #fff;
+$blue-button-background-color: $blue-medium !default;
+$blue-button-hover-background-color: $blue-dark !default;
+$blue-button-color: #fff !default;
 
-$gray-button-background-color: $gray-1;
-$gray-button-border-color: $gray-3;
-$gray-button-hover-background-color: $gray-2;
-$gray-button-color: $gray-7;
+$gray-button-background-color: $gray-1 !default;
+$gray-button-border-color: $gray-3 !default;
+$gray-button-hover-background-color: $gray-2 !default;
+$gray-button-color: $gray-7 !default;
 
-$green-button-background-color: $green-medium;
-$green-button-hover-background-color: $green-dark;
-$green-button-color: #fff;
+$green-button-background-color: $green-medium !default;
+$green-button-hover-background-color: $green-dark !default;
+$green-button-color: #fff !default;
 
-$orange-button-background-color: $orange-medium;
-$orange-button-hover-background-color: $orange-dark;
-$orange-button-color: #fff;
+$orange-button-background-color: $orange-medium !default;
+$orange-button-hover-background-color: $orange-dark !default;
+$orange-button-color: #fff !default;
 
-$purple-button-background-color: $purple-medium;
-$purple-button-hover-background-color: $purple-dark;
-$purple-button-color: #fff;
+$purple-button-background-color: $purple-medium !default;
+$purple-button-hover-background-color: $purple-dark !default;
+$purple-button-color: #fff !default;
 
-$red-button-background-color: $red-medium;
-$red-button-hover-background-color: $red-dark;
-$red-button-color: #fff;
+$red-button-background-color: $red-medium !default;
+$red-button-hover-background-color: $red-dark !default;
+$red-button-color: #fff !default;
 
-$yellow-button-background-color: $yellow-medium;
-$yellow-button-hover-background-color: $yellow-dark;
-$yellow-button-color: $purple-medium;
+$yellow-button-background-color: $yellow-medium !default;
+$yellow-button-hover-background-color: $yellow-dark !default;
+$yellow-button-color: $purple-medium !default;
 
 
 /* Cards
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
-$blue-card-background-color: $blue-light;
-$blue-card-header-background-color: $blue-medium;
+$blue-card-background-color: $blue-light !default;
+$blue-card-header-background-color: $blue-medium !default;
 
-$blue-gray-card-background-color: $gray-2;
-$blue-gray-card-color: $gray-7;
-$blue-gray-card-header-background-color: $blue-medium;
-$blue-gray-card-hover: $gray-3;
+$blue-gray-card-background-color: $gray-2 !default;
+$blue-gray-card-color: $gray-7 !default;
+$blue-gray-card-header-background-color: $blue-medium !default;
+$blue-gray-card-hover: $gray-3 !default;
 
-$bordered-card-border-color: $purple-dark;
+$bordered-card-border-color: $purple-dark !default;
 
-$card-header-corner-background-color: #fff;
-$card-header-corner-color: $gray-7;
+$card-header-corner-background-color: #fff !default;
+$card-header-corner-color: $gray-7 !default;
 
-$gray-card-background-color: $gray-4;
-$gray-card-header-background-color: $gray-5;
+$gray-card-background-color: $gray-4 !default;
+$gray-card-header-background-color: $gray-5 !default;
 
-$green-card-background-color: $green-light;
-$green-card-header-background-color: $green-medium;
+$green-card-background-color: $green-light !default;
+$green-card-header-background-color: $green-medium !default;
 
-$orange-card-background-color: $orange-light;
-$orange-card-header-background-color: $orange-medium;
+$orange-card-background-color: $orange-light !default;
+$orange-card-header-background-color: $orange-medium !default;
 
-$purple-card-background-color: $purple-light;
-$purple-card-header-background-color: $purple-medium;
+$purple-card-background-color: $purple-light !default;
+$purple-card-header-background-color: $purple-medium !default;
 
-$red-card-background-color: $red-light;
-$red-card-header-background-color: $red-medium;
+$red-card-background-color: $red-light !default;
+$red-card-header-background-color: $red-medium !default;
 
-$yellow-card-background-color: $yellow-light;
-$yellow-card-header-background-color: $yellow-medium;
+$yellow-card-background-color: $yellow-light !default;
+$yellow-card-header-background-color: $yellow-medium !default;
 
 
 /* Dialogs
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
-$dialog-border-radius: $gray-5;
-$dialog-header-color: $gray-6;
-$dialog-section-header-background-color: $purple-light;
-$dialog-section-header-color: #fff;
+$dialog-border-radius: $gray-5 !default;
+$dialog-header-color: $gray-6 !default;
+$dialog-section-header-background-color: $purple-light !default;
+$dialog-section-header-color: #fff !default;
 
 
 /* Forms
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
-$checkbox-border-color: $gray-4;
-$checkbox-check-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2);
-$checkbox-check-color: white;
-$checkbox-checked-background-color: $blue-medium;
-$checkbox-disabled-background-color: rgba($gray-2, 0.7);
-$checkbox-disabled-color: $gray-6;
-$checkbox-disabled-text-color: $gray-4;
+$checkbox-border-color: $gray-4 !default;
+$checkbox-check-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2) !default;
+$checkbox-check-color: white !default;
+$checkbox-checked-background-color: $blue-medium !default;
+$checkbox-disabled-background-color: rgba($gray-2, 0.7) !default;
+$checkbox-disabled-color: $gray-6 !default;
+$checkbox-disabled-text-color: $gray-4 !default;
 
-$datetime-picker-border-color: $gray-3;
-$datetime-picker-cell-background-color: $gray-2;
-$datetime-picker-cell-border-color: $gray-3;
-$datetime-picker-cell-color: $gray-6;
-$datetime-picker-cell-highlight-background-color: $gray-1;
-$datetime-picker-cell-highlight-border-color: $gray-3;
-$datetime-picker-cell-highlight-color: $gray-6;
-$datetime-picker-cell-hover-background-color: $gray-3;
-$datetime-picker-cell-hover-border-color: $gray-5;
-$datetime-picker-cell-hover-color: $gray-6;
-$datetime-picker-highlight-color: $gray-2;
-$datetime-picker-inputs-background-color: $gray-2;
-$datetime-picker-inputs-border-color: $gray-3;
-$datetime-picker-inputs-input-border-color: $gray-2;
+$datetime-picker-border-color: $gray-3 !default;
+$datetime-picker-cell-background-color: $gray-2 !default;
+$datetime-picker-cell-border-color: $gray-3 !default;
+$datetime-picker-cell-color: $gray-6 !default;
+$datetime-picker-cell-highlight-background-color: $gray-1 !default;
+$datetime-picker-cell-highlight-border-color: $gray-3 !default;
+$datetime-picker-cell-highlight-color: $gray-6 !default;
+$datetime-picker-cell-hover-background-color: $gray-3 !default;
+$datetime-picker-cell-hover-border-color: $gray-5 !default;
+$datetime-picker-cell-hover-color: $gray-6 !default;
+$datetime-picker-highlight-color: $gray-2 !default;
+$datetime-picker-inputs-background-color: $gray-2 !default;
+$datetime-picker-inputs-border-color: $gray-3 !default;
+$datetime-picker-inputs-input-border-color: $gray-2 !default;
 
-$error-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(200, 27, 61, 0.6);
-$error-color: $red-medium;
-$error-highlight-color: $red-dark;
-$error-widget-color: $red-light;
+$error-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(200, 27, 61, 0.6) !default;
+$error-color: $red-medium !default;
+$error-highlight-color: $red-dark !default;
+$error-widget-color: $red-light !default;
 
-$fieldset-border-color: $gray-3;
-$fieldset-legend-color: $gray-7;
+$fieldset-border-color: $gray-3 !default;
+$fieldset-legend-color: $gray-7 !default;
 
-$highlight-box-shadow: 0 0 0 2px rgba($blue-medium, 0.4);
-$highlight-color: rgba($blue-medium, 0.4);
+$highlight-box-shadow: 0 0 0 2px rgba($blue-medium, 0.4) !default;
+$highlight-color: rgba($blue-medium, 0.4) !default;
 
-$input-addon-background-color: $gray-1;
-$input-addon-color: $gray-6;
-$input-background-color: $body;
-$input-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4);
-$input-box-shadow-light: inset 0 1px 1px rgba(0, 0, 0, 0.2);
+$input-addon-background-color: $gray-1 !default;
+$input-addon-color: $gray-6 !default;
+$input-background-color: $body !default;
+$input-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4) !default;
+$input-box-shadow-light: inset 0 1px 1px rgba(0, 0, 0, 0.2) !default;
 
-$label-color: $gray-6;
-$label-font-size: 12px;
+$label-color: $gray-6 !default;
+$label-font-size: 12px !default;
 
-$multiple-select-option-color: white;
-$multiple-select-option-background-color: $blue-medium;
-$multiple-select-option-highlight-background-color: $blue-dark;
-$multiple-select-search-border-color: $gray-4;
-$multiple-select-search-highlight-background-color: $blue-medium;
+$multiple-select-option-color: white !default;
+$multiple-select-option-background-color: $blue-medium !default;
+$multiple-select-option-highlight-background-color: $blue-dark !default;
+$multiple-select-search-border-color: $gray-4 !default;
+$multiple-select-search-highlight-background-color: $blue-medium !default;
 
-$option-background-color: $gray-1;
-$option-color: $gray-7;
+$option-background-color: $gray-1 !default;
+$option-color: $gray-7 !default;
 
-$required-color: $red-medium;
+$required-color: $red-medium !default;
 
-$radio-border-color: $gray-4;
-$radio-check-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2);
-$radio-pin-color: white;
-$radio-checked-border-color: $blue-medium;
-$radio-disabled-background-color: rgba($gray-2, 0.7);
-$radio-disabled-color: $gray-6;
-$radio-disabled-text-color: $gray-4;
+$radio-border-color: $gray-4 !default;
+$radio-check-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2) !default;
+$radio-pin-color: white !default;
+$radio-checked-border-color: $blue-medium !default;
+$radio-disabled-background-color: rgba($gray-2, 0.7) !default;
+$radio-disabled-color: $gray-6 !default;
+$radio-disabled-text-color: $gray-4 !default;
 
-$select-background-color: $gray-2;
-$select-border-color: $blue-medium;
-$select-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2);
-$select-color: $gray-6;
+$select-background-color: $gray-2 !default;
+$select-border-color: $blue-medium !default;
+$select-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2) !default;
+$select-color: $gray-6 !default;
 
-$text-border-color: $gray-3;
-$text-disabled-border-color: $gray-2;
-$text-disabled-color: $gray-6;
-$select-option-disabled-color: $gray-4;
+$text-border-color: $gray-3 !default;
+$text-disabled-border-color: $gray-2 !default;
+$text-disabled-color: $gray-6 !default;
+$select-option-disabled-color: $gray-4 !default;
 
-$toggle-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4);
-$toggle-check-color: $green-medium;
-$toggle-rail-color: $gray-2;
-$toggle-rail-highlight-color: $blue-medium;
+$toggle-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4) !default;
+$toggle-check-color: $green-medium !default;
+$toggle-rail-color: $gray-2 !default;
+$toggle-rail-highlight-color: $blue-medium !default;
 
-$trading-card-border: $gray-2;
-$trading-card-checked-background-color: $blue-medium;
-$trading-card-header-box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.4);
-$trading-card-footer-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4);
-$trading-card-hover-background-color: $blue-light;
-$trading-card-hover-border-color: $blue-medium;
-$trading-card-title-background-color: $gray-1;
+$trading-card-border: $gray-2 !default;
+$trading-card-checked-background-color: $blue-medium !default;
+$trading-card-header-box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.4) !default;
+$trading-card-footer-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4) !default;
+$trading-card-hover-background-color: $blue-light !default;
+$trading-card-hover-border-color: $blue-medium !default;
+$trading-card-title-background-color: $gray-1 !default;
 
 
 /* Grid
@@ -240,98 +246,106 @@ $grid-settings: (
     'lg': 992px,
     'xl': 1200px
   )
-);
-$grid-spacing: map-get($grid-settings, 'spacing');
+) !default;
+$grid-spacing: map-get($grid-settings, 'spacing') !default;
 
 
 /* IFrames
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
-$iframe-border-color: $gray-2;
+$iframe-border-color: $gray-2 !default;
 
 
 /* Panels
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
-$panel-blue-border-top-color: $blue-medium;
-$panel-gray-border-top-color: $gray-5;
-$panel-green-border-top-color: $green-medium;
-$panel-header-color: $gray-6;
-$panel-orange-border-top-color: $orange-medium;
-$panel-purple-border-top-color: $purple-medium;
-$panel-red-border-top-color: $red-medium;
-$panel-yellow-border-top-color: $yellow-medium;
+$panel-blue-border-top-color: $blue-medium !default;
+$panel-gray-border-top-color: $gray-5 !default;
+$panel-green-border-top-color: $green-medium !default;
+$panel-header-color: $gray-6 !default;
+$panel-orange-border-top-color: $orange-medium !default;
+$panel-purple-border-top-color: $purple-medium !default;
+$panel-red-border-top-color: $red-medium !default;
+$panel-yellow-border-top-color: $yellow-medium !default;
 
 
 /* Panels
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
-$progress-bar-border-color: $gray-2;
-$progress-bar-color: $purple-light;
+$progress-bar-border-color: $gray-2 !default;
+$progress-bar-color: $purple-light !default;
 
 
 /* Scrollbars
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
-$scrollbar-horizontal-track-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4);
-$scrollbar-track-background-color: $gray-1;
-$scrollbar-thumb-background-color: $gray-3;
-$scrollbar-vertical-track-box-shadow: inset 1px 0 2px rgba(0, 0, 0, 0.4);
+$scrollbar-horizontal-track-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4) !default;
+$scrollbar-track-background-color: $gray-1 !default;
+$scrollbar-thumb-background-color: $gray-3 !default;
+$scrollbar-vertical-track-box-shadow: inset 1px 0 2px rgba(0, 0, 0, 0.4) !default;
 
 
 /* Stamps
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
-$stamp-box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.2);
-$blue-stamp-background-color: $blue-dark;
-$blue-stamp-color: white;
-$green-stamp-background-color: $green-dark;
-$green-stamp-color: white;
-$orange-stamp-background-color: $orange-dark;
-$orange-stamp-color: white;
-$purple-stamp-background-color: $purple-dark;
-$purple-stamp-color: white;
-$red-stamp-background-color: $red-dark;
-$red-stamp-color: white;
-$yellow-stamp-background-color: $yellow-dark;
-$yellow-stamp-color: white;
+$stamp-border-radius: none !default;
+$stamp-box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.2) !default;
+$stamp-circle-border-radius: 50%;
+$stamp-circle-padding: 20px;
+$stamp-font-size: 12px !default;
+$stamp-font-weight: 400 !default;
+$stamp-padding: 1px 5px !default;
+
+$blue-stamp-background-color: $blue-dark !default;
+$blue-stamp-color: white !default;
+$green-stamp-background-color: $green-dark !default;
+$green-stamp-color: white !default;
+$orange-stamp-background-color: $orange-dark !default;
+$orange-stamp-color: white !default;
+$purple-stamp-background-color: $purple-dark !default;
+$purple-stamp-color: white !default;
+$red-stamp-background-color: $red-dark !default;
+$red-stamp-color: white !default;
+$yellow-stamp-background-color: $yellow-dark !default;
+$yellow-stamp-color: white !default;
 
 
 /* Tables
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
-$table-body-link-color: $blue-dark;
-$table-border-color: $gray-2;
-$table-header-background-color: $purple-medium;
-$table-header-color: $gray-5;
-$table-header-light-color: $gray-2;
-$table-header-link-color: $blue-dark;
-$table-header-sort-color: $blue-dark;
-$table-pagination-background-color: $gray-1;
-$table-pagination-box-shadow: $layered-box-shadow;
-$table-pagination-header-color: $gray-6;
-$table-pagination-hover-color: $gray-1;
-$table-pagination-link-color: $blue-medium;
-$table-pagination-input-box-shadow: $light-box-shadow;
+$table-body-link-color: $blue-dark !default;
+$table-border-color: $gray-2 !default;
+$table-header-background-color: $purple-medium !default;
+$table-header-color: $gray-5 !default;
+$table-header-light-color: $gray-2 !default;
+$table-header-link-color: $blue-dark !default;
+$table-header-sort-color: $blue-dark !default;
+$table-pagination-background-color: $gray-1 !default;
+$table-pagination-box-shadow: $layered-box-shadow !default;
+$table-pagination-header-color: $gray-6 !default;
+$table-pagination-hover-color: $gray-1 !default;
+$table-pagination-link-color: $blue-medium !default;
+$table-pagination-input-box-shadow: $light-box-shadow !default;
 
 
 /* Tabs
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
-$tab-border-color: $gray-3;
-$tab-color: $gray-5;
-$tab-selected-color: $blue-medium;
-$tab-selected-border-color: $blue-medium;
+$tab-border-color: $gray-3 !default;
+$tab-color: $gray-5 !default;
+$tab-selected-color: $blue-medium !default;
+$tab-selected-border-color: $blue-medium !default;
 
 
 /* Tooltip
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
-$tooltip-background-color: $gray-7;
-$tooltip-color: $gray-1;
+$tooltip-background-color: $gray-7 !default;
+$tooltip-color: $gray-1 !default;
 
 
 /* Typography
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
-$link-color: $blue-dark;
+$link-color: $blue-dark !default;
+$link-font-size: inherit !default;

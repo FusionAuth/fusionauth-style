@@ -3,6 +3,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.41.0/codemirror.min.css">
   <link rel="stylesheet" href="/css/test-website.css"/>
   <link rel="stylesheet" href="/css/font-awesome-5.12.1.min.css"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700&display=swap">
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.41.0/codemirror.min.js"></script>
 <!--  <script src="https://kit.fontawesome.com/807acfa91f.js" crossorigin="anonymous"></script>-->
@@ -22,10 +23,47 @@
 
     Prime.Document.onReady(function() {
       Prime.Document.queryFirst('.menu-open').addEventListener('click', function() {
-        Prime.Document.queryFirst('.page-header nav').show();
+        Prime.Document.queryFirst('.page-header nav').addClass('open');
+        Prime.Document.queryFirst('body main').addClass('nav-open');
       });
       Prime.Document.queryFirst('.menu-close').addEventListener('click', function() {
-        Prime.Document.queryFirst('.page-header nav').hide();
+        Prime.Document.queryFirst('.page-header nav').removeClass('open');
+        Prime.Document.queryFirst('body main').removeClass('nav-open');
+      });
+      Prime.Document.query('li.dropdown').addEventListener('click', function(event) {
+        Prime.Utils.stopEvent(event);
+
+        // Remove all the animations
+        const li = new Prime.Document.Element(event.currentTarget);
+        const dropdown = li.queryFirst('.super-dropdown');
+        dropdown.query('.animate').each(function(e) {
+          e.removeClass('animate-apply');
+        });
+
+        // Open or close the one clicked
+        if (dropdown.hasClass('open')) {
+          dropdown.removeClass('open');
+        } else {
+          dropdown.addClass('open');
+        }
+
+        setTimeout(function() {
+          dropdown.query('.animate').each(function(e) {
+            e.addClass('animate-apply');
+          });
+        }, 20);
+
+        // Close everything else
+        Prime.Document.query('.super-dropdown').each(function(other) {
+          if (other.domElement !== dropdown.domElement) {
+            other.removeClass('open');
+          }
+        });
+
+        // Position the arrow
+        const left = li.getOffsetLeft();
+        const width = li.getWidth();
+        dropdown.domElement.style.setProperty('--super-dropdown-arrow-left', (left + (width / 2) - 12) + 'px');
       });
     })
   </script>

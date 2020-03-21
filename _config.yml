@@ -28,8 +28,14 @@ markdown: kramdown
 #gems:
 #  - jekyll-feed
 exclude:
+  - .gitignore
+  - .ruby-version
   - Gemfile
   - Gemfile.lock
+  - build.savant
+  - fusionauth-style.*
+  - package.json
+  - package-lock.json
 
 assets:
   cache: false
