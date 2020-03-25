@@ -183,8 +183,8 @@ header.page-header {
         box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
         position: absolute;
         left: 0;
-        top: 65px;
         padding: 20px 0;
+        top: 65px;
         width: 100%
       }
 
@@ -199,6 +199,17 @@ header.page-header {
         top: -10px;
         width: 0;
         z-index: 9998;
+      }
+
+      &.animate {
+        opacity: 0;
+        max-height: 100px;
+        transition: opacity 250ms ease-in, max-height 250ms ease-in;
+      }
+
+      &.animate-apply {
+        opacity: 1;
+        max-height: 500px;
       }
 
       &.open {
@@ -287,8 +298,8 @@ header.page-header {
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
 section {
-  padding-bottom: 50px;
-  padding-top: 50px;
+  padding-bottom: 90px;
+  padding-top: 90px;
 
   &.blue {
     background: linear-gradient($blue-7, $blue-1);
@@ -328,7 +339,11 @@ section {
 
   &.white {
     background: transparent;
-    color: $gray-7;
+    color: $body-font-color;
+  }
+
+  header {
+    margin-bottom: 100px;
   }
 }
 
@@ -337,7 +352,13 @@ section {
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
 .hero {
-  padding: 0;
+  &.main {
+    padding: 0;
+  }
+
+  header {
+    margin-bottom: 0;
+  }
 
   .content {
     padding: 75px 0;
@@ -352,7 +373,6 @@ section {
     }
 
     a.button {
-      @include button-colors($purple-4, white, none);
       margin-top: 20px;
     }
   }

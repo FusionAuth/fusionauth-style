@@ -36,6 +36,7 @@
         // Remove all the animations
         const li = new Prime.Document.Element(event.currentTarget);
         const dropdown = li.queryFirst('.super-dropdown');
+        dropdown.removeClass('animate-apply');
         dropdown.query('.animate').each(function(e) {
           e.removeClass('animate-apply');
         });
@@ -48,6 +49,7 @@
         }
 
         setTimeout(function() {
+          dropdown.addClass('animate-apply');
           dropdown.query('.animate').each(function(e) {
             e.addClass('animate-apply');
           });
