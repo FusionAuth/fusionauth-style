@@ -44,6 +44,10 @@ body {
   width: 100%;
   -webkit-font-smoothing: antialiased;
 
+  &.dark {
+    background: $gray-7;
+  }
+
   main.nav-open {
     overflow-y: hidden;
     height: 1vh;
@@ -338,7 +342,8 @@ section {
   }
 
   &.white {
-    background: transparent;
+    //background: transparent;
+    background: white;
     color: $body-font-color;
   }
 
@@ -362,6 +367,18 @@ section {
 
   .content {
     padding: 75px 0;
+
+    h1 {
+      margin-top: 0;
+    }
+
+    p.preface {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 0;
+      margin-top: 0;
+      padding: 0;
+    }
   }
 
   .text {
@@ -376,8 +393,340 @@ section {
       margin-top: 20px;
     }
   }
+}
 
-  .image {
+.pricing {
+  margin-bottom: -500px;
+
+  &.hosting {
+    margin-bottom: -400px;
+
+    & + * {
+      padding-top: 400px;
+    }
+  }
+
+  & + * {
+    padding-top: 500px;
+  }
+
+  .card {
+    margin-bottom: 20px;
+
+    h2 {
+      margin-top: 0;
+    }
+
+    h3 {
+      border-bottom: 1px solid $gray-2;
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    ul {
+      list-style: none;
+      margin-top: 0;
+      padding: 0;
+
+      &.blue {
+        i {
+          color: $blue-1;
+        }
+      }
+
+      // FontAwesome fix to make the bullets not indented
+      &.fa-ul .fa-li {
+        left: -2.5em;
+      }
+
+      &.orange {
+        i {
+          color: $orange-1;
+        }
+      }
+
+      &.purple {
+        i {
+          color: $purple-1;
+        }
+      }
+
+      li {
+        margin-bottom: 15px;
+
+        ul {
+          margin-left: 30px;
+          margin-top: 20px;
+
+          i {
+            font-size: 14px;
+          }
+        }
+      }
+
+      i {
+        font-size: 20px;
+        vertical-align: middle;
+      }
+
+      &:last-of-type {
+        margin-bottom: 20px;
+      }
+    }
+
+    > .button {
+      margin-top: auto;
+    }
+
+    .cost {
+      margin-bottom: 30px;
+
+      .starting-at {
+        color: $gray-5;
+        display: block;
+        font-size: 12px;
+        font-style: italic;
+        margin-bottom: 15px;
+      }
+
+      .amount {
+        font-family: 'Barlow', sans-serif;
+        font-size: 44px;
+        font-weight: 700;
+      }
+
+      .interval {
+        font-size: 16px;
+        margin-left: 10px;
+      }
+    }
+  }
+
+  .content {
+    h1 {
+      margin-bottom: 0;
+    }
+  }
+
+  .pricing-cards {
+    padding: 50px 25px;
+  }
+}
+
+body > footer:last-of-type {
+  background: $gray-7;
+  color: white;
+
+  div.container {
+    padding-top: 20px;
+  }
+
+  h2 {
+    border-bottom: 1px solid $gray-6;
+    color: $gray-4;
+    font-size: 16px;
+    font-weight: 700;
+    margin: 20px 20px 20px 0;
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    a, a:hover, a:visited, a:link {
+      color: white;
+      font-weight: 500;
+
+      i {
+        color: $gray-4;
+      }
+    }
+  }
+
+  .promo {
+    margin-top: 30px;
+
+    @include media(md) {
+      margin-top: 65px;
+    }
+
+    .newsletter {
+      strong {
+        display: inline-block;
+        margin-bottom: 10px;
+        margin-right: 20px;
+      }
+
+      form {
+        display: inline-block;
+
+        input[type=text] {
+          padding: 12px;
+          margin-bottom: 10px;
+          width: 300px;
+        }
+
+        input[type=submit] {
+          font-weight: 700;
+          margin-bottom: 10px;
+          padding: 13px 15px;
+        }
+      }
+
+      em {
+        display: block;
+        font-size: 12px;
+        margin-top: 5px;
+      }
+    }
+  }
+
+  > div.container:last-of-type {
+    padding-bottom: 50px;
+  }
+}
+
+.feature-details {
+  &.card {
+    padding: 0;
+  }
+
+  header {
+    align-items: center;
+    background: $gray-1;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0;
+    padding: 30px;
+
+    h2 {
+      margin: 0;
+    }
+
+    p {
+      font-size: 16px;
+      font-weight: 500;
+      margin: 0;
+    }
+  }
+
+  .collapse-button {
+    color: $orange-4;
+  }
+
+  > .collapsible-content {
+    display: none;
+  }
+
+  table {
+    border: none;
+    border-collapse: collapse;
+    width: 100%;
+
+    td {
+      font-size: 16px;
+      font-weight: 500;
+      padding: 20px 35px;
+
+      &:not(:first-of-type) {
+        text-align: center;
+      }
+
+      &:nth-of-type(2) {
+        color: $purple-1;
+      }
+
+      &:nth-of-type(3) {
+        color: $blue-1;
+      }
+
+      &:nth-of-type(4) {
+        color: $orange-1;
+      }
+    }
+
+    th {
+      padding: 20px 0;
+    }
+
+    tr {
+      &:nth-of-type(odd) {
+        td {
+          background: $gray-1;
+        }
+      }
+
+      td:not(last) {
+        border-right: 1px solid $gray-3;
+      }
+    }
+
+    .category td {
+      background: $gray-7 !important;
+      color: white;
+      font-size: 16px;
+      font-weight: 600;
+    }
+  }
+}
+
+.card.login {
+  background: $gray-1;
+  padding-bottom: 40px;
+  width: 360px;
+
+  a {
+    display: block;
+    text-align: center;
+    text-decoration: underline;
+  }
+
+  a.forgot, a.forgot:hover, a.forgot:link, a.forgot:visited {
+    color: $gray-5;
+  }
+
+  h1 {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 16px;
+    margin: 10px 0 30px 0;
+    padding: 0;
+    text-align: center;
+  }
+
+  h2 {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 14px;
+    margin: 0 0 10px 0;
+    padding: 0;
+    text-align: center;
+  }
+
+  hr {
+    margin: 40px 0;
+  }
+
+  .button {
+    font-weight: 600;
+    width: 100%;
+  }
+}
+
+.powered-by {
+  color: white;
+  margin-top: 50px;
+  text-align: center;
+
+  img {
+    vertical-align: middle;
+  }
+
+  strong {
+    margin-right: 20px;
+    vertical-align: middle;
   }
 }
 

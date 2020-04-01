@@ -377,3 +377,20 @@ pre.code {
     }
   }
 }
+
+ul.inline li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+
+/* Position
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.screen-center {
+  left: 50%;
+  padding: 0;
+  position: fixed;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}

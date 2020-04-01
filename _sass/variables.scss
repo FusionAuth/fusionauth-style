@@ -66,6 +66,8 @@ $warning-alert-background-color: $orange-medium !default;
 /* Buttons
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
+$button-padding: 8px 13px !default;
+
 $blue-button-background-color: $blue-medium !default;
 $blue-button-hover-background-color: $blue-dark !default;
 $blue-button-color: #fff !default;
@@ -180,8 +182,12 @@ $highlight-color: rgba($blue-medium, 0.4) !default;
 $input-addon-background-color: $gray-1 !default;
 $input-addon-color: $gray-6 !default;
 $input-background-color: $body !default;
+$input-border-color: $gray-4 !default;
+$input-border-radius: 2px !default;
 $input-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4) !default;
 $input-box-shadow-light: inset 0 1px 1px rgba(0, 0, 0, 0.2) !default;
+$input-padding-y: 8px !default;
+$input-padding-x: 13px !default;
 
 $label-color: $gray-6 !default;
 $label-font-size: 12px !default;

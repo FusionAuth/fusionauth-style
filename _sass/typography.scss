@@ -63,6 +63,13 @@ p {
   }
 }
 
+hr {
+  border-top: 1px solid $gray-3;
+  display: block;
+  margin: 1em auto;
+  width: 100%;
+}
+
 .text-center {
   text-align: center;
 }

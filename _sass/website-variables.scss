@@ -16,11 +16,15 @@
 
 @import 'colors';
 
-/* Variable overrides
+/* Fonts
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 $font-stack: 'Montserrat', -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-$body-font-color: #3E4E50;
+$link-font-size: 12px;
 
+
+/* Typography
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+$body-font-color: #3E4E50;
 $h1-size: 44px;
 $h1-weight: bold;
 $h1-line-height: 52px;
@@ -35,14 +39,27 @@ $h5-weight: 500;
 $h6-size: 16px;
 $h6-weight: 500;
 
+/* Colors
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
 $purple-1: #8E8EDE;
 $purple-4: #8989CE;
 $purple-7: #36366B;
 
+/* Stamps
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
 $stamp-border-radius: 5px;
 $stamp-box-shadow: none;
 $stamp-font-size: 12px;
 $stamp-font-weight: 600;
 $stamp-padding: 2px 8px;
 
-$link-font-size: 12px;
+/* Forms
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+$input-addon-color: $gray-4;
+$input-border-radius: 5px;
+$input-padding-y: 12px;
+$input-padding-x: 13px;
+
+/* Buttons
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+$button-padding: 15px 20px;

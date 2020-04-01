@@ -21,6 +21,28 @@
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
 .card {
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-bottom: 10px;
+  overflow: hidden;
+  padding: 20px;
+
+  &.light-gray {
+    background: $gray-1;
+    color: $body-font-color;
+  }
+
+  &.white {
+    background: white;
+    color: $body-font-color;
+  }
+}
+
+.flat-card {
   display: flex;
   flex-direction: column;
   justify-content: space-between;

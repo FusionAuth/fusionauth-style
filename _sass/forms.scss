@@ -29,7 +29,7 @@ label {
   position: relative;
 
   i.fa {
-    font-family: FontAwesome;
+    font-family: 'Font Awesome 5 Pro', FontAwesome;
     color: #1E91CF;
     font-size: 13px;
     margin-left: 4px;
@@ -204,12 +204,12 @@ textarea {
   appearance: none;
   background: $input-background-color;
   border: none;
-  border-radius: 2px;
+  border-radius: $input-border-radius;
   box-shadow: $input-box-shadow;
   display: inline-block;
   font-size: 16px;
   font-weight: normal;
-  padding: 8px 13px;
+  padding: $input-padding-y $input-padding-x;
   transition: box-shadow 0.2s ease-in-out;
 
   &:disabled {
@@ -226,6 +226,11 @@ textarea {
     background: transparent;
     border: none;
     box-shadow: none;
+
+    &.bordered {
+      border: 1px solid $input-border-color;
+      border-radius: $input-border-radius;
+    }
   }
 }
 
@@ -258,6 +263,15 @@ textarea {
   display: inline-flex;
 
   &.flat {
+    &.bordered {
+      border: 1px solid $input-border-color;
+      border-radius: $input-border-radius;
+
+      input {
+        padding-left: 3px;
+      }
+    }
+
     input, span {
       background: none;
       border: none;
@@ -273,8 +287,12 @@ textarea {
     }
   }
 
+  &.white {
+    background: white;
+  }
+
   a {
-    i.fa {
+    i.fa, i.fas, i.fal, i.fab {
       vertical-align: middle;
     }
   }
@@ -304,11 +322,11 @@ textarea {
     margin: 0;
 
     &:first-child {
-      border-radius: 2px 0 0 2px;
+      border-radius: $input-border-radius 0 0 $input-border-radius;
     }
 
     &:last-child:not(.flat) {
-      border-radius: 0 2px 2px 0;
+      border-radius: 0 $input-border-radius $input-border-radius 0;
     }
   }
 
@@ -326,13 +344,13 @@ textarea {
 
     &:first-child {
       > select {
-        border-radius: 2px 0 0 2px;
+        border-radius: $input-border-radius 0 0 $input-border-radius;
       }
     }
 
     &:last-child:not(.flat) {
       > select {
-        border-radius: 0 2px 2px 0;
+        border-radius: 0 $input-border-radius $input-border-radius 0;
       }
     }
 
@@ -370,15 +388,16 @@ textarea {
       border-left: 1px solid $text-border-color;
     }
 
-    i.fa {
+    i.fa, i.fas, i.fal, i.fab {
       color: $input-addon-color;
-      font: normal normal normal 14px/1 FontAwesome;
-      padding: 9px 13px;
+      font-size: 14px;
+      padding: ($input-padding-y + 1px) $input-padding-x;
+      vertical-align: middle;
     }
 
     @media (min-width: 576px) {
-      i.fa {
-        padding: 7px 11px;
+      i.fa, i.fas, i.fal, i.fab {
+        padding: ($input-padding-y - 1px) $input-padding-x;
       }
 
       &.text {
@@ -450,7 +469,7 @@ form .form-row .input-addon-group label.select {
   span.box {
     background: #fff;
     border: 1px solid $checkbox-border-color;
-    border-radius: 2px;
+    border-radius: $input-border-radius;
     cursor: pointer;
     height: 15px;
     left: 0;
@@ -626,7 +645,7 @@ label.select {
     -moz-appearance: none;
     background-color: $select-background-color;
     border: none;
-    border-radius: 2px;
+    border-radius: $input-border-radius;
     box-shadow: $select-box-shadow;
     color: $select-color;
     font-size: 16px;
@@ -660,7 +679,7 @@ label.select {
   &:after {
     content: "\f107";
     display: inline-block;
-    font-family: FontAwesome;
+    font-family: 'Font Awesome 5 Pro', FontAwesome;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-size: 14px;
@@ -771,7 +790,7 @@ label.select {
     @include scrollbars($scrollbar-track-background-color, $scrollbar-vertical-track-box-shadow, $scrollbar-thumb-background-color);
 
     background: $input-background-color;
-    border-radius: 2px 0 0 2px;
+    border-radius: $input-border-radius 0 0 $input-border-radius;
     box-shadow: $input-box-shadow;
     height: 30px;
     list-style: none;
@@ -809,7 +828,7 @@ label.select {
         a {
           color: $multiple-select-option-color;
           display: inline-block;
-          font-family: FontAwesome;
+          font-family: 'Font Awesome 5 Pro', FontAwesome;
           font-size: 14px;
           margin-left: 5px;
           text-decoration: none;
@@ -855,7 +874,7 @@ label.select {
 
     background: #fff;
     border: 1px solid $multiple-select-search-border-color;
-    border-radius: 2px;
+    border-radius: $input-border-radius;
     height: 175px;
     left: 0;
     list-style: none;
@@ -1031,7 +1050,7 @@ label.select {
   .inputs {
     background: $datetime-picker-inputs-background-color;
     border: 1px solid $datetime-picker-inputs-border-color;
-    border-radius: 2px;
+    border-radius: $input-border-radius;
     display: block;
     margin: 20px auto 0;
     padding: 5px;
@@ -1090,7 +1109,7 @@ label.select {
 /* No-wrap options list on a multi-select box */
 select.no-wrap {
   + .prime-multiple-select ul.option-list {
-    border-radius: 2px;
+    border-radius: $input-border-radius;
     height: inherit;
   }
 }
@@ -1100,13 +1119,13 @@ select.no-wrap {
   background: $input-background-color;
   border: none;
   border-bottom: 1px solid $gray-2;
-  border-radius: 2px;
+  border-radius: $input-border-radius;
   box-shadow: $input-box-shadow;
   transition: box-shadow 0.2s ease-in-out;
 
   .CodeMirror-gutters {
     /* Pull the gutters in two pixels so we see the box shadow on the main editor */
-    min-height: calc(100% - 2px);
+    min-height: calc(100% - #{$input-border-radius});
     left: 2px;
     overflow-y: hidden;
     top: 2px;

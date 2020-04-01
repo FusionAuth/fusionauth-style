@@ -4,6 +4,7 @@
   <link rel="stylesheet" href="/css/test-website.css"/>
   <link rel="stylesheet" href="/css/font-awesome-5.12.1.min.css"/>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Barlow:700&display=swap">
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.41.0/codemirror.min.js"></script>
 <!--  <script src="https://kit.fontawesome.com/807acfa91f.js" crossorigin="anonymous"></script>-->
@@ -66,6 +67,21 @@
         const left = li.getOffsetLeft();
         const width = li.getWidth();
         dropdown.domElement.style.setProperty('--super-dropdown-arrow-left', (left + (width / 2) - 12) + 'px');
+      });
+
+      Prime.Document.query('.collapsible .collapse-button').each(function(e) {
+        e.addEventListener('click', function(event) {
+          Prime.Utils.stopEvent(event);
+
+          const content = e.queryUp('.collapsible').queryFirst('.collapsible-content');
+          if (content.isVisible()) {
+            e.queryFirst('i').removeClass('fa-chevron-circle-down').addClass('fa-chevron-circle-up');
+            content.hide();
+          } else {
+            e.queryFirst('i').removeClass('fa-chevron-circle-up').addClass('fa-chevron-circle-down');
+            content.show(content.domElement.nodeName === 'TABLE' ? 'table' : 'block');
+          }
+        });
       });
     })
   </script>

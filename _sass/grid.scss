@@ -69,6 +69,11 @@
     }
   }
 
+  .col-#{$size}-0 {
+    overflow: hidden;
+    width: 0;
+  }
+
   .col-#{$size}-1 {
     @include define-column(8.33333333%, 2);
 
