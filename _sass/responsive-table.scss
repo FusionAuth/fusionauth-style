@@ -17,9 +17,14 @@
 .responsive-table {
   text-align: center;
 
+  &.narrow {
+    padding: 0 75px;
+  }
+
   .item {
     display: inline-block;
     margin: 0 50px 120px 50px;
+    min-width: 100px;
 
     &.narrow {
       margin-bottom: 50px;

@@ -41,9 +41,30 @@ $h6-weight: 500;
 
 /* Colors
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
-$purple-1: #8E8EDE;
-$purple-4: #8989CE;
-$purple-7: #36366B;
+$blue-light: #13EBF2;
+$blue-medium: #02B6D3;
+$blue-dark: #147894;
+$blue-section-gradient: linear-gradient(#1D5974, #08A3BF);
+
+$gray-1: #FAFAFA;
+$gray-2: #D0D3D4;
+$gray-3: #bfbfbf;
+$gray-4: #919A9C;
+$gray-5: #677173;
+$gray-6: #3E4E50;
+$gray-7: #253031;
+
+$orange-light: #F9B928;
+$orange-medium: #F58320;
+$orange-dark: #F74B01;
+$orange-section-gradient: linear-gradient(#C33221, #F4821F);
+
+$red-dark: #CF1E0A;
+
+$purple-light: #C8C8FC;
+$purple-medium: #8989CE;
+$purple-dark: #59558E;
+$purple-section-gradient: linear-gradient(#42417B, #8383D0);
 
 /* Stamps
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
@@ -63,3 +84,7 @@ $input-padding-x: 13px;
 /* Buttons
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 $button-padding: 15px 20px;
+$blue-button-background-color: $blue-medium;
+$blue-button-hover-background-color: $blue-dark;
+$purple-button-background-color: $purple-medium;
+$purple-button-hover-background-color: $purple-dark;

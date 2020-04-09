@@ -21,7 +21,7 @@
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
 .card {
-  background: #fff;
+  align-items: center;
   border-radius: 5px;
   box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
   display: flex;
@@ -30,6 +30,17 @@
   margin-bottom: 10px;
   overflow: hidden;
   padding: 20px;
+
+  &.trading {
+    width: 175px;
+
+    .name {
+      color: $gray-6;
+      font-weight: 600;
+      margin: 25px 0 13px 0;
+      text-align: center;
+    }
+  }
 
   &.light-gray {
     background: $gray-1;
@@ -67,6 +78,7 @@
   border-radius: 6px;
   box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
   color: $body-font-color;
+  margin-top: 40px !important;
   padding: 44px 22px 22px 22px;
   position: relative;
   text-align: center;

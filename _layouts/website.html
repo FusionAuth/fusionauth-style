@@ -2,10 +2,8 @@
 <html lang="en">
   {% include website/_head.html %}
   <body>
-    <!-- Main body that includes the fixed header and the footer -->
-    <main>
-      {{ content }}
-    </main>
+    {% comment %} Since HTML5 recommends that the `main` element shouldn't include the header or footer and since we are using gradients, we can't use a main (boo) {% endcomment %}
+    {{ content }}
+    {% include website/_footer.html %}
   </body>
-  {% include website/_footer.html %}
 </html>

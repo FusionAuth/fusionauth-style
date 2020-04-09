@@ -23,36 +23,42 @@ h1 {
   font-size: $h1-size;
   font-weight: $h1-weight;
   line-height: $h1-line-height;
+  margin: $h1-margin;
 }
 
 h2 {
   font-size: $h2-size;
   font-weight: $h2-weight;
   line-height: $h2-line-height;
+  margin: $h2-margin;
 }
 
 h3 {
   font-size: $h3-size;
   font-weight: $h3-weight;
   line-height: $h3-line-height;
+  margin: $h3-margin;
 }
 
 h4 {
   font-size: $h4-size;
   font-weight: $h4-weight;
   line-height: $h4-line-height;
+  margin: $h4-margin;
 }
 
 h5 {
   font-size: $h5-size;
   font-weight: $h5-weight;
   line-height: $h5-line-height;
+  margin: $h5-margin;
 }
 
 h6 {
   font-size: $h6-size;
   font-weight: $h6-weight;
   line-height: $h6-line-height;
+  margin: $h6-margin;
 }
 
 p {
@@ -121,27 +127,53 @@ a {
 }
 
 .blue-text {
-  color: $blue-dark;
+  color: $blue-dark !important;
 }
 
 .green-text {
-  color: $green-dark;
+  color: $green-dark !important;
 }
 
 .orange-text {
-  color: $orange-dark;
+  color: $orange-dark !important;
 }
 
 .purple-text {
-  color: $purple-dark;
+  color: $purple-dark !important;
 }
 
 .red-text {
-  color: $red-dark;
+  color: $red-dark !important;
 }
 
 .yellow-text {
-  color: $yellow-dark;
+  color: $yellow-dark !important;
+}
+
+.gray {
+  .blue-text {
+    color: $blue-medium !important;
+  }
+
+  .green-text {
+    color: $green-medium !important;
+  }
+
+  .orange-text {
+    color: $orange-medium !important;
+  }
+
+  .purple-text {
+    color: $purple-medium !important;
+  }
+
+  .red-text {
+    color: $red-medium !important;
+  }
+
+  .yellow-text {
+    color: $yellow-medium !important;
+  }
 }
 
 .sm-text {

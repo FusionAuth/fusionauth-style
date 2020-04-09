@@ -16,9 +16,9 @@
 
 /* Colors
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
-$blue-1: #5EB4EE !default;
-$blue-4: #3998DB !default;
-$blue-7: #156AA3 !default;
+$blue-light: #5EB4EE !default;
+$blue-medium: #3998DB !default;
+$blue-dark: #156AA3 !default;
 
 $gray-1: #f7f7f7 !default;
 $gray-2: #e5e5e5 !default;
@@ -30,56 +30,28 @@ $gray-7: #262626 !default;
 $black: #000 !default;
 
 $green-gray3: rgba(31, 158, 129, 0.51) !default;
-$green-1: #28E2BD !default;
-$green-4: #0BB796 !default;
-$green-7: #0F8B72 !default;
+$green-light: #28E2BD !default;
+$green-medium: #0BB796 !default;
+$green-dark: #0F8B72 !default;
 
-$orange-1: #FFC287 !default;
-$orange-4: #FF9C3D !default;
-$orange-7: #FF6A00 !default;
+$orange-light: #FFC287 !default;
+$orange-medium: #FF9C3D !default;
+$orange-dark: #FF6A00 !default;
 
-$purple-1: #577494 !default;
-$purple-4: #34485E !default;
-$purple-7: #213246 !default;
+$purple-light: #577494 !default;
+$purple-medium: #34485E !default;
+$purple-dark: #213246 !default;
 
-$red-1: #FF6A7D !default;
-$red-4: #EE3E54 !default;
-$red-7: #C81B3D !default;
+$red-light: #FF6A7D !default;
+$red-medium: #EE3E54 !default;
+$red-dark: #C81B3D !default;
 
-$yellow-1: #F4F286 !default;
-$yellow-4: #F0DB4F !default;
-$yellow-7: #E7C901 !default;
+$yellow-light: #F4F286 !default;
+$yellow-medium: #F0DB4F !default;
+$yellow-dark: #E7C901 !default;
 
 $body: #E7EDF2 !default;
 $body-font-color: $gray-7 !default;
-
-
-/* Compatibility variables
-–––––––––––––––––––––––––––––––––––––––––––––––––– */
-
-$blue-light: $blue-1;
-$blue-medium: $blue-4;
-$blue-dark: $blue-7;
-
-$green-light: $green-1;
-$green-medium: $green-4;
-$green-dark: $green-7;
-
-$orange-light: $orange-1;
-$orange-medium: $orange-4;
-$orange-dark: $orange-7;
-
-$purple-light: $purple-1;
-$purple-medium: $purple-4;
-$purple-dark: $purple-7;
-
-$red-light: $red-1;
-$red-medium: $red-4;
-$red-dark: $red-7;
-
-$yellow-light: $yellow-1;
-$yellow-medium: $yellow-4;
-$yellow-dark: $yellow-7;
 
 /* FusionAuth Colors */
 $fa-orange: #eb8c52 !default;

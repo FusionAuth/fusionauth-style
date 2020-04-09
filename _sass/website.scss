@@ -18,6 +18,7 @@
 @import 'colors';
 @import 'mixins';
 @import 'variables';
+@import 'website-variables';
 
 
 /* Overall application layout
@@ -48,9 +49,13 @@ body {
     background: $gray-7;
   }
 
-  main.nav-open {
+  &.nav-open {
     overflow-y: hidden;
-    height: 1vh;
+    height: 100vh;
+
+    .main.hero {
+      height: 100vh;
+    }
   }
 }
 
@@ -66,7 +71,7 @@ header.page-header {
   display: block;
   padding-bottom: 10px;
   padding-top: 10px;
-  top: -120px;
+  top: -120px; // Ignored when un-scrolled and position is "inherit"
   z-index: 100;
 
   &.sticky {
@@ -102,6 +107,7 @@ header.page-header {
     display: none;
     height: 100%;
     left: 0;
+    overflow-y: scroll;
     position: absolute;
     top: 0;
     width: 100%;
@@ -306,7 +312,7 @@ section {
   padding-top: 90px;
 
   &.blue {
-    background: linear-gradient($blue-7, $blue-1);
+    background: $blue-section-gradient;
     color: white;
 
     a, a:hover, a:visited, a:link {
@@ -324,7 +330,7 @@ section {
   }
 
   &.orange {
-    background: linear-gradient($orange-7, $orange-1);
+    background: $orange-section-gradient;
     color: white;
 
     a, a:hover, a:visited, a:link {
@@ -333,7 +339,7 @@ section {
   }
 
   &.purple {
-    background: linear-gradient($purple-7, $purple-1);
+    background: $purple-section-gradient;
     color: white;
 
     a, a:hover, a:visited, a:link {
@@ -347,8 +353,12 @@ section {
     color: $body-font-color;
   }
 
-  header {
-    margin-bottom: 100px;
+  &:not(.main) {
+    .container {
+      > *:not(:last-child) {
+        margin-bottom: 75px;
+      }
+    }
   }
 }
 
@@ -357,6 +367,19 @@ section {
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
 .hero {
+  overflow-y: hidden;
+  position: relative;
+
+  &.homepage {
+    .content {
+      padding: 50px 0 100px;
+
+      @include media(lg) {
+        padding: 150px 0;
+      }
+    }
+  }
+
   &.main {
     padding: 0;
   }
@@ -366,10 +389,20 @@ section {
   }
 
   .content {
-    padding: 75px 0;
+    position: relative;
+    z-index: 2;
+  }
 
+  .text {
     h1 {
-      margin-top: 0;
+      font-weight: 600;
+    }
+
+    p {
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 1.3em;
+      margin-bottom: 20px;
     }
 
     p.preface {
@@ -379,15 +412,6 @@ section {
       margin-top: 0;
       padding: 0;
     }
-  }
-
-  .text {
-    p {
-      font-size: 16px;
-      font-weight: 500;
-      line-height: 1.3em;
-      margin-bottom: 20px;
-    }
 
     a.button {
       margin-top: 20px;
@@ -395,19 +419,111 @@ section {
   }
 }
 
+.hero-image {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  opacity: 0.7;
+  overflow-x: hidden;
+  position: absolute;
+  z-index: 1;
+
+  @include media(lg) {
+    opacity: 1;
+  }
+
+  &.bottom {
+    bottom: 0;
+
+    @include media(lg) {
+      margin-bottom: 20px;
+    }
+  }
+
+  &.far-right {
+    left: 300px;
+    width: calc(100% - 300px);
+
+    @include media(lg) {
+      left: 125px;
+      width: calc(100% + 125px);
+    }
+  }
+
+  &.left {
+    display: none;
+
+    @include media(lg) {
+      display: flex;
+      right: 100px;
+      width: calc(100% - 100px);
+    }
+  }
+
+  &.right {
+    left: 100px;
+    width: calc(100% - 100px);
+
+    @include media(lg) {
+      left: -150px;
+      width: calc(100% + 150px);
+    }
+  }
+
+  &.top {
+    top: 0;
+
+    @include media(lg) {
+      margin-top: 120px;
+    }
+  }
+
+  img, svg {
+    flex: 0 0 auto;
+    height: 454px;
+    width: auto;
+  }
+
+  img.callout {
+    height: 350px;
+  }
+}
+
+
+.main .hero-image {
+  margin-top: 88px; // For mobile
+
+  @include media(lg) {
+    margin-top: 175px;
+  }
+}
+
+
+/* Pricing
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
 .pricing {
   margin-bottom: -500px;
+  padding-bottom: 0;
 
   &.hosting {
-    margin-bottom: -400px;
+    margin-bottom: -300px;
 
     & + * {
-      padding-top: 400px;
+      padding-top: 300px;
     }
   }
 
   & + * {
     padding-top: 500px;
+  }
+
+  &.main .content {
+    padding-top: 75px;
+
+    h1 {
+      margin-top: 0;
+    }
   }
 
   .card {
@@ -430,7 +546,7 @@ section {
 
       &.blue {
         i {
-          color: $blue-1;
+          color: $blue-light;
         }
       }
 
@@ -441,13 +557,13 @@ section {
 
       &.orange {
         i {
-          color: $orange-1;
+          color: $orange-light;
         }
       }
 
       &.purple {
         i {
-          color: $purple-1;
+          color: $purple-light;
         }
       }
 
@@ -503,8 +619,10 @@ section {
   }
 
   .content {
+    padding-bottom: 0;
+
     h1 {
-      margin-bottom: 0;
+      margin-bottom: 20px;
     }
   }
 
@@ -512,6 +630,27 @@ section {
     padding: 50px 25px;
   }
 }
+
+
+/* Customers and logos
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.customers {
+  margin-bottom: 75px;
+
+  img {
+    max-height: 75px;
+    max-width: 150px;
+
+    &.gray {
+      filter: brightness(0) invert(1) opacity(0.7);
+    }
+  }
+}
+
+
+/* Footer
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
 
 body > footer:last-of-type {
   background: $gray-7;
@@ -613,11 +752,12 @@ body > footer:last-of-type {
   }
 
   .collapse-button {
-    color: $orange-4;
+    color: $orange-medium;
   }
 
   > .collapsible-content {
     display: none;
+    overflow-x: scroll;
   }
 
   table {
@@ -635,15 +775,15 @@ body > footer:last-of-type {
       }
 
       &:nth-of-type(2) {
-        color: $purple-1;
+        color: $purple-light;
       }
 
       &:nth-of-type(3) {
-        color: $blue-1;
+        color: $blue-light;
       }
 
       &:nth-of-type(4) {
-        color: $orange-1;
+        color: $orange-light;
       }
     }
 

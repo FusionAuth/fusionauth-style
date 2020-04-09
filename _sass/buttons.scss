@@ -55,6 +55,10 @@
     padding: 16px 30px;
   }
 
+  &.circle {
+    border-radius: 50%;
+  }
+
   &.disabled {
     opacity: 0.4;
     pointer-events: none;

@@ -14,15 +14,73 @@
  * language governing permissions and limitations under the License.
  */
 
+@import "mixins";
+
 .carousel {
-  display: flex;
-  margin-top: 80px;
-  overflow: auto;
-  padding-top: 40px; // For overflow images on quote-cards
+  margin: 0;
+  padding: 0;
+  position: relative;
   width: 100%;
 
-  div {
-    flex-shrink: 0;
-    margin: 0 20px;
+  .changer-left {
+    align-items: center;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    left: 0;
+    height: 45px;
+    position: absolute;
+    top: 50%;
+    width: 45px;
+    z-index: 100;
+
+    @include media-pixels(1240px) {
+      left: -40px;
+    }
+  }
+
+  .changer-right {
+    align-items: center;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    height: 45px;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    width: 45px;
+    z-index: 100;
+
+    @include media-pixels(1240px) {
+      right: -40px;
+    }
+  }
+
+  .scroll {
+    -ms-overflow-style: none;
+    display: flex;
+    overflow: auto;
+    padding-bottom: 10px; // For overflow shadows on cards
+    //padding-top: 40px; // For overflow images on cards
+    scroll-behavior: smooth;
+    width: calc(100% - 20px);
+    -webkit-overflow-scrolling: touch;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    > a, > div {
+      flex-shrink: 0;
+      margin: 0 20px;
+
+      &:first-of-type {
+        margin-left: 10px;
+      }
+
+      &:last-of-type {
+        margin-right: 10px;
+      }
+    }
   }
 }

@@ -33,7 +33,9 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - build.savant
-  - fusionauth-style.*
+  - fusionauth-style.ipr
+  - fusionauth-style.iws
+  - fusionauth-style.iml
   - package.json
   - package-lock.json
 
