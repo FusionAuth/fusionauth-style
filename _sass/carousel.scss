@@ -30,7 +30,7 @@
     left: 0;
     height: 45px;
     position: absolute;
-    top: 50%;
+    top: calc(50% - 22px);
     width: 45px;
     z-index: 100;
 
@@ -47,7 +47,7 @@
     height: 45px;
     position: absolute;
     right: 0;
-    top: 50%;
+    top: calc(50% - 22px);
     width: 45px;
     z-index: 100;
 
@@ -73,14 +73,6 @@
     > a, > div {
       flex-shrink: 0;
       margin: 0 20px;
-
-      &:first-of-type {
-        margin-left: 10px;
-      }
-
-      &:last-of-type {
-        margin-right: 10px;
-      }
     }
   }
 }

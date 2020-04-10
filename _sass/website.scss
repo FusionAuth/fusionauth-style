@@ -74,16 +74,23 @@ header.page-header {
   top: -120px; // Ignored when un-scrolled and position is "inherit"
   z-index: 100;
 
-  &.sticky {
+  &.gray {
     background: $gray-7;
     position: fixed;
-    transition: top 1s ease-in;
     top: 0;
     width: 100%;
 
     img.logo {
       filter: brightness(1) invert(0);
     }
+
+    i {
+      color: $orange-medium;
+    }
+  }
+
+  &.animate {
+    transition: top 1s ease-in;
   }
 
   > .container {
@@ -178,6 +185,22 @@ header.page-header {
             color: #fff;
             font-size: 14px;
             font-weight: 600;
+          }
+
+          &.account span {
+            display: block;
+
+            @include media(lg) {
+              display: none;
+            }
+          }
+
+          &.account i {
+            display: none;
+
+            @include media(lg) {
+              display: inline-block;
+            }
           }
         }
       }
@@ -283,13 +306,13 @@ header.page-header {
 
       .animate {
         opacity: 0;
-        transform: translate3d(20px, 0px, 0px);
+        transform: translateX(50px);
         transition: opacity 250ms linear, transform 250ms linear;
       }
 
       .animate-apply {
         opacity: 1;
-        transform: translate3d(0px, 0px, 0px);
+        transform: translateX(0px);
       }
     }
   }
@@ -445,8 +468,8 @@ section {
     width: calc(100% - 300px);
 
     @include media(lg) {
-      left: 125px;
-      width: calc(100% + 125px);
+      left: 350px;
+      width: calc(100% - 350px);
     }
   }
 
@@ -460,7 +483,7 @@ section {
     }
   }
 
-  &.right {
+  &.less-right {
     left: 100px;
     width: calc(100% - 100px);
 
@@ -470,8 +493,28 @@ section {
     }
   }
 
+  &.less-top {
+    top: 0;
+    margin-top: 0;
+
+    @include media(lg) {
+      margin-top: 50px;
+    }
+  }
+
+  &.right {
+    left: 150px;
+    width: calc(100% - 150px);
+
+    @include media(lg) {
+      left: 0;
+      width: 100%;
+    }
+  }
+
   &.top {
     top: 0;
+    margin-top: 100px;
 
     @include media(lg) {
       margin-top: 120px;
@@ -490,20 +533,11 @@ section {
 }
 
 
-.main .hero-image {
-  margin-top: 88px; // For mobile
-
-  @include media(lg) {
-    margin-top: 175px;
-  }
-}
-
-
 /* Pricing
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
 .pricing {
-  margin-bottom: -500px;
+  margin-bottom: -400px;
   padding-bottom: 0;
 
   &.hosting {
@@ -515,7 +549,8 @@ section {
   }
 
   & + * {
-    padding-top: 500px;
+    padding-top: 400px;
+    position: relative;
   }
 
   &.main .content {
@@ -620,6 +655,10 @@ section {
 
   .content {
     padding-bottom: 0;
+
+    .row {
+      margin-bottom: 0 !important;
+    }
 
     h1 {
       margin-bottom: 20px;
@@ -758,6 +797,10 @@ body > footer:last-of-type {
   > .collapsible-content {
     display: none;
     overflow-x: scroll;
+
+    @include media(md) {
+      overflow-x: hidden;
+    }
   }
 
   table {

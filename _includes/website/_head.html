@@ -7,8 +7,6 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Barlow:700&display=swap">
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.41.0/codemirror.min.js"></script>
-<!--  <script src="https://kit.fontawesome.com/807acfa91f.js" crossorigin="anonymous"></script>-->
-<!--  <script src="https://kit.fontawesome.com/d11b20d46a.js" crossorigin="anonymous"></script>-->
   <script type="text/javascript" src="/js/prime-es6.js"></script>
   <script type="text/javascript">
 
@@ -16,9 +14,9 @@
     window.onscroll = function() {
       const header = Prime.Document.queryFirst('header');
       if (window.pageYOffset > 500) {
-        header.addClass('sticky');
+        header.addClass('gray').addClass('animate');
       } else {
-        header.removeClass('sticky');
+        header.removeClass('gray').removeClass('animate');
       }
     };
 
@@ -36,15 +34,16 @@
 
         // Remove all the animations
         const li = new Prime.Document.Element(event.currentTarget);
-        const dropdown = li.queryFirst('.super-dropdown');
-        dropdown.removeClass('animate-apply');
-        dropdown.query('.animate').each(function(e) {
+        li.getParent().query('.animate').each(function(e) {
           e.removeClass('animate-apply');
         });
+        const dropdown = li.queryFirst('.super-dropdown');
+        dropdown.removeClass('animate-apply');
 
         // Open or close the one clicked
         if (dropdown.hasClass('open')) {
           dropdown.removeClass('open');
+          return; // Done closing
         } else {
           dropdown.addClass('open');
         }
