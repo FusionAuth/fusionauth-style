@@ -29,11 +29,11 @@
         Prime.Document.queryFirst('.page-header nav').removeClass('open');
         Prime.Document.queryFirst('body').removeClass('nav-open');
       });
-      Prime.Document.query('li.dropdown').addEventListener('click', function(event) {
+      Prime.Document.query('li.dropdown > a').addEventListener('click', function(event) {
         Prime.Utils.stopEvent(event);
 
         // Remove all the animations
-        const li = new Prime.Document.Element(event.currentTarget);
+        const li = new Prime.Document.Element(event.currentTarget).getParent(); // currentTarget is the anchor
         li.getParent().query('.animate').each(function(e) {
           e.removeClass('animate-apply');
         });
@@ -95,6 +95,39 @@
           scroll.scrollLeftTo(scroll.getScrollLeft() + 380);
         });
       })
-    })
+    });
+
+    // Rating widget - BROKEN
+    (function(d, t, e, m){
+      window.RW_Async_Init = function() {
+        RW.init({
+          huid: "445749",
+          uid: "db2a0f94c2d504f056b5b678148f7646",
+          source: "website",
+          options: {
+            "imgUrl": {
+              "ltr": "/images/stars.png",
+              "rtl": "/images/stars.png"
+            },
+            "readOnly": document.location.href.charAt(document.location.href.length - 1) === "/",
+            "size": "medium",
+            "showInfo": false,
+            "showTooltip": false,
+            "style": "custom",
+          }
+        });
+        RW.render();
+      };
+      var rw, s = d.getElementsByTagName(e)[0], id = "rw-js",
+          l = d.location, ck = "Y" + t.getFullYear() +
+          "M" + t.getMonth() + "D" + t.getDate(), p = l.protocol,
+          f = ((l.search.indexOf("DBG=") > -1) ? "" : ".min"),
+          a = ("https:" == p ? "secure." + m + "js/" : "js." + m);
+      if (d.getElementById(id)) return;
+      rw = d.createElement(e);
+      rw.id = id; rw.async = true; rw.type = "text/javascript";
+      rw.src = p + "//" + a + "external" + f + ".js?ck=" + ck;
+      s.parentNode.insertBefore(rw, s);
+    }(document, new Date(), "script", "rating-widget.com/"));
   </script>
 </head>

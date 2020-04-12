@@ -1,0 +1,64 @@
+---
+layout: website
+title: Dashboard
+nav: dashboard
+show-alerts: true
+---
+<section class="white">
+  <div class="container">
+    <div class="row center">
+      <div class="col-xs-12 col-lg-7 centered">
+        <h1>Download FusionAuth</h1>
+        <p>
+          Get started in seconds - installs with a single command.
+          <br>
+          This is the full version of FusionAuth, not a feature-crippled "developer" release.
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs downloads">
+        <div class="mobile-warning">
+          <p>
+            Please expand your browser if you are on a laptop/desktop/server or visit this page on your laptop/desktop/server to download FusionAuth.
+          </p>
+        </div>
+        <ul class="tabs">
+          <li class="active"><a href="#linux"><img src="/images/stamps/linux.svg" alt="Linux"> Linux</a></li>
+          <li><a href="#macos"><img src="/images/stamps/macos.svg" alt="MacOS"> MacOS</a></li>
+          <li><a href="#windows"><img src="/images/stamps/windows.svg" alt="Windows"> Windows</a></li>
+          <li><a href="#docker"><img src="/images/stamps/docker.svg" alt="Docker"> Docker</a></li>
+        </ul>
+        <div id="linux" class="tab-content active">
+          <h2>Linux Download</h2>
+          <p>
+            Copy and paste the code below and we'll do the rest.
+          </p>
+          <p>
+            <em>Installs in your current working directory using ZIP packages</em>
+          </p>
+          <div class="download-command">
+            <code>sh -c "curl -fsSL https://raw.githubusercontent.com/FusionAuth/fusionauth-install/master/install.sh | sh -s - -z"</code>
+            <button class="orange square button"><i class="fa fa-clipboard fa-2x fa-fw"></i></button>
+          </div>
+          <p>
+            <em>Installs for all users on the system using DEB or RPM packages</em>
+          </p>
+          <div class="download-command">
+            <code>sh -c "curl -fsSL https://raw.githubusercontent.com/FusionAuth/fusionauth-install/master/install.sh | sh"</code>
+            <button class="orange square button"><i class="fa fa-clipboard fa-2x fa-fw"></i></button>
+          </div>
+        </div>
+        <div id="macos" class="tab-content">
+          Hi
+        </div>
+        <div id="windows" class="tab-content">
+          Hi
+        </div>
+        <div id="docker" class="tab-content">
+          Hi
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

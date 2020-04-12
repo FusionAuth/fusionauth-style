@@ -69,6 +69,12 @@ target(name: "serve") {
   }
 }
 
+target(name: "watch") {
+  if (new ProcessBuilder('bundle', 'exec', 'jekyll', 'build', '--watch').inheritIO().start().waitFor() != 0) {
+    fail("run failed")
+  }
+}
+
 target(name: "int", description: "Releases a local integration build of the project", dependsOn: ["js"]) {
   file.mkdir(dir: "build/css")
   file.mkdir(dir: "build/sass")
