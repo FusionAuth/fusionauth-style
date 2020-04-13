@@ -1,0 +1,2005 @@
+---
+layout: website
+title: Dashboard
+nav: dashboard
+---
+<section class="white blog">
+  <div class="container">
+    <div class="row center">
+      <article class="col-xs-12 col-lg-9">
+        <img class="post-image" src="/images/blogs/oauth-react-fusionauth.png" alt="FusionAuth react">
+        <div class="info">
+          <div class="author-date">Matt Boisseau&nbsp;&nbsp;|&nbsp;&nbsp;March 10, 2020</div>
+          <div class="social-share-buttons">
+            <a href="#"></a>
+          </div>
+        </div>
+        <div class="post-body">
+          <h1>How to Securely Implement OAuth in React</h1>
+          <p>In this post, we’ll walk step-by-step through implementing the OAuth Authorization Code Grant in a React
+            app. This is the most secure way to implement OAuth and often overlooked for single-page applications that
+            use technologies like React. We’ll use FusionAuth as the IdP and also show you how to configure FusionAuth
+            for this workflow.</p>
+
+          <!--more-->
+
+          <p>Our app will be able to:</p>
+
+          <ul>
+            <li>log users in</li>
+            <li>log users out</li>
+            <li>read user data from FusionAuth</li>
+            <li>write user data to FusionAuth</li>
+          </ul>
+
+          <p>In addition to React, we’ll use a NodeJS backend. One major benefit of using a backend server is that we
+            can safely store and use a Client Secret, which is the most secure way to integrate OAuth 2.0
+            Authorization Code Flow with our React app.</p>
+
+          <p>If you’re in-the-know on OAuth, you’re probably aware that some people use PKCE or the rightfully
+            deprecated Implicit Flow to get around the Client Secret constraint. We’re sticking to Authorization Code
+            Flow, because setting up a server is the most secure solution for the majority of cases and quite simple
+            once you know how. Don’t know what any of that means? Don’t worry about it — you don’t need to know
+            anything about OAuth to follow this example.</p>
+
+          <p>What do you need to know? Well, this example app will be much easier to follow if you have at least some
+            knowledge of:</p>
+
+          <ul>
+            <li>React
+              <ul>
+                <li>components</li>
+                <li>state and props</li>
+                <li>binding</li>
+              </ul>
+            </li>
+            <li>NodeJS/Express
+              <ul>
+                <li>packages and modules</li>
+                <li>routing</li>
+                <li>HTTP requests (like <code class="highlighter-rouge">GET</code> and <code
+                        class="highlighter-rouge">POST</code>)
+                </li>
+              </ul>
+            </li>
+          </ul>
+
+          <p>The general idea of this app is that the Express server acts as a middleman between the React client and
+            FusionAuth. The React client will make requests to the Express server, which will make requests to
+            FusionAuth before sending information back to the React client. Other than FusionAuth’s login form, the
+            user will only ever see React-rendered pages.</p>
+
+          <p>Conceptually, our app will look like this:</p>
+
+          <div class="highlighter-rouge">
+            <div class="highlight"><pre class="highlight"><code>React client &lt;-&gt; Express server &lt;-&gt; FusionAuth
+(mostly UI)      (our code)         (pre-made auth)
+</code></pre>
+            </div>
+          </div>
+
+          <p>Literally, it might look something like this:</p>
+
+          <p><img src="/assets/img/blogs/fusionauth-example-react/app-finished.png" alt="" class="img-fluid" style="">
+          </p>
+
+          <p>(Although, you’re on your own for CSS.)</p>
+
+          <p>If you want to peek at the source code for the exact app pictured above, you can grab it from <a
+                  href="https://github.com/FusionAuth/fusionauth-example-react">its GitHub respository</a>. You can
+            follow along with that code or use it as a jumping-off point for your app.</p>
+
+          <p>Also, we put together a <a
+                  href="/learn/expert-advice/authentication/spa/oauth-authorization-code-grant-sessions">complete
+            workflow diagram for the Authorization Code Grant with a single-page application</a> that can help further
+            explain how this process works. You can review that workflow to get a better understanding of how SPAs can
+            leverage OAuth.</p>
+
+          <hr>
+
+          <h2 id="0-setup">0. Setup</h2>
+
+          <p>I know you’re eager, but we need to set up our FusionAuth installation, directory structure, and Node
+            packages. This seriously only takes a few minutes.</p>
+
+          <h3 id="fusionauth">FusionAuth</h3>
+
+          <p>If you don’t already have FusionAuth installed, I recommend the Docker Compose option for the quickest
+            setup:</p>
+
+          <div class="language-zsh highlighter-rouge">
+            <div class="highlight"><pre class="highlight"><code>curl <span class="nt">-o</span> docker-compose.yml https://raw.githubusercontent.com/FusionAuth/fusionauth-containers/master/docker/fusionauth/docker-compose.yml
+curl <span class="nt">-o</span> .env https://raw.githubusercontent.com/FusionAuth/fusionauth-containers/master/docker/fusionauth/.env
+docker-compose up
+</code></pre>
+            </div>
+          </div>
+
+          <p>(Check out the <a href="https://fusionauth.io/download">Download FusionAuth page</a> for other
+            installation options.)</p>
+
+          <p>Once FusionAuth is running (by default at <a href="http://localhost:9011">localhost:9011</a>), create a
+            new Application. The only configurations you need to change are <code class="highlighter-rouge">Authorized
+              redirect URLs</code> and <code class="highlighter-rouge">Logout URL</code> on the <code
+                    class="highlighter-rouge">OAuth</code> tab. These are basically links used by FusionAuth during
+            the only two times we redirect off our app entirely: login and logout. After a user logs in, FusionAuth
+            will redirect them back to our app on one of the <code class="highlighter-rouge">Authorized Redirect
+              URLs</code>. After a user logs out, FusionAuth will redirect them to the <code
+                    class="highlighter-rouge">Logout URL</code>.</p>
+
+          <p><img src="/assets/img/blogs/fusionauth-example-react/admin-edit-application.png"
+                  alt="FusionAuth application edit page" class="img-fluid" style=""></p>
+
+          <p>We’ll talk later about why we use these particular URLs. For now, enter <code class="highlighter-rouge">http://localhost:9000/oauth-callback</code>
+            for the <code class="highlighter-rouge">Authorized Redirect URL</code> (a point on our Express server) and
+            <code class="highlighter-rouge">http://localhost:8080</code> for the <code class="highlighter-rouge">Logout
+              URL</code> (the only endpoint on our single page React client). Click the blue <code
+                    class="highlighter-rouge">Save</code> button in the top-right to finish the configuration.</p>
+
+          <p>A login feature isn’t very useful with zero users. It’s possible to register users from your app or using
+            FusionAuth’s self-service registration feature, but we’ll manually add a user for this example. Select
+            <code class="highlighter-rouge">Users</code> from the menu. You should see your own account; it’s already
+            registered to FusionAuth, which is why you can use it to log into the admin panel.</p>
+
+          <p><img src="/assets/img/blogs/fusionauth-example-react/admin-manage-user.png" alt="" class="img-fluid"
+                  style=""></p>
+
+          <p>Select <code class="highlighter-rouge">Manage</code> and go to the <code class="highlighter-rouge">Registrations</code>
+            tab. Click on <code class="highlighter-rouge">Add Registration</code>, pick your new application, and then
+            <code class="highlighter-rouge">Save</code> to register yourself.</p>
+
+          <p>FusionAuth configuration: <strong>DONE</strong>.</p>
+
+          <p>Leave this tab open, though; we’ll be copy/pasting some key values out of it in a minute.</p>
+
+          <h3 id="directory-structure">Directory Structure</h3>
+
+          <p>The last step before digging into some JavaScript is creating the skeleton of our Express server and
+            React client. These will be completely separate Node apps and they will communicate over HTTP using
+            standard browser requests and API calls via AJAX.</p>
+
+          <p>You can choose to organize and name your files however you see fit. Just keep in mind that this article
+            will probably be easier to follow if you follow my setup.</p>
+
+          <p>My project looks like this:</p>
+
+          <div class="highlighter-rouge">
+            <div class="highlight"><pre class="highlight"><code>fusionauth-example-react
+├─client
+├─server
+└─config.js
+</code></pre>
+            </div>
+          </div>
+
+          <ul>
+            <li><code class="highlighter-rouge">client</code> is the directory for the React client</li>
+            <li><code class="highlighter-rouge">server</code> is the directory for the Express server</li>
+            <li><code class="highlighter-rouge">config.js</code> is where we’ll store constants needed by both <code
+                    class="highlighter-rouge">client</code> and <code class="highlighter-rouge">server</code></li>
+          </ul>
+
+          <h3 id="react">React</h3>
+
+          <p>A popular way to create a new React app is the creatively named <code class="highlighter-rouge">create-react-app</code>.
+            This basically handles everything for you and drops in plenty of boilerplate. If you use this tool, run it
+            from the <code class="highlighter-rouge">fusionauth-example-react</code> root folder, because it creates
+            its own directory.</p>
+
+          <div class="language-zsh highlighter-rouge">
+            <div class="highlight"><pre class="highlight"><code>npx create-react-app client
+</code></pre>
+            </div>
+          </div>
+
+          <p>If you don’t want the bloat, or if you’re just stubborn and like to do everything yourself, I recommend
+            the awesome <a href="https://dev.to/vish448/create-react-project-without-create-react-app-3goh"><em>Create
+              React Project without create-react-app</em></a> by dev.to user Vishang.</p>
+
+          <h3 id="express">Express</h3>
+
+          <p>Our server will use Express. If you haven’t used it before, it’s a super common Node framework that makes
+            our lives a lot easier. I think a lot of devs who say they work in Node actually mean they work in
+            Express.</p>
+
+          <p>Install it like this:</p>
+
+          <div class="language-zsh highlighter-rouge">
+            <div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>server
+npm init <span class="nt">-y</span>
+npm <span class="nb">install </span>cors express express-session request
+</code></pre>
+            </div>
+          </div>
+
+          <p>Wait, what are those other things you just installed?</p>
+
+          <ul>
+            <li><code class="highlighter-rouge">cors</code> lets us make cross-origin requests without annoying errors
+              telling us we’re not allowed to
+            </li>
+            <li><code class="highlighter-rouge">express-session</code> helps us save data in a server-side session
+            </li>
+            <li><code class="highlighter-rouge">request</code> makes formatting HTTP requests totally painless (and
+              neatly organized)
+            </li>
+          </ul>
+
+          <p>It’s hard-mode without these packages, but you do you.</p>
+
+          <h3 id="config">Config</h3>
+
+          <p>Finally, we need some constants across both Node apps:</p>
+
+          <div class="language-js legend highlighter-rouge">
+            <div class="highlight"><pre class="highlight"><code><span class="nx">module</span><span
+                    class="p">.</span><span
+                    class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="c1">// OAuth info (copied from the FusionAuth admin panel)</span>
+  <span class="na">clientID</span><span class="p">:</span> <span class="dl">'</span><span class="s1">85a03867-dccf-4882-adde-1a79aeec50df</span><span
+                      class="dl">'</span><span class="p">,</span>
+  <span class="na">clientSecret</span><span class="p">:</span> <span class="dl">'</span><span class="s1">JNlTw3c9B5NrVhF-cz3m0fp_YiBg-70hcDoiQ2Ot30I</span><span
+                      class="dl">'</span><span class="p">,</span>
+  <span class="na">redirectURI</span><span class="p">:</span> <span class="dl">'</span><span class="s1">http://localhost:9000/oauth-callback</span><span
+                      class="dl">'</span><span class="p">,</span>
+  <span class="na">applicationID</span><span class="p">:</span> <span class="dl">'</span><span class="s1">85a03867-dccf-4882-adde-1a79aeec50df</span><span
+                      class="dl">'</span><span class="p">,</span>
+
+  <span class="c1">// our FusionAuth api key</span>
+  <span class="na">apiKey</span><span class="p">:</span> <span class="dl">'</span><span class="s1">o9WngMh2AAp3zH7gvMYtML9sGG31A9xVY1bi3Oui-_Y</span><span
+                      class="dl">'</span><span class="p">,</span>
+
+  <span class="c1">// ports</span>
+  <span class="na">clientPort</span><span class="p">:</span> <span class="mi">8080</span><span class="p">,</span>
+  <span class="na">serverPort</span><span class="p">:</span> <span class="mi">9000</span><span class="p">,</span>
+  <span class="na">fusionAuthPort</span><span class="p">:</span> <span class="mi">9011</span>
+<span class="p">};</span>
+</code></pre>
+            </div>
+          </div>
+          <p><code class="highlighter-rouge">File: config.js</code></p>
+
+          <p>Storing configuration this way saves us from a lot of <code class="highlighter-rouge">CMD-F</code> pain
+            when changing things, especially if we’re going to re-use this example as the base of a new single-page
+            app.</p>
+
+          <p>The OAuth and FusionAuth configuration above will not match your application. I copied it out of my
+            FusionAuth admin panel. This is the only code in the whole article you can’t just copy/paste, seriously.
+            The best place to find your values is this <code class="highlighter-rouge">View</code> button in the
+            Applications page:</p>
+
+          <p><img src="/assets/img/blogs/fusionauth-example-react/admin-view-application.png" alt="" class="img-fluid"
+                  style=""></p>
+
+          <p>(Also, if you do want to copy/paste everything, just <a
+                  href="https://github.com/FusionAuth/fusionauth-example-react">clone the GitHub repo</a> with
+            everything already in it. You’ll still have to change this config file, though. No way around that).</p>
+
+          <p>One thing we don’t cover here is creating an API key in FusionAuth and copying it over to our <code
+                  class="highlighter-rouge">config.js</code> file. This process is simple and you can read our <a
+                  href="/docs/v1/tech/apis/authentication">API Authentication</a> documentation to learn more.</p>
+
+          <p>Alright, we’re ready to start coding! You can keep FusionAuth and React running, but you’ll need to
+            restart Node/Express every time you make a change.</p>
+
+          <hr>
+
+          <h2 id="1-working-between-react-and-express">1. Working Between React and Express</h2>
+
+          <p>The first step to getting our application working is to setup the communication between our React
+            front-end and our Node/Express backend. The best way to start is to set up our React front-end.</p>
+
+          <h3 id="changing-content-for-the-logged-in-user">Changing Content for the Logged-In User</h3>
+
+          <p>We’ll start with a pretty standard React app:</p>
+
+          <div class="highlighter-rouge">
+            <div class="highlight"><pre class="highlight"><code>client
+└─app
+  └─index.js*
+</code></pre>
+            </div>
+          </div>
+
+          <div class="language-jsx legend highlighter-rouge">
+            <div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span
+                    class="nx">React</span> <span class="k">from</span> <span class="dl">'</span><span
+                    class="s1">react</span><span
+                    class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">ReactDOM</span> <span class="k">from</span> <span
+                      class="dl">'</span><span class="s1">react-dom</span><span class="dl">'</span><span
+                      class="p">;</span>
+<span class="k">import</span> <span class="dl">'</span><span class="s1">./index.css</span><span class="dl">'</span><span
+                      class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">config</span> <span class="o">=</span> <span
+                      class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">../../config</span><span
+                      class="dl">'</span><span class="p">);</span>
+
+<span class="kd">class</span> <span class="nx">App</span> <span class="kd">extends</span> <span
+                      class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span
+                      class="p">{</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span
+                      class="p">{</span>
+    <span class="k">super</span><span class="p">(</span><span class="nx">props</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">state</span> <span class="o">=</span> <span
+                      class="p">{</span>
+    <span class="p">};</span>
+  <span class="p">}</span>
+
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id=</span><span
+                      class="s1">'App'</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">header</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>FusionAuth Example: React<span
+                      class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">header</span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">ReactDOM</span><span class="p">.</span><span class="nx">render</span><span class="p">(&lt;</span><span
+                      class="nc">App</span><span class="p">/&gt;,</span> <span class="nb">document</span><span
+                      class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span
+                      class="dl">'</span><span
+                      class="s1">#Container</span><span class="dl">'</span><span class="p">));</span>
+</code></pre>
+            </div>
+          </div>
+          <p><code class="highlighter-rouge">File: client/index.js</code></p>
+
+          <p>If you need a refresher on React basics, check out the <a
+                  href="https://reactjs.org/docs/getting-started.html">official docs</a>.</p>
+
+          <p>Load up <code class="highlighter-rouge">localhost:8080</code> to make sure React is working as expected.
+          </p>
+
+          <p>Now, we’re going to want to show different things based on whether or not a user is logged in. For
+            example, a greeting that says <code class="highlighter-rouge">Welcome, dinesh@fusionauth.io</code> is only
+            going to make sense if the user <code class="highlighter-rouge">dinesh@fusionauth.io</code> is logged in.
+          </p>
+
+          <p>In a bit, we’re going to get information about the current user (like their email address) by sending a
+            request to our Express server. For now, we’ll just pretend a user is logged in and set the user’s email
+            address in <code class="highlighter-rouge">state</code>.</p>
+
+          <div class="highlighter-rouge">
+            <div class="highlight"><pre class="highlight"><code>client
+└─app
+  ├─components
+  │ └─Greeting.js*
+  └─index.js
+</code></pre>
+            </div>
+          </div>
+
+          <div class="language-jsx legend highlighter-rouge">
+            <div class="highlight"><pre class="highlight"><code><span class="c1">// ...</span>
+
+<span class="k">import</span> <span class="nx">Greeting</span> <span class="k">from</span> <span
+                      class="dl">'</span><span class="s1">./components/Greeting.js</span><span
+                      class="dl">'</span><span class="p">;</span>
+
+<span class="kd">class</span> <span class="nx">App</span> <span class="kd">extends</span> <span
+                      class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span
+                      class="p">{</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span
+                      class="p">{</span>
+    <span class="k">super</span><span class="p">(</span><span class="nx">props</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">state</span> <span class="o">=</span> <span
+                      class="p">{</span>
+      <span class="na">email</span><span class="p">:</span> <span class="dl">'</span><span class="s1">dinesh@fusionauth.io</span><span
+                      class="dl">'</span>
+    <span class="p">};</span>
+  <span class="p">}</span>
+
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id=</span><span
+                      class="s1">'App'</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">header</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>FusionAuth Example: React<span
+                      class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nc">Greeting</span> <span class="na">email=</span><span
+                      class="si">{</span><span class="k">this</span><span class="p">.</span><span
+                      class="nx">state</span><span class="p">.</span><span class="nx">email</span><span
+                      class="si">}</span><span class="p">/&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">header</span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// ...</span>
+</code></pre>
+            </div>
+          </div>
+          <p><code class="highlighter-rouge">File: client/index.js</code></p>
+
+          <p>The logic in <code class="highlighter-rouge">&lt;Greeting&gt;</code> doesn’t need to be complicated: Is
+            there an email address? Then there’s a user logged in. Otherwise, there’s not.</p>
+
+          <div class="language-jsx legend highlighter-rouge">
+            <div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span
+                    class="nx">React</span> <span class="k">from</span> <span class="dl">'</span><span
+                    class="s1">react</span><span
+                    class="dl">'</span><span class="p">;</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="kd">class</span> <span
+                      class="nx">Greeting</span> <span class="kd">extends</span> <span class="nx">React</span><span
+                      class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span
+                      class="p">{</span>
+    <span class="k">super</span><span class="p">(</span><span class="nx">props</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">message</span> <span class="o">=</span> <span class="p">(</span><span
+                      class="k">this</span><span class="p">.</span><span class="nx">props</span><span
+                      class="p">.</span><span class="nx">email</span><span class="p">)</span>
+      <span class="p">?</span> <span class="s2">`Hi, </span><span class="p">${</span><span class="k">this</span><span
+                      class="p">.</span><span class="nx">props</span><span class="p">.</span><span
+                      class="nx">email</span><span class="p">}</span><span class="s2">!`</span>
+      <span class="p">:</span> <span class="dl">"</span><span class="s2">You're not logged in.</span><span
+                      class="dl">"</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;</span><span class="si">{</span><span
+                      class="nx">message</span><span class="si">}</span><span class="p">&lt;/</span><span class="nt">span</span><span
+                      class="p">&gt;</span>
+    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+            </div>
+          </div>
+          <p><code class="highlighter-rouge">File: client/components/greeting.js</code></p>
+
+          <p>Try it out. Load up <code class="highlighter-rouge">localhost:8080</code> and you should see <code
+                  class="highlighter-rouge">Welcome, dinesh@fusionauth.io</code> (or whatever email address you typed
+            in <code class="highlighter-rouge">state</code>). Comment out the <code
+                    class="highlighter-rouge">email</code> object to simulate logging out:</p>
+
+          <div class="language-jsx legend highlighter-rouge">
+            <div class="highlight"><pre class="highlight"><code><span class="k">this</span><span
+                    class="p">.</span><span class="nx">state</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="c1">// email: 'dinesh@fusionauth.io'</span>
+<span class="p">};</span>
+</code></pre>
+            </div>
+          </div>
+          <p><code class="highlighter-rouge">File: client/index.js</code></p>
+
+          <p>Next, we’ll set <code class="highlighter-rouge">state</code> based on a call to our server.</p>
+
+          <h3 id="getting-user-info-from-the-express-server">Getting User Info From the Express Server</h3>
+
+          <p>To make a call to a server, we first need to get our server up and running.</p>
+
+          <p>The heart of an Express app is your <code class="highlighter-rouge">index.js</code>. The React side of
+            our application will also have an <code class="highlighter-rouge">index.js</code> file, so keep that in
+            mind as you’ll likely share my headache of constantly opening the wrong one.</p>
+
+          <div class="highlighter-rouge">
+            <div class="highlight"><pre class="highlight"><code>server
+└─index.js*
+</code></pre>
+            </div>
+          </div>
+
+          <p>The following Express index is pretty standard, so I’m not going to go too deep on how it works; the <a
+                  href="https://expressjs.com/en/starter/hello-world.html">official Express docs</a> do a better job
+            of explaining it than I would, anyway.</p>
+
+          <p>We’ll initialize <code class="highlighter-rouge">app</code>, set up a <code
+                  class="highlighter-rouge">/user</code>
+            route (for our React client to get user info from), and start the server on <code
+                    class="highlighter-rouge">localhost:9000</code>:</p>
+
+          <div class="language-js legend highlighter-rouge">
+            <div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span
+                    class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span
+                    class="p">(</span><span
+                    class="dl">'</span><span class="s1">express</span><span class="dl">'</span><span
+                    class="p">);</span>
+<span class="kd">const</span> <span class="nx">config</span> <span class="o">=</span> <span
+                      class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">../config</span><span
+                      class="dl">'</span><span class="p">);</span>
+
+<span class="c1">// configure Express app and install the JSON middleware for parsing JSON bodies</span>
+<span class="kd">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span
+                      class="p">();</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">express</span><span
+                      class="p">.</span><span class="nx">json</span><span class="p">());</span>
+
+<span class="c1">// use routes</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span
+                      class="dl">'</span><span class="s1">/user</span><span class="dl">'</span><span
+                      class="p">,</span> <span class="nx">require</span><span class="p">(</span><span
+                      class="dl">'</span><span class="s1">./routes/user</span><span class="dl">'</span><span
+                      class="p">));</span>
+
+<span class="c1">// start server</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span
+                      class="nx">config</span><span class="p">.</span><span class="nx">serverPort</span><span
+                      class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span
+                      class="nx">console</span><span
+                      class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`FusionAuth example app listening on port </span><span
+                      class="p">${</span><span class="nx">config</span><span class="p">.</span><span class="nx">serverPort</span><span
+                      class="p">}</span><span class="s2">.`</span><span class="p">));</span>
+</code></pre>
+            </div>
+          </div>
+          <p><code class="highlighter-rouge">File: server/index.js</code></p>
+
+          <p>When our React client sends a request to <code class="highlighter-rouge">localhost:9000/user</code>, it
+            will get a response based on whatever we send back in <code
+                    class="highlighter-rouge">server/routes/user.js</code>.
+            We can move the pretend user email from React’s <code class="highlighter-rouge">state</code> to the server
+            code, like this:</p>
+
+          <div class="language-js legend highlighter-rouge">
+            <div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span
+                    class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span
+                    class="p">(</span><span
+                    class="dl">'</span><span class="s1">express</span><span class="dl">'</span><span
+                    class="p">);</span>
+<span class="kd">const</span> <span class="nx">router</span> <span class="o">=</span> <span
+                      class="nx">express</span><span class="p">.</span><span class="nx">Router</span><span
+                      class="p">();</span>
+<span class="kd">const</span> <span class="nx">config</span> <span class="o">=</span> <span
+                      class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">../../config</span><span
+                      class="dl">'</span><span class="p">);</span>
+
+<span class="nx">router</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span
+                      class="dl">'</span><span class="s1">/</span><span class="dl">'</span><span
+                      class="p">,</span> <span class="p">(</span><span class="nx">req</span><span
+                      class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span
+                      class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">({</span>
+    <span class="na">user</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">email</span><span class="p">:</span> <span class="dl">'</span><span class="s1">dinesh@fusionauth.io</span><span
+                      class="dl">'</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+<span class="p">});</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span
+                      class="nx">router</span><span class="p">;</span>
+</code></pre>
+            </div>
+          </div>
+          <p><code class="highlighter-rouge">File: server/routes/user.js</code></p>
+
+          <p>Note that I’ve wrapped <code class="highlighter-rouge">email</code> in a <code class="highlighter-rouge">user</code>
+            object. That’s because the User object is ultimately what we’ll get back from FusionAuth when a user
+            actually logs in. The <code class="highlighter-rouge">email</code> property is one of the User’s included
+            values (also known as claims), so we’ll be good to go if we set it up like this ahead of time.</p>
+
+          <p>Of course, we’ll need to tweak the React app:</p>
+
+          <div class="language-jsx legend highlighter-rouge">
+            <div class="highlight"><pre class="highlight"><code><span class="c1">// ...</span>
+
+<span class="kd">constructor</span><span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span
+                      class="p">{</span>
+  <span class="k">super</span><span class="p">(</span><span class="nx">props</span><span class="p">);</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">state</span> <span class="o">=</span> <span
+                      class="p">{</span>
+    <span class="na">body</span><span class="p">:</span> <span class="p">{}</span> <span class="c1">// this is the body from /user</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id=</span><span class="s1">'App'</span><span
+                      class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">header</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>FusionAuth Example: React<span
+                      class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nc">Greeting</span> <span class="na">body=</span><span
+                      class="si">{</span><span class="k">this</span><span class="p">.</span><span
+                      class="nx">state</span><span class="p">.</span><span class="nx">body</span><span
+                      class="si">}</span><span class="p">/&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">header</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// ...</span>
+</code></pre>
+            </div>
+          </div>
+          <p><code class="highlighter-rouge">File: client/index.js</code></p>
+
+          <div class="language-jsx legend highlighter-rouge">
+            <div class="highlight"><pre class="highlight"><code><span class="c1">// ...</span>
+
+<span class="kd">let</span> <span class="nx">message</span> <span class="o">=</span> <span class="p">(</span><span
+                      class="k">this</span><span class="p">.</span><span class="nx">props</span><span
+                      class="p">.</span><span class="nx">body</span><span class="p">.</span><span
+                      class="nx">user</span><span class="p">)</span>
+  <span class="p">?</span> <span class="s2">`Hi, </span><span class="p">${</span><span class="k">this</span><span
+                      class="p">.</span><span class="nx">props</span><span class="p">.</span><span
+                      class="nx">body</span><span class="p">.</span><span class="nx">user</span><span
+                      class="p">.</span><span class="nx">email</span><span class="p">}</span><span
+                      class="s2">!`</span>
+  <span class="p">:</span> <span class="dl">"</span><span class="s2">You're not logged in.</span><span
+                      class="dl">"</span><span class="p">;</span>
+
+<span class="c1">// ...</span>
+</code></pre>
+            </div>
+          </div>
+          <p><code class="highlighter-rouge">File: client/components/greeting.js</code></p>
+
+          <p>Note that we’re now using the existence of <code class="highlighter-rouge">user</code> to determine
+            whether or not a user is logged in. We can use this for every future component: send <code
+                    class="highlighter-rouge">body</code>, check for <code class="highlighter-rouge">user</code>, use
+            the values inside <code class="highlighter-rouge">user</code>.</p>
+
+          <p>Remember, a <em>real</em> User object returned from FusionAuth will have more properties than just an
+            email address. It will look something like this:</p>
+
+          <div class="language-json highlighter-rouge">
+            <div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"active"</span><span class="p">:</span><span class="w"> </span><span
+                    class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"applicationId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5f651593-cc27-4f81-a6f8-7a9a68300cf6"</span><span
+                    class="p">,</span><span class="w">
+  </span><span class="nl">"aud"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5f651593-cc27-4f81-a6f8-7a9a68300cf6"</span><span
+                    class="p">,</span><span class="w">
+  </span><span class="nl">"authenticationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PASSWORD"</span><span
+                    class="p">,</span><span class="w">
+  </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dinesh@fusionauth.io"</span><span
+                    class="p">,</span><span class="w">
+  </span><span class="nl">"email_verified"</span><span class="p">:</span><span class="w"> </span><span
+                    class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"exp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1583357477</span><span
+                    class="p">,</span><span class="w">
+  </span><span class="nl">"iat"</span><span class="p">:</span><span class="w"> </span><span class="mi">1583353877</span><span
+                    class="p">,</span><span class="w">
+  </span><span class="nl">"iss"</span><span class="p">:</span><span class="w"> </span><span class="s2">"acme.com"</span><span
+                    class="p">,</span><span class="w">
+  </span><span class="nl">"roles"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span
+                    class="w">
+  </span><span class="nl">"sub"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000000-0000-0000-0000-000000000004"</span><span
+                    class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+            </div>
+          </div>
+
+          <p>In the next section, we’ll replace our fake <code class="highlighter-rouge">user</code> with a real one.
+            Before we do that, let’s set up our React app to <code class="highlighter-rouge">fetch</code> the <code
+                    class="highlighter-rouge">user</code> from <code class="highlighter-rouge">/user</code> whenever
+            the page loads (or “when the component mounts” in React lingo):</p>
+
+          <div class="language-js legend highlighter-rouge">
+            <div class="highlight"><pre class="highlight"><code><span class="c1">// ...</span>
+
+<span class="nx">componentDidMount</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">fetch</span><span class="p">(</span><span class="s2">`http://localhost:</span><span
+                      class="p">${</span><span class="nx">config</span><span class="p">.</span><span class="nx">serverPort</span><span
+                      class="p">}</span><span class="s2">/user`</span><span class="p">,</span> <span
+                      class="p">{</span>
+    <span class="na">credentials</span><span class="p">:</span> <span class="dl">'</span><span class="s1">include</span><span
+                      class="dl">'</span> <span
+                      class="c1">// fetch won't send cookies unless you set credentials</span>
+  <span class="p">})</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span
+                      class="o">=&gt;</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span
+                      class="p">())</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span
+                      class="o">=&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span
+                      class="p">(</span>
+    <span class="p">{</span>
+      <span class="na">body</span><span class="p">:</span> <span class="nx">response</span>
+    <span class="p">})</span>
+  <span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// ...</span>
+</code></pre>
+            </div>
+          </div>
+          <p><code class="highlighter-rouge">File: client/app/index.js</code></p>
+
+          <p>One thing to note about our code above is that we need to specify the <code class="highlighter-rouge">credentials:
+            'include'</code> option to the <code class="highlighter-rouge">fetch</code> function. This is required
+            since eventually we will be hooking up to a server-side session and without this setting the browser won’t
+            send over the cookie that Express uses for server-side sessions.</p>
+
+          <p>Now you can try the React client again. Depending on your setup, you might have gotten a CORS error;
+            check the browser console. If you want to know why this happens, check out the helpful MDN doc on <a
+                    href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS/Errors">Cross-Origin Resource
+              Sharing</a>. Fortunately, we thought of this, and installed the <code
+                    class="highlighter-rouge">cors</code> package. Activate its power like this:</p>
+
+          <div class="language-js legend highlighter-rouge">
+            <div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span
+                    class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span
+                    class="p">(</span><span
+                    class="dl">'</span><span class="s1">express</span><span class="dl">'</span><span
+                    class="p">);</span>
+<span class="kd">const</span> <span class="nx">cors</span> <span class="o">=</span> <span class="nx">require</span><span
+                      class="p">(</span><span class="dl">'</span><span class="s1">cors</span><span
+                      class="dl">'</span><span
+                      class="p">);</span>
+<span class="kd">const</span> <span class="nx">config</span> <span class="o">=</span> <span
+                      class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">../config</span><span
+                      class="dl">'</span><span class="p">);</span>
+
+<span class="c1">// configure Express app and install the JSON middleware for parsing JSON bodies</span>
+<span class="kd">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span
+                      class="p">();</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">express</span><span
+                      class="p">.</span><span class="nx">json</span><span class="p">());</span>
+
+<span class="c1">// configure CORS</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">cors</span><span
+                      class="p">({</span>
+  <span class="na">origin</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="na">credentials</span><span class="p">:</span> <span class="kc">true</span>
+<span class="p">}));</span>
+
+<span class="c1">// ...</span>
+</code></pre>
+            </div>
+          </div>
+          <p><code class="highlighter-rouge">File: server/index.js</code></p>
+
+          <p>Boom. Goodbye, annoying CORS error.</p>
+
+          <p>The React page should now look like you are “logged in” since our Express server is sending back our fake
+            User object. You can simulate logging out by commenting out the <code
+                    class="highlighter-rouge">user</code> in the Express code like this:</p>
+
+          <div class="language-js legend highlighter-rouge">
+            <div class="highlight"><pre class="highlight"><code><span class="nx">res</span><span
+                    class="p">.</span><span class="nx">send</span><span class="p">({</span>
+  <span class="c1">// user: {</span>
+  <span class="c1">//   email: 'dinesh@fusionauth.io'</span>
+  <span class="c1">// }</span>
+<span class="p">});</span>
+</code></pre>
+            </div>
+          </div>
+          <p><code class="highlighter-rouge">File: server/routes/user.js</code></p>
+
+          <p>Next, we’ll replace that fake <code class="highlighter-rouge">user</code> with a real one from
+            FusionAuth. Our React client will indirectly retrieve the information from FusionAuth by using Express as
+            a middleman.</p>
+
+          <hr>
+
+          <h2 id="2-logging-in">2. Logging In</h2>
+
+          <p>User sign-in is one of the key features of FusionAuth. (Isn’t that why you’re following this example?)
+            Let’s see how it works.</p>
+
+          <h3 id="redirecting-to-fusionauth">Redirecting to FusionAuth</h3>
+
+          <p>First thing’s first: we need a “log in” button in the React client:</p>
+
+          <div class="highlighter-rouge">
+            <div class="highlight"><pre class="highlight"><code>client
+└─app
+  ├─components
+  │ ├─Greeting.js
+  │ └─LogInOut.js*
+  └─index.js
+</code></pre>
+            </div>
+          </div>
+
+          <p>Just like we did in <code class="highlighter-rouge">Greeting</code>, we’ll use <code
+                  class="highlighter-rouge">this.props.body.user</code> to determine whether or not the user is logged
+            in. We can use this to make a link to either <code class="highlighter-rouge">localhost:9000/login</code>
+            or <code class="highlighter-rouge">localhost:9000/logout</code>, the former of which we’ll set up in just
+            a second.</p>
+
+          <div class="language-jsx legend highlighter-rouge">
+            <div class="highlight"><pre class="highlight"><code><span class="c1">// ...</span>
+
+<span class="k">import</span> <span class="nx">LogInOut</span> <span class="k">from</span> <span
+                      class="dl">'</span><span class="s1">./components/LogInOut.js</span><span
+                      class="dl">'</span><span class="p">;</span>
+
+<span class="c1">// ...</span>
+
+
+<span class="p">&lt;</span><span class="nt">header</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>FusionAuth Example: React<span
+                      class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nc">Greeting</span> <span class="na">body=</span><span
+                      class="si">{</span><span class="k">this</span><span class="p">.</span><span
+                      class="nx">state</span><span class="p">.</span><span class="nx">body</span><span
+                      class="si">}</span><span class="p">/&gt;</span>
+  <span class="p">&lt;</span><span class="nc">LogInOut</span> <span class="na">body=</span><span
+                      class="si">{</span><span class="k">this</span><span class="p">.</span><span
+                      class="nx">state</span><span class="p">.</span><span class="nx">body</span><span
+                      class="si">}</span> <span class="na">uri=</span><span class="si">{</span><span class="s2">`http://localhost:${config.serverPort}`</span><span
+                      class="si">}</span><span class="p">/&gt;</span>
+<span class="p">&lt;/</span><span class="nt">header</span><span class="p">&gt;</span>
+
+<span class="c1">// ...</span>
+</code></pre>
+            </div>
+          </div>
+          <p><code class="highlighter-rouge">File: client/index.js</code></p>
+
+          <div class="language-jsx legend highlighter-rouge">
+            <div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span
+                    class="nx">React</span> <span class="k">from</span> <span class="dl">'</span><span
+                    class="s1">react</span><span
+                    class="dl">'</span><span class="p">;</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="kd">class</span> <span
+                      class="nx">LogInOut</span> <span class="kd">extends</span> <span class="nx">React</span><span
+                      class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span
+                      class="p">{</span>
+    <span class="k">super</span><span class="p">(</span><span class="nx">props</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">message</span> <span class="o">=</span> <span class="p">(</span><span
+                      class="k">this</span><span class="p">.</span><span class="nx">props</span><span
+                      class="p">.</span><span class="nx">body</span><span class="p">.</span><span
+                      class="nx">user</span><span class="p">)</span>
+      <span class="p">?</span> <span class="dl">'</span><span class="s1">sign out</span><span class="dl">'</span>
+      <span class="p">:</span> <span class="dl">'</span><span class="s1">sign in</span><span class="dl">'</span><span
+                      class="p">;</span>
+
+    <span class="kd">let</span> <span class="nx">path</span> <span class="o">=</span> <span class="p">(</span><span
+                      class="k">this</span><span class="p">.</span><span class="nx">props</span><span
+                      class="p">.</span><span class="nx">body</span><span class="p">.</span><span
+                      class="nx">user</span><span class="p">)</span>
+      <span class="p">?</span> <span class="dl">'</span><span class="s1">/logout</span><span class="dl">'</span>
+      <span class="p">:</span> <span class="dl">'</span><span class="s1">/login</span><span class="dl">'</span><span
+                      class="p">;</span>
+
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href=</span><span class="si">{</span><span
+                      class="k">this</span><span class="p">.</span><span class="nx">props</span><span
+                      class="p">.</span><span class="nx">uri</span> <span class="o">+</span> <span
+                      class="nx">path</span><span class="si">}</span><span class="p">&gt;</span><span
+                      class="si">{</span><span class="nx">message</span><span class="si">}</span><span
+                      class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+            </div>
+          </div>
+          <p><code class="highlighter-rouge">File: client/app/components/LogInOut.js</code></p>
+
+          <p>Why am I using a normal <code class="highlighter-rouge">&lt;a&gt;</code> link here instead of a <code
+                  class="highlighter-rouge">fetch</code> request, like we did for <code
+                  class="highlighter-rouge">/user</code>?
+            In order to leverage FusionAuth’s OAuth system with the Authorization Code Grant, we have to redirect the
+            browser over to FusionAuth. While you might want to avoid redirecting away from the React app, this
+            workflow adds a lot of security and also provides an ideal separation of concerns. Plus, you can style the
+            FusionAuth login page to look like your application, which means the user won’t even realize they’ve been
+            redirected.</p>
+
+          <p>We could write a link directly to FusionAuth, but I think it’s cleaner to go through the Express app,
+            because the FusionAuth OAuth workflow requires a somewhat complex URL to start. Remember the structure we
+            detailed earlier:</p>
+
+          <div class="highlighter-rouge">
+            <div class="highlight"><pre class="highlight"><code>React client &lt;-&gt; Express server &lt;-&gt; FusionAuth
+(mostly UI)      (our code)         (pre-made auth)
+</code></pre>
+            </div>
+          </div>
+
+          <p>We’ll use this principle and add in another Route to our Express application to start the login process
+            and redirect the browser over to FusionAuth. We’ll add our new <code
+                    class="highlighter-rouge">login</code> route to handle this:</p>
+
+          <div class="highlighter-rouge">
+            <div class="highlight"><pre class="highlight"><code>server
+├─routes
+│ ├─login.js*
+│ └─user.js
+└─index.js
+</code></pre>
+            </div>
+          </div>
+
+          <p>Whenever we add a new route, we need to let <code class="highlighter-rouge">server/index.js</code> know,
+            just like we did with <code class="highlighter-rouge">/user</code>:</p>
+
+          <div class="language-js legend highlighter-rouge">
+            <div class="highlight"><pre class="highlight"><code><span class="c1">// ...</span>
+
+<span class="c1">// use routes</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span
+                      class="dl">'</span><span class="s1">/user</span><span class="dl">'</span><span
+                      class="p">,</span> <span class="nx">require</span><span class="p">(</span><span
+                      class="dl">'</span><span class="s1">./routes/user</span><span class="dl">'</span><span
+                      class="p">));</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span
+                      class="dl">'</span><span class="s1">/login</span><span class="dl">'</span><span
+                      class="p">,</span> <span class="nx">require</span><span class="p">(</span><span
+                      class="dl">'</span><span class="s1">./routes/login</span><span class="dl">'</span><span
+                      class="p">));</span>
+
+<span class="c1">// ...</span>
+</code></pre>
+            </div>
+          </div>
+          <p><code class="highlighter-rouge">File: server/index.js</code></p>
+
+          <p>When a user goes to <code class="highlighter-rouge">/login</code>, we actually want to redirect them off
+            of the Express sever and onto FusionAuth’s login page. Remember, we installed FusionAuth so that we don’t
+            have to handle the login process at all!</p>
+
+          <div class="language-js legend highlighter-rouge">
+            <div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span
+                    class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span
+                    class="p">(</span><span
+                    class="dl">'</span><span class="s1">express</span><span class="dl">'</span><span
+                    class="p">);</span>
+<span class="kd">const</span> <span class="nx">router</span> <span class="o">=</span> <span
+                      class="nx">express</span><span class="p">.</span><span class="nx">Router</span><span
+                      class="p">();</span>
+<span class="kd">const</span> <span class="nx">config</span> <span class="o">=</span> <span
+                      class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">../../config</span><span
+                      class="dl">'</span><span class="p">);</span>
+
+<span class="nx">router</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span
+                      class="dl">'</span><span class="s1">/</span><span class="dl">'</span><span
+                      class="p">,</span> <span class="p">(</span><span class="nx">req</span><span
+                      class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span
+                      class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">redirect</span><span class="p">(</span><span
+                      class="s2">`http://localhost:</span><span class="p">${</span><span class="nx">config</span><span
+                      class="p">.</span><span class="nx">fusionAuthPort</span><span class="p">}</span><span
+                      class="s2">/oauth2/authorize?client_id=</span><span class="p">${</span><span
+                      class="nx">config</span><span class="p">.</span><span class="nx">clientID</span><span
+                      class="p">}</span><span
+                      class="s2">&amp;redirect_uri=</span><span class="p">${</span><span class="nx">config</span><span
+                      class="p">.</span><span class="nx">redirectURI</span><span class="p">}</span><span class="s2">&amp;response_type=code`</span><span
+                      class="p">);</span>
+<span class="p">});</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span
+                      class="nx">router</span><span class="p">;</span>
+</code></pre>
+            </div>
+          </div>
+          <p><code class="highlighter-rouge">File: server/routes/login.js</code></p>
+
+          <p>If that URI looks a bit messy, it’s because of the additional query parameters, which FusionAuth needs to
+            process our request:</p>
+
+          <ul>
+            <li><code class="highlighter-rouge">client_id</code> tells FusionAuth which app is making the request</li>
+            <li><code class="highlighter-rouge">redirect_uri</code> tells FusionAuth where to redirect the user to
+              after login
+            </li>
+            <li><code class="highlighter-rouge">response_type</code> tells FusionAuth which OAuth flow we’re using
+              (Authorization Code in this example)
+            </li>
+          </ul>
+
+          <p>This is all standard OAuth flow but it is a little verbose.</p>
+
+          <p>Try navigating to <code class="highlighter-rouge">localhost:9000/login</code>. You should see a
+            FusionAuth login form:</p>
+
+          <p><img src="/assets/img/blogs/fusionauth-example-react/app-login.png" alt="" class="img-fluid" style="">
+          </p>
+
+          <p>When you successfully authenticate, you’ll just see <code class="highlighter-rouge">Cannot GET
+            /oauth-callback</code>, because <code class="highlighter-rouge">/oauth-callback</code> doesn’t exist, yet.
+            Remember, we added that as an <code class="highlighter-rouge">Authorized redirect URL</code> in the
+            FusionAuth admin panel and as our <code class="highlighter-rouge">redirectURI</code> in <code
+                    class="highlighter-rouge">config.js</code>. This is the location that where FusionAuth redirects
+            the browser back to after authentication in order to complete the OAuth workflow.</p>
+
+          <h3 id="code-exchange">Code Exchange</h3>
+
+          <p>Alright, time to add the <code class="highlighter-rouge">/oauth-callback</code> route:</p>
+
+          <div class="highlighter-rouge">
+            <div class="highlight"><pre class="highlight"><code>server
+├─routes
+│ ├─login.js
+│ ├─oauth-callback.js*
+│ └─user.js
+└─index.js
+</code></pre>
+            </div>
+          </div>
+
+          <div class="language-js legend highlighter-rouge">
+            <div class="highlight"><pre class="highlight"><code><span class="c1">// ...</span>
+
+<span class="c1">// use routes</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span
+                      class="dl">'</span><span class="s1">/user</span><span class="dl">'</span><span
+                      class="p">,</span> <span class="nx">require</span><span class="p">(</span><span
+                      class="dl">'</span><span class="s1">./routes/user</span><span class="dl">'</span><span
+                      class="p">));</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span
+                      class="dl">'</span><span class="s1">/login</span><span class="dl">'</span><span
+                      class="p">,</span> <span class="nx">require</span><span class="p">(</span><span
+                      class="dl">'</span><span class="s1">./routes/login</span><span class="dl">'</span><span
+                      class="p">));</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span
+                      class="dl">'</span><span class="s1">/oauth-callback</span><span class="dl">'</span><span
+                      class="p">,</span> <span class="nx">require</span><span class="p">(</span><span
+                      class="dl">'</span><span class="s1">./routes/oauth-callback</span><span class="dl">'</span><span
+                      class="p">));</span>
+
+<span class="c1">// ...</span>
+</code></pre>
+            </div>
+          </div>
+          <p><code class="highlighter-rouge">File: server/index.js</code></p>
+
+          <p><code class="highlighter-rouge">/oauth-callback</code> will receive an Authorization Code from FusionAuth
+            as a URL parameter during the redirect. If you inspect your browser’s location, you’ll see that there’s a
+            <code class="highlighter-rouge">code</code> parameter in the URL:</p>
+
+          <div class="highlighter-rouge">
+            <div class="highlight"><pre class="highlight"><code>http://localhost:9000/oauth-callback?
+  code=14CJG_fDl31E5U-1VHOBedsLESZQr3sgt63BcVrGoTU&amp;
+  locale=en_US&amp;
+  userState=Authenticated
+</code></pre>
+            </div>
+          </div>
+
+          <p>An Authorization Code isn’t enough to access the user’s resources, though. For that, we need an Access
+            Token. Again, this is standard OAuth, not something unique to FusionAuth. This step is called the Code
+            Exchange, because we send the <code class="highlighter-rouge">code</code> to FusionAuth’s <code
+                    class="highlighter-rouge">/token</code> endpoint and receive an <code class="highlighter-rouge">access_token</code>
+            in exchange.</p>
+
+          <p>The exchange takes the form of a POST request:</p>
+
+          <div class="language-js legend highlighter-rouge">
+            <div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span
+                    class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span
+                    class="p">(</span><span
+                    class="dl">'</span><span class="s1">express</span><span class="dl">'</span><span
+                    class="p">);</span>
+<span class="kd">const</span> <span class="nx">router</span> <span class="o">=</span> <span
+                      class="nx">express</span><span class="p">.</span><span class="nx">Router</span><span
+                      class="p">();</span>
+<span class="kd">const</span> <span class="nx">request</span> <span class="o">=</span> <span
+                      class="nx">require</span><span class="p">(</span><span class="dl">'</span><span
+                      class="s1">request</span><span
+                      class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">config</span> <span class="o">=</span> <span
+                      class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">../../config</span><span
+                      class="dl">'</span><span class="p">);</span>
+
+<span class="nx">router</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span
+                      class="dl">'</span><span class="s1">/</span><span class="dl">'</span><span
+                      class="p">,</span> <span class="p">(</span><span class="nx">req</span><span
+                      class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span
+                      class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">request</span><span class="p">(</span>
+    <span class="c1">// POST request to /token endpoint</span>
+    <span class="p">{</span>
+      <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span
+                      class="dl">'</span><span class="p">,</span>
+      <span class="na">uri</span><span class="p">:</span> <span class="s2">`http://localhost:</span><span
+                      class="p">${</span><span class="nx">config</span><span class="p">.</span><span class="nx">fusionAuthPort</span><span
+                      class="p">}</span><span class="s2">/oauth2/token`</span><span class="p">,</span>
+      <span class="na">form</span><span class="p">:</span> <span class="p">{</span>
+        <span class="dl">'</span><span class="s1">client_id</span><span class="dl">'</span><span
+                      class="p">:</span> <span class="nx">config</span><span class="p">.</span><span
+                      class="nx">clientID</span><span
+                      class="p">,</span>
+        <span class="dl">'</span><span class="s1">client_secret</span><span class="dl">'</span><span class="p">:</span> <span
+                      class="nx">config</span><span class="p">.</span><span class="nx">clientSecret</span><span
+                      class="p">,</span>
+        <span class="dl">'</span><span class="s1">code</span><span class="dl">'</span><span class="p">:</span> <span
+                      class="nx">req</span><span class="p">.</span><span class="nx">query</span><span
+                      class="p">.</span><span class="nx">code</span><span class="p">,</span>
+        <span class="dl">'</span><span class="s1">grant_type</span><span class="dl">'</span><span
+                      class="p">:</span> <span class="dl">'</span><span class="s1">authorization_code</span><span
+                      class="dl">'</span><span class="p">,</span>
+        <span class="dl">'</span><span class="s1">redirect_uri</span><span class="dl">'</span><span
+                      class="p">:</span> <span class="nx">config</span><span class="p">.</span><span class="nx">redirectURI</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+
+    <span class="c1">// callback</span>
+    <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span
+                      class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span
+                      class="o">=&gt;</span> <span class="p">{</span>
+      <span class="c1">// save token to session</span>
+      <span class="nx">req</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span
+                      class="nx">token</span> <span class="o">=</span> <span class="nx">JSON</span><span
+                      class="p">.</span><span class="nx">parse</span><span class="p">(</span><span
+                      class="nx">body</span><span class="p">).</span><span class="nx">access_token</span><span
+                      class="p">;</span>
+
+      <span class="c1">// redirect to the React app</span>
+      <span class="nx">res</span><span class="p">.</span><span class="nx">redirect</span><span class="p">(</span><span
+                      class="s2">`http://localhost:</span><span class="p">${</span><span class="nx">config</span><span
+                      class="p">.</span><span class="nx">clientPort</span><span class="p">}</span><span
+                      class="s2">`</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span
+                      class="nx">router</span><span class="p">;</span>
+</code></pre>
+            </div>
+          </div>
+          <p><code class="highlighter-rouge">File: server/routes/oauth-callback.js</code></p>
+
+          <p>The most important parts of the request are <code class="highlighter-rouge">uri</code> (which is where
+            the request will get sent to) and <code class="highlighter-rouge">form</code> (which is the set of
+            parameters FusionAuth expects). The OAuth token endpoint only access form encoded data, which is why we
+            are using the <code class="highlighter-rouge">form</code> option in our <code class="highlighter-rouge">request</code>
+            call. You can check the FusionAuth docs to see what every endpoint expects to be sent, but here’s the gist
+            of this request:</p>
+
+          <ul>
+            <li><code class="highlighter-rouge">client_id</code> and <code
+                    class="highlighter-rouge">client_secret</code> identify and authenticate our app, like a username
+              and password
+            </li>
+            <li><code class="highlighter-rouge">code</code> is the Authorization Code we got from FusionAuth</li>
+            <li><code class="highlighter-rouge">grant_type</code> tells FusionAuth we’re using the Authorization Code
+              Flow
+            </li>
+            <li><code class="highlighter-rouge">redirect_uri</code> in this case is the URL we’re making the request
+              from (<code class="highlighter-rouge">http://localhost:9000/oauth-callback</code>)
+            </li>
+          </ul>
+
+          <p>The callback lambda is invoked after FusionAuth receives our request and responds. We’re expecting to
+            receive an <code class="highlighter-rouge">access_token</code>, which will come through in that <code
+                    class="highlighter-rouge">body</code> argument. We’ll save the <code class="highlighter-rouge">access_token</code>
+            to session storage and redirect back to the React client.</p>
+
+          <p>Remember that request-followed-by-callback structure, because we’ll be using it again.</p>
+
+          <p>We’re almost done! The only thing left is to set up the server-side session storage for our Access Token.
+            In order to do this, we need to configure <code class="highlighter-rouge">express-session</code>. The
+            following settings work great for local testing, but you’ll probably want to check the <a
+                    href="https://www.npmjs.com/package/express-session"><code
+                    class="highlighter-rouge">express-session</code>
+              docs</a> before moving to production.</p>
+
+          <div class="language-js legend highlighter-rouge">
+            <div class="highlight"><pre class="highlight"><code><span class="c1">// ...</span>
+
+<span class="c1">// configure Express app and install the JSON middleware for parsing JSON bodies</span>
+<span class="kd">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span
+                      class="p">();</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">express</span><span
+                      class="p">.</span><span class="nx">json</span><span class="p">());</span>
+
+<span class="c1">// configure sessions</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">session</span><span
+                      class="p">(</span>
+  <span class="p">{</span>
+    <span class="na">secret</span><span class="p">:</span> <span class="dl">'</span><span
+                      class="s1">1234567890</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">resave</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="na">saveUninitialized</span><span class="p">:</span> <span class="kc">false</span><span
+                      class="p">,</span>
+    <span class="na">cookie</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">secure</span><span class="p">:</span> <span class="dl">'</span><span class="s1">auto</span><span
+                      class="dl">'</span><span class="p">,</span>
+      <span class="na">httpOnly</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="na">maxAge</span><span class="p">:</span> <span class="mi">3600000</span>
+    <span class="p">}</span>
+  <span class="p">})</span>
+<span class="p">);</span>
+
+<span class="c1">// ...</span>
+</code></pre>
+            </div>
+          </div>
+          <p><code class="highlighter-rouge">File: server/index.js</code></p>
+
+          <h3 id="introspect-and-registration">Introspect and Registration</h3>
+
+          <p>Remember that our React app looks for a <code class="highlighter-rouge">user</code> in <code
+                  class="highlighter-rouge">/user</code>. The Access Token isn’t human-readable, but we can pass it to
+            FusionAuth’s <code class="highlighter-rouge">/introspect</code> endpoint to get a User Object (JSON like
+            we showed earlier) from it. We can get additional user-specific info from <code class="highlighter-rouge">/registration</code>
+            as well.</p>
+
+          <p>If there’s a <code class="highlighter-rouge">token</code> in session storage, we’ll call <code
+                  class="highlighter-rouge">/introspect</code> to get info out of that <code
+                  class="highlighter-rouge">token</code>. Part of the info returned from <code
+                  class="highlighter-rouge">/introspect</code> is the boolean property <code
+                  class="highlighter-rouge">active</code>, which is <code class="highlighter-rouge">true</code> until
+            the Access Token expires (you can configure how long Access Tokens live in the FusionAuth admin panel). If
+            the token is still good, we’ll call <code class="highlighter-rouge">/registration</code> and return the
+            JSON from both requests.</p>
+
+          <p>If there’s no <code class="highlighter-rouge">token</code> in session storage, or if the <code
+                  class="highlighter-rouge">token</code> has expired, we’ll return an empty object. Our React
+            components use the existence of <code class="highlighter-rouge">this.props.body.user</code> to determine
+            whether a user is logged in, so an empty <code class="highlighter-rouge">body</code> means there’s no
+            active user.</p>
+
+          <p>Below is our new and improved <code class="highlighter-rouge">/user</code>; it’s a lot like <code
+                  class="highlighter-rouge">/oauth-callback</code>, but with a layer of nesting. It looks like a lot,
+            but we’ll break it up piece-by-piece.</p>
+
+          <div class="language-js legend highlighter-rouge">
+            <div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span
+                    class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span
+                    class="p">(</span><span
+                    class="dl">'</span><span class="s1">express</span><span class="dl">'</span><span
+                    class="p">);</span>
+<span class="kd">const</span> <span class="nx">router</span> <span class="o">=</span> <span
+                      class="nx">express</span><span class="p">.</span><span class="nx">Router</span><span
+                      class="p">();</span>
+<span class="kd">const</span> <span class="nx">request</span> <span class="o">=</span> <span
+                      class="nx">require</span><span class="p">(</span><span class="dl">'</span><span
+                      class="s1">request</span><span
+                      class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">config</span> <span class="o">=</span> <span
+                      class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">../../config</span><span
+                      class="dl">'</span><span class="p">);</span>
+
+<span class="nx">router</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span
+                      class="dl">'</span><span class="s1">/</span><span class="dl">'</span><span
+                      class="p">,</span> <span class="p">(</span><span class="nx">req</span><span
+                      class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span
+                      class="o">=&gt;</span> <span class="p">{</span>
+  <span class="c1">// token in session -&gt; get user data and send it back to the react app</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">session</span><span
+                      class="p">.</span><span class="nx">token</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">request</span><span class="p">(</span>
+      <span class="c1">// POST request to /introspect endpoint</span>
+      <span class="p">{</span>
+        <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span
+                      class="s1">POST</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">uri</span><span class="p">:</span> <span class="s2">`http://localhost:</span><span
+                      class="p">${</span><span class="nx">config</span><span class="p">.</span><span class="nx">fusionAuthPort</span><span
+                      class="p">}</span><span class="s2">/oauth2/introspect`</span><span class="p">,</span>
+        <span class="na">form</span><span class="p">:</span> <span class="p">{</span>
+          <span class="dl">'</span><span class="s1">client_id</span><span class="dl">'</span><span
+                      class="p">:</span> <span class="nx">config</span><span class="p">.</span><span
+                      class="nx">clientID</span><span
+                      class="p">,</span>
+          <span class="dl">'</span><span class="s1">token</span><span class="dl">'</span><span class="p">:</span> <span
+                      class="nx">req</span><span class="p">.</span><span class="nx">session</span><span
+                      class="p">.</span><span class="nx">token</span>
+        <span class="p">}</span>
+      <span class="p">},</span>
+
+      <span class="c1">// callback</span>
+      <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span
+                      class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span
+                      class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">introspectResponse</span> <span class="o">=</span> <span
+                      class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span
+                      class="p">(</span><span class="nx">body</span><span class="p">);</span>
+
+        <span class="c1">// valid token -&gt; get more user data and send it back to the react app</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">introspectResponse</span><span
+                      class="p">.</span><span class="nx">active</span><span class="p">)</span> <span
+                      class="p">{</span>
+          <span class="nx">request</span><span class="p">(</span>
+            <span class="c1">// GET request to /registration endpoint</span>
+            <span class="p">{</span>
+              <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span
+                      class="s1">GET</span><span class="dl">'</span><span class="p">,</span>
+              <span class="na">uri</span><span class="p">:</span> <span class="s2">`http://localhost:</span><span
+                      class="p">${</span><span class="nx">config</span><span class="p">.</span><span class="nx">fusionAuthPort</span><span
+                      class="p">}</span><span class="s2">/api/user/registration/</span><span class="p">${</span><span
+                      class="nx">introspectResponse</span><span class="p">.</span><span class="nx">sub</span><span
+                      class="p">}</span><span class="s2">/</span><span class="p">${</span><span
+                      class="nx">config</span><span class="p">.</span><span class="nx">applicationID</span><span
+                      class="p">}</span><span class="s2">`</span><span class="p">,</span>
+              <span class="na">json</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+              <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+                <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span
+                      class="p">:</span> <span class="nx">config</span><span class="p">.</span><span
+                      class="nx">apiKey</span>
+              <span class="p">}</span>
+            <span class="p">},</span>
+
+            <span class="c1">// callback</span>
+            <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span
+                      class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span
+                      class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+              <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span>
+                <span class="p">{</span>
+                  <span class="na">token</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="p">...</span><span class="nx">introspectResponse</span><span class="p">,</span>
+                  <span class="p">},</span>
+                  <span class="p">...</span><span class="nx">body</span>
+                <span class="p">}</span>
+              <span class="p">);</span>
+            <span class="p">}</span>
+          <span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="c1">// expired token -&gt; send nothing</span>
+        <span class="k">else</span> <span class="p">{</span>
+          <span class="nx">req</span><span class="p">.</span><span class="nx">session</span><span
+                      class="p">.</span><span class="nx">destroy</span><span class="p">();</span>
+          <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">({});</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="c1">// no token -&gt; send nothing</span>
+  <span class="k">else</span> <span class="p">{</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">({});</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span
+                      class="nx">router</span><span class="p">;</span>
+</code></pre>
+            </div>
+          </div>
+          <p><code class="highlighter-rouge">File: server/routes/user.js</code></p>
+
+          <p>First, the POST request to <code class="highlighter-rouge">/introspect</code>: this endpoint requires our
+            Client ID and, of course, the Access Token we want to decode. Just like the <code
+                    class="highlighter-rouge">token</code> endpoint, this endpoint access form encoded data, so we are
+            using the <code class="highlighter-rouge">form</code> option.</p>
+
+          <p>In the callback from that request, we’ll parse the body into usable JSON and check that <code
+                  class="highlighter-rouge">active</code> value. If it’s good, we’ll go ahead and make the <code
+                  class="highlighter-rouge">/registration</code> request, which requires a User ID (“subscriber” or
+            <code class="highlighter-rouge">sub</code> in OAuth jargon) and our Client ID—we need both, because one
+            user can have different data in each FusionAuth application.</p>
+
+          <p>Note that this step doesn’t actually require an Access Token. The data from FusionAuth’s <code
+                  class="highlighter-rouge">/api/user/registration</code> API can be retrieved for any user, including
+            one that isn’t logged in. You could use this endpoint to show info on a user’s profile or other public
+            page. This API in FusionAuth is not part of the OAuth specification but we added it to our example to show
+            a more complete user data interaction. Also, this API requires that you pass in a FusionAuth API key in
+            the <code class="highlighter-rouge">Authorization</code> header. Our example is pulling the FusionAuth API
+            key from our global <code class="highlighter-rouge">config.js</code> file.</p>
+
+          <p>Finally, in the registration callback, we’ll parse the body returned from <code
+                  class="highlighter-rouge">/registration</code> and <code class="highlighter-rouge">res.send</code>
+            everything back to the React client.</p>
+
+          <p>Now, go through the login process, and you should see “Welcome, [your email address]!”.</p>
+
+          <p>That’s login sorted. The next thing you’ll probably want to tackle is logout.</p>
+
+          <hr>
+
+          <h2 id="3-logging-out">3. Logging Out</h2>
+
+          <p>Just like <code class="highlighter-rouge">/login</code>, we’ll create a <code class="highlighter-rouge">/logout</code>
+            route to make logging out easily accessible anywhere in our React client:</p>
+
+          <div class="highlighter-rouge">
+            <div class="highlight"><pre class="highlight"><code>server
+├─routes
+│ ├─login.js
+│ ├─logout.js*
+│ ├─oauth-callback.js
+│ └─user.js
+└─index.js
+</code></pre>
+            </div>
+          </div>
+
+          <div class="language-js legend highlighter-rouge">
+            <div class="highlight"><pre class="highlight"><code><span class="c1">// ...</span>
+
+<span class="c1">// use routes</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span
+                      class="dl">'</span><span class="s1">/user</span><span class="dl">'</span><span
+                      class="p">,</span> <span class="nx">require</span><span class="p">(</span><span
+                      class="dl">'</span><span class="s1">./routes/user</span><span class="dl">'</span><span
+                      class="p">));</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span
+                      class="dl">'</span><span class="s1">/login</span><span class="dl">'</span><span
+                      class="p">,</span> <span class="nx">require</span><span class="p">(</span><span
+                      class="dl">'</span><span class="s1">./routes/login</span><span class="dl">'</span><span
+                      class="p">));</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span
+                      class="dl">'</span><span class="s1">/oauth-callback</span><span class="dl">'</span><span
+                      class="p">,</span> <span class="nx">require</span><span class="p">(</span><span
+                      class="dl">'</span><span class="s1">./routes/oauth-callback</span><span class="dl">'</span><span
+                      class="p">));</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span
+                      class="dl">'</span><span class="s1">/logout</span><span class="dl">'</span><span
+                      class="p">,</span> <span class="nx">require</span><span class="p">(</span><span
+                      class="dl">'</span><span class="s1">./routes/logout</span><span class="dl">'</span><span
+                      class="p">));</span>
+
+<span class="c1">// ...</span>
+</code></pre>
+            </div>
+          </div>
+          <p><code class="highlighter-rouge">File: server/index.js</code></p>
+
+          <p>Our <code class="highlighter-rouge">/logout</code> route will wipe the user’s saved login by deleting:
+          </p>
+
+          <ul>
+            <li>A browser cookie that connects the browser to the server-side session</li>
+            <li>Our Express server-side session (and the <code class="highlighter-rouge">token</code> we store there)
+            </li>
+            <li>FusionAuth’s OAuth session for that user</li>
+          </ul>
+
+          <p>The first two are accomplished by calling the function <code class="highlighter-rouge">req.session.destroy()</code>.
+            The last is done by redirecting the user to FusionAuth’s <code
+                    class="highlighter-rouge">/ouath2/logout</code> endpoint.</p>
+
+          <div class="language-js legend highlighter-rouge">
+            <div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span
+                    class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span
+                    class="p">(</span><span
+                    class="dl">'</span><span class="s1">express</span><span class="dl">'</span><span
+                    class="p">);</span>
+<span class="kd">const</span> <span class="nx">router</span> <span class="o">=</span> <span
+                      class="nx">express</span><span class="p">.</span><span class="nx">Router</span><span
+                      class="p">();</span>
+<span class="kd">const</span> <span class="nx">config</span> <span class="o">=</span> <span
+                      class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">../../config</span><span
+                      class="dl">'</span><span class="p">);</span>
+
+<span class="nx">router</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span
+                      class="dl">'</span><span class="s1">/</span><span class="dl">'</span><span
+                      class="p">,</span> <span class="p">(</span><span class="nx">req</span><span
+                      class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span
+                      class="o">=&gt;</span> <span class="p">{</span>
+  <span class="c1">// delete the session</span>
+  <span class="nx">req</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span
+                      class="nx">destroy</span><span class="p">();</span>
+
+  <span class="c1">// end FusionAuth session</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">redirect</span><span class="p">(</span><span
+                      class="s2">`http://localhost:</span><span class="p">${</span><span class="nx">config</span><span
+                      class="p">.</span><span class="nx">fusionAuthPort</span><span class="p">}</span><span
+                      class="s2">/oauth2/logout?client_id=</span><span class="p">${</span><span
+                      class="nx">config</span><span class="p">.</span><span class="nx">clientID</span><span
+                      class="p">}</span><span
+                      class="s2">`</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span
+                      class="nx">router</span><span class="p">;</span>
+</code></pre>
+            </div>
+          </div>
+          <p><code class="highlighter-rouge">File: server/routes/logout.js</code></p>
+
+          <p>After cleaning up, FusionAuth will redirect to the React app, because we configured the main entry point
+            of our React app as the <code class="highlighter-rouge">Logout URL</code> in FusionAuth.</p>
+
+          <p>Try it out. You can also watch cookies in your browser’s developer tools to see it working.</p>
+
+          <p>Next, we’ll show how you can modify a user’s registration data from your app (the same data we grab from
+            <code class="highlighter-rouge">/registration</code>).</p>
+
+          <hr>
+
+          <h2 id="4-changing-user-info">4. Changing User Info</h2>
+
+          <p>This last section is not technically part of the OAuth specification or part of the login process.
+            However, I want to illustrate how simple it is to manage user data in FusionAuth.</p>
+
+          <p>FusionAuth allows us to modify everything about a user’s registration (such as their username and
+            assigned roles) by making requests to the <code class="highlighter-rouge">/api/user/registration</code>
+            API. In order to connect our app to FusionAuth’s API, we can use a <code class="highlighter-rouge">/registration</code>
+            endpoint in our Express server that is similar to our <code class="highlighter-rouge">/user</code>
+            endpoint. The only difference is that we’ll use <code class="highlighter-rouge">PUT</code> or <code
+                    class="highlighter-rouge">PATCH</code> to <em>update</em> information instead of <em>retrieve</em>
+            information from FusionAuth.</p>
+
+          <h3 id="setting-user-data-from-express">Setting User Data from Express</h3>
+
+          <p>The last route we’ll make for this example is <code class="highlighter-rouge">/set-user-data</code>:</p>
+
+          <div class="highlighter-rouge">
+            <div class="highlight"><pre class="highlight"><code>server
+├─routes
+│ ├─login.js
+│ ├─logout.js
+│ ├─oauth-callback.js
+│ ├─set-user-data.js*
+│ └─user.js
+└─index.js
+</code></pre>
+            </div>
+          </div>
+
+          <div class="language-js legend highlighter-rouge">
+            <div class="highlight"><pre class="highlight"><code><span class="c1">// ...</span>
+
+<span class="c1">// use routes</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span
+                      class="dl">'</span><span class="s1">/user</span><span class="dl">'</span><span
+                      class="p">,</span> <span class="nx">require</span><span class="p">(</span><span
+                      class="dl">'</span><span class="s1">./routes/user</span><span class="dl">'</span><span
+                      class="p">));</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span
+                      class="dl">'</span><span class="s1">/login</span><span class="dl">'</span><span
+                      class="p">,</span> <span class="nx">require</span><span class="p">(</span><span
+                      class="dl">'</span><span class="s1">./routes/login</span><span class="dl">'</span><span
+                      class="p">));</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span
+                      class="dl">'</span><span class="s1">/oauth-callback</span><span class="dl">'</span><span
+                      class="p">,</span> <span class="nx">require</span><span class="p">(</span><span
+                      class="dl">'</span><span class="s1">./routes/oauth-callback</span><span class="dl">'</span><span
+                      class="p">));</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span
+                      class="dl">'</span><span class="s1">/logout</span><span class="dl">'</span><span
+                      class="p">,</span> <span class="nx">require</span><span class="p">(</span><span
+                      class="dl">'</span><span class="s1">./routes/logout</span><span class="dl">'</span><span
+                      class="p">));</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span
+                      class="dl">'</span><span class="s1">/set-user-data</span><span class="dl">'</span><span
+                      class="p">,</span> <span class="nx">require</span><span class="p">(</span><span
+                      class="dl">'</span><span class="s1">./routes/set-user-data</span><span class="dl">'</span><span
+                      class="p">));</span>
+
+<span class="c1">// ...</span>
+</code></pre>
+            </div>
+          </div>
+          <p><code class="highlighter-rouge">File: server/index.js</code></p>
+
+          <p>In this route, we’ll send the <code class="highlighter-rouge">registration</code> JSON object back to
+            FusionAuth. We’ll use <code class="highlighter-rouge">PATCH</code> instead of <code
+                    class="highlighter-rouge">PUT</code>, which allows us to send only the parts we want to update,
+            instead of the entire <code class="highlighter-rouge">registration</code> object.</p>
+
+          <div class="language-js legend highlighter-rouge">
+            <div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span
+                    class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span
+                    class="p">(</span><span
+                    class="dl">'</span><span class="s1">express</span><span class="dl">'</span><span
+                    class="p">);</span>
+<span class="kd">const</span> <span class="nx">router</span> <span class="o">=</span> <span
+                      class="nx">express</span><span class="p">.</span><span class="nx">Router</span><span
+                      class="p">();</span>
+<span class="kd">const</span> <span class="nx">request</span> <span class="o">=</span> <span
+                      class="nx">require</span><span class="p">(</span><span class="dl">'</span><span
+                      class="s1">request</span><span
+                      class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">config</span> <span class="o">=</span> <span
+                      class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">../../config</span><span
+                      class="dl">'</span><span class="p">);</span>
+
+<span class="nx">router</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span
+                      class="dl">'</span><span class="s1">/</span><span class="dl">'</span><span
+                      class="p">,</span> <span class="p">(</span><span class="nx">req</span><span
+                      class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span
+                      class="o">=&gt;</span> <span class="p">{</span>
+  <span class="c1">// fetch the user using the token in the session so that we have their ID</span>
+  <span class="nx">request</span><span class="p">(</span>
+    <span class="c1">// POST request to /introspect endpoint</span>
+    <span class="p">{</span>
+      <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span
+                      class="dl">'</span><span class="p">,</span>
+      <span class="na">uri</span><span class="p">:</span> <span class="s2">`http://localhost:</span><span
+                      class="p">${</span><span class="nx">config</span><span class="p">.</span><span class="nx">fusionAuthPort</span><span
+                      class="p">}</span><span class="s2">/oauth2/introspect`</span><span class="p">,</span>
+      <span class="na">form</span><span class="p">:</span> <span class="p">{</span>
+        <span class="dl">'</span><span class="s1">client_id</span><span class="dl">'</span><span
+                      class="p">:</span> <span class="nx">config</span><span class="p">.</span><span
+                      class="nx">clientID</span><span
+                      class="p">,</span>
+        <span class="dl">'</span><span class="s1">token</span><span class="dl">'</span><span class="p">:</span> <span
+                      class="nx">req</span><span class="p">.</span><span class="nx">session</span><span
+                      class="p">.</span><span class="nx">token</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+
+    <span class="c1">// callback</span>
+    <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span
+                      class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span
+                      class="o">=&gt;</span> <span class="p">{</span>
+      <span class="kd">let</span> <span class="nx">introspectResponse</span> <span class="o">=</span> <span class="nx">JSON</span><span
+                      class="p">.</span><span class="nx">parse</span><span class="p">(</span><span
+                      class="nx">body</span><span class="p">);</span>
+
+      <span class="nx">request</span><span class="p">(</span>
+        <span class="c1">// PATCH request to /registration endpoint</span>
+        <span class="p">{</span>
+          <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span
+                      class="s1">PATCH</span><span class="dl">'</span><span class="p">,</span>
+          <span class="na">uri</span><span class="p">:</span> <span class="s2">`http://localhost:</span><span class="p">${</span><span
+                      class="nx">config</span><span class="p">.</span><span class="nx">fusionAuthPort</span><span
+                      class="p">}</span><span class="s2">/api/user/registration/</span><span class="p">${</span><span
+                      class="nx">introspectResponse</span><span class="p">.</span><span class="nx">sub</span><span
+                      class="p">}</span><span class="s2">/</span><span class="p">${</span><span
+                      class="nx">config</span><span class="p">.</span><span class="nx">applicationID</span><span
+                      class="p">}</span><span class="s2">`</span><span class="p">,</span>
+          <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+            <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span
+                      class="p">:</span> <span class="nx">config</span><span class="p">.</span><span
+                      class="nx">apiKey</span>
+          <span class="p">},</span>
+          <span class="na">json</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+          <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
+            <span class="dl">'</span><span class="s1">registration</span><span class="dl">'</span><span
+                      class="p">:</span> <span class="p">{</span>
+              <span class="dl">'</span><span class="s1">data</span><span class="dl">'</span><span
+                      class="p">:</span> <span class="nx">req</span><span class="p">.</span><span
+                      class="nx">body</span>
+            <span class="p">}</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+      <span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span
+                      class="nx">router</span><span class="p">;</span>
+</code></pre>
+            </div>
+          </div>
+          <p><code class="highlighter-rouge">File: server/routes/set-user-data.js</code></p>
+
+          <p>In order to ensure that we are updating the user that is currently logged in, we extract the <code
+                  class="highlighter-rouge">token</code> from the Express session and use it to lookup the User object
+            from FusionAuth. This code is very similar to the code in our <code class="highlighter-rouge">/user</code>
+            route. Once the call to the <code class="highlighter-rouge">/oauth2/introspect</code> endpoint in
+            FusionAuth returns, we can call the <code class="highlighter-rouge">/api/user/registration</code> API to
+            update the user’s registration data.</p>
+
+          <p>The data is stored on the <code class="highlighter-rouge">registration</code> object under the property
+            <code class="highlighter-rouge">registration.data</code>, which is an object FusionAuth provides for
+            storing arbitrary data related to a user’s registration in an application. In our case, we are sending the
+            user data from our React app to our Express server via JSON in the body of a POST HTTP message. You’ll see
+            that this code is passing the <code class="highlighter-rouge">req.body</code> through to FusionAuth as the
+            <code class="highlighter-rouge">registration.data</code> property.</p>
+
+          <h3 id="setting-user-data-from-react">Setting User Data from React</h3>
+
+          <p>To connect our new Express route to our React app, we’ll add a <code class="highlighter-rouge">&lt;textarea&gt;</code>
+            to the React client for editing <code class="highlighter-rouge">registration.data.userData</code>. This
+            component will need a method that allows it to <code class="highlighter-rouge">setState</code> within
+            <code class="highlighter-rouge">App</code>. This is where <code class="highlighter-rouge">body</code> (and
+            therefore <code class="highlighter-rouge">registration</code>) is stored in our React client. This means
+            we’ll need add the method to <code class="highlighter-rouge">App</code> and bind it before passing it down
+            as a prop to the <code class="highlighter-rouge">&lt;textarea&gt;</code> component.</p>
+
+          <div class="language-jsx legend highlighter-rouge">
+            <div class="highlight"><pre class="highlight"><code><span class="c1">// ...</span>
+
+<span class="kd">constructor</span><span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span
+                      class="p">{</span>
+  <span class="c1">// ...</span>
+
+  <span class="k">this</span><span class="p">.</span><span class="nx">handleTextInput</span> <span
+                      class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">handleTextInput</span><span
+                      class="p">.</span><span class="nx">bind</span><span class="p">(</span><span
+                      class="k">this</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">handleTextInput</span><span class="p">(</span><span class="nx">event</span><span
+                      class="p">)</span> <span class="p">{</span>
+  <span class="c1">// update this.state.body.registration.data.userData</span>
+  <span class="c1">// save the change in FusionAuth</span>
+<span class="p">}</span>
+
+<span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id=</span><span class="s1">'App'</span><span
+                      class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">header</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>FusionAuth Example: React<span
+                      class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nc">Greeting</span> <span class="na">body=</span><span
+                      class="si">{</span><span class="k">this</span><span class="p">.</span><span
+                      class="nx">state</span><span class="p">.</span><span class="nx">body</span><span
+                      class="si">}</span><span class="p">/&gt;</span>
+        <span class="p">&lt;</span><span class="nc">LogInOut</span> <span class="na">body=</span><span
+                      class="si">{</span><span class="k">this</span><span class="p">.</span><span
+                      class="nx">state</span><span class="p">.</span><span class="nx">body</span><span
+                      class="si">}</span> <span class="na">uri=</span><span class="si">{</span><span class="s2">`http://localhost:${config.serverPort}`</span><span
+                      class="si">}</span><span class="p">/&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">header</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">main</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nc">UserData</span> <span class="na">body=</span><span
+                      class="si">{</span><span class="k">this</span><span class="p">.</span><span
+                      class="nx">state</span><span class="p">.</span><span class="nx">body</span><span
+                      class="si">}</span> <span class="na">handleTextInput=</span><span class="si">{</span><span
+                      class="k">this</span><span class="p">.</span><span class="nx">handleTextInput</span><span
+                      class="si">}</span><span class="p">/&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">main</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// ...</span>
+</code></pre>
+            </div>
+          </div>
+          <p><code class="highlighter-rouge">File: client/app/index.js</code></p>
+
+          <p>The method itself is simple: <code class="highlighter-rouge">event.target.value</code> will be the
+            contents of the <code class="highlighter-rouge">&lt;textarea&gt;</code>. We apply that value to <code
+                    class="highlighter-rouge">registration.data</code> and use <code
+                    class="highlighter-rouge">setState</code>
+            to update the value in React. We also have to update it on the FusionAuth side, so we can retrieve it with
+            <code class="highlighter-rouge">/user</code>, hence our Express route at <code class="highlighter-rouge">/set-user-data</code>.
+          </p>
+
+          <div class="language-js legend highlighter-rouge">
+            <div class="highlight"><pre class="highlight"><code><span class="c1">// ...</span>
+
+<span class="nx">handleTextInput</span><span class="p">(</span><span class="nx">event</span><span
+                      class="p">)</span> <span class="p">{</span>
+    <span class="c1">// update this.state.body.registration.data.userData</span>
+    <span class="kd">let</span> <span class="nx">body</span> <span class="o">=</span> <span class="k">this</span><span
+                      class="p">.</span><span class="nx">state</span><span class="p">.</span><span
+                      class="nx">body</span><span class="p">;</span>
+    <span class="nx">body</span><span class="p">.</span><span class="nx">registration</span><span
+                      class="p">.</span><span class="nx">data</span> <span class="o">=</span> <span
+                      class="p">{</span><span
+                      class="na">userData</span><span class="p">:</span> <span class="nx">event</span><span
+                      class="p">.</span><span
+                      class="nx">target</span><span class="p">.</span><span class="nx">value</span><span
+                      class="p">};</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">(</span>
+      <span class="p">{</span>
+        <span class="na">body</span><span class="p">:</span> <span class="nx">body</span>
+      <span class="p">});</span>
+
+    <span class="c1">// save the change in FusionAuth</span>
+    <span class="nx">fetch</span><span class="p">(</span><span class="s2">`http://localhost:</span><span
+                      class="p">${</span><span class="nx">config</span><span class="p">.</span><span class="nx">serverPort</span><span
+                      class="p">}</span><span class="s2">/set-user-data`</span><span class="p">,</span>
+          <span class="p">{</span>
+            <span class="na">credentials</span><span class="p">:</span> <span class="dl">'</span><span class="s1">include</span><span
+                      class="dl">'</span><span class="p">,</span>
+            <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span
+                      class="dl">'</span><span class="p">,</span>
+            <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+              <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span
+                      class="p">:</span> <span class="dl">'</span><span class="s1">application/json</span><span
+                      class="dl">'</span>
+            <span class="p">},</span>
+            <span class="na">body</span><span class="p">:</span> <span class="nx">JSON</span><span
+                      class="p">.</span><span class="nx">stringify</span><span class="p">(</span>
+              <span class="p">{</span>
+                <span class="na">userData</span><span class="p">:</span> <span class="nx">event</span><span
+                      class="p">.</span><span class="nx">target</span><span class="p">.</span><span
+                      class="nx">value</span>
+              <span class="p">})</span>
+          <span class="p">});</span>
+<span class="p">}</span>
+
+<span class="c1">// ...</span>
+</code></pre>
+            </div>
+          </div>
+          <p><code class="highlighter-rouge">File: client/app/index.js</code></p>
+
+          <p>The last thing to do is add the <code class="highlighter-rouge">UserData</code> component, which will be
+            a <code class="highlighter-rouge">&lt;textarea&gt;</code>. We can lock it using the <code
+                    class="highlighter-rouge">readonly</code> attribute when there’s no user logged in, and we can
+            apply our <code class="highlighter-rouge">handleTextInput</code> method to the <code
+                    class="highlighter-rouge">onChange</code> event.</p>
+
+          <div class="highlighter-rouge">
+            <div class="highlight"><pre class="highlight"><code>client
+└─app
+  ├─components
+  │ ├─Greeting.js
+  │ ├─LogInOut.js
+  │ └─UserData.js*
+  └─index.js
+</code></pre>
+            </div>
+          </div>
+
+          <div class="language-jsx legend highlighter-rouge">
+            <div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span
+                    class="nx">React</span> <span class="k">from</span> <span class="dl">'</span><span
+                    class="s1">react</span><span
+                    class="dl">'</span><span class="p">;</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="kd">class</span> <span
+                      class="nx">LogInOut</span> <span class="kd">extends</span> <span class="nx">React</span><span
+                      class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span
+                      class="p">{</span>
+    <span class="k">super</span><span class="p">(</span><span class="nx">props</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// placeholder text for the textarea</span>
+    <span class="kd">let</span> <span class="nx">placeholder</span> <span class="o">=</span> <span
+                      class="dl">'</span><span class="s1">Anything you type in here will be saved to your FusionAuth user data.</span><span
+                      class="dl">'</span><span class="p">;</span>
+
+    <span class="c1">// textarea (locked if user not logged in)</span>
+    <span class="kd">let</span> <span class="nx">input</span> <span class="o">=</span> <span class="p">(</span><span
+                      class="k">this</span><span class="p">.</span><span class="nx">props</span><span
+                      class="p">.</span><span class="nx">body</span><span class="p">.</span><span
+                      class="nx">user</span><span class="p">)</span>
+      <span class="p">?</span> <span class="p">&lt;</span><span class="nt">textarea</span> <span
+                      class="na">placeholder=</span><span class="si">{</span><span class="nx">placeholder</span><span
+                      class="si">}</span> <span class="na">onChange=</span><span class="si">{</span><span
+                      class="k">this</span><span
+                      class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">handleTextInput</span><span
+                      class="si">}</span><span class="p">&gt;&lt;/</span><span class="nt">textarea</span><span
+                      class="p">&gt;</span>
+      <span class="p">:</span> <span class="p">&lt;</span><span class="nt">textarea</span> <span
+                      class="na">placeholder=</span><span class="si">{</span><span class="nx">placeholder</span><span
+                      class="si">}</span> <span class="nt">readOnly</span><span class="p">&gt;&lt;/</span><span
+                      class="nt">textarea</span><span class="p">&gt;;</span>
+
+    <span class="c1">// JSX return</span>
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id=</span><span
+                      class="s1">'UserData'</span><span class="p">&gt;</span>
+        <span class="si">{</span><span class="nx">input</span><span class="si">}</span>
+      <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+            </div>
+          </div>
+          <p><code class="highlighter-rouge">File: client/app/components/UserData.js</code></p>
+
+          <p>Once everything is hooked up, you can test it out by typing something into the <code
+                  class="highlighter-rouge">&lt;textarea&gt;</code> in the React app and then verifying that the data
+            is updated in FusionAuth. The user data is displayed in FusionAuth on the Manage page for the user under
+            the <code class="highlighter-rouge">User data</code> tab:</p>
+
+          <p><img src="/assets/img/blogs/fusionauth-example-react/admin-user-data.png" alt="" class="img-fluid"
+                  style=""></p>
+
+          <p>However, it’s a good idea to set the <code class="highlighter-rouge">&lt;textarea&gt;</code>’s <code
+                  class="highlighter-rouge">defaultValue</code> to the <code class="highlighter-rouge">userData</code>.
+            This has two advantages: first, it allows us to inspect <code class="highlighter-rouge">userData</code>
+            and confirm that it’s maintained; second, it allows the user to edit the <code class="highlighter-rouge">userData</code>,
+            rather than overwrite it each time.</p>
+
+          <div class="language-js legend highlighter-rouge">
+            <div class="highlight"><pre class="highlight"><code><span class="c1">// ...</span>
+
+<span class="c1">// the user's data.userData (or an empty string if uninitialized)</span>
+<span class="kd">let</span> <span class="nx">userData</span> <span class="o">=</span> <span class="p">(</span><span
+                      class="k">this</span><span class="p">.</span><span class="nx">props</span><span
+                      class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">registration</span> <span
+                      class="o">&amp;&amp;</span> <span class="k">this</span><span class="p">.</span><span class="nx">props</span><span
+                      class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">registration</span><span
+                      class="p">.</span><span class="nx">data</span><span class="p">)</span>
+  <span class="p">?</span> <span class="k">this</span><span class="p">.</span><span class="nx">props</span><span
+                      class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">registration</span><span
+                      class="p">.</span><span class="nx">data</span><span class="p">.</span><span
+                      class="nx">userData</span>
+  <span class="p">:</span> <span class="dl">''</span><span class="p">;</span>
+
+<span class="c1">// textarea (locked if user not logged in)</span>
+<span class="kd">let</span> <span class="nx">input</span> <span class="o">=</span> <span class="p">(</span><span
+                      class="k">this</span><span class="p">.</span><span class="nx">props</span><span
+                      class="p">.</span><span class="nx">body</span><span class="p">.</span><span
+                      class="nx">user</span><span class="p">)</span>
+  <span class="p">?</span> <span class="o">&lt;</span><span class="nx">textarea</span> <span
+                      class="nx">placeholder</span><span class="o">=</span><span class="p">{</span><span class="nx">placeholder</span><span
+                      class="p">}</span> <span class="nx">onChange</span><span class="o">=</span><span
+                      class="p">{</span><span class="k">this</span><span class="p">.</span><span
+                      class="nx">props</span><span class="p">.</span><span class="nx">handleTextInput</span><span
+                      class="p">}</span> <span class="nx">defaultValue</span><span class="o">=</span><span
+                      class="p">{</span><span class="nx">userData</span><span class="p">}</span><span
+                      class="o">&gt;&lt;</span><span
+                      class="sr">/textarea</span><span class="err">&gt;
+</span>  <span class="p">:</span> <span class="o">&lt;</span><span class="nx">textarea</span> <span class="nx">placeholder</span><span
+                      class="o">=</span><span class="p">{</span><span class="nx">placeholder</span><span
+                      class="p">}</span> <span class="nx">readOnly</span><span class="o">&gt;&lt;</span><span
+                      class="sr">/textarea&gt;</span><span class="err">;
+</span>
+<span class="c1">// ...</span>
+</code></pre>
+            </div>
+          </div>
+          <p><code class="highlighter-rouge">File: client/app/components/UserData.js</code></p>
+
+          <p>Type in whatever you want and watch the value change. You can log in and out as much as you want, and
+            FusionAuth will maintain the user’s data.</p>
+
+          <hr>
+
+          <h2 id="5-what-next">5. What Next?</h2>
+
+          <p>Our React app can log in, log out, and modify user data. You might be wondering what’s next. Here are a
+            few next steps you can take:</p>
+
+          <ul>
+            <li>You’ll probably want to let users <a
+                    href="https://fusionauth.io/docs/v1/tech/apis/registrations#create-a-user-and-registration-combined">register
+              from the app itself</a>, instead of manually adding them via the admin panel.
+            </li>
+            <li>Maybe you want to <a href="https://fusionauth.io/docs/v1/tech/apis/themes">change how the FusionAuth
+              login form looks</a>.
+            </li>
+            <li>For extra security, you can <a href="https://fusionauth.io/docs/v1/tech/apis/two-factor">enable and
+              send two-factor codes</a>.
+            </li>
+            <li>You can even let users log in via a third-party, like <a
+                    href="https://fusionauth.io/docs/v1/tech/apis/identity-providers/facebook">Facebook</a> or <a
+                    href="https://fusionauth.io/docs/v1/tech/apis/identity-providers/google">Google</a>.
+            </li>
+          </ul>
+
+          <p>In all of these cases, remember what you learned from this example:</p>
+
+          <ol>
+            <li>Create a new routes in Express</li>
+            <li>Make requests to the relevant FusionAuth endpoints (including any parameters listed in the docs) and
+              send data to React with <code class="highlighter-rouge">res.send</code></li>
+            <li>Use <code class="highlighter-rouge">fetch</code> to call your Express routes from React, and save the
+              response using <code class="highlighter-rouge">setState</code></li>
+          </ol>
+
+          <p>Check out the <a href="https://fusionauth.io/docs/v1/tech/apis/">FusionAuth APIs</a> for even more
+            options.</p>
+
+          <p>Happy coding!</p>
+
+
+        </div>
+        <div class="post-body-comments">
+          <div id="hyvor-talk-view" style="max-width: 100%;">
+            <iframe src="https://talk.hyvor.com/web-api/iframes/comments?websiteId=360&amp;webpageIdentifier=https%3A%2F%2Ffusionauth.io%2Fblog%2F2020%2F03%2F10%2Fsecurely-implement-oauth-in-react&amp;webpageURL=https%3A%2F%2Ffusionauth.io%2Fblog%2F2020%2F03%2F10%2Fsecurely-implement-oauth-in-react&amp;hostname=fusionauth.io&amp;port=&amp;protocol=https%3A&amp;title=How%20to%20Securely%20Implement%20OAuth%20in%20React%20-%20FusionAuth"
+                    id="hyvor-talk-iframe" name="hyvor-talk-iframe" allowtranparency="true" tabindex="0"
+                    scrolling="no" frameborder="0"
+                    style="width: 1px; min-width: 100%; height: 741px; border: none; -webkit-user-select: none; visibility: visible;"></iframe>
+          </div>
+          <script type="text/javascript">
+            var HYVOR_TALK_WEBSITE = 360; // DO NOT CHANGE THIS
+            var HYVOR_TALK_CONFIG = {
+              url: false,
+              id: false
+            };
+          </script>
+          <script async="" type="text/javascript" src="//talk.hyvor.com/web-api/embed"></script>
+          <!--              <div class="just-comments" data-apikey="edc7b4a8-97ce-47ba-9e21-0477407197ef"></div>-->
+          <!--              <script async src="https://just-comments.com/w.js"></script>-->
+        </div>
+      </article>
+      <aside class="col-xs-0 col-lg-3">
+        <h2>Recent Posts</h2>
+        <ul>
+          <li><a href="#">Foo bar baz</a></li>
+          <li><a href="#">Foo bar baz</a></li>
+          <li><a href="#">Foo bar baz</a></li>
+          <li><a href="#">Foo bar baz</a></li>
+          <li><a href="#">Foo bar baz</a></li>
+        </ul>
+        <h2>Additional Resources</h2>
+        <ul>
+          <li><a href="#">Foo bar baz</a></li>
+          <li><a href="#">Foo bar baz</a></li>
+          <li><a href="#">Foo bar baz</a></li>
+          <li><a href="#">Foo bar baz</a></li>
+          <li><a href="#">Foo bar baz</a></li>
+        </ul>
+        <div class="dark card centered">
+          <img src="/images/logo-white.svg" alt="FusionAuth logo">
+          <p>
+            FusionAuth provides authentication, authorization, and user management for any app: deploy anywhere, integrate with anything, in minutes.
+          </p>
+          <a href="#" class="orange brochure button">GET STARTED</a>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>

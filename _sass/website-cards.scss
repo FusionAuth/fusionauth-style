@@ -71,10 +71,20 @@
   overflow: hidden;
   padding: 20px;
 
+  &.dark {
+    background: $gray-7;
+    color: white;
+  }
+
   &.even {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+  }
+
+  &.light-gray {
+    background: $gray-1;
+    color: $body-font-color;
   }
 
   &.trading {
@@ -87,11 +97,6 @@
       margin: 25px 0 13px 0;
       text-align: center;
     }
-  }
-
-  &.light-gray {
-    background: $gray-1;
-    color: $body-font-color;
   }
 
   &.white {

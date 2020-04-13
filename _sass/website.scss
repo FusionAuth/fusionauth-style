@@ -63,6 +63,11 @@ body {
   --super-dropdown-arrow-left: 0px;
 }
 
+// As a baseline
+h1 {
+  margin-top: 0;
+}
+
 
 /* Header
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
@@ -1096,6 +1101,102 @@ section.docs {
   }
 }
 
+/* Blog
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.blog {
+  a, a:hover, a:link, a:visited {
+    color: $orange-medium;
+  }
+
+  aside {
+    h2:first-of-type {
+      margin-top: 0;
+    }
+
+    h2 {
+      font-weight: 600;
+    }
+
+    ul {
+      list-style: none;
+      margin: 0 0 40px 0;
+      padding: 0;
+
+      li {
+        margin-bottom: 20px;
+      }
+    }
+  }
+
+  img {
+    margin-bottom: 20px;
+    max-width: 100%;
+  }
+
+  .author-date {
+    color: $gray-5;
+    font-style: italic;
+  }
+
+  .blog-snippet {
+    a.read-more, a.read-more:hover, a.read-more:link, a.read-more:visited {
+      color: $gray-7;
+      display: inline-block;
+      font-weight: 600;
+      margin-top: 20px;
+
+      i {
+        color: $orange-medium;
+        margin-left: 10px;
+      }
+    }
+
+    h2 {
+      margin-top: 0;
+    }
+  }
+
+  .dark.card {
+    p {
+      margin-bottom: 40px;
+    }
+  }
+
+  .info {
+    margin-bottom: 40px;
+  }
+
+  .pagination {
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+      li {
+        display: inline-block;
+        margin: 0;
+        padding: 0;
+
+        @include media(md) {
+          &:first-child {
+            margin-right: 30px;
+          }
+
+          &:last-of-type {
+            margin-left: 30px;
+          }
+        }
+
+        a.active {
+          background: $orange-medium;
+          border-color: $orange-medium;
+          color: white;
+        }
+      }
+    }
+  }
+}
 
 /* Footer
 –––––––––––––––––––––––––––––––––––––––––––––––––– */

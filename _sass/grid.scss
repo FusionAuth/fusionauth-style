@@ -44,6 +44,7 @@
     flex: 0 0 auto;
     margin-right: $grid-spacing;
     margin-left: $grid-spacing;
+    overflow: inherit;
 
     &.tight-left {
       margin-left: 0;
