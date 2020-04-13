@@ -796,6 +796,307 @@ section {
   }
 }
 
+
+/* Docs
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+@mixin caption($display, $padding-bottom) {
+  display: $display;
+  font-style: italic;
+  margin-bottom: 0;
+  padding-bottom: $padding-bottom;
+  padding-top: 20px;
+  text-align: left;
+}
+
+section.docs {
+  padding: 0;
+
+  @include media(lg) {
+    padding-top: 50px;
+  }
+
+  a, a:hover, a:link, a:visited {
+    color: $orange-medium;
+    text-decoration: underline;
+  }
+
+  aside {
+    width: 100%;
+
+    > a {
+      background: $gray-7;
+      border-top: 1px solid $gray-6;
+      color: white !important;
+      display: block;
+      font-weight: 600;
+      padding: 10px 20px;
+      text-decoration: none !important;
+      width: 100%;
+
+      @include media(lg) {
+        display: none;
+      }
+
+      i {
+        float: right;
+      }
+    }
+
+    nav {
+      background: $gray-1;
+      display: none;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+
+      @include media(lg) {
+        border-radius: 5px;
+        display: block;
+      }
+
+      a, a:hover, a:link, a:visited {
+        color: $gray-6;
+        text-decoration: none;
+
+        @include media(lg) {
+          font-size: 12px;
+        }
+
+        &.active {
+          border-left: 3px solid $orange-medium;
+        }
+
+        &.first {
+          border-top-left-radius: 5px;
+        }
+
+        &.last {
+          border-bottom-left-radius: 5px;
+        }
+      }
+
+      i {
+        margin-right: 10px;
+
+        &.fa-chevron-down, &.fa-chevron-up {
+          float: right;
+        }
+      }
+
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        li {
+          a {
+            display: block;
+            padding: 10px;
+          }
+
+          ul {
+            display: none;
+
+            li {
+              a {
+                padding-left: 40px;
+              }
+
+              li a {
+                padding-left: 80px;
+              }
+            }
+          }
+        }
+
+        ul {
+          li:last-of-type {
+            padding-bottom: 0;
+          }
+        }
+      }
+    }
+  }
+
+  article {
+    padding-left: 20px;
+
+    dl.api {
+      border-bottom: 1px solid $gray-2;
+      border-top: 1px solid $gray-2;
+      padding: 10px 0 0 0;
+      margin-bottom: 40px;
+
+      p {
+        margin: 5px 0 20px 0;
+      }
+
+      ul {
+        li {
+          p {
+            margin: 7px 0; // Override for lists
+            padding: 0;
+          }
+        }
+      }
+
+      dt {
+        span:not(:last-of-type) {
+          margin-right: 10px;
+        }
+
+        .default {
+          display: inline-block;
+          color: $gray-5;
+          font-size: 12px;
+          font-style: italic;
+        }
+
+        .deprecated {
+          color: $red-dark;
+          font-weight: 500;
+          text-transform: uppercase;
+        }
+
+        .field {
+          display: inline-block;
+          font-weight: 500;
+        }
+
+        .optional {
+          color: $gray-5;
+          display: inline-block;
+          font-size: 13px;
+          text-transform: uppercase;
+        }
+
+        .required {
+          color: $orange-medium;
+          font-weight: 500;
+          text-transform: uppercase;
+        }
+
+        .since {
+          color: $green-medium;
+          text-transform: uppercase;
+        }
+
+        .type {
+          color: $blue-medium;
+          display: inline-block;
+          font-family: monospace;
+        }
+      }
+    }
+
+    h1 {
+      font-size: 36px;
+      line-height: 40px;
+
+      @include media(lg) {
+        margin-top: 0;
+      }
+    }
+
+    h2 {
+      font-size: 24px;
+      line-height: 28px;
+    }
+
+    h3 {
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 24px;
+    }
+
+    h4 {
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 22px;
+    }
+
+    // Spacing trick for adjusting # anchors down below the fixed header
+    h1[id]::before, h2[id]::before, h3[id]::before, h4[id]::before, h5[id]::before, h6[id]::before {
+      content: "";
+      display: block;
+      height: 10rem;
+      margin-top: -10rem;
+      visibility: hidden;
+    }
+
+    p {
+      margin: 20px 0;
+    }
+
+    section {
+      padding: 30px 0;
+    }
+
+    table {
+      border-collapse: collapse;
+      margin: 20px 0;
+
+      caption {
+        @include caption(table-caption, 20px);
+        display: table-caption;
+      }
+
+      tr {
+        td {
+          border: 1px solid $gray-2;
+          border-spacing: 0;
+          padding: 0 15px;
+        }
+      }
+    }
+
+    .api-authentication {
+      border-bottom: 1px solid $gray-2;
+      font-weight: 600;
+      margin-top: 40px;
+      padding-bottom: 5px;
+
+      i {
+        font-size: 18px;
+        margin-right: 10px;
+
+        &.fa-lock {
+          color: $red-dark;
+        }
+      }
+    }
+
+    .caption {
+      @include caption(block, 0);
+    }
+
+    .endpoint {
+      .content {
+        background: $gray-7;
+        color: white;
+        font-weight: 500;
+        margin-bottom: 40px;
+        padding: 10px;
+
+        code {
+          color: $green-light;
+        }
+
+        p {
+          margin: 0;
+          padding: 0;
+        }
+
+        .method {
+          color: $orange-light;
+        }
+      }
+    }
+  }
+}
+
+
 /* Footer
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
