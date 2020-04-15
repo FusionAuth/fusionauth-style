@@ -118,11 +118,15 @@ a {
 }
 
 .monospace {
-  font-family: "Lucida Console", Monaco, monospace;
+  font-family: $monospace-font-stack;
 
   &.light {
-    font-family: "Courier New", Courier, monospace;
+    font-family: $monospace-light-font-stack
   }
+}
+
+code, kbd, pre, samp {
+  @extend .monospace;
 }
 
 .blue-text {

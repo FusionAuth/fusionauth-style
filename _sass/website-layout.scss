@@ -1,0 +1,645 @@
+/*
+ * Copyright (c) 2017-2019, FusionAuth, All Rights Reserved
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
+ * either express or implied. See the License for the specific
+ * language governing permissions and limitations under the License.
+ */
+
+@import 'buttons';
+@import 'colors';
+@import 'mixins';
+@import 'variables';
+@import 'website-variables';
+
+
+/* Overall application layout
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+  min-height: 100%;
+  width: 100%;
+}
+
+body {
+  background: $gray-7;
+  color: $body-font-color;
+  font: 14px/20px $font-stack;
+  height: 100%;
+  min-height: 100%;
+  overflow-x: hidden;
+  position: relative;
+  width: 100%;
+  -webkit-font-smoothing: antialiased;
+
+  &.dark {
+    background: $gray-7;
+  }
+
+  &.nav-open {
+    overflow-y: hidden;
+    height: 100vh;
+
+    .main.hero {
+      height: 100vh;
+    }
+  }
+}
+
+:root {
+  --super-dropdown-arrow-left: 0px;
+}
+
+// As a baseline
+h1 {
+  margin-top: 0;
+}
+
+
+/* Header
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+header.page-header {
+  display: block;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  top: -120px; // Ignored when un-scrolled and position is "inherit"
+  z-index: 100;
+
+  // Scroll animation
+  &.animate {
+    transition: top 1s ease-in;
+  }
+
+  // Scroll fixed header
+  &.gray {
+    background: $gray-7;
+    position: fixed;
+    top: 0;
+    width: 100%;
+
+    img.logo {
+      filter: brightness(1) invert(0);
+    }
+
+    i {
+      color: $orange-medium;
+    }
+  }
+
+  // For standard website where there is no hero and the nav is gray, white and orange
+  &.gray-fixed {
+    background: $gray-7;
+
+    img.logo {
+      filter: brightness(1) invert(0);
+    }
+
+    i {
+      color: $orange-medium;
+    }
+  }
+
+  > .container {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  img.logo {
+    filter: brightness(0) invert(1);
+    height: 45px;
+    padding-left: 5px;
+  }
+
+  a.menu-close.button {
+    display: inline-block;
+  }
+
+  nav {
+    background: white;
+    display: none;
+    height: 100%;
+    left: 0;
+    overflow-y: scroll;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+
+    @include media('lg') {
+      background: transparent;
+      display: inline-block !important;
+      overflow-y: inherit;
+      position: inherit;
+      width: unset;
+    }
+
+    &.open {
+      display: block;
+    }
+
+    header {
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
+
+      @include media('lg') {
+        display: none;
+      }
+
+      img.logo {
+        filter: none;
+        height: 45px;
+        margin: 15px 0 15px 20px;
+        padding: 0;
+      }
+
+      a, a:hover, a:visited, a:link {
+        color: $gray-7;
+        margin-right: 20px;
+      }
+    }
+
+    > ul {
+      border-top: 1px solid $gray-4;
+      list-style: none;
+      margin-block-start: 0;
+      margin-block-end: 0;
+      padding: 40px 0 0 50px;
+
+      @include media('lg') {
+        border-top: none;
+        padding: 0;
+      }
+
+      li {
+        display: block;
+        padding-bottom: 30px;
+
+        @include media('lg') {
+          display: inline-block;
+          padding-bottom: 0;
+          padding-left: 30px;
+          vertical-align: middle;
+        }
+
+        a, a:hover, a:visited, a:link {
+          color: $gray-7;
+          font-size: 24px;
+          font-weight: 600;
+
+          @include media('lg') {
+            color: #fff;
+            font-size: 14px;
+            font-weight: 600;
+          }
+
+          &.account span {
+            display: block;
+
+            @include media(lg) {
+              display: none;
+            }
+          }
+
+          &.account i {
+            display: none;
+
+            @include media(lg) {
+              display: inline-block;
+            }
+          }
+        }
+      }
+    }
+
+    .super-dropdown {
+      background: transparent;
+      color: $gray-7;
+      display: none;
+
+      @include media('lg') {
+        background: white;
+        box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
+        position: absolute;
+        left: 0;
+        padding: 20px 0;
+        top: 65px;
+        width: 100%
+      }
+
+      &::after {
+        border-color: transparent transparent #ffffff transparent;
+        border-style: solid;
+        border-width: 0 18px 10px 18px;
+        content: '';
+        height: 0;
+        position: absolute;
+        left: var(--super-dropdown-arrow-left);
+        top: -10px;
+        width: 0;
+        z-index: 9998;
+      }
+
+      &.animate {
+        opacity: 0;
+        max-height: 100px;
+        transition: opacity 250ms ease-in, max-height 250ms ease-in;
+      }
+
+      &.animate-apply {
+        opacity: 1;
+        max-height: 500px;
+      }
+
+      &.open {
+        display: block;
+      }
+
+      .container {
+        margin-top: 20px;
+        width: 100%;
+
+        @include media('lg') {
+          display: flex;
+          justify-content: center;
+          width: 900px;
+        }
+      }
+
+      .promo {
+        display: none;
+        font-size: 12px;
+
+        span {
+          margin-bottom: 20px;
+        }
+
+        img {
+          display: block;
+          margin-bottom: 20px;
+          height: 70px;
+        }
+
+        @include media('lg') {
+          display: block;
+          padding: 0 20px;
+        }
+      }
+
+      .items {
+        margin: 0;
+        padding: 0;
+
+        @include media('lg') {
+          border-left: 1px solid $gray-4;
+        }
+
+        ul {
+          padding: 0;
+          width: 275px;
+
+          li {
+            display: block;
+            padding-bottom: 20px;
+
+            a, a:hover, a:visited, a:link {
+              color: $gray-7;
+              font-size: 18px;
+
+              @include media('lg') {
+                font-size: 12px;
+              }
+            }
+          }
+        }
+      }
+
+      .animate {
+        opacity: 0;
+        transform: translateX(50px);
+        transition: opacity 250ms linear, transform 250ms linear;
+      }
+
+      .animate-apply {
+        opacity: 1;
+        transform: translateX(0px);
+      }
+    }
+  }
+
+  a.menu-open.button {
+    color: white;
+
+    @include media('lg') {
+      display: none;
+    }
+  }
+}
+
+
+/* Sections (except heroes)
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+section {
+  padding-bottom: 90px;
+  padding-top: 90px;
+
+  &.blue {
+    background: $blue-section-gradient;
+    color: white;
+
+    a, a:hover, a:visited, a:link {
+      color: white;
+    }
+  }
+
+  &.gray {
+    background: $gray-7;
+    color: white;
+
+    a, a:hover, a:visited, a:link {
+      color: white;
+    }
+  }
+
+  &.orange {
+    background: $orange-section-gradient;
+    color: white;
+
+    a, a:hover, a:visited, a:link {
+      color: white;
+    }
+  }
+
+  &.purple {
+    background: $purple-section-gradient;
+    color: white;
+
+    a, a:hover, a:visited, a:link {
+      color: white;
+    }
+  }
+
+  &.white {
+    //background: transparent;
+    background: white;
+    color: $body-font-color;
+  }
+
+  &:not(.main) {
+    .container {
+      > *:not(:last-child) {
+        margin-bottom: 75px;
+      }
+    }
+  }
+}
+
+
+/* Footer
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+body > footer:last-of-type {
+  background: $gray-7;
+  color: white;
+
+  div.container {
+    padding-top: 20px;
+  }
+
+  h2 {
+    border-bottom: 1px solid $gray-6;
+    color: $gray-4;
+    font-size: 16px;
+    font-weight: 700;
+    margin: 20px 20px 20px 0;
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    a, a:hover, a:visited, a:link {
+      color: white;
+      font-weight: 500;
+
+      i {
+        color: $gray-4;
+      }
+    }
+  }
+
+  .promo {
+    margin-top: 30px;
+
+    @include media(md) {
+      margin-top: 65px;
+    }
+
+    .newsletter {
+      strong {
+        display: inline-block;
+        margin-bottom: 10px;
+        margin-right: 20px;
+      }
+
+      form {
+        display: inline-block;
+
+        input[type=text] {
+          padding: 12px;
+          margin-bottom: 10px;
+          width: 300px;
+        }
+
+        input[type=submit] {
+          font-weight: 700;
+          margin-bottom: 10px;
+          padding: 13px 15px;
+        }
+      }
+
+      em {
+        display: block;
+        font-size: 12px;
+        margin-top: 5px;
+      }
+    }
+  }
+
+  > div.container:last-of-type {
+    padding-bottom: 50px;
+  }
+}
+
+.feature-details {
+  &.card {
+    padding: 0;
+  }
+
+  header {
+    align-items: center;
+    background: $gray-1;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0;
+    padding: 30px;
+
+    h2 {
+      margin: 0;
+    }
+
+    p {
+      font-size: 16px;
+      font-weight: 500;
+      margin: 0;
+    }
+  }
+
+  .collapse-button {
+    color: $orange-medium;
+  }
+
+  > .collapsible-content {
+    display: none;
+    overflow-x: scroll;
+
+    @include media(md) {
+      overflow-x: hidden;
+    }
+  }
+
+  table {
+    border: none;
+    border-collapse: collapse;
+    width: 100%;
+
+    td {
+      font-size: 16px;
+      font-weight: 500;
+      padding: 20px 35px;
+
+      &:not(:first-of-type) {
+        text-align: center;
+      }
+
+      &:nth-of-type(2) {
+        color: $purple-light;
+      }
+
+      &:nth-of-type(3) {
+        color: $blue-light;
+      }
+
+      &:nth-of-type(4) {
+        color: $orange-light;
+      }
+    }
+
+    th {
+      padding: 20px 0;
+    }
+
+    tr {
+      &:nth-of-type(odd) {
+        td {
+          background: $gray-1;
+        }
+      }
+
+      td:not(last) {
+        border-right: 1px solid $gray-3;
+      }
+    }
+
+    .category td {
+      background: $gray-7 !important;
+      color: white;
+      font-size: 16px;
+      font-weight: 600;
+    }
+  }
+}
+
+.card.login {
+  background: $gray-1;
+  padding-bottom: 40px;
+  width: 360px;
+
+  a {
+    display: block;
+    text-align: center;
+    text-decoration: underline;
+  }
+
+  a.forgot, a.forgot:hover, a.forgot:link, a.forgot:visited {
+    color: $gray-5;
+  }
+
+  h1 {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 16px;
+    margin: 10px 0 30px 0;
+    padding: 0;
+    text-align: center;
+  }
+
+  h2 {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 14px;
+    margin: 0 0 10px 0;
+    padding: 0;
+    text-align: center;
+  }
+
+  hr {
+    margin: 40px 0;
+  }
+
+  .button {
+    font-weight: 600;
+    width: 100%;
+  }
+}
+
+.powered-by {
+  color: white;
+  margin-top: 50px;
+  text-align: center;
+
+  img {
+    vertical-align: middle;
+  }
+
+  strong {
+    margin-right: 20px;
+    vertical-align: middle;
+  }
+}
+
+
+/* Font Awesome fixes
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.fa-fw.fa-2x, .fa-fw.fa-3x, .fa-fw.fa-4x, .fa-fw.fa-5x {
+  min-height: 1.04em;
+}

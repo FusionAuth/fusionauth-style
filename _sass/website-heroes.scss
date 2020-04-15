@@ -1,0 +1,168 @@
+/*
+ * Copyright (c) 2017-2019, FusionAuth, All Rights Reserved
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
+ * either express or implied. See the License for the specific
+ * language governing permissions and limitations under the License.
+ */
+
+@import 'mixins';
+
+
+/* Heroes
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.hero {
+  overflow-y: hidden;
+  position: relative;
+
+  &.main {
+    padding: 0;
+
+    .content {
+      padding: 100px 0 125px 0;
+    }
+  }
+
+  &.homepage .content {
+    @include media(lg) {
+      padding: 150px 0;
+    }
+  }
+
+  header {
+    margin-bottom: 0;
+  }
+
+  .content {
+    position: relative;
+    z-index: 2;
+  }
+
+  .text {
+    h1 {
+      font-weight: 600;
+    }
+
+    p {
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 1.3em;
+      margin-bottom: 20px;
+    }
+
+    p.preface {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 0;
+      margin-top: 0;
+      padding: 0;
+
+      + h1 {
+        margin-top: 0;
+      }
+    }
+
+    a.button {
+      margin-top: 20px;
+    }
+  }
+}
+
+.hero-image {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  opacity: 0.7;
+  overflow-x: hidden;
+  position: absolute;
+  z-index: 1;
+
+  @include media(lg) {
+    opacity: 1;
+  }
+
+  &.bottom {
+    bottom: 0;
+
+    @include media(lg) {
+      margin-bottom: 20px;
+    }
+  }
+
+  &.far-right {
+    left: 300px;
+    width: calc(100% - 300px);
+
+    @include media(lg) {
+      left: 350px;
+      width: calc(100% - 350px);
+    }
+  }
+
+  &.left {
+    display: none;
+
+    @include media(lg) {
+      display: flex;
+      right: 100px;
+      width: calc(100% - 100px);
+    }
+  }
+
+  &.less-right {
+    left: 100px;
+    width: calc(100% - 100px);
+
+    @include media(lg) {
+      left: -150px;
+      width: calc(100% + 150px);
+    }
+  }
+
+  &.less-top {
+    top: 0;
+    margin-top: 0;
+
+    @include media(lg) {
+      margin-top: 50px;
+    }
+  }
+
+  &.right {
+    left: 150px;
+    width: calc(100% - 150px);
+
+    @include media(lg) {
+      left: 0;
+      width: 100%;
+    }
+  }
+
+  &.top {
+    top: 0;
+    margin-top: 100px;
+
+    @include media(lg) {
+      margin-top: 120px;
+    }
+  }
+
+  img, svg {
+    flex: 0 0 auto;
+    height: 454px;
+    width: auto;
+  }
+
+  img.callout {
+    height: 350px;
+  }
+}

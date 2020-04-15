@@ -1,0 +1,152 @@
+/*
+ * Copyright (c) 2017-2019, FusionAuth, All Rights Reserved
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
+ * either express or implied. See the License for the specific
+ * language governing permissions and limitations under the License.
+ */
+
+@import 'variables';
+
+
+/* Pricing
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.pricing {
+  margin-bottom: -400px;
+  padding-bottom: 0;
+
+  &.hosting {
+    margin-bottom: -300px;
+
+    & + * {
+      padding-top: 300px;
+    }
+  }
+
+  & + * {
+    padding-top: 400px;
+    position: relative;
+  }
+
+  &.main .content {
+    padding-top: 75px;
+  }
+
+  .card {
+    margin-bottom: 20px;
+
+    h2 {
+      margin-top: 0;
+    }
+
+    h3 {
+      border-bottom: 1px solid $gray-2;
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    ul {
+      list-style: none;
+      margin-top: 0;
+      padding: 0;
+
+      &.blue {
+        i {
+          color: $blue-light;
+        }
+      }
+
+      // FontAwesome fix to make the bullets not indented
+      &.fa-ul .fa-li {
+        left: -2.5em;
+      }
+
+      &.orange {
+        i {
+          color: $orange-light;
+        }
+      }
+
+      &.purple {
+        i {
+          color: $purple-light;
+        }
+      }
+
+      li {
+        margin-bottom: 15px;
+
+        ul {
+          margin-left: 30px;
+          margin-top: 20px;
+
+          i {
+            font-size: 14px;
+          }
+        }
+      }
+
+      i {
+        font-size: 20px;
+        vertical-align: middle;
+      }
+
+      &:last-of-type {
+        margin-bottom: 20px;
+      }
+    }
+
+    > .button {
+      margin-top: auto;
+    }
+
+    .cost {
+      margin-bottom: 30px;
+
+      .starting-at {
+        color: $gray-5;
+        display: block;
+        font-size: 12px;
+        font-style: italic;
+        margin-bottom: 15px;
+      }
+
+      .amount {
+        font-family: 'Barlow', sans-serif;
+        font-size: 44px;
+        font-weight: 700;
+      }
+
+      .interval {
+        font-size: 16px;
+        margin-left: 10px;
+      }
+    }
+  }
+
+  .content {
+    padding-bottom: 0;
+
+    .row {
+      margin-bottom: 0 !important;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+  }
+
+  .pricing-cards {
+    padding: 50px 25px;
+  }
+}
+
