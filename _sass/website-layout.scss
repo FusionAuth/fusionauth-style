@@ -94,10 +94,6 @@ header.page-header {
     img.logo {
       filter: brightness(1) invert(0);
     }
-
-    i {
-      color: $orange-medium;
-    }
   }
 
   // For standard website where there is no hero and the nav is gray, white and orange
@@ -127,12 +123,13 @@ header.page-header {
 
   a.menu-close.button {
     display: inline-block;
+    margin-right: 0;
   }
 
   nav {
     background: white;
     display: none;
-    height: 100%;
+    height: 100vh;
     left: 0;
     overflow-y: scroll;
     position: absolute;
@@ -143,6 +140,7 @@ header.page-header {
     @include media('lg') {
       background: transparent;
       display: inline-block !important;
+      height: 100%;
       overflow-y: inherit;
       position: inherit;
       width: unset;
@@ -156,6 +154,8 @@ header.page-header {
       align-items: center;
       display: flex;
       justify-content: space-between;
+      padding-bottom: 10px;
+      padding-top: 10px;
 
       @include media('lg') {
         display: none;
@@ -164,8 +164,7 @@ header.page-header {
       img.logo {
         filter: none;
         height: 45px;
-        margin: 15px 0 15px 20px;
-        padding: 0;
+        padding: 0 0 0 5px;
       }
 
       a, a:hover, a:visited, a:link {
@@ -220,6 +219,7 @@ header.page-header {
             display: none;
 
             @include media(lg) {
+              color: white;
               display: inline-block;
             }
           }
@@ -485,154 +485,6 @@ body > footer:last-of-type {
 
   > div.container:last-of-type {
     padding-bottom: 50px;
-  }
-}
-
-.feature-details {
-  &.card {
-    padding: 0;
-  }
-
-  header {
-    align-items: center;
-    background: $gray-1;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin: 0;
-    padding: 30px;
-
-    h2 {
-      margin: 0;
-    }
-
-    p {
-      font-size: 16px;
-      font-weight: 500;
-      margin: 0;
-    }
-  }
-
-  .collapse-button {
-    color: $orange-medium;
-  }
-
-  > .collapsible-content {
-    display: none;
-    overflow-x: scroll;
-
-    @include media(md) {
-      overflow-x: hidden;
-    }
-  }
-
-  table {
-    border: none;
-    border-collapse: collapse;
-    width: 100%;
-
-    td {
-      font-size: 16px;
-      font-weight: 500;
-      padding: 20px 35px;
-
-      &:not(:first-of-type) {
-        text-align: center;
-      }
-
-      &:nth-of-type(2) {
-        color: $purple-light;
-      }
-
-      &:nth-of-type(3) {
-        color: $blue-light;
-      }
-
-      &:nth-of-type(4) {
-        color: $orange-light;
-      }
-    }
-
-    th {
-      padding: 20px 0;
-    }
-
-    tr {
-      &:nth-of-type(odd) {
-        td {
-          background: $gray-1;
-        }
-      }
-
-      td:not(last) {
-        border-right: 1px solid $gray-3;
-      }
-    }
-
-    .category td {
-      background: $gray-7 !important;
-      color: white;
-      font-size: 16px;
-      font-weight: 600;
-    }
-  }
-}
-
-.card.login {
-  background: $gray-1;
-  padding-bottom: 40px;
-  width: 360px;
-
-  a {
-    display: block;
-    text-align: center;
-    text-decoration: underline;
-  }
-
-  a.forgot, a.forgot:hover, a.forgot:link, a.forgot:visited {
-    color: $gray-5;
-  }
-
-  h1 {
-    font-size: 16px;
-    font-weight: 700;
-    line-height: 16px;
-    margin: 10px 0 30px 0;
-    padding: 0;
-    text-align: center;
-  }
-
-  h2 {
-    font-size: 14px;
-    font-weight: 700;
-    line-height: 14px;
-    margin: 0 0 10px 0;
-    padding: 0;
-    text-align: center;
-  }
-
-  hr {
-    margin: 40px 0;
-  }
-
-  .button {
-    font-weight: 600;
-    width: 100%;
-  }
-}
-
-.powered-by {
-  color: white;
-  margin-top: 50px;
-  text-align: center;
-
-  img {
-    vertical-align: middle;
-  }
-
-  strong {
-    margin-right: 20px;
-    vertical-align: middle;
   }
 }
 

@@ -21,7 +21,7 @@
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
 .pricing {
-  margin-bottom: -400px;
+  margin-bottom: -500px;
   padding-bottom: 0;
 
   &.hosting {
@@ -33,7 +33,7 @@
   }
 
   & + * {
-    padding-top: 400px;
+    padding-top: 375px;
     position: relative;
   }
 
@@ -150,3 +150,94 @@
   }
 }
 
+.feature-details {
+  position: relative;
+  z-index: 10;
+  &.card {
+    padding: 0;
+  }
+
+  header {
+    align-items: center;
+    background: $gray-1;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0;
+    padding: 30px;
+
+    h2 {
+      margin: 0;
+    }
+
+    p {
+      font-size: 16px;
+      font-weight: 500;
+      margin: 0;
+    }
+  }
+
+  .collapse-button {
+    color: $orange-medium;
+  }
+
+  > .collapsible-content {
+    display: none;
+    overflow-x: scroll;
+
+    @include media(md) {
+      overflow-x: hidden;
+    }
+  }
+
+  table {
+    border: none;
+    border-collapse: collapse;
+    width: 100%;
+
+    td {
+      font-size: 16px;
+      font-weight: 500;
+      padding: 20px 35px;
+
+      &:not(:first-of-type) {
+        text-align: center;
+      }
+
+      &:nth-of-type(2) {
+        color: $purple-light;
+      }
+
+      &:nth-of-type(3) {
+        color: $blue-light;
+      }
+
+      &:nth-of-type(4) {
+        color: $orange-light;
+      }
+    }
+
+    th {
+      padding: 20px 0;
+    }
+
+    tr {
+      &:nth-of-type(odd) {
+        td {
+          background: $gray-1;
+        }
+      }
+
+      td:not(last) {
+        border-right: 1px solid $gray-3;
+      }
+    }
+
+    .category td {
+      background: $gray-7 !important;
+      color: white;
+      font-size: 16px;
+      font-weight: 600;
+    }
+  }
+}
