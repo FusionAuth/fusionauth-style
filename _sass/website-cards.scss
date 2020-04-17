@@ -17,8 +17,15 @@
 @import 'mixins';
 @import 'variables';
 
+
 /* Cards
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.cards.row {
+  > div {
+    margin-bottom: 45px;
+  }
+}
 
 .gray-split-card {
   background: $gray-1;
@@ -71,11 +78,6 @@
   overflow: hidden;
   padding: 20px;
 
-  &.dark {
-    background: $gray-7;
-    color: white;
-  }
-
   &.even {
     display: flex;
     flex-direction: column;
@@ -105,30 +107,26 @@
   }
 }
 
-.feature-cards.row {
-  .feature-card {
-    margin-bottom: 40px;
+.feature-card {
+  &:not(:first-child) {
+    padding-left: 0;
 
-    &:not(:first-child) {
-      padding-left: 0;
-
-      @include media(lg) {
-        padding-left: $grid-spacing;
-      }
+    @include media(lg) {
+      padding-left: $grid-spacing;
     }
+  }
 
-    &:not(:last-child) {
-      padding-right: 0;
+  &:not(:last-child) {
+    padding-right: 0;
 
-      @include media(lg) {
-        padding-right: $grid-spacing;
-      }
+    @include media(lg) {
+      padding-right: $grid-spacing;
     }
+  }
 
-    h2 {
-      margin-bottom: 0;
-      margin-top: 30px;
-    }
+  h2 {
+    margin-bottom: 0;
+    margin-top: 30px;
   }
 }
 

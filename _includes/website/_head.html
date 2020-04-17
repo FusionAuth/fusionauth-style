@@ -11,7 +11,7 @@
   <script type="text/javascript" src="/js/prime-es6.js"></script>
   <script type="text/javascript">
 
-    // When the user scrolls the page, execute myFunction
+    // Scroll spy (NO LONGER FUNCTIONAL - WAS JUST FOR TESTING)
     window.onscroll = function() {
       const header = Prime.Document.queryFirst('header');
       if (window.pageYOffset > 500) {
@@ -22,7 +22,7 @@
     };
 
     Prime.Document.onReady(function() {
-      // Main nav
+      // Main nav (NO LONGER FUNCTIONAL - WAS JUST FOR TESTING)
       Prime.Document.queryFirst('.menu-open').addEventListener('click', function(event) {
         Prime.Utils.stopEvent(event);
         Prime.Document.queryFirst('.page-header nav').addClass('open');
@@ -34,7 +34,7 @@
         Prime.Document.queryFirst('body').removeClass('nav-open');
       });
 
-      // Docs nav
+      // Docs nav (NO LONGER FUNCTIONAL - WAS JUST FOR TESTING)
       Prime.Document.query('.docs aside a.sub-menu').each(function(e) {
         e.addEventListener('click', function(event) {
           Prime.Utils.stopEvent(event);
@@ -50,7 +50,7 @@
         });
       });
 
-      // Super downdowns
+      // Super-drop-downs (NO LONGER FUNCTIONAL - WAS JUST FOR TESTING)
       Prime.Document.query('li.dropdown > a').addEventListener('click', function(event) {
         Prime.Utils.stopEvent(event);
 
