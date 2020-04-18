@@ -17,7 +17,7 @@ show-alerts: true
               <li><a href="/docs/v1/tech/5-minute-setup-guide" {% if page.url == "/docs/v1/tech/5-minute-setup-guide.html" %}class="active"{% endif %}><i class="fal fa-fw fa-stopwatch"></i> 5-Minute Setup Guide</a></li>
               <li><a href="/docs/v1/tech/reactor" {% if page.url == "/docs/v1/tech/reactor.html" %}class="active"{% endif %}><i class="fal fa-fw fa-radiation"></i> Reactor</a></li>
               <li>
-                <a href="#"><i class="fal fa-fw fa-chart-pie-alt"></i> Core Concepts <i class="fal fa-chevron-{% if page.url contains "/core-concepts/" %}up{% else %}down{% endif %} fa-fw"></i></a>
+                <a href="#" class="sub-menu"><i class="fal fa-fw fa-chart-pie-alt"></i> Core Concepts <i class="fal fa-chevron-{% if page.url contains "/core-concepts/" %}up{% else %}down{% endif %} fa-fw"></i></a>
                 <ul{% if page.url contains "/core-concepts/" %} class="open"{% endif %}>
               <li><a href="/docs/v1/tech/core-concepts/" {% if page.url == "/docs/v1/tech/core-concepts/" %}class="active"{% endif %}>Overview</a></li>
               <li><a href="/docs/v1/tech/core-concepts/users" {% if page.url == "/docs/v1/tech/core-concepts/users.html" %}class="active"{% endif %}>Users</a></li>
@@ -27,7 +27,7 @@ show-alerts: true
             </ul>
             </li>
             <li>
-              <a href="#"><i class="fal fa-fw fa-download"></i> Installation Guide <i class="fal fa-chevron-{% if page.url contains "/installation-guide/" %}up{% else %}down{% endif %} fa-fw"></i></a>
+              <a href="#" class="sub-menu"><i class="fal fa-fw fa-download"></i> Installation Guide <i class="fal fa-chevron-{% if page.url contains "/installation-guide/" %}up{% else %}down{% endif %} fa-fw"></i></a>
               <ul{% if page.url contains "/installation-guide/" %} class="open"{% endif %}>
             <li><a href="/docs/v1/tech/installation-guide/" {% if page.url == "/docs/v1/tech/installation-guide/" %}class="active"{% endif %}>Overview</a></li>
             <li><a href="/docs/v1/tech/installation-guide/system-requirements" {% if page.url == "/docs/v1/tech/installation-guide/system-requirements.html" %}class="active"{% endif %}>System Requirements</a></li>
@@ -46,7 +46,7 @@ show-alerts: true
             </ul>
             </li>
             <li>
-              <a href="#"><i class="fal fa-fw fa-code"></i> APIs <i class="fal fa-chevron-{% if page.url contains "/apis/" %}up{% else %}down{% endif %} fa-fw"></i></a>
+              <a href="#" class="sub-menu"><i class="fal fa-fw fa-code"></i> APIs <i class="fal fa-chevron-{% if page.url contains "/apis/" %}up{% else %}down{% endif %} fa-fw"></i></a>
               <ul{% if page.url contains "/apis/" %} class="open"{% endif %}>
             <li><a href="/docs/v1/tech/apis/" {% if page.url == "/docs/v1/tech/apis/" %}class="active"{% endif %}>Overview</a></li>
             <li><a href="/docs/v1/tech/apis/authentication" {% if page.url == "/docs/v1/tech/apis/authentication.html" %}class="active"{% endif %}>Authentication</a></li>
@@ -60,7 +60,7 @@ show-alerts: true
             <li><a href="/docs/v1/tech/apis/families" {% if page.url == "/docs/v1/tech/apis/families.html" %}class="active"{% endif %}>Families</a></li>
             <li><a href="/docs/v1/tech/apis/groups" {% if page.url == "/docs/v1/tech/apis/groups.html" %}class="active"{% endif %}>Groups</a></li>
             <li>
-              <a href="#">Identity Providers <i class="fal fa-chevron-{% if page.url contains "/apis/identity-providers" %}up{% else %}down{% endif %} fa-fw"></i></a>
+              <a href="#" class="sub-menu">Identity Providers <i class="fal fa-chevron-{% if page.url contains "/apis/identity-providers" %}up{% else %}down{% endif %} fa-fw"></i></a>
               <ul{% if page.url contains "/apis/identity-providers/" %} class="open"{% endif %}>
             <li><a href="/docs/v1/tech/apis/identity-providers/" {% if page.url == "/docs/v1/tech/apis/identity-providers/" %}class="active"{% endif %}>Overview</a></li>
             <li><a href="/docs/v1/tech/apis/identity-providers/facebook" {% if page.url == "/docs/v1/tech/apis/identity-providers/facebook.html" %}class="active"{% endif %}><i class="fab fa-fw fa-facebook"></i> Facebook</a></li>
@@ -92,7 +92,7 @@ show-alerts: true
             </ul>
             </li>
             <li>
-              <a href="#"><i class="fal fa-fw fa-th"></i> Client Libraries <i class="fal fa-chevron-{% if page.url contains "/client-libraries/" %}up{% else %}down{% endif %} fa-fw"></i></a>
+              <a href="#" class="sub-menu"><i class="fal fa-fw fa-th"></i> Client Libraries <i class="fal fa-chevron-{% if page.url contains "/client-libraries/" %}up{% else %}down{% endif %} fa-fw"></i></a>
               <ul{% if page.url contains "/client-libraries/" %} class="open"{% endif %}>
             <li><a href="/docs/v1/tech/client-libraries/" {% if page.url == "/docs/v1/tech/client-libraries/" %}class="active"{% endif %}>Overview</a></li>
             <li><a href="/docs/v1/tech/client-libraries/android" {% if page.url == "/docs/v1/tech/client-libraries/android.html" %}class="active"{% endif %}>Android</a></li>
@@ -111,7 +111,7 @@ show-alerts: true
             </ul>
             </li>
             <li>
-              <a href="#"><i class="fal fa-fw fa-paint-brush"></i> Themes <i class="fal fa-chevron-{% if page.url contains "/themes/" %}up{% else %}down{% endif %} fa-fw"></i></a>
+              <a href="#" class="sub-menu"><i class="fal fa-fw fa-paint-brush"></i> Themes <i class="fal fa-chevron-{% if page.url contains "/themes/" %}up{% else %}down{% endif %} fa-fw"></i></a>
               <ul{% if page.url contains "/themes/" %} class="open"{% endif %}>
             <li><a href="/docs/v1/tech/themes/" {% if page.url == "/docs/v1/tech/themes/" %}class="active"{% endif %}>Overview</a></li>
             <li><a href="/docs/v1/tech/themes/localization" {% if page.url == "/docs/v1/tech/themes/localization.html" %}class="active"{% endif %}>Localization</a></li>
@@ -119,7 +119,7 @@ show-alerts: true
             </ul>
             </li>
             <li>
-              <a href="#"><i class="fal fa-fw fa-envelope"></i> Email & Templates <i class="fal fa-chevron-{% if page.url contains "/email-templates/" %}up{% else %}down{% endif %} fa-fw"></i></a>
+              <a href="#" class="sub-menu"><i class="fal fa-fw fa-envelope"></i> Email & Templates <i class="fal fa-chevron-{% if page.url contains "/email-templates/" %}up{% else %}down{% endif %} fa-fw"></i></a>
               <ul{% if page.url contains "/email-templates/" %} class="open"{% endif %}>
             <li><a href="/docs/v1/tech/email-templates/" {% if page.url == "/docs/v1/tech/email-templates/" %}class="active"{% endif %}>Overview</a></li>
             <li><a href="/docs/v1/tech/email-templates/configure-email" {% if page.url == "/docs/v1/tech/email-templates/configure-email.html" %}class="active"{% endif %}>Configure Email</a></li>
@@ -127,7 +127,7 @@ show-alerts: true
             </ul>
             </li>
             <li>
-              <a href="#"><i class="fal fa-fw fa-rss"></i> Events & Webhooks <i class="fal fa-chevron-{% if page.url contains "/events-webhooks/" %}up{% else %}down{% endif %} fa-fw"></i></a>
+              <a href="#" class="sub-menu"><i class="fal fa-fw fa-rss"></i> Events & Webhooks <i class="fal fa-chevron-{% if page.url contains "/events-webhooks/" %}up{% else %}down{% endif %} fa-fw"></i></a>
               <ul{% if page.url contains "/events-webhooks/" %} class="open"{% endif %}>
             <li><a href="/docs/v1/tech/events-webhooks/" {% if page.url == "/docs/v1/tech/events-webhooks/" %}class="active"{% endif %}>Overview</a></li>
             <li><a href="/docs/v1/tech/events-webhooks/events" {% if page.url == "/docs/v1/tech/events-webhooks/events.html" %}class="active"{% endif %}>Events</a></li>
@@ -135,7 +135,7 @@ show-alerts: true
             </ul>
             </li>
             <li>
-              <a href="#"><i class="fal fa-fw fa-code"></i> Lambdas <i class="fal fa-chevron-{% if page.url contains "/lambdas/" %}up{% else %}down{% endif %} fa-fw"></i></a>
+              <a href="#" class="sub-menu"><i class="fal fa-fw fa-code"></i> Lambdas <i class="fal fa-chevron-{% if page.url contains "/lambdas/" %}up{% else %}down{% endif %} fa-fw"></i></a>
               <ul{% if page.url contains "/lambdas/" %} class="open"{% endif %}>
             <li><a href="/docs/v1/tech/lambdas/" {% if page.url == "/docs/v1/tech/lambdas/" %}class="active"{% endif %}>Overview</a></li>
             <li><a href="/docs/v1/tech/lambdas/jwt-populate" {% if page.url == "/docs/v1/tech/lambdas/jwt-populate.html" %}class="active"{% endif %}>JWT Populate</a></li>
@@ -146,7 +146,7 @@ show-alerts: true
             </li>
 
             <li>
-              <a href="#"><i class="fal fa-fw fa-id-badge"></i> Identity Providers <i class="fal fa-chevron-{% if page.url contains "/tech/identity-providers/" %}up{% else %}down{% endif %} fa-fw"></i></a>
+              <a href="#" class="sub-menu"><i class="fal fa-fw fa-id-badge"></i> Identity Providers <i class="fal fa-chevron-{% if page.url contains "/tech/identity-providers/" %}up{% else %}down{% endif %} fa-fw"></i></a>
               <ul {% if page.url contains "/tech/identity-providers/" %} class="open"{% endif %} >
             <li><a href="/docs/v1/tech/identity-providers/" {% if page.url == "/docs/v1/tech/identity-providers/" %}class="active"{% endif %}>Overview</a></li>
             <li><a href="/docs/v1/tech/identity-providers/facebook" {% if page.url == "/docs/v1/tech/identity-providers/facebook.html" %}class="active"{% endif %}><i class="fab fa-fw fa-facebook"></i> Facebook</a></li>
@@ -154,7 +154,7 @@ show-alerts: true
             <li><a href="/docs/v1/tech/identity-providers/hypr" {% if page.url == "/docs/v1/tech/identity-providers/hypr.html" %}class="active"{% endif %}><i class="fal fa-fw fa-fingerprint"></i> HYPR</a></li>
             <li><a href="/docs/v1/tech/identity-providers/twitter" {% if page.url == "/docs/v1/tech/identity-providers/twitter.html" %}class="active"{% endif %}><i class="fab fa-fw fa-twitter"></i> Twitter</a></li>
             <li>
-              <a href="#"><i class="fab fa-fw fa-openid"></i> OpenID Connect <i class="fal fa-chevron-{% if page.url contains "/identity-providers/openid-connect/" %}up{% else %}down{% endif %} fa-fw"></i></a>
+              <a href="#" class="sub-menu"><i class="fab fa-fw fa-openid"></i> OpenID Connect <i class="fal fa-chevron-{% if page.url contains "/identity-providers/openid-connect/" %}up{% else %}down{% endif %} fa-fw"></i></a>
               <ul{% if page.url contains "/identity-providers/openid-connect/" %} class="open"{% endif %}>
             <li><a href="/docs/v1/tech/identity-providers/openid-connect/" {% if page.url == "/docs/v1/tech/identity-providers/openid-connect/" %}class="active"{% endif %}>Overview</a></li>
             <li><a href="/docs/v1/tech/identity-providers/openid-connect/azure-ad" {% if page.url == "/docs/v1/tech/identity-providers/openid-connect/azure-ad.html" %}class="active"{% endif %}><i class="fab fa-fw fa-windows"></i> Azure AD</a></li>
@@ -163,14 +163,14 @@ show-alerts: true
             </ul>
             </li>
             <li>
-              <a href="#"><i class="fal fa-fw fa-id-badge"></i> SAML v2 <i class="fal fa-chevron-{% if page.url contains "/identity-providers/samlv2/" %}up{% else %}down{% endif %} fa-fw"></i></a>
+              <a href="#" class="sub-menu"><i class="fal fa-fw fa-id-badge"></i> SAML v2 <i class="fal fa-chevron-{% if page.url contains "/identity-providers/samlv2/" %}up{% else %}down{% endif %} fa-fw"></i></a>
               <ul{% if page.url contains "/identity-providers/samlv2/" %} class="open"{% endif %}>
             <li><a href="/docs/v1/tech/identity-providers/samlv2/" {% if page.url == "/docs/v1/tech/identity-providers/samlv2/" %}class="active"{% endif %}>Overview</a></li>
             <li><a href="/docs/v1/tech/identity-providers/samlv2/adfs" {% if page.url == "/docs/v1/tech/identity-providers/samlv2/adfs.html" %}class="active"{% endif %}><i class="fab fa-fw fa-windows"></i> ADFS</a></li>
             </ul>
             </li>
             <li>
-              <a href="#"><i class="fab fa-fw fa-empire"></i> External JWT <i class="fal fa-chevron-{% if page.url contains "/docs/v1/tech/identity-providers/external-jwt/" %}up{% else %}down{% endif %} fa-fw"></i></a>
+              <a href="#" class="sub-menu"><i class="fab fa-fw fa-empire"></i> External JWT <i class="fal fa-chevron-{% if page.url contains "/docs/v1/tech/identity-providers/external-jwt/" %}up{% else %}down{% endif %} fa-fw"></i></a>
               <ul{% if page.url contains "/identity-providers/external-jwt/" %} class="open"{% endif %}>
             <li><a href="/docs/v1/tech/identity-providers/external-jwt/" {% if page.url == "/docs/v1/tech/identity-providers/external-jwt/" %}class="active"{% endif %}>Overview</a></li>
             <li><a href="/docs/v1/tech/identity-providers/external-jwt/example" {% if page.url == "/docs/v1/tech/identity-providers/external-jwt/example.html" %}class="active"{% endif %}><i class="fab fa-fw fa-rebel"></i> Example</a></li>
@@ -182,7 +182,7 @@ show-alerts: true
             <!--<li><a href="/apis/tenants" {% if page.url == "/apis/tenants.html" %}class="active"{% endif %}>Tenants</a></li>-->
 
             <li>
-              <a href="#"><i class="fal fa-fw fa-exchange"></i> Integrations <i class="fal fa-chevron-{% if page.url contains "/integrations/" %}up{% else %}down{% endif %} fa-fw"></i></a>
+              <a href="#" class="sub-menu"><i class="fal fa-fw fa-exchange"></i> Integrations <i class="fal fa-chevron-{% if page.url contains "/integrations/" %}up{% else %}down{% endif %} fa-fw"></i></a>
               <ul{% if page.url contains "/integrations/" %} class="open"{% endif %}>
             <li><a href="/docs/v1/tech/integrations/" {% if page.url == "/docs/v1/tech/integrations/" %}class="active"{% endif %}>Overview</a></li>
             <li><a href="/docs/v1/tech/integrations/cleanspeak" {% if page.url == "/docs/v1/tech/integrations/cleanspeak.html" %}class="active"{% endif %}>CleanSpeak</a></li>
@@ -191,7 +191,7 @@ show-alerts: true
             </ul>
             </li>
             <li>
-              <a href="#"><i class="fab fa-fw fa-openid"></i> OpenID Connect & OAuth 2.0 <i class="fal fa-chevron-{% if page.url contains "/oauth/" %}up{% else %}down{% endif %} fa-fw"></i></a>
+              <a href="#" class="sub-menu"><i class="fab fa-fw fa-openid"></i> OpenID Connect & OAuth 2.0 <i class="fal fa-chevron-{% if page.url contains "/oauth/" %}up{% else %}down{% endif %} fa-fw"></i></a>
               <ul{% if page.url contains "/oauth/" %} class="open"{% endif %}>
             <li><a href="/docs/v1/tech/oauth/" {% if page.url == "/docs/v1/tech/oauth/" %}class="active"{% endif %}>Overview</a></li>
             <li><a href="/docs/v1/tech/oauth/endpoints" {% if page.url == "/docs/v1/tech/oauth/endpoints.html" %}class="active"{% endif %}>Endpoints</a></li>
@@ -202,7 +202,7 @@ show-alerts: true
             </ul>
             </li>
             <li>
-              <a href="#"><i class="fal fa-fw fa-id-badge"></i> SAML v2 IdP <i class="fal fa-chevron-{% if page.url contains "/tech/samlv2/" %}up{% else %}down{% endif %} fa-fw"></i></a>
+              <a href="#" class="sub-menu"><i class="fal fa-fw fa-id-badge"></i> SAML v2 IdP <i class="fal fa-chevron-{% if page.url contains "/tech/samlv2/" %}up{% else %}down{% endif %} fa-fw"></i></a>
               <ul{% if page.url contains "/tech/samlv2/" %} class="open"{% endif %}>
             <li><a href="/docs/v1/tech/samlv2/" {% if page.url == "/docs/v1/tech/samlv2/" %}class="active"{% endif %}>Overview</a></li>
             <li><a href="/docs/v1/tech/samlv2/google" {% if page.url == "/docs/v1/tech/samlv2/google.html" %}class="active"{% endif %}>Log into Google via SAML</a></li>
@@ -211,14 +211,14 @@ show-alerts: true
             </ul>
             </li>
             <li>
-              <a href="#"><i class="fal fa-fw fa-plug"></i> Plugins <i class="fal fa-chevron-{% if page.url contains "/plugins/" %}up{% else %}down{% endif %} fa-fw"></i></a>
+              <a href="#" class="sub-menu"><i class="fal fa-fw fa-plug"></i> Plugins <i class="fal fa-chevron-{% if page.url contains "/plugins/" %}up{% else %}down{% endif %} fa-fw"></i></a>
               <ul{% if page.url contains "/plugins/" %} class="open"{% endif %}>
             <li><a href="/docs/v1/tech/plugins/writing-a-plugin" {% if page.url == "/docs/v1/tech/plugins/writing-a-plugin.html" %}class="active"{% endif %}>Writing a Plugin</a></li>
             <li><a href="/docs/v1/tech/plugins/password-encryptors" {% if page.url == "/docs/v1/tech/plugins/password-encryptors.html" %}class="active"{% endif %}>Password Encryptors</a></li>
             </ul>
             </li>
             <li>
-              <a href="#"><i class="fal fa-fw fa-graduation-cap"></i> Tutorials <i class="fal fa-chevron-{% if page.url contains "/tutorials/" %}up{% else %}down{% endif %} fa-fw"></i></a>
+              <a href="#" class="sub-menu"><i class="fal fa-fw fa-graduation-cap"></i> Tutorials <i class="fal fa-chevron-{% if page.url contains "/tutorials/" %}up{% else %}down{% endif %} fa-fw"></i></a>
               <ul{% if page.url contains "/tutorials/" %} class="open"{% endif %}>
             <li><a href="/docs/v1/tech/tutorials/" {% if page.url == "/docs/v1/tech/tutorials/" %}class="active"{% endif %}>Overview</a></li>
             <li><a href="/docs/v1/tech/tutorials/setup-wizard" {% if page.url == "/docs/v1/tech/tutorials/setup-wizard.html" %}class="active"{% endif %}>Setup Wizard & First Login</a></li>
@@ -231,7 +231,7 @@ show-alerts: true
             </ul>
             </li>
             <li>
-              <a href="#"><i class="fal fa-fw fa-book"></i> Reference <i class="fal fa-chevron-{% if page.url contains "/reference/" %}up{% else %}down{% endif %} fa-fw"></i></a>
+              <a href="#" class="sub-menu"><i class="fal fa-fw fa-book"></i> Reference <i class="fal fa-chevron-{% if page.url contains "/reference/" %}up{% else %}down{% endif %} fa-fw"></i></a>
               <ul{% if page.url contains "/reference/" %} class="open"{% endif %}>
             <li><a href="/docs/v1/tech/reference/cors" {% if page.url == "/docs/v1/tech/reference/cors.html" %}class="active"{% endif %}>CORS</a></li>
             <li><a href="/docs/v1/tech/reference/configuration" {% if page.url == "/docs/v1/tech/reference/configuration.html" %}class="active"{% endif %}>Configuration</a></li>
@@ -371,6 +371,29 @@ show-alerts: true
                   </p>
                 </dt>
                 <dd>
+                  <div class="admonitionblock note since">
+                    <i class="icon note"></i>
+                    <div class="body">
+                      <p>
+                        Available Since Version 1.7.0
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="admonitionblock warning database-migration">
+                    <i class="icon warning"></i>
+                    <div class="content">
+                      <p>
+                        <strong>Database migration</strong>
+                      </p>
+                      <p>
+                        The database schema has changed and an upgrade is required for this version of FusionAuth. You will be prompted to upgrade the database by maintenance mode before you may login.
+                      </p>
+                      <p>
+                        See <a href="/docs/v1/tech/installation-guide/upgrade#database">Database Upgrades</a> for more information about database migrations.
+                      </p>
+                    </div>
+                  </div>
                   <p>
                     Indicates to FusionAuth to send the User an email asking them to set their password. The Email Template that is used is configured in the System
                     Configuration setting for <strong>Set Password Email Template</strong>.

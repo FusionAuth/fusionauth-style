@@ -11,7 +11,7 @@
   <script type="text/javascript" src="/js/prime-es6.js"></script>
   <script type="text/javascript">
 
-    // Scroll spy (NO LONGER FUNCTIONAL - WAS JUST FOR TESTING)
+    // Scroll spy
     window.onscroll = function() {
       const header = Prime.Document.queryFirst('header');
       if (window.pageYOffset > 500) {
@@ -22,7 +22,7 @@
     };
 
     Prime.Document.onReady(function() {
-      // Main nav (NO LONGER FUNCTIONAL - WAS JUST FOR TESTING)
+      // Main nav
       Prime.Document.queryFirst('.menu-open').addEventListener('click', function(event) {
         Prime.Utils.stopEvent(event);
         Prime.Document.queryFirst('.page-header nav').addClass('open');
@@ -34,23 +34,23 @@
         Prime.Document.queryFirst('body').removeClass('nav-open');
       });
 
-      // Docs nav (NO LONGER FUNCTIONAL - WAS JUST FOR TESTING)
-      Prime.Document.query('.docs aside a.sub-menu').each(function(e) {
-        e.addEventListener('click', function(event) {
+      // Docs nav
+      Prime.Document.query('.docs aside a.sub-menu').each(function(a) {
+        a.addEventListener('click', function(event) {
           Prime.Utils.stopEvent(event);
-          const i = e.queryLast('i');
-          const subMenu = e.getNextSibling();
-          if (subMenu.isVisible()) {
+          const i = a.queryLast('i');
+          const ul = a.getNextSibling();
+          if (ul.hasClass('open')) {
             i.removeClass('fa-chevron-up').addClass('fa-chevron-down');
-            subMenu.hide();
+            ul.removeClass('open');
           } else {
             i.removeClass('fa-chevron-down').addClass('fa-chevron-up');
-            subMenu.show();
+            ul.addClass('open');
           }
         });
       });
 
-      // Super-drop-downs (NO LONGER FUNCTIONAL - WAS JUST FOR TESTING)
+      // Super-drop-downs
       Prime.Document.query('li.dropdown > a').addEventListener('click', function(event) {
         Prime.Utils.stopEvent(event);
 
