@@ -57,7 +57,7 @@
   }
 
   .blog-snippet {
-    margin-bottom: 60px;
+    margin-bottom: 100px;
 
     a.read-more, a.read-more:hover, a.read-more:link, a.read-more:visited {
       color: $gray-7;
@@ -83,16 +83,37 @@
   }
 
   .info {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
     margin-bottom: 40px;
+    width: 100%;
+
+    .social-share-buttons {
+      a {
+        background: $gray-3;
+        border-radius: 50%;
+        color: white;
+        display: inline-block;
+        font-size: 18px;
+        height: 30px;
+        padding-top: 5px;
+        text-align: center;
+        width: 30px;
+      }
+    }
   }
 
   .listing {
     border-bottom: 1px solid $gray-2;
-    padding-bottom: 100px;
-    margin-bottom: 40px;
+    list-style: none;
+    margin: 0 0 40px 0;
+    padding: 0 0 100px 0;
   }
 
   .pagination {
+    text-align: center
+  ;
     ul {
       list-style: none;
       margin: 0;
