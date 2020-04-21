@@ -24,7 +24,59 @@
   text-align: center;
 }
 
+.screen-center {
+  left: 50%;
+  padding: 0;
+  position: fixed;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+img.white {
+  filter: brightness(0) invert(1);
+}
+
+table.bordered {
+  border-collapse: collapse;
+  margin: 20px 0;
+
+  tr {
+    td {
+      border: 1px solid $gray-2;
+      border-spacing: 0;
+      padding: 15px;
+    }
+  }
+}
+
 ul.inline li {
   display: inline-block;
   margin-right: 10px;
+}
+
+/* Width and height
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+@each $name, $size in (25, 25%), (50, 50%), (75, 75%), (100, 100%), (auto, auto) {
+  .h-#{$name}, .h-xs-#{$name} {
+    height: #{$size};
+  }
+
+  .w-#{$name}, .w-xs-#{$name} {
+    width: #{$size};
+  }
+}
+
+@each $break, $width in map-deep-get($grid-settings, 'widths') {
+  @media only screen and (min-width:$width) {
+    @each $name, $size in (25, 25%), (50, 50%), (75, 75%), (100, 100%), (auto, auto) {
+      .h-#{$break}-#{$name} {
+        height: #{$size};
+      }
+
+      .w-#{$break}-#{$name} {
+        width: #{$size};
+      }
+    }
+  }
 }

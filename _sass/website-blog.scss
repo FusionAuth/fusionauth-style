@@ -46,9 +46,28 @@
     }
   }
 
+  h1 {
+    font-size: 36px;
+
+    + .rw-ui-container {
+      margin: -20px 0 20px 0;
+    }
+  }
+
   img {
     margin-bottom: 20px;
     max-width: 100%;
+  }
+
+  .advice-callout {
+    margin-top: 50px;
+  }
+
+  .article-rating-block {
+    border-bottom: 1px solid $gray-2;
+    margin-bottom: 40px;
+    padding-bottom: 35px;
+    text-align: center;
   }
 
   .author-date {

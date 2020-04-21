@@ -232,6 +232,10 @@ textarea {
       border-radius: $input-border-radius;
     }
   }
+
+  &.monospace {
+    font-family: $monospace-font-stack;
+  }
 }
 
 @media (min-width: 576px) {
