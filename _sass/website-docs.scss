@@ -211,7 +211,7 @@ section.docs {
 
       dd {
         .ulist .since {
-          color: seagreen;
+          color: $documentation-since-color;
           display: inline-block;
           font-weight: 500;
           margin-left: 5px;
@@ -270,7 +270,7 @@ section.docs {
         }
 
         .read-only {
-          color: dodgerblue;
+          color: $documentation-read-only-color;
           font-size: 12px;
           font-weight: 600;
           text-transform: uppercase;
@@ -292,7 +292,7 @@ section.docs {
         }
 
         .since {
-          color: seagreen;
+          color: $documentation-since-color;
           font-weight: 500;
           text-transform: uppercase;
           white-space: nowrap;
@@ -498,10 +498,10 @@ section.docs {
         border-left: 4px solid $blue-dark;
 
         &.since {
-          border-left: 4px solid seagreen;
+          border-left: 4px solid $documentation-since-color;
 
           .icon.note::before {
-            color: seagreen;
+            color: $documentation-since-color;
             content: '\f1fa';
             font-family: 'Font Awesome 5 Pro';
             font-weight: 300;
