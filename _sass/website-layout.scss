@@ -88,7 +88,7 @@ header.page-header {
   // Scroll fixed header
   &.gray {
     background: $gray-7;
-    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
     position: fixed;
     top: 0;
     width: 100%;
@@ -105,7 +105,7 @@ header.page-header {
   // For standard website where there is no hero and the nav is gray, white and orange
   &.gray-fixed {
     background: $gray-7;
-    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
 
     img.logo {
       filter: brightness(1) invert(0);
@@ -117,7 +117,7 @@ header.page-header {
 
     /* When we have a white section below, add an inset drop shadow to it appears the same as a non-white section */
     + main > section.white:first-of-type {
-      box-shadow: inset 0 5px 5px rgba(0, 0, 0, 0.3);
+      box-shadow: inset 0 12px 5px -9px rgba(0, 0, 0, 0.3);
     }
   }
 
@@ -226,7 +226,7 @@ header.page-header {
             padding-bottom: 5px;
 
             &.active {
-              border-bottom: 1px solid #fff;
+              border-bottom: 1px solid $gray-3;
             }
           }
 
