@@ -440,6 +440,10 @@
     margin-right: -$grid-spacing;
   }
 
+  &.separate {
+    margin-top: 50px;
+  }
+
   &.start {
     justify-content: flex-start;
   }

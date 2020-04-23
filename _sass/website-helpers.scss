@@ -36,19 +36,6 @@ img.white {
   filter: brightness(0) invert(1);
 }
 
-table.bordered {
-  border-collapse: collapse;
-  margin: 20px 0;
-
-  tr {
-    td {
-      border: 1px solid $gray-2;
-      border-spacing: 0;
-      padding: 15px;
-    }
-  }
-}
-
 ul.inline li {
   display: inline-block;
   margin-right: 10px;
