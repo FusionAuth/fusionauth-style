@@ -71,35 +71,31 @@ section.docs {
       width: 100%;
 
       @include media(lg) {
-        border-radius: 5px;
+        border-radius: 0 5px 5px 0;
         display: block;
       }
 
       a, a:hover, a:link, a:visited {
+        border-left: 2px solid transparent;
         color: $gray-6;
         text-decoration: none;
+
 
         @include media(lg) {
           font-size: 12px;
         }
 
         &.active {
-          border-left: 3px solid $orange-medium;
-        }
-
-        &.first {
-          border-top-left-radius: 5px;
-        }
-
-        &.last {
-          border-bottom-left-radius: 5px;
+          border-left: 2px solid $orange-medium;
         }
       }
 
       i {
         margin-right: 10px;
+        padding-top: 3px;
 
         &.fa-chevron-down, &.fa-chevron-up {
+          color: $gray-4;
           float: right;
         }
       }
@@ -109,10 +105,19 @@ section.docs {
         margin: 0;
         padding: 0;
 
+
         li {
+
+          &.active {
+            a {
+              border-left: 2px solid $orange-medium;
+            }
+          }
+
           a {
             display: block;
             padding: 10px;
+
           }
 
           ul {
@@ -139,6 +144,21 @@ section.docs {
     }
 
     // General for <nav> and <ul>
+
+    li.open {
+      background-color: darken($gray-1, 2.5%);
+
+      li {
+        &.active {
+          background-color: darken($gray-1, 5%);
+        }
+      }
+
+      ul:first-of-type {
+        display: block;
+      }
+    }
+
     .open {
       display: block;
     }
@@ -156,6 +176,18 @@ section.docs {
       border-left: 3px solid $gray-3;
       margin: 1em 0;
       padding: 10px 0 10px 20px;
+    }
+
+    .breadcrumb {
+      font-weight: 600;
+
+      i {
+        font-size: 13px;
+      }
+    }
+
+    caption.title {
+      font-weight: 500;
     }
 
     dl.api {
@@ -177,16 +209,46 @@ section.docs {
         }
       }
 
+      dd {
+        .ulist .since {
+          color: seagreen;
+          display: inline-block;
+          font-weight: 500;
+          margin-left: 5px;
+          text-transform: uppercase;
+        }
+      }
+
       dt {
+        &:not(:first-child) {
+          margin-bottom: 10px;
+          margin-top: 25px;
+        }
+
         span:not(:last-of-type) {
           margin-right: 10px;
+        }
+
+        span.field {
+          code {
+            color: $gray-5;
+            font-size: 0.9em;
+          }
         }
 
         .default {
           display: inline-block;
           color: $gray-5;
-          font-size: 12px;
+          font-size: 13px;
           font-style: italic;
+
+          &:first-letter {
+            text-transform: capitalize;
+          }
+
+          code {
+            text-transform: none;
+          }
         }
 
         .deprecated {
@@ -208,7 +270,7 @@ section.docs {
         }
 
         .read-only {
-          color: $blue-light;
+          color: dodgerblue;
           font-size: 12px;
           font-weight: 600;
           text-transform: uppercase;
@@ -216,31 +278,31 @@ section.docs {
 
         .required {
           color: $orange-medium;
+          font-size: 12px;
           font-weight: 500;
           text-transform: uppercase;
         }
 
         .note {
-          margin-top: 20px;
           color: $blue-dark;
-          font-size: 13px;
+          font-size: 12px;
           font-weight: 500;
+          margin-top: 20px;
           text-transform: uppercase;
         }
 
         .since {
-          color: $green-medium;
+          color: seagreen;
+          font-weight: 500;
           text-transform: uppercase;
+          white-space: nowrap;
         }
 
         .type {
           color: $blue-medium;
           display: inline-block;
           font-family: $monospace-font-stack;
-        }
-
-        .ulist .since {
-          display: inline-block;
+          font-size: 12px;
         }
       }
     }
@@ -258,7 +320,7 @@ section.docs {
     h2 {
       font-size: 24px;
       line-height: 28px;
-      maring-top: 20px
+      margin-top: 20px
     }
 
     h3 {
@@ -288,20 +350,60 @@ section.docs {
       }
 
       &.fa-lock {
-        color: $red-dark;
+        color: lighten($red-dark, 5%);
       }
 
-      &.fa-unlock-alt {
-        color: $green-dark;
+      &.fa-unlock, &.fa-unlock-alt {
+        color: lighten($green-dark, 7%);
+      }
+
+      /* Replicate a FusionAuth admin UI button Style */
+      &.ui-button {
+        border-radius: 3px;
+        cursor: default;
+        font-size: 12px;
+        padding: 7px;
+        pointer-events: none;
+
+        &.green {
+          color: #fff;
+          background-color: #0bb796 !important;;
+        }
+
+        &.purple {
+          color: #fff;
+          background-color: #34485e !important;
+        }
+
       }
     }
 
     img {
-      max-width: 100%;
+      &:not(.box-shadow) {
+        margin-left: -39px;
+        max-width: 107%;
+      }
+
+      &.top-cropped {
+        margin-top: 15px;
+      }
+
+      &.bottom-cropped {
+        margin-bottom: 35px;
+      }
+
     }
 
     p {
       margin: 20px 0;
+    }
+
+    ul {
+      li {
+        p {
+          margin: 10px 0;
+        }
+      }
     }
 
     section {
@@ -315,16 +417,23 @@ section.docs {
 
     table {
       border-collapse: collapse;
-      margin: 20px 0;
+      margin: 20px 0 50px 0;
 
       caption {
         @include caption(table-caption, 20px);
         display: table-caption;
       }
 
+      thead {
+        th {
+          padding-bottom: 5px;
+        }
+      }
+
       tr {
         td {
-          border: 1px solid $gray-2;
+          border-bottom: 1px solid $gray-2;
+          border-top: 1px solid $gray-2;
           border-spacing: 0;
           padding: 0 15px;
         }
@@ -334,7 +443,7 @@ section.docs {
     .admonitionblock {
       align-items: center;
       background: $gray-1;
-      box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
       display: flex;
       margin: 20px 0;
       padding: 10px;
@@ -389,10 +498,10 @@ section.docs {
         border-left: 4px solid $blue-dark;
 
         &.since {
-          border-left: 4px solid $green-medium;
+          border-left: 4px solid seagreen;
 
           .icon.note::before {
-            color: $green-medium;
+            color: seagreen;
             content: '\f1fa';
             font-family: 'Font Awesome 5 Pro';
             font-weight: 300;
@@ -476,10 +585,12 @@ section.docs {
     .endpoint {
       .content {
         background: $gray-7;
+        border-radius: 2px;
         color: white;
         font-weight: 500;
+        font-family: $monospace-font-stack;
         margin-bottom: 40px;
-        padding: 10px;
+        padding: 10px 15px;
 
         code {
           color: $green-light;
@@ -493,6 +604,11 @@ section.docs {
         .method {
           color: $orange-light;
         }
+      }
+
+      .title {
+        font-weight: 500;
+        margin-bottom: 2px;
       }
     }
 
