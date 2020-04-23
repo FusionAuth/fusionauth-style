@@ -32,9 +32,211 @@
     }
   }
 
-  &.homepage .content {
-    @include media(lg) {
-      padding: 150px 0;
+  &.homepage {
+    svg {
+      @keyframes appear {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 100%;
+        }
+      }
+
+      @keyframes cursor-blink {
+        0% {
+          opacity: 100%;
+        }
+        50% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 100%;
+        }
+      }
+
+      @keyframes server-lights-green {
+        0% {
+          fill: #AEAEF5;
+        }
+        50% {
+          fill: $green-dark;
+        }
+        100% {
+          fill: #AEAEF5;
+        }
+      }
+
+      @keyframes server-lights-red {
+        0% {
+          fill: #AEAEF5;
+        }
+        50% {
+          fill: $red-dark;
+        }
+        100% {
+          fill: #AEAEF5;
+        }
+      }
+
+      @keyframes star-twinkle {
+        0% {
+          opacity: 45%;
+        }
+        50% {
+          opacity: 100%;
+        }
+        100% {
+          opacity: 75%;
+        }
+      }
+
+      #left-stars, #right-stars {
+        animation: 1s ease-in 6s 1 forwards star-twinkle;
+        opacity: 45%;
+      }
+
+      #login-laptop {
+        circle:nth-of-type(7) {
+          animation: 0.2s linear 4s forwards appear;
+          opacity: 0;
+        }
+        circle:nth-of-type(8) {
+          animation: 0.2s linear 4.2s forwards appear;
+          opacity: 0;
+        }
+        circle:nth-of-type(9) {
+          animation: 0.2s linear 4.4s forwards appear;
+          opacity: 0;
+        }
+        circle:nth-of-type(10) {
+          animation: 0.2s linear 4.6s forwards appear;
+          opacity: 0;
+        }
+        circle:nth-of-type(11) {
+          animation: 0.2s linear 4.8s forwards appear;
+          opacity: 0;
+        }
+        circle:nth-of-type(12) {
+          animation: 0.2s linear 5.0s forwards appear;
+          opacity: 0;
+        }
+        circle:nth-of-type(1) {
+          animation: 0.2s linear 5.2s forwards appear;
+          opacity: 0;
+        }
+        circle:nth-of-type(2) {
+          animation: 0.2s linear 5.4s forwards appear;
+          opacity: 0;
+        }
+        circle:nth-of-type(3) {
+          animation: 0.2s linear 5.6s forwards appear;
+          opacity: 0;
+        }
+        circle:nth-of-type(4) {
+          animation: 0.2s linear 5.8s forwards appear;
+          opacity: 0;
+        }
+        circle:nth-of-type(5) {
+          animation: 0.2s linear 6.0s forwards appear;
+          opacity: 0;
+        }
+        circle:nth-of-type(6) {
+          animation: 0.2s linear 6.2s forwards appear;
+          opacity: 0;
+        }
+      }
+
+      #imac {
+        path:nth-last-of-type(2) {
+          animation: 1s linear 1s 4 forwards cursor-blink;
+          opacity: 100%;
+        }
+      }
+
+      #signal {
+        path:nth-of-type(1) {
+          animation: 0.5s ease-in 1s 1 forwards appear;
+          opacity: 0;
+        }
+        path:nth-of-type(2) {
+          animation: 0.5s ease-in 1.6s 1 forwards appear;
+          opacity: 0;
+        }
+        path:nth-of-type(3) {
+          animation: 0.5s ease-in 2.1s 1 forwards appear;
+          opacity: 0;
+        }
+      }
+
+      #tower {
+        rect:nth-of-type(9) {
+          animation: 0.5s linear 0.1s 5 forwards server-lights-red;
+        }
+        rect:nth-of-type(10) {
+          animation: 0.5s linear 0.4s 5 forwards server-lights-green;
+        }
+        rect:nth-of-type(11) {
+          animation: 0.5s linear 0.6s 5 forwards server-lights-green;
+        }
+        rect:nth-of-type(12) {
+          animation: 0.5s linear 0.9s 5 forwards server-lights-red;
+        }
+        rect:nth-of-type(18) {
+          animation: 0.5s linear 0s 5 forwards server-lights-red;
+        }
+        rect:nth-of-type(19) {
+          animation: 0.5s linear 0.2s 5 forwards server-lights-red;
+        }
+        rect:nth-of-type(20) {
+          animation: 0.5s linear 0.4s 5 forwards server-lights-green;
+        }
+        rect:nth-of-type(21) {
+          animation: 0.5s linear 0.8s 5 forwards server-lights-green;
+        }
+        rect:nth-of-type(27) {
+          animation: 0.5s linear 0.7s 5 forwards server-lights-red;
+        }
+        rect:nth-of-type(28) {
+          animation: 0.5s linear 0.1s 5 forwards server-lights-green;
+        }
+        rect:nth-of-type(29) {
+          animation: 0.5s linear 0.9s 5 forwards server-lights-red;
+        }
+        rect:nth-of-type(30) {
+          animation: 0.5s linear 0.4s 5 forwards server-lights-red;
+        }
+        rect:nth-of-type(36) {
+          animation: 0.5s linear 0s 5 forwards server-lights-red;
+        }
+        rect:nth-of-type(37) {
+          animation: 0.5s linear 0.9s 5 forwards server-lights-green;
+        }
+        rect:nth-of-type(38) {
+          animation: 0.5s linear 0.3s 5 forwards server-lights-green;
+        }
+        rect:nth-of-type(39) {
+          animation: 0.5s linear 0.6s 5 forwards server-lights-green;
+        }
+        rect:nth-of-type(44) {
+          animation: 0.5s linear 0.4s 5 forwards server-lights-red;
+        }
+        rect:nth-of-type(45) {
+          animation: 0.5s linear 0.8s 5 forwards server-lights-green;
+        }
+        rect:nth-of-type(46) {
+          animation: 0.5s linear 0s 5 forwards server-lights-red;
+        }
+        rect:nth-of-type(47) {
+          animation: 0.5s linear 0.1s 5 forwards server-lights-red;
+        }
+      }
+    }
+
+    .content {
+      @include media(lg) {
+        padding: 150px 0;
+      }
     }
   }
 
