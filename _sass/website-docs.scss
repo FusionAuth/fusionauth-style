@@ -16,6 +16,8 @@
 
 @import 'mixins';
 @import 'variables';
+@import 'website-variables';
+
 
 /* Docs
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
@@ -116,9 +118,7 @@ section.docs {
         margin: 0;
         padding: 0;
 
-
         li {
-
           &.active {
             a {
               border-left: 2px solid $orange-medium;
@@ -154,7 +154,6 @@ section.docs {
     }
 
     // General for <nav> and <ul>
-
     li.open {
       background-color: darken($gray-1, 2.5%);
 
@@ -483,7 +482,7 @@ section.docs {
     .admonitionblock {
       align-items: center;
       background: $gray-1;
-      box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+      box-shadow: $website-shadow;
       display: flex;
       margin: 20px 0;
       padding: 10px;
@@ -535,7 +534,7 @@ section.docs {
       }
 
       &.note {
-        border-left: 4px solid $blue-dark;
+        border-left: 4px solid $blue-medium;
 
         &.since {
           border-left: 4px solid $documentation-since-color;

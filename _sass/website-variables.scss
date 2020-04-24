@@ -25,6 +25,11 @@ $monospace-light-font-stack: 'Source Code Pro', Menlo, monospace;
 
 /* Grid (space things out a bit more than normal since this is a brochure site)
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
+$website-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+
+
+/* Grid (space things out a bit more than normal since this is a brochure site)
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
 $grid-spacing: 20px;
 
 
@@ -92,6 +97,7 @@ $stamp-font-size: 12px;
 $stamp-font-weight: 600;
 $stamp-padding: 2px 8px;
 
+
 /* Forms
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 $input-background-color: white;
@@ -111,3 +117,10 @@ $purple-button-hover-background-color: $purple-dark;
 $white-button-hover-color: white;
 $white-button-hover-background-color: $orange-medium;
 $white-button-hover-border-color: $orange-medium;
+
+
+/* Documentation
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+/* These are outside of our color palette but the palette colors don't work very well for these items */
+$documentation-read-only-color: dodgerblue;
+$documentation-since-color: seagreen;
