@@ -34,6 +34,16 @@ section.docs {
 
   @include media(lg) {
     padding: 50px 0;
+
+    /*
+      Take back the right 20 px in doc layout
+      Review with Brian for opinion. It seems the docs feel a bit narrow, these 20 px help.
+    */
+    > .container > .row > div:nth-child(2) {
+      flex-basis: calc(75% - 20px);
+      margin-right: 0;
+      max-width: calc(75% - 20px);
+    }
   }
 
   a, a:hover, a:link, a:visited {
@@ -61,6 +71,12 @@ section.docs {
       i {
         float: right;
       }
+
+      &.sub-menu {
+        > i {
+          margin-top: 3px;
+        }
+      }
     }
 
     nav {
@@ -80,13 +96,8 @@ section.docs {
         color: $gray-6;
         text-decoration: none;
 
-
         @include media(lg) {
           font-size: 12px;
-        }
-
-        &.active {
-          border-left: 2px solid $orange-medium;
         }
       }
 
@@ -117,7 +128,6 @@ section.docs {
           a {
             display: block;
             padding: 10px;
-
           }
 
           ul {
@@ -125,11 +135,11 @@ section.docs {
 
             li {
               a {
-                padding-left: 40px;
+                padding-left: 35px;
               }
 
               li a {
-                padding-left: 80px;
+                padding-left: 60px;
               }
             }
           }
@@ -154,8 +164,14 @@ section.docs {
         }
       }
 
-      ul:first-of-type {
+      > ul:first-of-type {
         display: block;
+      }
+    }
+
+    li:not(.open) {
+      &:hover {
+        background-color: darken($gray-1, 5%);
       }
     }
 
@@ -172,10 +188,10 @@ section.docs {
     }
 
     blockquote {
-      background: $gray-1;
+      background: lighten($gray-2, 15%);
       border-left: 3px solid $gray-3;
       margin: 1em 0;
-      padding: 10px 0 10px 20px;
+      padding: 10px 20px 10px 20px;
     }
 
     .breadcrumb {
@@ -210,10 +226,15 @@ section.docs {
       }
 
       dd {
-        .ulist .since {
+        .since {
           color: $documentation-since-color;
-          display: inline-block;
+          display: block;
           font-weight: 500;
+          margin-bottom: 5px;
+        }
+
+        .ulist .since {
+          display: inline-block;
           margin-left: 5px;
           text-transform: uppercase;
         }
@@ -346,7 +367,7 @@ section.docs {
 
     i {
       &.fa-id-badge {
-        color: $blue-dark;
+        color: lighten($blue-dark, 5%);
       }
 
       &.fa-lock {
@@ -354,7 +375,7 @@ section.docs {
       }
 
       &.fa-unlock, &.fa-unlock-alt {
-        color: lighten($green-dark, 7%);
+        color: lighten($documentation-since-color, 7%);
       }
 
       /* Replicate a FusionAuth admin UI button Style */
@@ -379,9 +400,14 @@ section.docs {
     }
 
     img {
-      &:not(.box-shadow) {
-        margin-left: -39px;
-        max-width: 107%;
+      max-width: 100%;
+
+      // On full size, take a bit more real-estate
+      @include media(lg) {
+        &:not(.box-shadow) {
+          margin-left: -39px;
+          max-width: 107%;
+        }
       }
 
       &.top-cropped {
@@ -396,6 +422,20 @@ section.docs {
 
     p {
       margin: 20px 0;
+    }
+
+    .quoteblock {
+      &.since {
+        blockquote {
+          border-left: 3px solid $documentation-since-color;
+        }
+      }
+
+      &.warn {
+        blockquote {
+          border-left: 3px solid $yellow-medium;
+        }
+      }
     }
 
     ul {
@@ -571,6 +611,7 @@ section.docs {
 
     .caption {
       @include caption(block, 0);
+      font-weight: 500;
     }
 
     .command-line pre {
