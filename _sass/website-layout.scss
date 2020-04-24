@@ -377,7 +377,7 @@ header.page-header {
 /* Sections (except heroes)
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
-section {
+section:not(.account) {
   padding-bottom: 90px;
   padding-top: 90px;
 

@@ -47,6 +47,12 @@ table {
 
   td, th {
     text-align: left;
+
+    &.action {
+      text-align: left;
+      white-space: nowrap;
+      width: 1px;
+    }
   }
 
   thead.light {
