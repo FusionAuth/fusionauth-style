@@ -25,46 +25,60 @@
   overflow-x: scroll;
 
   ul.tabs {
+    border-bottom: 1px solid $gray-2;
     display: flex;
     list-style: none;
-    margin: 0 0 -1px 8px;
+    margin: 0;
     overflow-x: scroll;
     padding: 0;
 
     li {
-      border: 1px solid transparent;
-      border-top: 3px solid transparent;
+      border-bottom: 2px solid transparent;
       display: inline-block;
-      padding: 10px 20px;
-
-      @include media(lg) {
-        padding: 10px 60px;
-      }
+      opacity: 0.5;
+      padding: 0;
 
       &.selected {
-        border-bottom: 1px solid white;
-        border-left: 1px solid $gray-4;
-        border-top-left-radius: 3px;
-        border-top-right-radius: 3px;
-        border-right: 1px solid $gray-4;
-        border-top: 3px solid $blue-medium;
+        border-bottom: 2px solid $blue-medium;
+        opacity: 1.0;
       }
 
+
+      /* Make the anchor the full width so there is more 'tab' to click on */
       a, a:hover, a:visited, a:link {
         color: $body-font-color;
+        display: block;
+        padding: 10px 20px;
+        width: 100%;
+
+        > span {
+          display: none;
+        }
+
+        @include media(lg) {
+          padding: 10px 60px;
+
+          > span {
+            display: inline-block;
+          }
+        }
       }
 
       img {
         display: inline-block;
         height: 30px;
+        margin-left: 5px;
         margin-right: 10px;
         vertical-align: middle;
+
+        @include media(lg) {
+          margin-left: 0;
+        }
       }
     }
   }
 
   .tab-content {
-    border-top: 1px solid $gray-4;
     display: none;
     padding: 40px 0 0 0;
 
@@ -80,11 +94,23 @@
       display: flex;
       margin-bottom: 30px;
 
+      > button {
+        border-radius: 5px;
+        margin-left: 3px;
+
+        --fa-primary-color: #fff;
+        --fa-secondary-color: #fff;
+        --fa-secondary-opacity: 0.9;
+      }
+
       code {
         background: black;
+        border-radius: 5px;
         color: white;
         flex-grow: 1;
-        padding: 14px 10px;
+        overflow-x: scroll;
+        padding: 14px 15px;
+        white-space: nowrap;
       }
     }
   }
