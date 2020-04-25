@@ -129,6 +129,10 @@ code, kbd, pre, samp {
   @extend .monospace;
 }
 
+.black-text {
+  color: black !important;
+}
+
 .blue-text {
   color: $blue-dark !important;
 }

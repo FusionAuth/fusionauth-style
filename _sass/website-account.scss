@@ -107,8 +107,13 @@ section.account {
   }
 
   .price-summary {
-    position: sticky;
-    top: 16px;
+    position: -webkit-sticky !important;
+    position: sticky !important;
+    top: 100px;
+
+    footer button {
+      margin-top: 20px;
+    }
 
     ul {
       list-style: none;
@@ -125,6 +130,10 @@ section.account {
 
           &:first-of-type {
             margin-top: 10px;
+          }
+
+          &:last-of-type {
+            margin-bottom: 10px;
           }
 
           i {
@@ -177,10 +186,6 @@ section.account {
         background: lighten($purple-light, 6);
       }
 
-      label {
-        display: block;
-      }
-
       .check-container span {
         display: block;
 
@@ -194,15 +199,38 @@ section.account {
         border: 1px solid $purple-light;
         border-radius: 5px;
         cursor: pointer;
+        display: inline-block;
         margin-bottom: 20px;
         padding: 20px;
-        width: 100%;
+
+        &.full {
+          display: block;
+          width: 100%;
+        }
+
+        &.image {
+          align-items: center;
+          display: inline-flex;
+          flex-direction: column;
+          min-width: 140px;
+          text-align: center;
+
+          img {
+            padding-bottom: 20px;
+            width: 50px;
+          }
+        }
 
         > strong {
           display: block;
           font-size: 18px;
           margin-bottom: 10px;
         }
+      }
+
+      #rds-options h3 {
+        font-size: 14px;
+        margin-top: 0;
       }
     }
 
@@ -212,6 +240,17 @@ section.account {
       display: flex;
       flex-direction: column;
       width: 30px;
+
+      .number {
+        color: white;
+        background: $purple-medium;
+        border-radius: 50%;
+        height: 30px;
+        line-height: 30px;
+        margin-top: 20px;
+        text-align: center;
+        width: 30px;
+      }
 
       .rail {
         background: $purple-dark;

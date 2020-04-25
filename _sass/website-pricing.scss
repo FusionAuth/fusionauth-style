@@ -158,36 +158,8 @@ section.pricing {
   }
 
   header {
-    align-items: center;
     background: $gray-1;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin: 0;
     padding: 30px;
-
-    h2 {
-      margin: 0;
-    }
-
-    p {
-      font-size: 16px;
-      font-weight: 500;
-      margin: 0;
-    }
-  }
-
-  .collapse-button {
-    color: $orange-medium;
-  }
-
-  > .collapsible-content {
-    display: none;
-    overflow-x: scroll;
-
-    @include media(md) {
-      overflow-x: hidden;
-    }
   }
 
   table {
