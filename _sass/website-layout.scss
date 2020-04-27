@@ -383,6 +383,17 @@ section:not(.account) {
   padding-bottom: 90px;
   padding-top: 90px;
 
+  /* Not sure if this is the correct fix, the style above breaks docs on mobile
+    TODO : Review with Brian, perhaps just a bug.
+  */
+  &.docs {
+    padding-top: 0;
+
+    @include media(lg) {
+      padding-top: 90px;
+    }
+  }
+
   &.blue {
     background: $blue-section-gradient;
     color: white;
@@ -445,32 +456,30 @@ section:not(.account) {
 /* Scroll to Top
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 #scroll-top {
-  bottom: -125px;
-  float: right;
+  bottom: -225px;
   font-size: 3.5rem;
-  height: 150px;
-  margin-right: -150px;
+  height: 200px;
   position: sticky;
+  text-align: right;
   transition: bottom 0.2s ease-in;
-  width: 200px;
+  width: 100%;
 
   &.show {
-    bottom: -35px;
+    bottom: -130px;
   }
 
   > div {
-    align-items: center;
-    display: flex;
     height: 100%;
-    justify-content: center;
   }
 
   i {
     --fa-primary-color: #fff;
     --fa-secondary-color: #{$blue-medium};
     --fa-secondary-opacity: 1.0;
+
+    margin-right: 3px;
     transition: opacity 0.1s ease-in;
-    opacity: 0.6;
+    opacity: 0.5;
   }
 
   &:hover {
