@@ -15,6 +15,7 @@
  */
 
 @import 'colors';
+@import 'forms';
 
 section.account {
   background: $gray-1;
@@ -58,15 +59,15 @@ section.account {
 
   .container {
     h1 {
+      margin-bottom: 10px;
+    }
+
+    .card {
       margin-bottom: 20px;
     }
 
-    > div {
-      margin-bottom: 50px;
-    }
-
-    > p {
-      margin-bottom: 50px;
+    .intro {
+      margin-bottom: 40px;
     }
   }
 
@@ -110,6 +111,10 @@ section.account {
     position: -webkit-sticky !important;
     position: sticky !important;
     top: 100px;
+
+    nav {
+      margin: 20px 0;
+    }
 
     footer button {
       margin-top: 20px;
@@ -183,7 +188,7 @@ section.account {
       }
 
       input[type=radio]:checked+label {
-        background: lighten($purple-light, 6);
+        background: $purple-light;
       }
 
       .check-container span {
@@ -196,7 +201,7 @@ section.account {
 
       .radio-box {
         background: lighten($purple-light, 9);
-        border: 1px solid $purple-light;
+        border: 1px solid $purple-medium;
         border-radius: 5px;
         cursor: pointer;
         display: inline-block;
@@ -257,6 +262,19 @@ section.account {
         height: 100%;
         width: 3px;
       }
+    }
+
+    .StripeElement {
+      @extend input[type="text"];
+      width: 100%;
+    }
+
+    .StripeElement--focus {
+      @extend input[type="text"]:focus;
+    }
+
+    .StripeElement--webkit-autofill {
+      background-color: #fefde5 !important;
     }
   }
 }
