@@ -103,4 +103,17 @@ table {
       background: $gray-2;
     }
   }
+
+  tbody {
+    tr {
+      td.action {
+        a {
+          i {
+            /* This makes it easier get the correct target on click events */
+            pointer-events: none;
+          }
+        }
+      }
+    }
+  }
 }
