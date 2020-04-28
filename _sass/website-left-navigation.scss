@@ -116,7 +116,10 @@ section.account, section.docs {
         padding: 0;
 
         hr {
+          border-left: 1px solid transparent;
+          border-top: 1px solid $gray-2;
           margin: 0;
+          width: calc(100% - 2px);
         }
 
         li {
