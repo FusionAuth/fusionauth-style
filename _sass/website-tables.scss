@@ -33,19 +33,6 @@ table {
     width: 100%;
   }
 
-  &.lined {
-    border-collapse: collapse;
-    margin: 20px 0;
-
-    tr {
-      td, th {
-        border-bottom: 1px solid $gray-2;
-        border-top: 1px solid $gray-2;
-        padding: 15px;
-      }
-    }
-  }
-
   &.hover {
     tbody {
       tr:hover {
@@ -92,8 +79,6 @@ table {
 
     }
   }
-
-
 
   td, th {
     text-align: left;

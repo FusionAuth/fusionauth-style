@@ -242,6 +242,7 @@ header.page-header {
 
           &.account i {
             display: none;
+            font-size: 18px;
 
             @include media(lg) {
               display: inline-block;
@@ -383,9 +384,6 @@ section:not(.account) {
   padding-bottom: 90px;
   padding-top: 90px;
 
-  /* Not sure if this is the correct fix, the style above breaks docs on mobile
-    TODO : Review with Brian, perhaps just a bug.
-  */
   &.docs {
     padding-top: 0;
 
