@@ -71,12 +71,6 @@ section.account {
     }
   }
 
-  /* Modify Credit Card */
-  //.fa-credit-card {
-  //  --fa-secondary-color: #{$blue};
-  //  --fa-secondary-opacity: 1.0;
-  //}
-
   /* Modify Light Bulb for support estimator */
   .fa-calculator {
     --fa-secondary-color: #{$yellow-medium};
@@ -89,9 +83,22 @@ section.account {
     --fa-secondary-opacity: 1.0;
   }
 
+  .fa-file-invoice {
+    --fa-primary-color: #{$blue-medium};
+    --fa-secondary-color: #{$gray-6};
+    --fa-secondary-opacity: 1.0;
+  }
+
   .fa-receipt {
     --fa-primary-color: #{$orange-medium};
     --fa-secondary-color: #{$gray-7};
+    --fa-secondary-opacity: 1.0;
+  }
+
+  .fa-server {
+    --fa-primary-color: #{$gray-7};
+    --fa-secondary-color: #{$blue-dark};
+    --fa-primary-opacity: 1.0;
     --fa-secondary-opacity: 1.0;
   }
 
@@ -103,7 +110,7 @@ section.account {
 
   .fa-users {
     --fa-primary-color: #{$gray-7};
-    --fa-secondary-color: #{$purple-dark};
+    --fa-secondary-color: #{$blue-dark};
     --fa-secondary-opacity: 1.0;
   }
 
