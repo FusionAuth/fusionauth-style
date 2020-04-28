@@ -385,7 +385,8 @@ section:not(.account) {
   padding-bottom: 90px;
   padding-top: 90px;
 
-  &.docs {
+  /* On mobile we have a nav that needs to push up on the top */
+  &.navigable {
     padding-top: 0;
 
     @include media(lg) {

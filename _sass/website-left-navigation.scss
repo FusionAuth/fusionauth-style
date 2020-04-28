@@ -59,17 +59,19 @@ section.account, section.docs {
       width: 100%;
 
       // General for <nav> and <ul>
-      li.open {
-        background-color: darken($gray-1, 2.5%);
+      li {
+        &.open {
+          background-color: darken($gray-1, 2.5%);
 
-        li {
-          &.active {
-            background-color: darken($gray-1, 5%);
+          li {
+            &.active {
+              background-color: darken($gray-1, 5%);
+            }
           }
-        }
 
-        > ul:first-of-type {
-          display: block;
+          > ul:first-of-type {
+            display: block;
+          }
         }
       }
 
@@ -112,6 +114,10 @@ section.account, section.docs {
         list-style: none;
         margin: 0;
         padding: 0;
+
+        hr {
+          margin: 0;
+        }
 
         li {
           &.active {

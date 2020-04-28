@@ -22,6 +22,30 @@ section.account {
   padding-bottom: 100px;
   padding-top: 40px;
 
+  /* On mobile we have a nav that needs to push up on the top */
+  &.navigable {
+    padding-top: 0;
+
+    @include media(lg) {
+      padding-top: 40px;
+    }
+
+    > .container > .row > div:last-of-type {
+      margin-top: 45px;
+    }
+  }
+
+  .welcome {
+    border-bottom: 1px solid darken($gray-1, 10%);
+    display: none;
+    height: 35px;
+    margin-bottom: 10px;
+
+    @include media(lg) {
+      display: block;
+    }
+  }
+
   input[type=range] {
     -webkit-appearance: none;
     -webkit-transition: .2s;
