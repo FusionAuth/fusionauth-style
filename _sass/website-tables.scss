@@ -59,6 +59,14 @@ table {
       td, th {
         padding: 12px 10px;
       }
+
+      td.action {
+        padding: 8px 10px;
+
+        a {
+          margin-right: 0;
+        }
+      }
     }
   }
 
