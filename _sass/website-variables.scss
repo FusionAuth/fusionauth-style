@@ -104,7 +104,7 @@ $stamp-padding: 2px 8px;
 
 /* Forms
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
-$input-background-color: white;
+$input-background-color: $gray-1;
 $input-addon-color: $gray-4;
 $input-border-radius: 5px;
 $input-padding-y: 12px;
@@ -114,13 +114,12 @@ $input-padding-x: 13px;
 /* Buttons
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 $button-padding: 15px 20px;
-$blue-button-background-color: $blue-medium;
-$blue-button-hover-background-color: $blue-dark;
-$purple-button-background-color: $purple-medium;
-$purple-button-hover-background-color: $purple-dark;
-$white-button-hover-color: white;
-$white-button-hover-background-color: $orange-medium;
-$white-button-hover-border-color: $orange-medium;
+$blue-button-background-color: #02B6D3;
+$blue-button-hover-background-color: #147894;
+$orange-button-background-color: #F58320;
+$orange-button-hover-background-color: #F74B01;
+$purple-button-background-color: #8989CE;
+$purple-button-hover-background-color: #59558E;
 
 
 /* Documentation

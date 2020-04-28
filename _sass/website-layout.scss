@@ -489,9 +489,16 @@ section:not(.account) {
   }
 }
 
+
+/* Challenges of CIAM icons
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.challenge img {
+  width: 30px;
+}
+
+
 /* Footer
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
-
 body > footer:last-of-type {
   background: $gray-7;
   color: white;
