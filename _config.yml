@@ -36,8 +36,9 @@ exclude:
   - fusionauth-style.ipr
   - fusionauth-style.iws
   - fusionauth-style.iml
-  - package.json
-  - package-lock.json
 
 assets:
   cache: false
+
+sass:
+  style: compressed

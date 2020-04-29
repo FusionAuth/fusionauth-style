@@ -34,7 +34,9 @@ project(group: "io.fusionauth", name: "fusionauth-style", version: "0.2.0", lice
   publications {
     main {
       publication(name: "fusionauth-application-style", type: "css", file: "build/css/fusionauth-application-style.css", source: "build/css/fusionauth-application-style.css")
+      publication(name: "fusionauth-application-style", type: "css.map", file: "build/css/fusionauth-application-style.css.map", source: "build/css/fusionauth-application-style.css.map")
       publication(name: "fusionauth-website-style", type: "css", file: "build/css/fusionauth-website-style.css", source: "build/css/fusionauth-website-style.css")
+      publication(name: "fusionauth-website-style", type: "css.map", file: "build/css/fusionauth-website-style.css.map", source: "build/css/fusionauth-website-style.css.map")
       publication(name: project.name, type: "zip", file: "build/fusionauth-style.zip")
     }
   }
@@ -77,39 +79,39 @@ target(name: "watch") {
 
 target(name: "int", description: "Releases a local integration build of the project", dependsOn: ["js"]) {
   file.mkdir(dir: "build/css")
-  file.mkdir(dir: "build/sass")
-
-  file.copy(to: "build/sass") {
-    fileSet(dir: "_sass")
-  }
 
   file.delete {
     fileSet(dir: "build", includePatterns: [~/fusionauth-style.+\.zip/])
   }
 
   file.zip(file: "build/fusionauth-style.zip") {
-    fileSet(dir: "build/sass", includePatterns: [])
+    fileSet(dir: "_sass", includePatterns: [])
   }
 
   file.delete {
     fileSet(dir: "build/css", includePatterns: [~/.+/])
   }
 
-  if (new ProcessBuilder("node", "node_modules/sass/sass.js", "_sass/fusionauth-application-style.scss", "build/css/intermediate.css").inheritIO().start().waitFor() != 0) {
-    fail("Failed while calling sass")
+  if (new ProcessBuilder('bundle', 'exec', 'jekyll', 'build').inheritIO().start().waitFor() != 0) {
+    fail("run failed")
   }
 
-  if (new ProcessBuilder("node_modules/postcss-cli/bin/postcss", "build/css/intermediate.css", "--use", "autoprefixer", "--use", "cssnano", "-o" , "build/css/fusionauth-application-style.css").inheritIO().start().waitFor() != 0) {
-    fail("Failed while calling postcss")
+  file.copy(to: "build/css") {
+    fileSet(dir: "_site/css", includePatterns: [~/fusionauth.+/])
+    filter(token: "fusionauth-application-style.css.map", value: "fusionauth-application-style-${project.version}.css.map")
+    filter(token: "fusionauth-website-style.css.map", value: "fusionauth-website-style-${project.version}.css.map")
   }
+//  file.copyFile(file: "_site/css/fusionauth-application-style.css.map", to: "build/css/fusionauth-application-style-${project.version}.css.map")
+//  file.copyFile(file: "_site/css/fusionauth-website-style.css.map", to: "build/css/fusionauth-website-style-${project.version}.css.map")
 
-  if (new ProcessBuilder("node", "node_modules/sass/sass.js", "_sass/fusionauth-website-style.scss", "build/css/intermediate.css").inheritIO().start().waitFor() != 0) {
-    fail("Failed while calling sass")
-  }
-
-  if (new ProcessBuilder("node_modules/postcss-cli/bin/postcss", "build/css/intermediate.css", "--use", "autoprefixer", "--use", "cssnano", "-o" , "build/css/fusionauth-website-style.css").inheritIO().start().waitFor() != 0) {
-    fail("Failed while calling postcss")
-  }
+//
+//  if (new ProcessBuilder("node_modules/postcss-cli/bin/postcss", "build/css/test.css", "--use", "cssnano", "-o" , "build/css/fusionauth-application-style.css").inheritIO().start().waitFor() != 0) {
+//    fail("Failed while calling postcss")
+//  }
+//
+//  if (new ProcessBuilder("node_modules/postcss-cli/bin/postcss", "build/css/test-website.css", "--use", "cssnano", "-o" , "build/css/fusionauth-website-style.css").inheritIO().start().waitFor() != 0) {
+//    fail("Failed while calling postcss")
+//  }
 
   dependency.integrate()
 }
