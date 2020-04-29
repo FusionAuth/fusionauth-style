@@ -151,6 +151,17 @@ section.docs {
           font-weight: 500;
         }
 
+        .overrides {
+          color: lighten($blue-dark, 7%);
+          display: inline-block;
+          font-size: 13px;
+          text-transform: uppercase;
+
+          code {
+            text-transform: none;
+          }
+        }
+
         .optional {
           color: $gray-5;
           display: inline-block;
@@ -169,14 +180,6 @@ section.docs {
           color: $orange-medium;
           font-size: 12px;
           font-weight: 500;
-          text-transform: uppercase;
-        }
-
-        .note {
-          color: $blue-dark;
-          font-size: 12px;
-          font-weight: 500;
-          margin-top: 20px;
           text-transform: uppercase;
         }
 
@@ -308,6 +311,14 @@ section.docs {
          font-size: 0.8rem;
          padding: 1px 3px 0 3px;
        }
+
+      > span.note {
+        color: $blue-dark;
+        font-size: 12px;
+        font-weight: 500;
+        margin-top: 20px;
+        text-transform: uppercase;
+      }
     }
 
     ul {
