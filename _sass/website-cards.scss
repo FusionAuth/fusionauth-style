@@ -90,6 +90,18 @@
     box-shadow: none;
   }
 
+  header {
+    display: flex;
+
+    :not(:last-child) {
+      flex: 1;
+    }
+
+    > :last-child {
+      flex: 0;
+    }
+  }
+
   &.competitor {
     align-items: center;
 

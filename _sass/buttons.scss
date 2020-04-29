@@ -37,7 +37,7 @@
   cursor: pointer;
   display: inline-block;
   font-size: 12px;
-  font-weight: 500;
+  font-weight: $button-font-weight;
   letter-spacing: .05rem;
   line-height: 12px;
   padding: $button-padding;

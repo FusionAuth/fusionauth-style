@@ -108,12 +108,6 @@ section.account {
     --fa-secondary-opacity: 1.0;
   }
 
-  .fa-receipt {
-    --fa-primary-color: #{$orange-medium};
-    --fa-secondary-color: #{$gray-7};
-    --fa-secondary-opacity: 1.0;
-  }
-
   .fa-server {
     --fa-primary-color: #{$gray-7};
     --fa-secondary-color: #{$blue-dark};
@@ -122,6 +116,12 @@ section.account {
   }
 
   .fa-th {
+    --fa-primary-color: #{$gray-7};
+    --fa-secondary-color: #{$blue-dark};
+    --fa-secondary-opacity: 1.0;
+  }
+
+  .fa-user-headset {
     --fa-primary-color: #{$gray-7};
     --fa-secondary-color: #{$blue-dark};
     --fa-secondary-opacity: 1.0;

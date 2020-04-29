@@ -38,6 +38,7 @@ $warning-alert-background-color: $orange-medium !default;
 /* Buttons
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
+$button-font-weight: 500 !default;
 $button-padding: 8px 13px !default;
 
 $blue-button-background-color: $blue-medium !default;
@@ -366,3 +367,11 @@ $h6-weight: 500 !default;
 $h6-line-height: 20px !default;
 $h6-margin: 0.67em 0 !default;
 $link-color: $blue-dark !default;
+
+$black-text-color: black !default;
+$blue-text-color: $blue-dark !default;
+$green-text-color: $green-dark !default;
+$orange-text-color: $orange-dark !default;
+$purple-text-color: $purple-dark !default;
+$red-text-color: $red-dark !default;
+$yellow-text-color: $yellow-dark !default;
