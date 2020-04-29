@@ -68,19 +68,9 @@ section.docs {
       padding: 10px 20px 10px 20px;
     }
 
-    .breadcrumb {
-      font-weight: 600;
-
-      i {
-        font-size: 12px;
-        padding-left: 2px;
-      }
-    }
-
     caption.title {
       font-weight: 500;
     }
-
 
     dl.api {
       border-bottom: 1px solid $gray-2;
@@ -320,20 +310,6 @@ section.docs {
        }
     }
 
-    .quoteblock {
-      &.since {
-        blockquote {
-          border-left: 3px solid $documentation-since-color;
-        }
-      }
-
-      &.warn {
-        blockquote {
-          border-left: 3px solid $yellow-medium;
-        }
-      }
-    }
-
     ul {
       li {
         p {
@@ -513,6 +489,15 @@ section.docs {
       }
     }
 
+    .breadcrumb {
+      font-weight: 600;
+
+      i {
+        font-size: 12px;
+        padding-left: 2px;
+      }
+    }
+
     .caption {
       @include caption(block, 0);
       font-weight: 500;
@@ -554,6 +539,20 @@ section.docs {
       .title {
         font-weight: 500;
         margin-bottom: 2px;
+      }
+    }
+
+    .quoteblock {
+      &.since {
+        blockquote {
+          border-left: 3px solid $documentation-since-color;
+        }
+      }
+
+      &.warn {
+        blockquote {
+          border-left: 3px solid $yellow-medium;
+        }
       }
     }
 

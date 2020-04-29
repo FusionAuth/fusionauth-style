@@ -22,7 +22,6 @@
 /* Left Navigation
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 section.account, section.docs {
-
   aside {
     width: 100%;
 
@@ -40,14 +39,14 @@ section.account, section.docs {
         display: none;
       }
 
-      i {
-        float: right;
-      }
-
       &.sub-menu {
         > i {
           margin-top: 3px;
         }
+      }
+
+      i {
+        float: right;
       }
     }
 
@@ -57,6 +56,15 @@ section.account, section.docs {
       margin: 0;
       padding: 0;
       width: 100%;
+
+      @include media(lg) {
+        border-radius: 0 5px 5px 0;
+        display: block;
+      }
+
+      &.open {
+        display: block;
+      }
 
       // General for <nav> and <ul>
       li {
@@ -79,15 +87,6 @@ section.account, section.docs {
         &:hover {
           background-color: darken($gray-1, 5%);
         }
-      }
-
-      .open {
-        display: block;
-      }
-
-      @include media(lg) {
-        border-radius: 0 5px 5px 0;
-        display: block;
       }
 
       a, a:hover, a:link, a:visited {
