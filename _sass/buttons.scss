@@ -53,6 +53,10 @@
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
     font-weight: 700;
     padding: 16px 30px;
+
+    i {
+      margin-right: 2px;
+    }
   }
 
   &.circle {
