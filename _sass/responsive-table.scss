@@ -16,6 +16,10 @@
 
 .responsive-table {
   text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-between;
+  justify-content: space-between;
 
   .item {
     display: inline-block;
