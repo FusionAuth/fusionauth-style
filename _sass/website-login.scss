@@ -55,10 +55,11 @@
 
   .button {
     font-weight: 600;
+    padding: 13px 18px;
     width: 100%;
   }
 
-  .error {
+  .error-message {
     background: lighten($red-light, 40%);
     border: 1px solid $red-dark;
     border-radius: 5px;
@@ -75,7 +76,7 @@
     }
   }
 
-  .info {
+  .info-message {
     background: lighten($blue-light, 40%);
     border: 1px solid $blue-dark;
     border-radius: 5px;
