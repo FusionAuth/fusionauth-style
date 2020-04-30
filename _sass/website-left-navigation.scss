@@ -133,6 +133,7 @@ section.account, section.docs {
 
             .search-field {
               @extend input, [type="text"];
+              align-items: baseline;
               background: #fff;
               display: flex;
               padding: 7px;
