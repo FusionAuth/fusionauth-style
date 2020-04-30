@@ -101,17 +101,6 @@ target(name: "int", description: "Releases a local integration build of the proj
     filter(token: "fusionauth-application-style.css.map", value: "fusionauth-application-style-${project.version}.css.map")
     filter(token: "fusionauth-website-style.css.map", value: "fusionauth-website-style-${project.version}.css.map")
   }
-//  file.copyFile(file: "_site/css/fusionauth-application-style.css.map", to: "build/css/fusionauth-application-style-${project.version}.css.map")
-//  file.copyFile(file: "_site/css/fusionauth-website-style.css.map", to: "build/css/fusionauth-website-style-${project.version}.css.map")
-
-//
-//  if (new ProcessBuilder("node_modules/postcss-cli/bin/postcss", "build/css/test.css", "--use", "cssnano", "-o" , "build/css/fusionauth-application-style.css").inheritIO().start().waitFor() != 0) {
-//    fail("Failed while calling postcss")
-//  }
-//
-//  if (new ProcessBuilder("node_modules/postcss-cli/bin/postcss", "build/css/test-website.css", "--use", "cssnano", "-o" , "build/css/fusionauth-website-style.css").inheritIO().start().waitFor() != 0) {
-//    fail("Failed while calling postcss")
-//  }
 
   dependency.integrate()
 }
