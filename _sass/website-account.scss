@@ -22,6 +22,12 @@ section.account {
   padding-bottom: 100px;
   padding-top: 40px;
 
+  blockquote {
+    border-left: 2px solid $orange-medium;
+    margin: 15px 10px 15px 20px;
+    padding-left: 15px;
+  }
+
   /* On mobile we have a nav that needs to push up on the top */
   &.navigable {
     padding-top: 0;
@@ -99,6 +105,12 @@ section.account {
   .fa-building {
     --fa-primary-color: #{$purple-medium};
     --fa-secondary-color: #{$yellow-light};
+    --fa-secondary-opacity: 1.0;
+  }
+
+  .fa-exclamation {
+    --fa-primary-color: #{$gray-7};
+    --fa-secondary-color: #{$red-dark};
     --fa-secondary-opacity: 1.0;
   }
 
@@ -301,26 +313,20 @@ section.account {
     .StripeElement--webkit-autofill {
       background-color: #fefde5 !important;
     }
+  }
 
-    .welcome {
-      border-bottom: 1px solid darken($gray-1, 10%);
-      display: none;
-      height: 35px;
-      margin-bottom: 10px;
+  .welcome {
+    border-bottom: 1px solid darken($gray-1, 10%);
+    display: none;
+    height: 35px;
+    margin-bottom: 10px;
 
-      @include media(lg) {
-        display: block;
-      }
+    @include media(lg) {
+      display: block;
     }
   }
 }
 
 .prime-dialog {
   width: 500px;
-
-  blockquote {
-    border-left: 2px solid $orange-medium;
-    margin: 15px 10px 15px 20px;
-    padding-left: 15px;
-  }
 }
