@@ -44,6 +44,10 @@
     color: black;
   }
 
+  img {
+    max-width: 120px;
+  }
+
   footer {
     margin-top: auto;
   }
@@ -62,10 +66,6 @@
     border-top: 1px solid $gray-3;
     padding-top: 30px;
 
-    .rw-ui-container {
-      margin-bottom: 10px;
-    }
-
     ul {
       list-style: none;
       margin: 0;
@@ -74,6 +74,10 @@
       li {
         margin-bottom: 20px;
       }
+    }
+
+    .rw-ui-container {
+      margin-bottom: 10px;
     }
   }
 }
@@ -150,6 +154,10 @@
   &.trading {
     align-items: center;
     width: 175px;
+
+    img {
+      max-width: 90px;
+    }
 
     .name {
       color: $gray-6;

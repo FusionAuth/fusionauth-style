@@ -490,6 +490,18 @@ section:not(.account) {
 }
 
 
+/* Misc classes
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.copied {
+  color: $green-dark;
+  display: none;
+  float: right;
+  font-style: italic;
+  font-weight: 700;
+  margin-right: 3px;
+}
+
+
 /* Challenges of CIAM icons
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .challenge img {
