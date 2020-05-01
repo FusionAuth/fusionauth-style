@@ -51,7 +51,7 @@ section.account, section.docs {
     }
 
     nav {
-      background: $gray-1;
+      background: darken($gray-1, 1%);
       display: none;
       margin: 0;
       padding: 0;
@@ -83,7 +83,7 @@ section.account, section.docs {
         }
       }
 
-      li:not(.open) {
+      li:not(.open):not(.search) {
         &:hover {
           background-color: darken($gray-1, 5%);
         }
@@ -129,7 +129,7 @@ section.account, section.docs {
           }
 
           &.search {
-            padding: 10px;
+            padding: 15px 10px;
 
             .search-field {
               @extend input, [type="text"];
