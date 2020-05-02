@@ -108,6 +108,8 @@ table {
     tr {
       td.action {
         a {
+          margin-top: 0;
+
           i {
             /* This makes it easier get the correct target on click events */
             pointer-events: none;
