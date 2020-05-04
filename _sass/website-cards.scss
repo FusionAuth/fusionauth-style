@@ -100,16 +100,9 @@
 
   header {
     display: flex;
+    justify-content: space-between;
 
-    :not(:last-child) {
-      flex: 1;
-    }
-
-    > :last-child {
-      flex: 0;
-    }
-
-    a {
+    a.button {
       margin-top: 0;
     }
   }
