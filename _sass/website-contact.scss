@@ -21,8 +21,13 @@
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
 section.contact {
+  #map {
+    border-radius: 5px;
+    height: 250px;
+    margin-bottom: 30px;
+  }
+
   img {
-    margin-top: 30px;
     width: 150px;
   }
 
