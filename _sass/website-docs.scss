@@ -478,6 +478,10 @@ section.docs {
         }
       }
 
+      > .body {
+        overflow-x: scroll;
+      }
+
       p {
         margin: 10px 0 !important;
         padding: 0;
