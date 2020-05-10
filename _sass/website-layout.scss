@@ -76,7 +76,7 @@ header.page-header {
   padding-left: 10px;
   padding-top: 10px;
   top: -120px; // Ignored when un-scrolled and position is "inherit"
-  z-index: 100;
+  z-index: 200; // The brochure has carousel buttons @ 100
 
   @include media(lg) {
     padding-left: 0;
