@@ -14,8 +14,7 @@
  * language governing permissions and limitations under the License.
  */
 
-@import 'mixins';
-@import 'variables';
+@import 'variables-functions-mixins';
 
 .tabs {
   @include scrollbars($scrollbar-track-background-color, $scrollbar-horizontal-track-box-shadow, $scrollbar-thumb-background-color);

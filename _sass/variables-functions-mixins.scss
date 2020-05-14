@@ -14,8 +14,48 @@
  * language governing permissions and limitations under the License.
  */
 
-@import 'colors';
+/* Colors
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+$blue-light: #5EB4EE !default;
+$blue-medium: #3998DB !default;
+$blue-dark: #156AA3 !default;
 
+$gray-1: #f7f7f7 !default;
+$gray-2: #e5e5e5 !default;
+$gray-3: #bfbfbf !default;
+$gray-4: #999999 !default;
+$gray-5: #737373 !default;
+$gray-6: #4c4c4c !default;
+$gray-7: #262626 !default;
+$black: #000 !default;
+
+$green-gray3: rgba(31, 158, 129, 0.51) !default;
+$green-light: #28E2BD !default;
+$green-medium: #0BB796 !default;
+$green-dark: #0F8B72 !default;
+
+$orange-light: #FFC287 !default;
+$orange-medium: #FF9C3D !default;
+$orange-dark: #FF6A00 !default;
+
+$purple-light: #577494 !default;
+$purple-medium: #34485E !default;
+$purple-dark: #213246 !default;
+
+$red-light: #FF6A7D !default;
+$red-medium: #EE3E54 !default;
+$red-dark: #C81B3D !default;
+
+$yellow-light: #F4F286 !default;
+$yellow-medium: #F0DB4F !default;
+$yellow-dark: #E7C901 !default;
+
+$body: #E7EDF2 !default;
+$body-font-color: $gray-7 !default;
+
+/* FusionAuth Colors */
+$fa-orange: #eb8c52 !default;
+$fa-dark: #343a40 !default;
 
 /* Shadows (used below so must be defined first since SaaS isn't a 2-pass parse - ugh)
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
@@ -174,6 +214,7 @@ $input-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4) !default;
 $input-box-shadow-light: inset 0 1px 1px rgba(0, 0, 0, 0.2) !default;
 $input-padding-y: 8px !default;
 $input-padding-x: 13px !default;
+$input-transition: box-shadow 0.2s ease-in-out;
 
 $label-color: $gray-6 !default;
 $label-font-size: 12px !default;
@@ -246,6 +287,25 @@ $grid-spacing: map-get($grid-settings, 'spacing') !default;
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
 $iframe-border-color: $gray-2 !default;
+
+
+/* The layer definitions
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+$layer-1: 10;
+$layer-2: 20;
+$layer-3: 30;
+$layer-4: 40;
+$layer-5: 50;
+$layer-6: 60;
+$layer-7: 70;
+$layer-8: 80;
+$layer-9: 90;
+$layer-10: 100;
+$layer-tooltip: 1000;
+$layer-multiple-select: 100;
+$layer-date-picker: 3000;
+$layer-date-picker-fields: 3001;
 
 
 /* Panels
@@ -375,3 +435,64 @@ $orange-text-color: $orange-dark !default;
 $purple-text-color: $purple-dark !default;
 $red-text-color: $red-dark !default;
 $yellow-text-color: $yellow-dark !default;
+
+
+/* Functions
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+@function map-deep-get($map, $keys...) {
+  @each $key in $keys {
+    $map: map-get($map, $key);
+  }
+  @return $map;
+}
+
+
+/* Mixins
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+@mixin user-select($args...) {
+  -webkit-user-select: $args;
+  -moz-user-select: $args;
+  -ms-user-select: $args;
+  user-select: $args;
+}
+
+@mixin scrollbars($track-background-color, $track-box-shadow, $thumb-background-color) {
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+
+  &::-webkit-scrollbar-track {
+    background-color: $track-background-color;
+    box-shadow: $track-box-shadow;
+
+    &:horizontal {
+      height: 6px;
+    }
+
+    &:vertical {
+      width: 6px;
+    }
+  }
+
+  &::-webkit-scrollbar {
+    height: 6px;
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $thumb-background-color;
+  }
+}
+
+@mixin media($size) {
+  $width: map-deep-get($grid-settings, 'widths', $size);
+  @media only screen and (min-width: $width) {
+    @content;
+  }
+}
+
+@mixin media-pixels($width) {
+  @media only screen and (min-width: $width) {
+    @content;
+  }
+}

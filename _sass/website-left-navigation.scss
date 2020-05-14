@@ -14,8 +14,7 @@
  * language governing permissions and limitations under the License.
  */
 
-@import 'mixins';
-@import 'variables';
+@import 'variables-functions-mixins';
 @import 'website-variables';
 
 
@@ -132,22 +131,11 @@ section.account, section.docs {
             padding: 15px 10px;
 
             .search-field {
-              @extend input, [type="text"];
               align-items: baseline;
               background: #fff;
               display: flex;
               padding: 7px;
               width: 100%;
-
-              input {
-                background: #fff;
-                border: none;
-                border-radius: 0;
-                box-shadow: none;
-                margin: 0;
-                padding: 0;
-                width: 100%;
-              }
             }
           }
 

@@ -4,19 +4,19 @@
 
 @import 'normalize';
 @import 'grid';
+@import 'variables-functions-mixins';
+
 @import 'address-label';
 @import 'alerts';
 @import 'application';
 @import 'cards';
 @import 'chart';
-@import 'colors';
 @import 'definition-list';
 @import 'dialog';
 @import 'effects';
 @import 'helpers';
 @import 'icons';
 @import 'iframe';
-@import 'mixins';
 @import 'buttons';
 @import 'forms';
 @import 'overlay';
@@ -29,4 +29,3 @@
 @import 'tooltip';
 @import 'typography';
 @import 'user-details';
-@import 'variables';

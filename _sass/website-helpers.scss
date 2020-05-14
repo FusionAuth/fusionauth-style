@@ -13,15 +13,18 @@
  * either express or implied. See the License for the specific
  * language governing permissions and limitations under the License.
  */
-@import 'functions';
-@import 'mixins';
-@import 'variables';
+
+@import 'variables-functions-mixins';
 
 /* Helpers
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
 .centered {
   text-align: center;
+}
+
+.hidden {
+  display: none;
 }
 
 .screen-center {

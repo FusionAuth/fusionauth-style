@@ -14,8 +14,7 @@
  * language governing permissions and limitations under the License.
  */
 
-@import 'colors';
-@import 'forms';
+@import 'variables-functions-mixins';
 
 section.account {
   background: $gray-1;
@@ -301,19 +300,6 @@ section.account {
         width: 3px;
       }
     }
-  }
-
-  .StripeElement {
-    @extend input[type="text"];
-    width: 100%;
-  }
-
-  .StripeElement--focus {
-    @extend input[type="text"]:focus;
-  }
-
-  .StripeElement--webkit-autofill {
-    background-color: #fefde5 !important;
   }
 
   .welcome {

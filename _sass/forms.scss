@@ -14,9 +14,7 @@
  * language governing permissions and limitations under the License.
  */
 
-@import 'layers';
-@import 'mixins';
-@import 'variables';
+@import 'variables-functions-mixins';
 
 /* Forms
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
@@ -68,7 +66,9 @@ form {
   }
 
   &.full {
+    .input,
     .prime-multiple-select,
+    .StripeElement,
     input[type="email"],
     input[type="number"],
     input[type="search"],
@@ -143,7 +143,7 @@ form.labels-left {
     }
   }
 
-  @media (min-width: 576px) {
+  @include media(sm) {
     .checkbox {
       margin-top: 6px;
     }
@@ -154,7 +154,7 @@ form.labels-left {
   }
 
   &.full {
-    @media (min-width: 576px) {
+    @include media(sm) {
       .form-row > label:first-of-type + * {
         width: calc(100% - 18% - 22px);
       }
@@ -188,10 +188,11 @@ fieldset {
   }
 }
 
-input {
+.input, input {
   position: relative;
 }
 
+.input,
 input[type="email"],
 input[type="file"],
 input[type="number"],
@@ -210,7 +211,7 @@ textarea {
   font-size: 16px;
   font-weight: normal;
   padding: $input-padding-y $input-padding-x;
-  transition: box-shadow 0.2s ease-in-out;
+  transition: $input-transition;
 
   &:disabled {
     background: rgba($input-background-color, 0.2);
@@ -238,7 +239,19 @@ textarea {
   }
 }
 
-@media (min-width: 576px) {
+// This styles the outer div or span and then removes all the styles from the input itself
+.input input {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  margin: 0;
+  padding: 0;
+}
+
+@include media(sm) {
+  .input,
+  .StripeElement,
   input[type="email"],
   input[type="file"],
   input[type="number"],
@@ -276,7 +289,7 @@ textarea {
       }
     }
 
-    input, span {
+    .input, input, span {
       background: none;
       border: none;
       box-shadow: none;
@@ -312,15 +325,16 @@ textarea {
     }
   }
 
-  input {
+  .input, input {
     width: 100%;
   }
 
-  > input, > label.select {
+  > .input, > input, > label.select {
     flex: 0 1 100%;
   }
 
-  > *, > input {
+  // TODO - Are the input versions needed?
+  > *, > .input, > input {
     border-radius: 0;
     border-right: none;
     margin: 0;
@@ -334,7 +348,7 @@ textarea {
     }
   }
 
-  > input, > span {
+  > .input, > input, > span {
     &:first-child {
       border-left: 1px solid $text-border-color;
     }
@@ -365,7 +379,7 @@ textarea {
     }
   }
 
-  input + span {
+  .input + span, input + span {
     border-left: none;
   }
 
@@ -384,7 +398,7 @@ textarea {
       border-right: none;
     }
 
-    &+ input {
+    &+ input, &+ input {
       border-left: none;
     }
 
@@ -417,6 +431,7 @@ form.labels-left.full td {
     width: 100%;
   }
 
+  .input,
   input[type="email"],
   input[type="number"],
   input[type="search"],
@@ -1133,4 +1148,29 @@ select.no-wrap {
     overflow-y: hidden;
     top: 2px;
   }
+}
+
+/* Stripe widgets that mimic the input style */
+.StripeElement {
+  appearance: none;
+  background: $input-background-color;
+  border: none;
+  border-radius: $input-border-radius;
+  box-shadow: $input-box-shadow;
+  box-sizing: border-box;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: normal;
+  height: 40px;
+  padding: $input-padding-y $input-padding-x;
+  transition: $input-transition;
+}
+
+.StripeElement--focus {
+  box-shadow: $input-box-shadow, $highlight-box-shadow;
+  outline: 0;
+}
+
+.StripeElement--webkit-autofill {
+  background-color: #fefde5 !important;
 }

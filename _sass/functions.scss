@@ -13,10 +13,3 @@
  * either express or implied. See the License for the specific
  * language governing permissions and limitations under the License.
  */
-
-@function map-deep-get($map, $keys...) {
-  @each $key in $keys {
-    $map: map-get($map, $key);
-  }
-  @return $map;
-}
