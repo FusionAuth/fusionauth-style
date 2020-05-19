@@ -400,8 +400,11 @@ $tooltip-color: $gray-1 !default;
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
 $font-stack: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !default;
-$monospace-font-stack: 'Lucida Console', Monaco, monospace;
-$monospace-light-font-stack: 'Courier New', Courier, monospace;
+$blockquote-border: 2px solid $gray-2 !default;
+$blockquote-margin: 15px 10px 15px 20px !default;
+$blockquote-padding: 15px !default;
+$monospace-font-stack: 'Lucida Console', Monaco, monospace !default;
+$monospace-light-font-stack: 'Courier New', Courier, monospace !default;
 $h1-size: 36px !default;
 $h1-weight: normal !default;
 $h1-line-height: 46px !default;

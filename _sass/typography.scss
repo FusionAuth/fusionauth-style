@@ -125,6 +125,12 @@ a {
   }
 }
 
+blockquote {
+  border-left: $blockquote-border;
+  margin: $blockquote-margin;
+  padding-left: $blockquote-padding;
+}
+
 code, kbd, pre, samp {
   @extend .monospace;
 }
