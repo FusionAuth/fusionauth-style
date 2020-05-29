@@ -208,10 +208,13 @@ $highlight-color: rgba($blue-medium, 0.4) !default;
 $input-addon-background-color: $gray-1 !default;
 $input-addon-color: $gray-6 !default;
 $input-background-color: $body !default;
-$input-border-color: $gray-4 !default;
+$input-border: none !default;
 $input-border-radius: 2px !default;
 $input-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4) !default;
 $input-box-shadow-light: inset 0 1px 1px rgba(0, 0, 0, 0.2) !default;
+$input-flat-background: transparent !default;
+$input-flat-border-color: $gray-4 !default;
+$input-font-size-desktop: 12px !default;
 $input-padding-y: 8px !default;
 $input-padding-x: 13px !default;
 $input-transition: box-shadow 0.2s ease-in-out;
@@ -239,9 +242,11 @@ $radio-disabled-color: $gray-6 !default;
 $radio-disabled-text-color: $gray-4 !default;
 
 $select-background-color: $gray-2 !default;
-$select-border-color: $blue-medium !default;
+$select-border: none !default;
 $select-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2) !default;
 $select-color: $gray-6 !default;
+$select-flat-background: transparent !default;
+$select-padding: 8px 50px 8px 13px !default;
 
 $text-border-color: $gray-3 !default;
 $text-disabled-border-color: $gray-2 !default;

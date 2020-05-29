@@ -1,0 +1,112 @@
+---
+layout: website
+title: Purchase path
+---
+
+<section class="purchase">
+  <form action="#">
+    <div class="selection">
+      <h1>Select Edition</h1>
+      <div class="choices">
+        <input type="radio" name="license.plan" id="community" value="COMMUNITY"/>
+        <label for="community" class="full radio-box">
+          <strong>Community</strong>
+          <span class="check-container">
+            <span><i class="fal fa-check"></i> Login, registration, authorization</span>
+            <span><i class="fal fa-check"></i> MFA, SSO, SAML, OAuth, OIDC</span>
+            <span><i class="fal fa-check"></i> Themed login & registration pages</span>
+            <span><i class="fal fa-check"></i> Unlimited users and API requests</span>
+            <span><i class="fal fa-check"></i> An active community of developers to help</span>
+            <span><i class="fal fa-check"></i> GitHub Issue and Feature Requests</span>
+          </span>
+        </label>
+        <input type="radio" name="license.plan" id="premium" value="PREMIUM" checked/>
+        <label for="premium" class="full radio-box">
+          <strong>Premium</strong>
+          <span class="check-container">
+            <span><i class="fal fa-check"></i> Community Edition <em>plus...</em></span>
+            <span><i class="fal fa-check"></i> Breached password detection NEW!</span>
+            <span><i class="fal fa-check"></i> Early access to security fixes</span>
+            <span><i class="fal fa-check"></i> 9AM to 5PM Mountain, Monday-Friday</span>
+            <span><i class="fal fa-check"></i> Email support</span>
+          </span>
+        </label>
+        <input type="radio" name="license.plan" id="enterprise" value="ENTERPRISE"/>
+        <label for="enterprise" class="full radio-box">
+          <strong>Enterprise</strong>
+          <span class="check-container">
+            <span><i class="fal fa-check"></i> Premium Edition <em>plus...</em></span>
+            <span><i class="fal fa-check"></i> 24 x 7 x 365 support</span>
+            <span><i class="fal fa-check"></i> Private Slack channel</span>
+            <span><i class="fal fa-check"></i> Engineering phone support</span>
+            <span><i class="fal fa-check"></i> Under 2 hours response time</span>
+          </span>
+        </label>
+      </div>
+    </div>
+    <div class="summary">
+      <div class="sticky">
+        <h1>Order Summary</h1>
+        <table>
+          <tbody>
+          <tr class="item">
+            <td>Business Hosting</td>
+            <td>$300/month</td>
+          </tr>
+          <tr class="description">
+            <td colspan="2">
+              <ul>
+                <li>Fault-tolerant disks</li>
+                <li>Up and running in minutes</li>
+                <li>3 nightly backups</li>
+                <li>1 medium server (2 vCPU - 4GB RAM)</li>
+                <li>Deployed to Oregon, US</li>
+              </ul>
+            </td>
+          </tr>
+          <tr class="edit-hosting">
+            <td colspan="2"><a href="#">Change Hosting</a></td>
+          </tr>
+          <tr class="item">
+            <td>Premium Edition</td>
+            <td>$500/month</td>
+          </tr>
+          <tr class="description">
+            <td colspan="2">
+              <ul>
+                <li>Community Edition <em>plus...</em></li>
+                <li>Breached password detection NEW!</li>
+                <li>Early access to security fixes</li>
+                <li>9AM to 5PM Mountain, Monday-Friday</li>
+                <li>Email support</li>
+              </ul>
+            </td>
+          </tr>
+          <tr class="spacer"><td colspan="2"></td></tr>
+          <tr class="total">
+            <td>BASE MONTHLY COST</td>
+            <td>$800/month</td>
+          </tr>
+          <tr class="estimate">
+            <td>FUTURE MONTHLY COST</td>
+            <td>
+              $2,500/month
+              <p>
+                You can estimate future monthly bills using this slider:
+                <br>
+                <input type="range" name="mau" class="purple" min="10000" max="250000" step="10000" value="0" id="mau">
+                <label for="mau">10,000</label> monthly active users
+              </p>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+        <p>
+          You will be able to confirm your purchase before your credit card is charged.
+        </p>
+        <button class="orange brochure button full">CONTINUE TO SELECT EDITION</button>
+        <a href="#" class="cancel">Cancel</a>
+      </div>
+    </div>
+  </form>
+</section>

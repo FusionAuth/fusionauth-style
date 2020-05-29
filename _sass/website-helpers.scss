@@ -35,6 +35,10 @@
   transform: translate(-50%, -50%);
 }
 
+.white-bg {
+  background: white;
+}
+
 img.white {
   filter: brightness(0) invert(1);
 }
@@ -43,6 +47,7 @@ ul.inline li {
   display: inline-block;
   margin-right: 10px;
 }
+
 
 /* Width and height
 –––––––––––––––––––––––––––––––––––––––––––––––––– */

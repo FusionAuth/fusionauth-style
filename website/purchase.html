@@ -1,0 +1,233 @@
+---
+layout: website
+title: Purchase path
+---
+
+<section class="purchase">
+  <form action="#">
+    <div class="selection">
+      <h1>Build Deployment</h1>
+      <div class="choices">
+        <input type="radio" name="deployment.architecture" id="single" value="SINGLE"/>
+        <label for="single" class="radio-box">
+          <strong>Basic</strong>
+          <span class="check-container">
+            <span><i class="fal fa-check"></i> Pick your region</span>
+            <span><i class="fal fa-check"></i> Fault-tolerant disks</span>
+            <span><i class="fal fa-check"></i> Up and running in minutes</span>
+          </span>
+        </label>
+        <input type="radio" name="deployment.architecture" id="single-rds" value="SINGLE_RDS" checked/>
+        <label for="single-rds" class="radio-box">
+          <strong>Business</strong>
+          <span class="check-container">
+            <span><i class="fal fa-check"></i> All the Basic features, plus...</span>
+            <span><i class="fal fa-check"></i> 3 nightly backups</span>
+            <span><i class="fal fa-check"></i> Full database replication available</span>
+          </span>
+        </label>
+        <input type="radio" name="deployment.architecture" id="ha" value="HA"/>
+        <label for="ha" class="radio-box">
+          <strong>High-Availability</strong>
+          <span class="check-container">
+            <span><i class="fal fa-check"></i> All the Business features, plus...</span>
+            <span><i class="fal fa-check"></i> Redundant servers</span>
+            <span><i class="fal fa-check"></i> Load balanced</span>
+            <span><i class="fal fa-check"></i> Custom URLs available</span>
+            <span><i class="fal fa-check"></i> SLA available (up to 99.99%)</span>
+          </span>
+        </label>
+      </div>
+      <div class="step">
+        <div class="rail">
+          <h2 class="number">0</h2>
+          <div class="bar"></div>
+        </div>
+        <div id="rds-options">
+          <h3>Select additional options</h3>
+          <label class="checkbox">
+            <input type="checkbox" name="deployment.multiAZ" value="true"/>
+            <span class="box"></span>
+            <span class="label">Full database replication</span>
+          </label>
+          <input type="hidden" name="__cb_deployment.multiAZ" value="false"/>
+        </div>
+      </div>
+      <div class="step">
+        <div class="rail">
+          <h2 class="number">1</h2>
+          <div class="bar"></div>
+        </div>
+        <div>
+          <h3>Select a region</h3>
+          <label class="select">
+            <select id="regions">
+              <option value="na">North America</option>
+              <option value="sa">South America</option>
+            </select>
+          </label>
+          <div class="choices">
+            <input type="radio" name="deployment.region" id="us-east-1" value="us-east-1"/>
+            <label for="us-east-1" class="radio-box image">
+              <img src="/images/flags/united-states.svg"/>
+              <span>Oregon, US</span>
+            </label>
+            <input type="radio" name="deployment.region" id="us-east-2" value="us-east-1"/>
+            <label for="us-east-2" class="radio-box image">
+              <img src="/images/flags/united-states.svg"/>
+              <span>Oregon, US</span>
+            </label>
+            <input type="radio" name="deployment.region" id="us-east-3" value="us-east-1"/>
+            <label for="us-east-3" class="radio-box image">
+              <img src="/images/flags/united-states.svg"/>
+              <span>Oregon, US</span>
+            </label>
+            <input type="radio" name="deployment.region" id="us-east-4" value="us-east-1"/>
+            <label for="us-east-4" class="radio-box image">
+              <img src="/images/flags/united-states.svg"/>
+              <span>Oregon, US</span>
+            </label>
+            <input type="radio" name="deployment.region" id="us-east-5" value="us-east-1"/>
+            <label for="us-east-5" class="radio-box image">
+              <img src="/images/flags/united-states.svg"/>
+              <span>Oregon, US</span>
+            </label>
+            <input type="radio" name="deployment.region" id="us-east-6" value="us-east-1"/>
+            <label for="us-east-6" class="radio-box image">
+              <img src="/images/flags/united-states.svg"/>
+              <span>Oregon, US</span>
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="rail">
+          <h2 class="number">2</h2>
+          <div class="bar"></div>
+        </div>
+        <div>
+          <h3>Select a size</h3>
+          <div class="choices">
+            <input type="radio" name="deployment.size" id="medium" value="medium"/>
+            <label for="medium" class="radio-box">
+              <strong>Medium</strong>
+              <span class="check-container">
+                <span><i class="fal fa-check"></i> 1 to 10 logins per second</span>
+                <span><i class="fal fa-check"></i> 10s to 100s of thousands of users</span>
+              </span>
+            </label>
+            <input type="radio" name="deployment.size" id="large" value="large"/>
+            <label for="large" class="radio-box">
+              <strong>Large</strong>
+              <span class="check-container">
+                <span><i class="fal fa-check"></i> 10 to 50 logins per second</span>
+                <span><i class="fal fa-check"></i> Millions of users</span>
+              </span>
+            </label>
+            <input type="radio" name="deployment.size" id="xlarge" value="xlarge"/>
+            <label for="xlarge" class="radio-box">
+              <strong>X-Large</strong>
+              <span class="check-container">
+                <span><i class="fal fa-check"></i> 50 to 150 logins per second</span>
+                <span><i class="fal fa-check"></i> 10s of millions of users</span>
+              </span>
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="rail">
+          <h2 class="number">3</h2>
+          <div class="bar"></div>
+        </div>
+        <div>
+          <h3>Select a version</h3>
+          <label class="select">
+            <select name="deployment.fusionAuthVersion" id="deployment_fusionAuthVersion">
+              <option value="1.15.0">1.15.0</option>
+              <option value="1.16.0">1.16.0</option>
+            </select>
+          </label>
+        </div>
+      </div>
+      <div class="step">
+        <div class="rail">
+          <h2 class="number">4</h2>
+          <div class="bar"></div>
+        </div>
+        <div>
+          <h3>Data Compliance</h3>
+          <div class="form-row">
+            <label class="checkbox">
+              <input type="checkbox" name="deployment.production" value="true" id="deployment_production" [#if deployment?? && deployment.production]checked[/#if]/>
+              <span class="box"></span>
+              <span class="label">Deployment will contain production user data</span>
+            </label>
+            <input type="hidden" name="__cb_deployment.production" value="false" />
+          </div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="rail">
+          <h2 class="number">5</h2>
+          <div class="bar"></div>
+        </div>
+        <div>
+          <h3>Select your URL</h3>
+          <div class="form-row">
+            <div class="input-addon-group">
+              <input id="cloud_id_input" type="text" id="deployment_cloudId" name="deployment.cloudId" autocapitalize="none" spellcheck="false" placeholder="your-company">
+              <span class="text standard"><strong>.fusionauth.io</strong></span>
+            </div>
+          </div>
+          <div id="cloud-id-invalid" class="red-text hidden">
+            <i class="fas fa-times-circle"></i> Invalid. Please only use letters, numbers or a dash and limit to 24 characters
+          </div>
+          <div id="cloud-id-available" class="green-text hidden">
+            <i class="fas fa-check-circle"></i> Available
+          </div>
+          <div id="cloud-id-unavailable" class="red-text hidden">
+            <i class="fas fa-times-circle"></i> Unavailable, this URL is in use
+          </div>
+          <p>
+            <em>Your FusionAuth deployment will be accessed using this address</em>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="summary">
+      <div class="sticky">
+        <h1>Order Summary</h1>
+        <table>
+          <tbody>
+          <tr class="item">
+            <td>Business Hosting</td>
+            <td>$300/month</td>
+          </tr>
+          <tr class="description">
+            <td colspan="2">
+              <ul>
+                <li>Fault-tolerant disks</li>
+                <li>Up and running in minutes</li>
+                <li>3 nightly backups</li>
+                <li>1 medium server (2 vCPU - 4GB RAM)</li>
+                <li>Deployed to Oregon, US</li>
+              </ul>
+            </td>
+          </tr>
+          <tr class="spacer"><td colspan="2"></td></tr>
+          <tr class="total">
+            <td>TOTAL</td>
+            <td>$300/month</td>
+          </tr>
+          </tbody>
+        </table>
+        <p>
+          You will be able to confirm your purchase before your credit card is charged.
+        </p>
+        <button class="orange brochure button full">CONTINUE TO SELECT EDITION</button>
+        <a href="#" class="cancel">Cancel</a>
+      </div>
+    </div>
+  </form>
+</section>
