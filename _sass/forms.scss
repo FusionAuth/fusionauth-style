@@ -164,7 +164,7 @@ form.labels-left {
 
 fieldset {
   border: 0;
-  margin: 0 0 15px 0;
+  margin: $fieldset-margin;
   min-width: inherit;
   padding: 0;
   width: 100%;
@@ -178,10 +178,11 @@ fieldset {
     }
 
     border: none;
-    border-bottom: 1px solid $fieldset-border-color;
+    border-bottom: $fieldset-legend-border;
     color: $fieldset-legend-color;
     display: block;
-    font-size: 18px;
+    font-size: $fieldset-legend-font-size;
+    font-weight: $fieldset-legend-font-weight;
     margin-bottom: 17px;
     padding-bottom: 5px;
     width: 100%;
@@ -708,7 +709,7 @@ form .form-row .input-addon-group label.select {
 
 label.select {
   align-items: center;
-  display: inline-flex;
+  display: inline-flex !important;
   margin: 0;
   padding: 0;
   position: relative;
@@ -1217,26 +1218,26 @@ select.no-wrap {
 }
 
 /* Stripe widgets that mimic the input style */
-.StripeElement {
-  appearance: none;
-  background: $input-background-color;
-  border: none;
-  border-radius: $input-border-radius;
-  box-shadow: $input-box-shadow;
-  box-sizing: border-box;
-  display: inline-block;
-  font-size: 16px;
-  font-weight: normal;
-  height: 40px;
-  padding: $input-padding-y $input-padding-x;
-  transition: $input-transition;
-}
-
-.StripeElement--focus {
-  box-shadow: $input-box-shadow, $highlight-box-shadow;
-  outline: 0;
-}
-
-.StripeElement--webkit-autofill {
-  background-color: #fefde5 !important;
-}
+//.StripeElement {
+//  appearance: none;
+//  background: $input-background-color;
+//  border: none;
+//  border-radius: $input-border-radius;
+//  box-shadow: $input-box-shadow;
+//  box-sizing: border-box;
+//  display: inline-block;
+//  font-size: 16px;
+//  font-weight: normal;
+//  height: 40px;
+//  padding: $input-padding-y $input-padding-x;
+//  transition: $input-transition;
+//}
+//
+//.StripeElement--focus {
+//  box-shadow: $input-box-shadow, $highlight-box-shadow;
+//  outline: 0;
+//}
+//
+//.StripeElement--webkit-autofill {
+//  background-color: #fefde5 !important;
+//}

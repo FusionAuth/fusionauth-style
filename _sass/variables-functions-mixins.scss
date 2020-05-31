@@ -199,8 +199,11 @@ $error-color: $red-medium !default;
 $error-highlight-color: $red-dark !default;
 $error-widget-color: $red-light !default;
 
-$fieldset-border-color: $gray-3 !default;
+$fieldset-legend-border: 1px solid $gray-3 !default;
 $fieldset-legend-color: $gray-7 !default;
+$fieldset-legend-font-size: 18px !default;
+$fieldset-legend-font-weight: 400 !default;
+$fieldset-margin: 0 0 15px 0 !default;
 
 $highlight-box-shadow: 0 0 0 2px rgba($blue-medium, 0.4) !default;
 $highlight-color: rgba($blue-medium, 0.4) !default;

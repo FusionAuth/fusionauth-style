@@ -529,6 +529,10 @@ body > footer:last-of-type {
     margin: 0;
     padding: 0;
 
+    &.connect a i {
+      font-size: 34px;
+    }
+
     a, a:hover, a:visited, a:link {
       color: white;
       font-weight: 500;

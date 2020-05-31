@@ -1,0 +1,175 @@
+---
+layout: website
+title: Purchase path
+---
+<script src="https://js.stripe.com/v3/"></script>
+
+<script type="text/javascript">
+  Prime.Document.onReady(function() {
+    var stripe = Stripe('pk_test_6pRNASCoBOKtIshFeQd4XMUh'); // No clue whose this is. Grabbed it from an example online
+    var elements = stripe.elements();
+    var style = {
+      base: {
+        color: Prime.Document.bodyElement.getComputedStyle().color,
+        fontWeight: 300,
+        fontFamily: Prime.Document.bodyElement.getComputedStyle().fontFamily,
+        fontSize: '14px'
+      },
+    };
+
+    var cardNumberElement = elements.create('cardNumber', {
+      style: style
+    });
+    cardNumberElement.mount('#card-number');
+
+    var cardExpiryElement = elements.create('cardExpiry', {
+      style: style
+    });
+    cardExpiryElement.mount('#card-expiry');
+
+    var cardCVCElement = elements.create('cardCvc', {
+      style: style
+    });
+    cardCVCElement.mount('#card-cvc');
+
+    var _handleResize = function() {
+      if (window.innerWidth <= 576) {
+        cardNumberElement.update({style: {base: {fontSize: '16px'}}});
+        cardExpiryElement.update({style: {base: {fontSize: '16px'}}});
+        cardCVCElement.update({style: {base: {fontSize: '16px'}}});
+      } else {
+        cardNumberElement.update({style: {base: {fontSize: '14px'}}});
+        cardExpiryElement.update({style: {base: {fontSize: '14px'}}});
+        cardCVCElement.update({style: {base: {fontSize: '14px'}}});
+      }
+    };
+    window.addEventListener('resize', _handleResize);
+    _handleResize();
+
+    function setOutcome(result) {
+      var successElement = document.querySelector('.success');
+      var errorElement = document.querySelector('.error');
+      successElement.classList.remove('visible');
+      errorElement.classList.remove('visible');
+
+      if (result.token) {
+        // In this example, we're simply displaying the token
+        successElement.querySelector('.token').textContent = result.token.id;
+        successElement.classList.add('visible');
+
+        // In a real integration, you'd submit the form with the token to your backend server
+        //var form = document.querySelector('form');
+        //form.querySelector('input[name="token"]').setAttribute('value', result.token.id);
+        //form.submit();
+      } else if (result.error) {
+        errorElement.textContent = result.error.message;
+        errorElement.classList.add('visible');
+      }
+    }
+
+    cardNumberElement.on('change', function(event) {
+      setOutcome(event);
+    });
+
+    cardExpiryElement.on('change', function(event) {
+      setOutcome(event);
+    });
+
+    cardCVCElement.on('change', function(event) {
+      setOutcome(event);
+    });
+
+    document.querySelector('form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      var options = {
+        address_zip: document.getElementById('postal-code').value,
+      };
+      stripe.createToken(cardNumberElement, options).then(setOutcome);
+    });
+  });
+</script>
+<section class="purchase">
+  <form action="#" class="full">
+    <div class="selection">
+      <h1 class="has-sub-title">Confirm Purchase</h1>
+      <p>
+        Provide the additional details below to complete your purchase.
+      </p>
+      <fieldset id="company-information">
+        <legend>Company Information</legend>
+        <div class="form-row">
+          <input type="text" name="companyName" placeholder="Company Name">
+        </div>
+      </fieldset>
+      <fieldset id="billing-details">
+        <legend>Billing Details</legend>
+        <div class="form-row">
+          <input type="text" name="billingName" placeholder="Name on Card">
+        </div>
+        <div class="form-row">
+          <div id="card-number" class="input"></div>
+        </div>
+        <div class="form-row card-extras">
+          <div id="card-expiry" class="input"></div>
+          <div id="card-cvc" class="input"></div>
+          <div id="coupon-code">
+            <input type="text" name="couponCode" placeholder="Coupon Code">
+            <span class="error">Invalid</span>
+          </div>
+        </div>
+      </fieldset>
+    </div>
+    <div class="summary">
+      <div class="sticky">
+        <h1>Order Summary</h1>
+        <table>
+          <tbody>
+          <tr class="item">
+            <td>Business Hosting</td>
+            <td>$300/month</td>
+          </tr>
+          <tr class="description">
+            <td colspan="2">
+              <ul>
+                <li>Fault-tolerant disks</li>
+                <li>Up and running in minutes</li>
+                <li>3 nightly backups</li>
+                <li>1 medium server (2 vCPU - 4GB RAM)</li>
+                <li>Deployed to Oregon, US</li>
+              </ul>
+            </td>
+          </tr>
+          <tr class="edit-hosting">
+            <td colspan="2"><a href="#">Change Hosting</a></td>
+          </tr>
+          <tr class="item">
+            <td>Premium Edition</td>
+            <td>$500/month</td>
+          </tr>
+          <tr class="description">
+            <td colspan="2">
+              <ul>
+                <li>Community Edition <em>plus...</em></li>
+                <li>Breached password detection NEW!</li>
+                <li>Early access to security fixes</li>
+                <li>9AM to 5PM Mountain, Monday-Friday</li>
+                <li>Email support</li>
+              </ul>
+            </td>
+          </tr>
+          <tr class="spacer"><td colspan="2"></td></tr>
+          <tr class="total">
+            <td>BASE MONTHLY COST</td>
+            <td>$800/month</td>
+          </tr>
+          </tbody>
+        </table>
+        <p>
+          You will be able to confirm your purchase before your credit card is charged.
+        </p>
+        <button class="orange brochure button full">CONFIRM PURCHASE</button>
+        <a href="#" class="cancel">Cancel</a>
+      </div>
+    </div>
+  </form>
+</section>

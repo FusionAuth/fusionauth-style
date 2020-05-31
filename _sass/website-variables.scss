@@ -35,6 +35,8 @@ $grid-spacing: 20px;
 
 /* Colors
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
+$body-font-color: #3E4E50;
+
 $blue-light: #13EBF2;
 $blue-medium: #02B6D3;
 $blue-dark: #147894;
@@ -88,6 +90,12 @@ $stamp-padding: 2px 8px;
 
 /* Forms
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
+$fieldset-legend-border: none;
+$fieldset-legend-color: $body-font-color;
+$fieldset-legend-font-size: 16px;
+$fieldset-legend-font-weight: 600;
+$fieldset-margin: 0 0 40px 0;
+
 $input-addon-background-color: $gray-4;
 $input-addon-color: white;
 $input-background-color: white;
@@ -95,8 +103,8 @@ $input-border: 1px solid $gray-4;
 $input-border-radius: 3px;
 $input-box-shadow: inset 0 0 0 rgba(0, 0, 0, 0);
 $input-box-shadow-light: inset 0 1px 1px rgba(0, 0, 0, 0.2);
-$input-font-size-desktop: 12px;
-$input-padding-y: 8px;
+$input-font-size-desktop: 14px;
+$input-padding-y: 11px;
 $input-padding-x: 13px;
 $input-transition: box-shadow 0.2s ease-in-out;
 
@@ -128,7 +136,6 @@ $documentation-since-color: seagreen;
 
 /* Typography
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
-$body-font-color: #3E4E50;
 $blockquote-border: 2px solid $orange-medium;
 $blue-text-color: $blue-medium;
 $orange-text-color: $orange-medium;

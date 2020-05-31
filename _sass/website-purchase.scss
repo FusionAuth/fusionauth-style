@@ -17,9 +17,31 @@
 @import 'variables-functions-mixins';
 
 .purchase {
-  background: #FAFAFA;
+  background: white;
   display: block;
   padding: 0;
+
+  @include media(sm) {
+    #card-expiry {
+      margin-right: 20px;
+      width: 150px;
+    }
+
+    #card-cvc {
+      margin-right: 20px;
+      width: 150px;
+    }
+
+    #coupon-code {
+      flex-grow: 1;
+    }
+
+    .card-extras {
+      align-items: flex-start;
+      display: flex;
+      flex-wrap: nowrap;
+    }
+  }
 
   @include media(lg) {
     form {
@@ -181,6 +203,7 @@
   }
 
   .selection {
+    background: #FAFAFA;
     padding: 50px 20px;
     width: 100%;
 
@@ -198,6 +221,14 @@
     h1 {
       font-size: 36px;
       margin-bottom: 60px;
+
+      &.has-sub-title {
+        margin-bottom: 10px;
+      }
+
+      + p {
+        margin-bottom: 60px;
+      }
     }
   }
 
@@ -319,4 +350,5 @@
       padding-right: calc((100vw - 1140px) / 2);
     }
   }
+
 }

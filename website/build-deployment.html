@@ -43,7 +43,7 @@ title: Purchase path
           <h2 class="number">0</h2>
           <div class="bar"></div>
         </div>
-        <div id="rds-options">
+        <div id="rds-options" class="form-row">
           <h3>Select additional options</h3>
           <label class="checkbox">
             <input type="checkbox" name="deployment.multiAZ" value="true"/>
@@ -58,7 +58,7 @@ title: Purchase path
           <h2 class="number">1</h2>
           <div class="bar"></div>
         </div>
-        <div>
+        <div class="form-row">
           <h3>Select a region</h3>
           <label class="select">
             <select id="regions">
@@ -105,7 +105,7 @@ title: Purchase path
           <h2 class="number">2</h2>
           <div class="bar"></div>
         </div>
-        <div>
+        <div class="form-row">
           <h3>Select a size</h3>
           <div class="choices">
             <input type="radio" name="deployment.size" id="medium" value="medium"/>
@@ -140,7 +140,7 @@ title: Purchase path
           <h2 class="number">3</h2>
           <div class="bar"></div>
         </div>
-        <div>
+        <div class="form-row">
           <h3>Select a version</h3>
           <label class="select">
             <select name="deployment.fusionAuthVersion" id="deployment_fusionAuthVersion">
@@ -155,16 +155,14 @@ title: Purchase path
           <h2 class="number">4</h2>
           <div class="bar"></div>
         </div>
-        <div>
+        <div class="form-row">
           <h3>Data Compliance</h3>
-          <div class="form-row">
-            <label class="checkbox">
-              <input type="checkbox" name="deployment.production" value="true" id="deployment_production" [#if deployment?? && deployment.production]checked[/#if]/>
-              <span class="box"></span>
-              <span class="label">Deployment will contain production user data</span>
-            </label>
-            <input type="hidden" name="__cb_deployment.production" value="false" />
-          </div>
+          <label class="checkbox">
+            <input type="checkbox" name="deployment.production" value="true" id="deployment_production" [#if deployment?? && deployment.production]checked[/#if]/>
+            <span class="box"></span>
+            <span class="label">Deployment will contain production user data</span>
+          </label>
+          <input type="hidden" name="__cb_deployment.production" value="false" />
         </div>
       </div>
       <div class="step">
@@ -172,13 +170,11 @@ title: Purchase path
           <h2 class="number">5</h2>
           <div class="bar"></div>
         </div>
-        <div>
+        <div class="form-row">
           <h3>Select your URL</h3>
-          <div class="form-row">
-            <div class="input-addon-group">
-              <input id="cloud_id_input" type="text" id="deployment_cloudId" name="deployment.cloudId" autocapitalize="none" spellcheck="false" placeholder="your-company">
-              <span class="text standard"><strong>.fusionauth.io</strong></span>
-            </div>
+          <div class="input-addon-group">
+            <input id="cloud_id_input" type="text" id="deployment_cloudId" name="deployment.cloudId" autocapitalize="none" spellcheck="false" placeholder="your-company">
+            <span class="text standard"><strong>.fusionauth.io</strong></span>
           </div>
           <div id="cloud-id-invalid" class="red-text hidden">
             <i class="fas fa-times-circle"></i> Invalid. Please only use letters, numbers or a dash and limit to 24 characters
