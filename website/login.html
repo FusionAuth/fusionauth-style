@@ -21,13 +21,13 @@ show-alerts: true
     </div>
     <h1>Log in to your account</h1>
     <form action="#" method="POST" class="full">
-      <fieldset>
+      <fieldset class="form-row">
         <div class="input-addon-group flat bordered white">
           <span class="icon"><i class="fas fa-user"></i></span>
           <input type="text" name="email" placeholder="Email"/>
         </div>
       </fieldset>
-      <fieldset>
+      <fieldset class="form-row">
         <div class="input-addon-group flat bordered white">
           <span class="icon"><i class="fas fa-lock"></i></span>
           <input type="password" name="password" placeholder="Password"/>
@@ -42,6 +42,11 @@ show-alerts: true
     <h2>Don't Have an Account?</h2>
     <a href="#" class="orange-text">Create an Account</a>
   </div>
+  <label class="select">
+    <select id="locale-select" name="locale">
+      <option value="en">English</option>
+    </select>
+  </label>
   <div class="powered-by">
     <strong>Powered by</strong>
     <img src="/images/logo-white.svg" alt="FusionAuth logo">
