@@ -70,6 +70,12 @@ section.pricing {
         left: -2.5em;
       }
 
+      &.green {
+        i {
+          color: $green-medium;
+        }
+      }
+
       &.orange {
         i {
           color: $orange-medium;
@@ -146,7 +152,17 @@ section.pricing {
   }
 
   .pricing-cards {
-    padding: 50px 25px;
+    padding-bottom: 50px;
+    padding-top: 50px;
+
+    @include media(xl) {
+      .col-xl-3 {
+        flex-basis: calc(25% - 16px);
+        margin-left: 8px;
+        margin-right: 8px;
+        max-width: calc(25% - 16px);
+      }
+    }
   }
 }
 
@@ -167,6 +183,38 @@ section.pricing {
     border-collapse: collapse;
     width: 100%;
 
+    &.edition {
+      td:nth-of-type(2) {
+        color: $green-light;
+      }
+
+      td:nth-of-type(3) {
+        color: $purple-light;
+      }
+
+      td:nth-of-type(4) {
+        color: $blue-light;
+      }
+
+      td:nth-of-type(5) {
+        color: $orange-light;
+      }
+    }
+
+    &.hosting {
+      td:nth-of-type(2) {
+        color: $purple-light;
+      }
+
+      td:nth-of-type(3) {
+        color: $blue-light;
+      }
+
+      td:nth-of-type(4) {
+        color: $orange-light;
+      }
+    }
+
     td {
       font-size: 16px;
       font-weight: 500;
@@ -175,22 +223,11 @@ section.pricing {
       &:not(:first-of-type) {
         text-align: center;
       }
-
-      &:nth-of-type(2) {
-        color: $purple-light;
-      }
-
-      &:nth-of-type(3) {
-        color: $blue-light;
-      }
-
-      &:nth-of-type(4) {
-        color: $orange-light;
-      }
     }
 
     th {
       padding: 20px 0;
+      text-align: center;
     }
 
     tr {

@@ -210,7 +210,7 @@ textarea {
   box-shadow: $input-box-shadow;
   display: inline-block;
   font-size: 16px;
-  font-weight: normal;
+  font-weight: $input-font-weight;
   padding: $input-padding-y $input-padding-x;
   transition: $input-transition;
 
@@ -281,6 +281,16 @@ input[type=range] {
 
     &::-moz-range-thumb {
       background: $blue-medium;
+    }
+  }
+
+  &.green {
+    &::-webkit-slider-thumb {
+      background: $green-medium;
+    }
+
+    &::-moz-range-thumb {
+      background: $green-medium;
     }
   }
 
