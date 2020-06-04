@@ -1,6 +1,6 @@
 ## FusionAuth Style
 
-This repository contains javascript and CSS for https://fusionauth.io
+This repository contains javascript and CSS for https://fusionauth.io and other FusionAuth sites.
 
 ## Setup
 
