@@ -1,15 +1,21 @@
 ## FusionAuth Style
 
+This repository contains javascript and CSS for https://fusionauth.io
+
 ## Setup
 
 ```
-npm install
 bundle install
 ```
-
 
 ## Building
 
 ```
 bundle exec jekyll serve
+```
+
+## Release
+
+```
+sb release
 ```
