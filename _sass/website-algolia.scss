@@ -21,6 +21,28 @@
  border: 1px solid;
  padding: 10px;
 }
+.ais-Hits-list {
+ list-style-type: none;
+}
+li.ais-Hits-item {
+ padding-bottom: 10px;
+}
+
+.ais-Hits-list a.hits-title, .ais-Hits-list a.hits-snippet {
+ padding: 0px;
+ display: inline;
+}
+
+.ais-Hits-item .hits-title {
+ @extend .md-text;
+ font-weight: 500;
+}
+
+.ais-Hits-item .hits-snippet {
+ @extend .sm-text;
+}
+
+
 .ais-SearchBox-submitIcon {
  margin-left: 5px;
 }
