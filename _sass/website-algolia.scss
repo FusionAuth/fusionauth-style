@@ -17,13 +17,20 @@
 @import 'variables-functions-mixins';
 
 #search-hits {
- box-shadow: 5px 10px;
+ box-shadow: $layered-box-shadow;
  border: 1px solid;
  padding: 10px;
 }
+
+.ais-Hits {
+ max-height: 500px;
+ overflow:scroll;
+}
+
 .ais-Hits-list {
  list-style-type: none;
 }
+
 li.ais-Hits-item {
  padding-bottom: 10px;
 }
@@ -42,18 +49,11 @@ li.ais-Hits-item {
  @extend .sm-text;
 }
 
-
-.ais-SearchBox-submitIcon {
- margin-left: 5px;
-}
-.ais-SearchBox-resetIcon {
- margin-left: 5px;
-}
-.ais-search-box {
-  max-width: 100%;
-  margin-bottom: 15px;
-}
-
 .ais-Hits-item mark {
-  background-color: $orange-medium;
+ background-color: $orange-medium;
 }
+
+.ais-input-style {
+ outline: none;
+}
+
