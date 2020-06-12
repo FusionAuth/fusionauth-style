@@ -136,6 +136,14 @@ section.account, section.docs {
               display: flex;
               padding: 7px;
               width: 100%;
+
+              input {
+                &:focus {
+                  box-shadow: none;
+                }
+
+                outline-color: transparent;
+              }
             }
           }
 
