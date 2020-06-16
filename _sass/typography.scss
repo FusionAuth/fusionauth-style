@@ -117,6 +117,60 @@ a {
   }
 }
 
+// FontAwesome lists
+ul.fa-ul {
+  list-style: none;
+  margin-top: 0;
+  padding: 0;
+
+  &.blue {
+    i {
+      color: $blue-medium;
+    }
+  }
+
+  // FontAwesome fix to make the bullets not indented
+  &.fa-ul .fa-li {
+    left: -2.5em;
+  }
+
+  &.green {
+    i {
+      color: $green-medium;
+    }
+  }
+
+  &.orange {
+    i {
+      color: $orange-medium;
+    }
+  }
+
+  &.purple {
+    i {
+      color: $purple-medium;
+    }
+  }
+
+  i {
+    font-size: 1.2rem;
+    vertical-align: middle;
+  }
+
+  li {
+    margin-bottom: 15px;
+
+    ul {
+      margin-left: 30px;
+      margin-top: 20px;
+    }
+  }
+
+  &:last-of-type {
+    margin-bottom: 20px;
+  }
+}
+
 .monospace {
   font-family: $monospace-font-stack;
 
