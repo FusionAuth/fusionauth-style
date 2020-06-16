@@ -1,0 +1,70 @@
+/*
+ * Copyright (c) 2017-2019, FusionAuth, All Rights Reserved
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
+ * either express or implied. See the License for the specific
+ * language governing permissions and limitations under the License.
+ */
+
+@import 'variables-functions-mixins';
+
+#search-hits {
+  background-color: $gray-1;
+  box-shadow: $layered-box-shadow;
+  padding: 0;
+  position: absolute;
+  margin-right: 10px;
+  margin-top: 2px;
+  border-radius: 2px;
+
+  .ais-Hits {
+    max-height: 500px;
+    overflow: scroll;
+  }
+
+  .ais-Hits-list {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  .ais-Hits-list a.hits-title, .ais-Hits-list a.hits-snippet {
+    display: inline;
+    padding: 0;
+  }
+
+  .ais-Hits--empty {
+    li:hover {
+      background-color: $gray-1;
+    }
+  }
+
+  .ais-Hits-item {
+    /* Match padding of nav */
+    padding: 10px;
+
+    span {
+      padding: 0 10px 0 0;
+    }
+
+    .hits-title {
+      font-weight: 500;
+    }
+  }
+
+  .ais-Hits-item .hits-snippet {
+    font-size: 12px;
+  }
+
+  .ais-Hits-item mark {
+    background-color: $orange-medium;
+  }
+}
+
