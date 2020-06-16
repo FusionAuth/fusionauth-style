@@ -93,19 +93,6 @@
     box-shadow: none;
   }
 
-  footer {
-    margin-top: 25px;
-  }
-
-  header {
-    display: flex;
-    justify-content: space-between;
-
-    a.button {
-      margin-top: 0;
-    }
-  }
-
   &.competitor {
     align-items: center;
 
@@ -147,6 +134,10 @@
     color: $body-font-color;
   }
 
+  &.padded {
+    padding: 30px 50px;
+  }
+
   &.trading {
     align-items: center;
     width: 175px;
@@ -168,10 +159,29 @@
     color: $body-font-color;
   }
 
+  footer {
+    margin-top: 25px;
+  }
+
   // These are semantic so it could be different levels but always the header
   h2, h3 {
     font-size: 24px;
     font-weight: 600;
+  }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+
+    a.button {
+      margin-top: 0;
+    }
+  }
+
+  .trunk {
+    margin: auto;
+    text-align: center;
+    width: 65%;
   }
 }
 

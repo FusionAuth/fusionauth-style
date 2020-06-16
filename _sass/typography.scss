@@ -67,6 +67,10 @@ p {
   &.no-top-margin {
     margin-top: 0;
   }
+
+  &.padded-y {
+    padding: 20px 0;
+  }
 }
 
 hr {
