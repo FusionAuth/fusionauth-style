@@ -193,6 +193,10 @@ fieldset {
   position: relative;
 }
 
+input::placeholder {
+  line-height: 1.1rem; // Hack for Firefox and Safari
+}
+
 .input,
 input[type="email"],
 input[type="file"],
@@ -211,6 +215,7 @@ textarea {
   display: inline-block;
   font-size: 16px;
   font-weight: $input-font-weight;
+  line-height: 1rem;
   padding: $input-padding-y $input-padding-x;
   transition: $input-transition;
 
@@ -341,7 +346,7 @@ textarea {
  Allows any number of icons, labels, inputs, and buttons to be combined in any order.
 */
 .input-addon-group {
-  align-items: center;
+  align-items: stretch;
   border-radius: 0;
   color: $input-addon-color;
   display: inline-flex;
@@ -356,7 +361,6 @@ textarea {
       background: none;
       border: none;
       box-shadow: none;
-      padding-left: 5px;
 
       &:first-child {
         border: none;
@@ -384,13 +388,29 @@ textarea {
   }
 
   .button {
-    span.text {
+    align-items: center;
+    display: inline-flex;
+    padding: 0 $input-padding-x;
+
+    i.fa, i.fas, i.fal, i.fab, i.far {
+      font-size: 16px;
+      vertical-align: middle;
+    }
+
+    .text {
       background: inherit;
       border: inherit;
-      /* This will already be right padded by the button */
-      padding-left: 0;
-      padding-right: 0;
       vertical-align: middle;
+    }
+
+    @media (min-width: 576px) {
+      i.fa, i.fas, i.fal, i.fab, i.far {
+        font-size: 14px;
+      }
+
+      &.text {
+        font-size: $input-font-size-desktop;
+      }
     }
   }
 
@@ -452,14 +472,15 @@ textarea {
   }
 
   span {
+    align-items: center;
     background: $input-addon-background-color;
     border-bottom: 1px solid $text-border-color;
     border-top: 1px solid $text-border-color;
-    flex: 0 0 auto;
+    display: inline-flex;
+    padding: 0 $input-padding-x; // y-direction is handled by the flexbox centering
 
     &.text {
       font-size: 16px;
-      padding: ($input-padding-y - 1px) $input-padding-x;
     }
 
     &:not(:last-child) {
@@ -474,16 +495,15 @@ textarea {
       border-left: 1px solid $text-border-color;
     }
 
-    i.fa, i.fas, i.fal, i.fab {
+    i.fa, i.fas, i.fal, i.fab, i.far {
       color: $input-addon-color;
-      font-size: 14px;
-      padding: ($input-padding-y + 1px) $input-padding-x;
+      font-size: 16px;
       vertical-align: middle;
     }
 
     @media (min-width: 576px) {
-      i.fa, i.fas, i.fal, i.fab {
-        padding: ($input-padding-y - 1px) $input-padding-x;
+      i.fa, i.fas, i.fal, i.fab, i.far {
+        font-size: 14px;
       }
 
       &.text {
