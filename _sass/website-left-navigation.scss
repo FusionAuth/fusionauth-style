@@ -141,7 +141,10 @@ section.account, section.docs {
                 &:focus {
                   box-shadow: none;
                 }
-                outline-color: transparent;
+
+                /* outline-color:transparent does not work on Safari */
+                outline: none;
+                width: 100%;
               }
             }
           }
