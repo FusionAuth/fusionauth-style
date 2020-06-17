@@ -235,6 +235,48 @@ table {
           width: 1px;
         }
 
+        .re-orderable {
+          align-items: center;
+          border-radius: 2px;
+          box-shadow: 0 0 2px 0 rgba(0,0,0,0.3);
+          display: inline-flex;
+          white-space: nowrap;
+
+          a {
+            border-radius: 0;
+            color: #3998DB;
+            display: inline-block;
+            font-family: 'Font Awesome 5 Pro', FontAwesome;
+            padding: 7px;
+            font-size: 14px;
+            text-decoration: none;
+            text-rendering: auto;
+
+            &.disabled {
+              opacity: 1.0; /* Override default 0.5 on a.disabled */
+
+              &:before {
+                color: transparent;
+              }
+            }
+
+            &.up {
+              border-right: 1px solid rgba(0, 0, 0, 0.1);
+              padding-right: 6px; /* 7px - 1 for the  border */
+
+              &:before {
+                content: '\f176';
+              }
+            }
+
+            &.down {
+              &:before {
+                content: '\f175';
+              }
+            }
+          }
+        }
+
         &.hide-on-mobile {
           display: none;
 

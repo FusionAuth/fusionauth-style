@@ -290,7 +290,20 @@
       }
 
       // Split button
-      new Prime.Widgets.SplitButton(Prime.Document.queryFirst('.split-button'));
+      var splitButtonElement = Prime.Document.queryFirst('.split-button');
+      if (splitButtonElement !== null) {
+        new Prime.Widgets.SplitButton(splitButtonElement);
+      }
+
+      // Re-orderable table
+      var reOrderableTable = Prime.Document.queryFirst('.re-orderable');
+      if (reOrderableTable !== null) {
+        new Prime.Widgets.Reorder(reOrderableTable)
+        .withItemSelector('tbody tr')
+        .initialize();
+      }
+
+
     });
   </script>
 </head>

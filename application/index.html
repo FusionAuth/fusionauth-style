@@ -1243,6 +1243,62 @@ show-alerts: true
           </tbody>
         </table>
 
+        <header><h3>Fourth Table with re-orderable rows</h3></header>
+        <table class="push-bottom re-orderable">
+          <thead class="light-header">
+          <tr>
+            <th class="tight"></th>
+            <th>Column 1</th>
+            <th >Column 2</th>
+            <th class="action">Action</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>
+              <div class="re-orderable">
+                <a  href="#" class="button disabled up" data-tooltip="Move up"></a>
+                <a  href="#" class="button down" data-tooltip="Move down"></a>
+              </div>
+            </td>
+            <td>Value 1</td>
+            <td >Value 1</td>
+            <td class="action">
+              <a href="#" class="blue button small-square" data-tooltip="Edit"><i class="fa fa-pencil"></i></a>
+              <a href="#" class="red button small-square" data-tooltip="Delete"><i class="fa fa-trash"></i></a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="re-orderable">
+              <a  href="#" class="button up" data-tooltip="Move up"></a>
+              <a  href="#" class="button down" data-tooltip="Move down"></a>
+              </div>
+            </td>
+            <td class="">Value 2</td>
+            <td >Value 2</td>
+            <td class="action">
+              <a href="#" class="blue button small-square" data-tooltip="Edit"><i class="fa fa-pencil"></i></a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="re-orderable">
+              <a  href="#" class="button up" data-tooltip="Move up"></a>
+                <hr/>
+              <a  href="#" class="button disabled down" data-tooltip="Move down"></a>
+              </div>
+            </td>
+            <td class="">Value 3</td>
+            <td >Value 3</td>
+            <td class="action">
+              <a href="#" class="green button small-square" data-tooltip="View"><i class="fa fa-search"></i></a>
+              <a href="#" class="blue button small-square" data-tooltip="Edit"><i class="fa fa-pencil"></i></a>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+
       </main>
     </div>
   </div>
@@ -1674,7 +1730,7 @@ show-alerts: true
         <pre class="code">
 // Do something super awesome in code
 var kickass = function() {
-console.info('consider it done.');
+  console.info('consider it done.');
 }
 
 kickass(); // consider it done.
