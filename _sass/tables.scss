@@ -256,7 +256,7 @@ table {
               opacity: 1.0; /* Override default 0.5 on a.disabled */
 
               &:before {
-                color: transparent;
+                opacity: 0.3;
               }
             }
 
