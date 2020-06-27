@@ -233,6 +233,13 @@ table {
           text-align: left;
           white-space: nowrap;
           width: 1px;
+
+          a {
+            i {
+              /* This makes it easier get the correct target on click events */
+              pointer-events: none;
+            }
+          }
         }
 
         .re-orderable {
