@@ -181,7 +181,9 @@
   .trunk {
     margin: auto;
     text-align: center;
-    width: 65%;
+    @include media(sm) {
+      width: 65%;
+    }
   }
 }
 
