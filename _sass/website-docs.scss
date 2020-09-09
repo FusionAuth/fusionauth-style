@@ -147,6 +147,11 @@ section.docs {
           text-transform: uppercase;
         }
 
+        .deprecated-names {
+          color: scale-color($red-dark, $lightness: -30%);
+          font-style: italic;
+        }
+
         .field {
           display: inline-block;
           font-weight: 500;
