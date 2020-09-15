@@ -278,6 +278,30 @@ header.page-header {
         z-index: 9998;
       }
 
+      ul {
+        padding: 0;
+        width: 275px;
+
+        li {
+          display: block;
+          padding-bottom: 20px;
+
+          a, a:hover, a:visited, a:link {
+            color: $gray-7;
+            font-size: 18px;
+
+            @include media('lg') {
+              font-size: 12px;
+            }
+
+            img {
+              width: 18px;
+              vertical-align: middle;
+            }
+          }
+        }
+      }
+
       &.animate {
         opacity: 0;
         max-height: 100px;
@@ -308,19 +332,27 @@ header.page-header {
         display: none;
         font-size: 12px;
 
-        span {
-          margin-bottom: 20px;
+        @include media('lg') {
+          display: block;
+          padding: 0 20px;
         }
 
         img {
           display: block;
           margin-bottom: 20px;
           height: 70px;
+
+          &.resources {
+            height: 60px;
+          }
         }
 
-        @include media('lg') {
-          display: block;
-          padding: 0 20px;
+        span {
+          margin-bottom: 20px;
+        }
+
+        ul li {
+          padding-left: 0;
         }
       }
 
@@ -330,25 +362,6 @@ header.page-header {
 
         @include media('lg') {
           border-left: 1px solid $gray-4;
-        }
-
-        ul {
-          padding: 0;
-          width: 275px;
-
-          li {
-            display: block;
-            padding-bottom: 20px;
-
-            a, a:hover, a:visited, a:link {
-              color: $gray-7;
-              font-size: 18px;
-
-              @include media('lg') {
-                font-size: 12px;
-              }
-            }
-          }
         }
       }
 
