@@ -279,6 +279,10 @@ section.docs {
     img {
       max-width: 100%;
 
+      &.box-shadow {
+        box-shadow: $layered-box-shadow;
+      }
+
       // On full size, take a bit more real-estate
       @include media(lg) {
         &:not(.box-shadow) {
