@@ -118,6 +118,46 @@
     }
   }
 
+  &.customer {
+    align-items: center;
+
+    .image-container {
+      align-items: center;
+      display: flex;
+      justify-content: center;
+      min-height: 50px;
+
+      img {
+        display: block;
+        max-height: 50px;
+        max-width: 200px;
+      }
+    }
+
+    .text-container {
+      align-items: center; 
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      min-height: 150px;
+      font-weight: 600;
+      font-size: 16px;
+    }
+
+    .link {
+      flex: 0;
+      font-size: 14px;
+      font-weight: 600;
+      margin: 0 0 auto 0;
+      padding: 0;
+      text-transform: uppercase;
+      &:after {
+        color: $orange-medium;
+        content: " \2192";
+      }
+    }
+  }
+
   &.even {
     display: flex;
     flex-direction: column;
