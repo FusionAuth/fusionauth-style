@@ -120,40 +120,29 @@
 
   &.customer {
     align-items: center;
+    margin-bottom: 30px;
 
-    .image-container {
-      align-items: center;
-      display: flex;
-      justify-content: center;
-      min-height: 50px;
-
-      img {
-        display: block;
-        max-height: 50px;
-        max-width: 200px;
-      }
+    img {
+      display: block;
+      margin: auto 0;
+      max-height: 50px;
+      max-width: 200px;
     }
 
-    .text-container {
-      align-items: center; 
+    p {
+      font-weight: 600;
+      margin: 30px 0;
       text-align: center;
-      display: flex;
-      justify-content: center;
-      min-height: 150px;
-      font-weight: 600;
-      font-size: 16px;
     }
 
-    .link {
-      flex: 0;
-      font-size: 14px;
+    span {
       font-weight: 600;
-      margin: 0 0 auto 0;
-      padding: 0;
+      margin-top: auto;
       text-transform: uppercase;
-      &:after {
+
+      i {
         color: $orange-medium;
-        content: " \2192";
+        font-weight: 600;
       }
     }
   }
