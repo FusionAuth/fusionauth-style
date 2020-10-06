@@ -118,6 +118,35 @@
     }
   }
 
+  &.customer {
+    align-items: center;
+    margin-bottom: 30px;
+
+    img {
+      display: block;
+      margin: auto 0;
+      max-height: 50px;
+      max-width: 200px;
+    }
+
+    p {
+      font-weight: 600;
+      margin: 30px 0;
+      text-align: center;
+    }
+
+    span {
+      font-weight: 600;
+      margin-top: auto;
+      text-transform: uppercase;
+
+      i {
+        color: $orange-medium;
+        font-weight: 600;
+      }
+    }
+  }
+
   &.even {
     display: flex;
     flex-direction: column;
