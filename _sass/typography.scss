@@ -20,6 +20,7 @@
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
 h1 {
+  color: $h1-color;
   font-size: $h1-size;
   font-weight: $h1-weight;
   line-height: $h1-line-height;
@@ -27,6 +28,7 @@ h1 {
 }
 
 h2 {
+  color: $h2-color;
   font-size: $h2-size;
   font-weight: $h2-weight;
   line-height: $h2-line-height;
@@ -34,6 +36,7 @@ h2 {
 }
 
 h3 {
+  color: $h3-color;
   font-size: $h3-size;
   font-weight: $h3-weight;
   line-height: $h3-line-height;
@@ -41,6 +44,7 @@ h3 {
 }
 
 h4 {
+  color: $h4-color;
   font-size: $h4-size;
   font-weight: $h4-weight;
   line-height: $h4-line-height;
@@ -48,6 +52,7 @@ h4 {
 }
 
 h5 {
+  color: $h5-color;
   font-size: $h5-size;
   font-weight: $h5-weight;
   line-height: $h5-line-height;
@@ -55,6 +60,7 @@ h5 {
 }
 
 h6 {
+  color: $h6-color;
   font-size: $h6-size;
   font-weight: $h6-weight;
   line-height: $h6-line-height;

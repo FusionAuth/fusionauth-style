@@ -90,7 +90,7 @@ section.account, section.docs {
 
       a, a:hover, a:link, a:visited {
         border-left: 2px solid transparent;
-        color: $gray-6;
+        color: $body-font-color;
         text-decoration: none;
 
         @include media(lg) {

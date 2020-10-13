@@ -39,8 +39,8 @@
   padding: 20px;
   text-align: center;
 
-  a, a:hover, a:link, a:visited {
-    color: black;
+  a, a:hover, a:link, a:visited, h1, h2, h3, h4, h5, h6, p, span {
+    color: $body-font-color;
   }
 
   img {
@@ -156,11 +156,23 @@
   &.gray {
     background: $gray-6;
     color: white;
+
+    a, a:hover, a:link, a:visited, h1, h2, h3, h4, h5, h6, p, span {
+      color: white;
+    }
   }
 
   &.light-gray {
     background: $gray-1;
     color: $body-font-color;
+
+    h1, h2, h3, h4, h5, h6 {
+      color: $header-font-color;
+    }
+
+    p, span {
+      color: $body-font-color;
+    }
   }
 
   &.padded {
@@ -186,6 +198,14 @@
   &.white {
     background: white;
     color: $body-font-color;
+
+    h1, h2, h3, h4, h5, h6 {
+      color: $header-font-color;
+    }
+
+    p, span {
+      color: $body-font-color;
+    }
   }
 
   footer {

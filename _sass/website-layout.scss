@@ -408,7 +408,7 @@ section {
     background: $blue-section-gradient;
     color: white;
 
-    a, a:hover, a:visited, a:link {
+    a, a:hover, a:visited, a:link, h1, h2, h3, h4, h5, h6, p, span {
       color: white;
     }
   }
@@ -417,7 +417,7 @@ section {
     background: $gray-7;
     color: white;
 
-    a, a:hover, a:visited, a:link {
+    a, a:hover, a:visited, a:link, h1, h2, h3, h4, h5, h6, p, span {
       color: white;
     }
   }
@@ -425,13 +425,21 @@ section {
   &.light-gray {
     background: $gray-1;
     color: $body-font-color;
+
+    h1, h2, h3, h4, h5, h6 {
+      color: $header-font-color;
+    }
+
+    p, span {
+      color: $body-font-color;
+    }
   }
 
   &.orange {
     background: $orange-section-gradient;
     color: white;
 
-    a, a:hover, a:visited, a:link {
+    a, a:hover, a:visited, a:link, h1, h2, h3, h4, h5, h6, p, span {
       color: white;
     }
   }
@@ -440,7 +448,7 @@ section {
     background: $purple-section-gradient;
     color: white;
 
-    a, a:hover, a:visited, a:link {
+    a, a:hover, a:visited, a:link, h1, h2, h3, h4, h5, h6, p, span {
       color: white;
     }
   }
@@ -448,6 +456,14 @@ section {
   &.white {
     background: white;
     color: $body-font-color;
+
+    h1, h2, h3, h4, h5, h6 {
+      color: $header-font-color;
+    }
+
+    p, span {
+      color: $body-font-color;
+    }
   }
 
   &:not(.main) {
