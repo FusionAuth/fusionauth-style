@@ -379,6 +379,10 @@
     flex: 0 0 auto;
     height: 454px;
     width: auto;
+
+    &.tall {
+      height: 770px;
+    }
   }
 
   img.callout {

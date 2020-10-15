@@ -175,6 +175,19 @@
     }
   }
 
+  &.medium-gray {
+    background: #D5D5D5;
+    color: $body-font-color;
+
+    h1, h2, h3, h4, h5, h6 {
+      color: $header-font-color;
+    }
+
+    p, span {
+      color: $body-font-color;
+    }
+  }
+
   &.padded {
     padding: 30px 50px;
   }
