@@ -331,7 +331,11 @@
   }
 
   .name {
-    color: $gray-3;
+    color: $gray-4;
     margin-bottom: 13px;
+  }
+
+  p {
+    color: $gray-7 !important;
   }
 }
