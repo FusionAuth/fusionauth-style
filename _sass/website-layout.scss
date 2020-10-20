@@ -280,7 +280,10 @@ header.page-header {
 
       ul {
         padding: 0;
-        width: 275px;
+
+        @include media('lg') {
+          width: 275px;
+        }
 
         li {
           display: block;
@@ -310,7 +313,7 @@ header.page-header {
 
       &.animate-apply {
         opacity: 1;
-        max-height: 500px;
+        max-height: 600px;
       }
 
       &.open {

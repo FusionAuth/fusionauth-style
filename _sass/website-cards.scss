@@ -322,6 +322,10 @@
   text-align: center;
   width: 340px;
 
+  h1, h2, h3, h4, h5, h6 {
+    color: $header-font-color !important;
+  }
+
   img {
     border-radius: 50%;
     left: calc(50% - 35px);
@@ -330,12 +334,12 @@
     width: 70px;
   }
 
+  p, span {
+    color: $body-font-color !important;
+  }
+
   .name {
     color: $gray-4;
     margin-bottom: 13px;
-  }
-
-  p {
-    color: $gray-7 !important;
   }
 }
