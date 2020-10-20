@@ -631,5 +631,11 @@ section.docs {
         margin-top: 0;
       }
     }
+
+    .videoblock {
+      iframe {
+        max-width: 100%;
+      }
+    }
   }
 }
