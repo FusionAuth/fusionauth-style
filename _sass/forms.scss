@@ -156,7 +156,9 @@ form.labels-left {
   &.full {
     @include media(sm) {
       .form-row > label:first-of-type + * {
-        width: calc(100% - 18% - 22px);
+        &:not(.radio) {
+          width: calc(100% - 18% - 22px);
+        }
       }
     }
   }
