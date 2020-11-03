@@ -108,6 +108,15 @@ section.docs {
         .content > .dlist {
           margin-top: 35px;
         }
+
+        // Deprecation description to expand upon the 'deprecated' note.
+        p .deprecated {
+          color: scale-color($red-dark, $lightness: -30%);
+          display: block;
+          font-weight: 500;
+          margin-bottom: 0 !important;
+          margin-top: 25px !important;
+        }
       }
 
       dt {
