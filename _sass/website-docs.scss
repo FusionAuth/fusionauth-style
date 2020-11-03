@@ -277,6 +277,11 @@ section.docs {
         padding: 7px;
         pointer-events: none;
 
+        &.blue {
+          color: #fff;
+          background-color: #3998DB !important;
+        }
+
         &.green {
           color: #fff;
           background-color: #0bb796 !important;;
