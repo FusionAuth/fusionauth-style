@@ -1,11 +1,11 @@
 <!doctype html>
 <html lang="en">
-  {% include website/_head.html %}
+  {% include website/_head.liquid %}
   <body>
-    {% include website/_header.html gray=true %}
+    {% include website/_header.liquid gray=true %}
     <main>
       {{ content }}
     </main>
-    {% include website/_footer.html %}
+    {% include website/_footer.liquid %}
   </body>
 </html>

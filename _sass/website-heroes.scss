@@ -21,11 +21,11 @@
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
 .hero {
-  overflow-y: hidden;
+  margin-top: -70px;
   position: relative;
 
   &.main {
-    padding: 0;
+    padding: 70px 0 0 0;
 
     .content {
       padding: 100px 0 125px 0;

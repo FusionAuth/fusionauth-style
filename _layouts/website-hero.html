@@ -1,9 +1,11 @@
 <!doctype html>
 <html lang="en">
-  {% include website/_head.html %}
+  {% include website/_head.liquid %}
   <body>
-    {% comment %} Since HTML5 recommends that the `main` element shouldn't include the header or footer and since we are using gradients, we can't use a main (boo) {% endcomment %}
-    {{ content }}
-    {% include website/_footer.html %}
+    {% include website/_header.liquid gray=false %}
+    <main>
+      {{ content }}
+    </main>
+    {% include website/_footer.liquid %}
   </body>
 </html>
