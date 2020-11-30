@@ -351,13 +351,13 @@ $scrollbar-vertical-track-box-shadow: inset 1px 0 2px rgba(0, 0, 0, 0.4) !defaul
 /* Stamps
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
-$stamp-border-radius: none !default;
+$stamp-border-radius: 2px !default;
 $stamp-box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.2) !default;
 $stamp-circle-border-radius: 50%;
 $stamp-circle-padding: 20px;
 $stamp-font-size: 12px !default;
 $stamp-font-weight: 400 !default;
-$stamp-padding: 1px 5px !default;
+$stamp-padding: 1px 7px !default;
 
 $blue-stamp-background-color: $blue-dark !default;
 $blue-stamp-color: white !default;
