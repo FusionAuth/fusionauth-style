@@ -66,6 +66,29 @@ h1 {
 /* Header
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
+.banner {
+  background: $gray-1;
+  margin: 0;
+  padding: 12px;
+  text-align: center;
+
+  p {
+    margin: 0;
+    padding: 0;
+  }
+
+  button {
+    background: none;
+    border: none;
+    color: $gray-6;
+    cursor: pointer;
+    float: right;
+    margin: 0;
+    padding: 0;
+    vertical-align: middle;
+  }
+}
+
 header.page-header {
   display: block;
   padding-bottom: 10px;
