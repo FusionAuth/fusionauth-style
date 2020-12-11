@@ -82,7 +82,7 @@ section.account, section.docs {
         }
       }
 
-      li:not(.open):not(.search) {
+      li:not(.open) {
         &:hover {
           background-color: darken($gray-1, 5%);
         }
@@ -124,28 +124,6 @@ section.account, section.docs {
           &.active {
             a {
               border-left: 2px solid $orange-medium;
-            }
-          }
-
-          &.search {
-            padding: 15px 10px;
-
-            .search-field {
-              align-items: baseline;
-              background: #fff;
-              display: flex;
-              padding: 7px;
-              width: 100%;
-
-              input {
-                &:focus {
-                  box-shadow: none;
-                }
-
-                /* outline-color:transparent does not work on Safari */
-                outline: none;
-                width: 100%;
-              }
             }
           }
 
