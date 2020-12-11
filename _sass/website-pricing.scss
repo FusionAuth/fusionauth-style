@@ -44,6 +44,10 @@ section.pricing {
   .card {
     margin-bottom: 20px;
 
+    a {
+      color: $body-font-color;
+    }
+
     h2 {
       margin-top: 0;
     }

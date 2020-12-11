@@ -47,7 +47,7 @@
       a, a:hover, a:visited, a:link {
         color: $body-font-color;
         display: block;
-        padding: 10px 20px;
+        padding: 10px 20px 10px 10px;
         width: 100%;
 
         > span {
@@ -55,7 +55,7 @@
         }
 
         @include media(lg) {
-          padding: 10px 60px;
+          padding: 10px 40px 10px 10px;
 
           > span {
             display: inline-block;
