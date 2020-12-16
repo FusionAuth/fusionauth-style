@@ -29,38 +29,46 @@
   .ais-Hits {
     max-height: 500px;
     overflow: scroll;
-  }
 
-  .ais-Hits-list {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-  }
+    .ais-Hits-list {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
 
-  .ais-Hits-list a.search-result {
-    color: $body-font-color;
-    display: inline;
-    padding: 0;
-  }
+      a.search-result {
+        color: $body-font-color;
+        display: inline;
+        padding: 0;
+      }
 
-  .ais-Hits--empty {
-    li:hover {
-      background-color: $gray-1;
+      .ais-Hits--empty {
+        li:hover {
+          background-color: $gray-1;
+        }
+      }
+
+      .ais-Hits-item {
+        /* Match padding of nav */
+        border-bottom: 1px dashed $gray-2;
+
+        a {
+          display: block;
+          padding: 10px;
+
+          &:focus {
+            background: rgba($blue-medium, 0.1);
+            box-shadow: $highlight-box-shadow;
+          }
+        }
+
+        mark {
+          background-color: $orange-medium;
+        }
+
+        .hits-snippet {
+          font-size: 12px;
+        }
+      }
     }
   }
-
-  .ais-Hits-item {
-    /* Match padding of nav */
-    border-bottom: 1px dashed $gray-2;
-    padding: 10px;
-  }
-
-  .ais-Hits-item .hits-snippet {
-    font-size: 12px;
-  }
-
-  .ais-Hits-item mark {
-    background-color: $orange-medium;
-  }
 }
-
