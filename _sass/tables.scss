@@ -434,6 +434,18 @@ table {
           white-space: nowrap;
           width: 1px;
         }
+
+        &.scrollable {
+          max-width: 0;
+
+          /* Override the height and width when in a table cell so we don't show the scroll bar\
+             - This essentially just makes it so we don't blow out a table for a long value in a cell.
+           */
+          &::-webkit-scrollbar {
+            height: 0;
+            width: 0;
+          }
+        }
       }
     }
   }
