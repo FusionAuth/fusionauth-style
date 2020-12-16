@@ -37,7 +37,7 @@
     padding: 0;
   }
 
-  .ais-Hits-list a.hits-title, .ais-Hits-list a.hits-snippet {
+  .ais-Hits-list a.search-result {
     color: $body-font-color;
     display: inline;
     padding: 0;
@@ -51,15 +51,8 @@
 
   .ais-Hits-item {
     /* Match padding of nav */
+    border-bottom: 1px dashed $gray-2;
     padding: 10px;
-
-    span {
-      padding: 0 10px 0 0;
-    }
-
-    .hits-title {
-      font-weight: 500;
-    }
   }
 
   .ais-Hits-item .hits-snippet {
