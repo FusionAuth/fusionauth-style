@@ -16,6 +16,10 @@
 
 @import 'variables-functions-mixins';
 
+#search-bar {
+  box-shadow: $layered-box-shadow;
+}
+
 #search-results {
   background-color: $gray-1;
   border: 1px solid $gray-4;
