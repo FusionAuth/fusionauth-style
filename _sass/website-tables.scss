@@ -17,7 +17,6 @@
 @import 'variables-functions-mixins';
 
 table {
-
   &.bordered {
     border-collapse: collapse;
     margin: 20px 0;
@@ -38,6 +37,27 @@ table {
     tbody {
       tr:hover {
         background-color: darken($gray-1, 1%);
+      }
+    }
+  }
+
+  &.lined {
+    border-collapse: collapse;
+    margin: 20px 0;
+
+    tr {
+      td, th {
+        border-bottom: 1px solid $gray-2;
+        padding: 22px 10px;
+      }
+
+      td.action {
+        padding: 18px 10px;
+        text-align: center;
+
+        a {
+          margin-right: 0;
+        }
       }
     }
   }

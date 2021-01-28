@@ -29,6 +29,15 @@
   color: $color !important;
 }
 
+.action-button {
+  display: inline-flex;
+  position: relative;
+
+  a.square.button {
+    padding: 8px 7px;
+  }
+}
+
 .button {
   border-radius: 3px;
   box-sizing: border-box;
@@ -214,7 +223,9 @@
       box-shadow: 0 0 0 0.2rem rgba(108, 117, 125, 0.5);
     }
   }
+}
 
+.action-button, .split-button {
   .menu {
     background: white;
     border: 1px solid $gray-button-border-color;
@@ -241,7 +252,7 @@
         background: $gray-button-hover-background-color;
       }
 
-      i.fa {
+      i {
         margin-right: 8px;
       }
     }

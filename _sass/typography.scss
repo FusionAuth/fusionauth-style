@@ -18,6 +18,27 @@
 
 /* Typography
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
+dl.inline-stacked {
+  display: grid;
+  grid-template: 1fr / auto;
+  margin: 40px 0;
+
+  dt {
+    border-bottom: 1px solid $gray-3;
+    font-size: 16px;
+    font-weight: 500;
+    grid-row: 1;
+    margin: 0 20px 5px 0;
+    padding: 0 0 5px 0;
+  }
+
+  dd {
+    font-size: 13px;
+    grid-row: 2;
+    margin: 0;
+    padding: 0;
+  }
+}
 
 h1 {
   color: $h1-color;
