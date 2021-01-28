@@ -28,9 +28,28 @@ section.account {
     @include media(lg) {
       padding-top: 40px;
     }
+  }
 
-    > .container > .row > div:last-of-type {
-      margin-top: 45px;
+  h3 {
+    align-items: center;
+    display: flex;
+    margin-top: 0;
+
+    img {
+      margin-right: 10px;
+    }
+  }
+
+  th {
+    font-weight: 500;
+    font-size: 15px;
+  }
+
+  .body {
+    margin-top: 30px;
+
+    @include media(lg) {
+      margin-top: 0;
     }
   }
 
@@ -104,6 +123,10 @@ section.account {
     --fa-secondary-opacity: 1.0;
   }
 
+  .overflow-hidden {
+    overflow: hidden;
+  }
+
   .price-summary {
     position: -webkit-sticky !important;
     position: sticky !important;
@@ -169,6 +192,66 @@ section.account {
 
       span:nth-of-type(3) {
         font-size: 14px;
+        font-weight: 700;
+      }
+    }
+  }
+
+  .profile {
+    display: none;
+
+    @include media(lg) {
+      display: flex;
+      margin: 10px 0 30px 0;
+
+      img {
+        border-radius: 60px;
+        margin: 0 20px 0 0;
+        width: 60px;
+      }
+
+      p {
+        margin: 0;
+        padding: 0;
+
+        &:first-of-type {
+          font-weight: 500;
+        }
+      }
+    }
+  }
+
+  .promo {
+    border-radius: 5px;
+    padding: 50px 30px;
+
+    @include media(lg) {
+      padding: 50px 0 50px 30px;
+    }
+
+    h2 {
+      color: white;
+      font-size: 32px;
+      font-weight: 500;
+      margin: 0 0 50px 0;
+    }
+
+    p {
+      color: white;
+      font-weight: 500;
+
+      &.intro {
+        margin: 0;
+      }
+    }
+
+    .buttons {
+      align-items: center;
+      display: flex;
+      margin-top: 70px;
+
+      a {
+        margin: 0 30px 0 0;
         font-weight: 700;
       }
     }

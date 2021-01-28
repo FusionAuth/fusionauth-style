@@ -259,6 +259,12 @@ code, kbd, pre, samp {
   }
 }
 
+.purple {
+  .purple-text {
+    color: $purple-light !important;
+  }
+}
+
 .sm-text {
   font-size: 8px;
 }
