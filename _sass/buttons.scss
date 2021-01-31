@@ -43,15 +43,15 @@
   box-sizing: border-box;
   cursor: pointer;
   display: inline-block;
-  font-size: 12px;
-  font-weight: $button-font-weight;
-  letter-spacing: .05rem;
-  line-height: 12px;
-  padding: $button-padding;
+  font-size: 12px !important;
+  font-weight: $button-font-weight !important;
+  letter-spacing: .05rem !important;
+  line-height: 12px !important;
+  padding: $button-padding !important;
   position: relative;
-  text-align: center;
-  text-decoration: none;
-  text-transform: none;
+  text-align: center !important;
+  text-decoration: none !important;
+  text-transform: none !important;
   transition: background 0.2s ease-in-out;
   white-space: nowrap;
 
@@ -72,8 +72,8 @@
   &.brochure {
     border-radius: 22px;
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
-    font-weight: 700;
-    padding: 16px 30px;
+    font-weight: 700 !important;
+    padding: 16px 30px !important;
 
     i {
       margin-right: 2px;
