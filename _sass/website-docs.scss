@@ -247,15 +247,6 @@ section.docs {
       line-height: 22px;
     }
 
-    // Spacing trick for adjusting # anchors down below the fixed header
-    h1[id]::before, h2[id]::before, h3[id]::before, h4[id]::before, h5[id]::before, h6[id]::before {
-      content: "";
-      display: block;
-      height: 10rem;
-      margin-top: -10rem;
-      visibility: hidden;
-    }
-
     i {
       &.fa-id-badge {
         color: lighten($blue-dark, 5%);
