@@ -357,7 +357,7 @@ header.page-header {
             }
 
             img {
-              width: 18px;
+              width: 26px;
               vertical-align: middle;
             }
           }
@@ -379,14 +379,6 @@ header.page-header {
         margin-top: 20px;
         width: 100%;
 
-        @include media('lg') {
-          display: flex;
-          justify-content: center;
-          width: 900px;
-        }
-      }
-
-      .wide.container {
         @include media('lg') {
           display: flex;
           justify-content: center;
@@ -414,6 +406,19 @@ header.page-header {
 
         @include media('lg') {
           padding: 0 40px 20px 40px;
+
+          img.desktop {
+            display: block;
+            height: 100px;
+          }
+
+          .desktop {
+            display: inherit;
+          }
+
+          .mobile {
+            display: none;
+          }
         }
 
         &:not(:first-of-type) {
@@ -427,36 +432,9 @@ header.page-header {
           font-size: 18px;
           margin: auto;
 
-          &.desktop {
-            display: none;
-          }
-
-          &.mobile {
-            display: inline-block;
-          }
-
-          @include media('lg') {
-            &.mobile {
-              display: none;
-            }
-
-            &.desktop {
-              display: inline-block;
-            }
-          }
-
           img {
-            width: 18px;
+            width: 26px;
             vertical-align: middle;
-          }
-        }
-
-        img {
-          display: none;
-          height: 100px;
-
-          @include media('lg') {
-            display: block;
           }
         }
 
@@ -475,6 +453,14 @@ header.page-header {
           @include media('lg') {
             text-align: center;
           }
+        }
+
+        .desktop {
+          display: none;
+        }
+
+        .mobile {
+          display: inherit;
         }
       }
 
@@ -759,7 +745,8 @@ body > footer:last-of-type {
         display: inline-block;
 
         input[type=text] {
-          padding: 12px;
+          border: none;
+          padding: 10px;
           margin-bottom: 10px;
           width: 300px;
         }

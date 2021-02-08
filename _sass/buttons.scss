@@ -57,9 +57,9 @@
 
   &.account {
     color: $body-font-color;
-    font-size: 14px;
-    font-weight: 600;
-    padding: 0;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    padding: 0 !important;
     text-transform: uppercase;
 
     i {
@@ -80,7 +80,7 @@
     }
 
     &.wide {
-      padding: 16px 60px;
+      padding: 16px 60px !important;
     }
   }
 
@@ -98,11 +98,11 @@
   }
 
   &.square {
-    padding: 12px;
+    padding: 12px !important;
   }
 
   &.small-square {
-    padding: 7px;
+    padding: 7px !important;
   }
 
   &:hover {
@@ -131,14 +131,14 @@
 
   &.gray {
     @include button-colors($gray-button-background-color, $gray-button-color, $gray-button-border-color);
-    padding: 7px 12px;
+    padding: 7px 12px !important;
 
     &.square {
-      padding: 11px;
+      padding: 11px !important;
     }
 
     &.small-square {
-      padding: 6px;
+      padding: 6px !important;
     }
 
     &:hover, &:focus {
