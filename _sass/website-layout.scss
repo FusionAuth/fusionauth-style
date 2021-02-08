@@ -340,20 +340,16 @@ header.page-header {
       ul {
         padding: 0;
 
-        @include media('lg') {
-          width: 275px;
-        }
-
         li {
           display: block;
           padding-bottom: 20px;
 
           a, a:hover, a:visited, a:link {
             color: $gray-7;
-            font-size: 18px;
+            font-size: 16px;
 
             @include media('lg') {
-              font-size: 12px;
+              font-size: 14px;
             }
 
             img {
@@ -393,9 +389,6 @@ header.page-header {
       }
 
       .items {
-        margin: 0;
-        padding: 0;
-
         @include media('lg') {
           border-left: 1px solid $gray-4;
         }
@@ -406,24 +399,23 @@ header.page-header {
 
         @include media('lg') {
           padding: 0 40px 20px 40px;
+        }
 
-          img.desktop {
+        > img {
+          display: none;
+
+          @include media('lg') {
             display: block;
             height: 100px;
           }
-
-          .desktop {
-            display: inherit;
-          }
-
-          .mobile {
-            display: none;
-          }
         }
 
-        &:not(:first-of-type) {
+        > p {
+          display: none;
+
           @include media('lg') {
-            border-left: 1px solid $gray-4;
+            display: block;
+            font-weight: 600;
           }
         }
 
@@ -438,29 +430,23 @@ header.page-header {
           }
         }
 
-        p {
-          display: none;
-          font-weight: 600;
-
-          @include media('lg') {
-            display: block;
-          }
-        }
-
         .buttons {
-          text-align: left;
+          .button {
+            display: none;
 
-          @include media('lg') {
-            text-align: center;
+            @include media('lg') {
+              display: inline-block;
+              text-align: center;
+            }
           }
-        }
 
-        .desktop {
-          display: none;
-        }
+          .mobile {
+            display: inline;
 
-        .mobile {
-          display: inherit;
+            @include media('lg') {
+              display: none;
+            }
+          }
         }
       }
 
