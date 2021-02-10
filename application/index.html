@@ -1598,8 +1598,35 @@ show-alerts: true
     <div class="panel">
       <h2>IFrames</h2>
       <main>
-        <iframe class="preview" src="https://fusionauth.io">
+        <form class="full" id="iframe-testing-form">
+          <div class="form-row">
+            <label for="iframe-url-input">Source</label>
+            <input id="iframe-url-input" type="text" class="text" value="https://piedpiper.com"/>
+          </div>
+        </form>
+        <iframe id="test-iframe" class="preview" src="https://piedpiper.com">
         </iframe>
+        <script>
+          var input = Prime.Document.queryById('iframe-url-input')
+          var iframe = Prime.Document.queryById('test-iframe')
+          var handle = null;
+          var loadIframe = function() {
+            iframe.setAttribute('src', input.getValue());
+          }
+          Prime.Document.queryById('iframe-testing-form').addEventListener('submit', function(event) {
+            Prime.Utils.stopEvent(event);
+            loadIframe();
+          });
+          input.addEventListener('keyup', function() {
+            if (handle !== null) {
+              clearTimeout(handle);
+            }
+
+            handle = setTimeout(function() {
+              loadIframe();
+            }, 1200);
+          });
+        </script>
       </main>
     </div>
   </div>
