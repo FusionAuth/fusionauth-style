@@ -108,8 +108,19 @@
   display: none;
   margin-top: -1px;
   overflow-x: auto;
-  padding: 35px 10px;
+  padding: 40px 10px 35px 10px;
   width: 100%;
+
+
+  /* Allows for a row above a table with buttons w/out affect the top padding of the tab content */
+  &.table-actions {
+    padding-top: 6px; /* 40 - 34 */
+
+    > .row {
+      height: 34px;
+      margin-top: 0;
+    }
+  }
 
   &.vertical-tab {
     border: none;
@@ -122,6 +133,11 @@
 
   &.tight-left {
     padding-left: 0;
+  }
+
+  /* Override the top padding for the tab content */
+  .pull-top {
+    margin-top: -40px;
   }
 }
 

@@ -1453,8 +1453,8 @@ show-alerts: true
           <li><a href="#tab-1">Tab 1</a></li>
           <li><a href="#tab-2">Tab 2</a></li>
           <li><a href="#tab-3">Tab 3</a></li>
-          <li><a href="#tab-4">Tab 4</a></li>
-          <li><a href="#tab-5">Tab 5</a></li>
+          <li><a href="#tab-4">Table w/ button</a></li>
+          <li><a href="#tab-5">Table w/out button</a></li>
           <li><a href="#tab-6">Tab 6</a></li>
           <li><a href="#tab-7">Tab 7</a></li>
           <li><a href="#tab-8">Tab 8</a></li>
@@ -1486,8 +1486,54 @@ show-alerts: true
             </div>
           </div>
         </div>
-        <div id="tab-4"><p> Tab 4 contents </p></div>
-        <div id="tab-5"><p> Tab 5 contents </p></div>
+        <div id="tab-4" class="table-actions">
+          <div class="row">
+            <div class="col-xs text-right tight-right">
+              <a href="#" class="red button">
+                <i class="fa fa-trash"></i>
+                Delete all sessions
+              </a>
+            </div>
+          </div>
+          <table>
+            <thead class="light-header">
+            <tr>
+              <th>Name</th>
+              <th class="hide-on-mobile">Type</th>
+              <th>IP Address</th>
+              <th>Application</th>
+              <th class="hide-on-mobile">Created</th>
+              <th class="hide-on-mobile">Last accessed</th>
+              <th>Expiration</th>
+              <th data-sortable="false" class="action">Action</th>
+            </tr></thead>
+            <tbody>
+            <tr><td colspan="99">No refresh tokens</td>
+            </tr></tbody>
+          </table>
+        </div>
+        <div id="tab-5">
+          <!-- Add a table here so we can ensure we get the same height from the tab content to the table
+              between tab 4 (has a button on top of the table) and tab 5 (no button)
+           -->
+          <table>
+            <thead class="light-header">
+            <tr>
+              <th>Name</th>
+              <th class="hide-on-mobile">Type</th>
+              <th>IP Address</th>
+              <th>Application</th>
+              <th class="hide-on-mobile">Created</th>
+              <th class="hide-on-mobile">Last accessed</th>
+              <th>Expiration</th>
+              <th data-sortable="false" class="action">Action</th>
+            </tr></thead>
+            <tbody>
+            <tr><td colspan="99">No refresh tokens</td>
+            </tr></tbody>
+          </table>
+
+        </div>
         <div id="tab-6"><p> Tab 6 contents </p></div>
         <div id="tab-7"><p> Tab 7 contents </p></div>
         <div id="tab-8"><p> Tab 8 contents </p></div>
