@@ -65,6 +65,63 @@
     max-width: 100%;
   }
 
+  .admonitionblock {
+    align-items: center;
+    background: $gray-1;
+    box-shadow: $website-shadow;
+    display: flex;
+    margin: 20px 0;
+    padding: 10px;
+    width: 100%;
+
+    .icon {
+      display: block;
+      align-self: center;
+      min-width: 25px;
+      font-size: 35px;
+      font-style: normal;
+      font-variant: normal;
+      margin: 0 30px 0 20px;
+      text-rendering: auto;
+      -webkit-font-smoothing: antialiased;
+
+      &.note::before {
+        color: $blue-medium;
+        content: '\f05a';
+        font-family: 'Font Awesome 5 Pro';
+        font-weight: 300;
+      }
+
+      &.warning::before {
+        color: $yellow-medium;
+        content: '\f071';
+        font-family: 'Font Awesome 5 Pro';
+        font-weight: 300;
+      }
+
+      &.tip::before {
+        color: #111;
+        content: '\f0eb';
+        font-family: 'Font Awesome 5 Pro';
+        font-weight: 300;
+      }
+
+      &.caution::before {
+        color: $orange-dark;
+        content: '\f06d';
+        font-family: 'Font Awesome 5 Pro';
+        font-weight: 300;
+      }
+
+      .important::before {
+        color: $red-medium;
+        content: '\f06a';
+        font-family: 'Font Awesome 5 Pro';
+        font-weight: 300;
+      }
+    }
+  }
+
   .advice-callout {
     margin-top: 50px;
   }
@@ -157,8 +214,8 @@
   }
 
   .pagination {
-    text-align: center
-  ;
+    text-align: center;
+
     ul {
       list-style: none;
       margin: 0;
