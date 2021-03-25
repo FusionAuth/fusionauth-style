@@ -113,7 +113,7 @@
         font-weight: 300;
       }
 
-      .important::before {
+      &.important::before {
         color: $red-medium;
         content: '\f06a';
         font-family: 'Font Awesome 5 Pro';
@@ -123,6 +123,10 @@
 
     &.caution {
       border-left: 4px solid $orange-dark;
+    }
+
+    &.important{
+      border-left: 4px solid $red-medium;
     }
 
     &.note {
