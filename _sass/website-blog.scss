@@ -76,12 +76,12 @@
 
     .icon {
       display: block;
-      align-self: center;
-      min-width: 25px;
       font-size: 35px;
       font-style: normal;
       font-variant: normal;
       margin: 0 30px 0 20px;
+      min-width: 35px;
+      text-align: center;
       text-rendering: auto;
       -webkit-font-smoothing: antialiased;
 
@@ -118,6 +118,55 @@
         content: '\f06a';
         font-family: 'Font Awesome 5 Pro';
         font-weight: 300;
+      }
+    }
+
+    &.caution {
+      border-left: 4px solid $red-light;
+    }
+
+    &.note {
+      border-left: 4px solid $blue-medium;
+
+      &.since {
+        border-left: 4px solid $documentation-since-color;
+
+        .icon.note::before {
+          color: $documentation-since-color;
+          content: '\f1fa';
+          font-family: 'Font Awesome 5 Pro';
+          font-weight: 300;
+        }
+      }
+    }
+
+    &.tip {
+      border-left: 4px solid $green-light;
+    }
+
+    &.warning {
+      border-left: 4px solid $yellow-medium;
+
+      &.database-migration {
+        border-left: 4px solid $orange-medium;
+
+        .icon.warning::before {
+          color: $orange-medium;
+          content: '\f1c0';
+          font-family: 'Font Awesome 5 Pro';
+          font-weight: 300;
+        }
+      }
+
+      &.deprecated {
+        border-left: 4px solid $red-medium;
+
+        .icon.warning::before {
+          color: $red-medium;
+          content: '\f071';
+          font-family: 'Font Awesome 5 Pro';
+          font-weight: 300;
+        }
       }
     }
   }
