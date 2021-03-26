@@ -85,32 +85,4 @@ ul.tabs {
       display: block;
     }
   }
-
-  .download-command {
-    display: flex;
-    margin-bottom: 30px;
-
-    > button {
-      border-radius: 3px;
-      margin-left: 3px;
-
-      --fa-primary-color: #fff;
-      --fa-secondary-color: #fff;
-      --fa-secondary-opacity: 0.9;
-
-      i {
-        font-size: 1.5em;
-      }
-    }
-
-    code {
-      background: $code-background;
-      border-radius: 3px;
-      color: white;
-      flex-grow: 1;
-      overflow-x: scroll;
-      padding: 14px 15px;
-      white-space: nowrap;
-    }
-  }
 }
