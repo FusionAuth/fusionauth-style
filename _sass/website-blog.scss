@@ -131,17 +131,6 @@
 
     &.note {
       border-left: 4px solid $blue-medium;
-
-      &.since {
-        border-left: 4px solid $documentation-since-color;
-
-        .icon.note::before {
-          color: $documentation-since-color;
-          content: '\f1fa';
-          font-family: 'Font Awesome 5 Pro';
-          font-weight: 300;
-        }
-      }
     }
 
     &.tip {
@@ -150,27 +139,18 @@
 
     &.warning {
       border-left: 4px solid $yellow-medium;
+    }
 
-      &.database-migration {
-        border-left: 4px solid $orange-medium;
+    > .body {
+      overflow-x: scroll;
+    }
 
-        .icon.warning::before {
-          color: $orange-medium;
-          content: '\f1c0';
-          font-family: 'Font Awesome 5 Pro';
-          font-weight: 300;
-        }
-      }
+    p {
+      margin: 10px 0 !important;
+      padding: 0;
 
-      &.deprecated {
-        border-left: 4px solid $red-medium;
-
-        .icon.warning::before {
-          color: $red-medium;
-          content: '\f071';
-          font-family: 'Font Awesome 5 Pro';
-          font-weight: 300;
-        }
+      &:not(:first-of-type) {
+        margin-top: 6px;
       }
     }
   }
