@@ -470,7 +470,13 @@ body > main {
     }
 
     .buttons {
-      text-align: right;
+      align-items: center;
+      display: flex;
+      justify-content: flex-end;
+
+      > .button, > .split-button {
+        margin-left: 3px;
+      }
     }
 
     &.sticky {

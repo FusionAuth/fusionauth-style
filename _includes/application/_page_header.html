@@ -61,23 +61,88 @@
     <div class="col-xs-12 col-md-4">
       <div class="buttons">
         <div class="split-button">
-          <a class="gray button square" href="#"><i class="fa fa-spinner fa-pulse"></i> Loading...</a>
-          <button type="button" class="gray button square" aria-haspopup="true" aria-expanded="false">
+          <a class="gray button item" href="#">
+            <i class="fa fa-spinner fa-pulse"></i>
+            <span>Loading...</span>
+          </a>
+          <button type="button" class="gray square button" aria-haspopup="true" aria-expanded="false">
             <span class="sr-only">Toggle Dropdown</span>
           </button>
           <div class="menu">
-            <a class="item default" href="#"><i class="fa fa-arrow-right"></i> Action</a>
-            <a class="item" href="#"><i class="fa fa-automobile"></i> Another action</a>
-            <a class="item" href="#"><i class="fa fa-trash"></i> Something else here</a>
+            <a id="m1-a1" class="item default" href="#">
+              <i class="fa fa-plus green-text"></i>
+              <span>Action 1 with icon</span>
+            </a>
+            <a id="m1-a2" class="item" href="#">
+              <span>Action 2 without icon</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="split-button">
+          <a class="gray button item" href="#">
+            <i class="fa fa-edit"></i>
+            <span>Edit user</span>
+          </a>
+          <button type="button" class="gray square button" aria-haspopup="true" aria-expanded="false">
+            <span class="sr-only">Toggle Dropdown</span>
+          </button>
+          <div class="menu">
+            <a id="m2-a1" class="item default" href="#"><i class="fa fa-edit"></i> Edit</a>
+            <a id="m2-a2" class="item" href="#"><i class="fa fa-automobile"></i> Drive something</a>
+            <a id="m2-a3" class="item" href="#"><i class="fa fa-trash"></i> Delete something</a>
             <div class="divider"></div>
             <a class="item" href="#"><i class="fa fa-gear"></i> Separated link</a>
-
-            <!--<a class="item default" href="#">Action <i class="fa fa-arrow-right"></i></a>-->
-            <!--<a class="item" href="#">Another action <i class="fa fa-audio-description"></i></a>-->
-            <!--<a class="item" href="#">Something else here <i class="fa fa-barcode"></i></a>-->
-            <!--<div class="divider"></div>-->
-            <!--<a class="item" href="#">Separated link <i class="fa fa-battery-full"></i></a>-->
           </div>
+        </div>
+
+        <div class="split-button">
+          <a class="gray button item" href="#">
+            <img src="/images/identityProviders/apple.svg" alt="Apple">
+            <span>Add Apple</span>
+          </a>
+          <button type="button" class="gray square button" aria-haspopup="true" aria-expanded="false">
+            <span class="sr-only">Toggle Dropdown</span>
+          </button>
+          <div class="menu">
+            <a id="add-Apple" class="item default" href="#">
+              <img src="/images/identityProviders/apple.svg" alt="Apple">
+              <span>Add Apple</span>
+            </a>
+            <a id="add-HYPR" class="item" href="#">
+              <img  src="/images/identityProviders/hypr.svg" alt="HYPR">
+              <span>Add HYPR</span>
+            </a>
+            <a id="add-Google" class="item" href="#" >
+              <img  src="/images/identityProviders/google.svg" alt="Google">
+              <span>Add Google</span>
+            </a>
+            <a id="add-LinkedIn" class="item" href="#" >
+              <img  src="/images/identityProviders/linkedin.svg" alt="LinkedIn">
+              <span>Add LinkedIn</span>
+            </a>
+            <a id="add-Twitter" class="item" href="#" >
+              <img  src="/images/identityProviders/twitter.svg" alt="Twitter">
+              <span>Add Twitter</span>
+            </a>
+            <a id="add-Facebook" class="item" href="#" >
+              <img  src="/images/identityProviders/facebook.svg" alt="Facebook">
+              <span>Add Facebook</span>
+            </a>
+            <a id="add-OpenIDConnect" class="item" href="#" >
+              <img  src="/images/identityProviders/openidconnect.svg" alt="OpenID Connect">
+              <span>Add OpenID Connect</span>
+            </a>
+            <a id="add-ExternalJWT" class="item" href="#" >
+              <img  src="/images/identityProviders/externaljwt.svg" alt="External JWT">
+              <span>Add External JWT</span>
+            </a>
+            <a id="add-SAMLv2" class="item" href="#" >
+              <img  src="/images/identityProviders/samlv2.svg" alt="SAML v2">
+              <span>Add SAML v2</span>
+            </a>
+          </div>
+
         </div>
         <button class="blue button square" data-tooltip="Save"><i class="fa fa-save"></i></button>
         <a href="#" class="gray button square" data-tooltip="Cancel"><i class="fa fa-reply"></i></a>

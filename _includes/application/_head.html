@@ -290,10 +290,9 @@
       }
 
       // Split button
-      var splitButtonElement = Prime.Document.queryFirst('.split-button');
-      if (splitButtonElement !== null) {
-        new Prime.Widgets.SplitButton(splitButtonElement);
-      }
+      Prime.Document.query('.split-button').each(function(element) {
+        new Prime.Widgets.SplitButton(element).initialize();
+      });
 
       // Re-orderable table
       var reOrderableTable = Prime.Document.queryFirst('.re-orderable');

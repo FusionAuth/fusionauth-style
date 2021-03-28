@@ -7,3 +7,4 @@ build
 node_modules
 js/prime*.js
 .shelf
+**/.DS_Store
