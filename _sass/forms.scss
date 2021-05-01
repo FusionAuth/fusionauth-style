@@ -743,17 +743,18 @@ form .form-row .input-addon-group label.select {
 
 .radio-bar {
   padding: 0 4px;
+  position: relative;
+  z-index: 1;
+  background: $gray-2;
 
   &, .radio-bar-button {
     display: inline-block;
     height: 36px;
-    background: $gray-2;
     border-radius: 18px;
   }
 
   input[type="radio"] {
     display: inline-block;
-    //visibility: hidden;
     height: 1px;
     width: 1px;
     opacity: 0;
@@ -769,9 +770,23 @@ form .form-row .input-addon-group label.select {
     padding: 0 10px;
   }
 
-  input[type="radio"]:checked + span {
-    background-color: white;
+  .radio-bar-button:last-child:after {
+    content: '';
+    display: block;
+    position: absolute;
+    background: white;
+    top: 4px;
+    left: 0;
+    z-index: -1;
+    pointer-events: none;
+    transition: left 1.3s ease, width 1.3s ease;
+    height: 28px;
+    border-radius: 14px;
   }
+
+  //input[type="radio"]:checked + span {
+  //  background-color: white;
+  //}
 }
 
 .slider-bar {
@@ -825,6 +840,8 @@ form .form-row .input-addon-group label.select {
     line-height: 36px;
     margin-left: 10px;
     vertical-align: middle;
+    text-align: right;
+    width: 64px;
   }
 }
 
