@@ -687,22 +687,6 @@ section {
   }
 }
 
-.download-what-next-buttons {
-  .button {
-    margin: 0 5px 10px;
-  }
-
-  span {
-    display: block;
-  }
-
-  @include media(md) {
-    span {
-      display: inline-block;
-    }
-  }
-}
-
 
 /* Footer
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
