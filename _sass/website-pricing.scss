@@ -134,38 +134,38 @@ section.pricing {
       }
 
       li:nth-child(1) {
-        width: 118px;
+        width: 122px;
 
         &.checked ~ li:last-child:after {
           left: 4px;
-          width: 110px;
+          width: 114px;
         }
       }
 
       li:nth-child(2) {
-        width: 118px;
+        width: 122px;
 
         &.checked ~ li:last-child:after {
-          left: 122px;
-          width: 110px;
+          left: 126px;
+          width: 114px;
         }
       }
 
       li:nth-child(3) {
-        width: 143px;
+        width: 148px;
 
         &.checked ~ li:last-child:after {
-          left: 240px;
-          width: 135px;
+          left: 248px;
+          width: 140px;
         }
       }
 
       li:nth-child(4) {
-        width: 98px;
+        width: 102px;
 
         &.checked:after {
-          left: 383px;
-          width: 90px;
+          left: 396px;
+          width: 94px;
         }
       }
     }

@@ -759,6 +759,7 @@ ul.radio-bar {
     border-radius: 18px;
     padding: 4px;
     background: $gray-2;
+    text-align: center;
 
     &:last-child:after {
       content: '';
@@ -768,7 +769,7 @@ ul.radio-bar {
       top: 4px;
       z-index: 2;
       pointer-events: none;
-      transition: left 1.3s ease, width 1.3s ease;
+      transition: left 0.5s ease, width 0.5s ease;
       height: 28px;
       border-radius: 14px;
     }
