@@ -59,6 +59,10 @@ section.pricing {
       span {
         font-size: 13px;
       }
+
+      @include media(md) {
+        display: inline-block;
+      }
     }
 
     .compare-button {
@@ -70,12 +74,6 @@ section.pricing {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-    }
-
-    @include media(md) {
-      .compare-features {
-        display: inline-block;
-      }
     }
 
     @include media(lg) {
@@ -117,11 +115,11 @@ section.pricing {
     max-width: 300px;
 
     li {
-      margin: 0 10px 10px;
+      margin: 0 10px 10px 0;
     }
 
     @include media(sm) {
-      background-color: $gray-2;
+      background-color: $radio-bar-background-color;
       flex-basis: auto;
       max-width: none;
 
@@ -197,7 +195,7 @@ section.pricing {
     }
 
     h2 {
-      margin: 0 0 23px;
+      margin: 0 0 20px 0;
       font-size: 16px;
       text-align: center;
     }
@@ -234,6 +232,13 @@ section.pricing {
         font-size: 12px;
         font-weight: 500;
       }
+
+      .starting-at {
+        color: $gray-4;
+        font-size: 12px;
+        font-style: italic;
+        margin-bottom: 10px;
+      }
     }
   }
 
@@ -253,7 +258,7 @@ section.pricing {
     padding-bottom: 40px;
     padding-top: 40px;
 
-    .card .hosting, ul li {
+    .card .hosting {
       display: none;
     }
 
@@ -329,30 +334,32 @@ section.pricing {
     td {
       font-size: 16px;
       font-weight: 500;
-      padding: 20px 35px;
+      padding: 10px 10px;
 
       &:not(:first-of-type) {
         text-align: center;
       }
+
+      @include media(lg) {
+        padding: 20px 35px;
+      }
     }
 
     th {
-      padding: 20px 0;
+      padding: 14px 0;
       text-align: center;
 
       span {
+        color: white;
         display: block;
-        font-size: 16px;
+        font-size: 12px;
         font-weight: 600;
-        margin-bottom: 9px;
       }
 
       a {
         display: none;
       }
-    }
 
-    th, td.repeat-header {
       &:nth-of-type(2) {
         background-color: $green-light;
       }
@@ -368,6 +375,16 @@ section.pricing {
       &:nth-of-type(5) {
         background-color: $orange-light;
       }
+
+      @include media(lg) {
+        padding: 20px 0;
+
+        span {
+          color: $body-font-color;
+          font-size: 16px;
+          margin-bottom: 9px;
+        }
+      }
     }
 
     td:first-of-type, th:first-of-type {
@@ -375,7 +392,7 @@ section.pricing {
     }
 
     tr {
-      &.hide-sm td {
+      &.mobile-heading td {
         text-align: left;
       }
 
@@ -386,10 +403,16 @@ section.pricing {
       }
     }
 
+    .mobile-heading td {
+      font-size: 13px;
+      font-weight: 400;
+    }
+
+    // This must be after the `.mobile-heading td` rule so it overrides it
     .category td {
       background: $gray-6 !important;
       color: white;
-      font-size: 16px;
+      font-size: 14px;
       font-weight: 600;
     }
 
@@ -402,7 +425,7 @@ section.pricing {
         display: inline-block;
       }
 
-      tr.hide-sm {
+      tr.mobile-heading {
         display: none;
       }
 
@@ -414,6 +437,12 @@ section.pricing {
         display: table-cell;
       }
     }
+  }
+}
+
+#compare-plan-features {
+  h1 {
+    margin-top: 20px;
   }
 }
 

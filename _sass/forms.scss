@@ -268,6 +268,7 @@ input[type=range] {
     appearance: none;
     background: $purple-medium;
     border-radius: 50%;
+    box-shadow: $range-thumb-box-shadow;
     cursor: pointer;
     height: 18px;
     width: 18px;
@@ -276,6 +277,7 @@ input[type=range] {
   &::-moz-range-thumb {
     background: $purple-medium;
     border-radius: 50%;
+    box-shadow: $range-thumb-box-shadow;
     cursor: pointer;
     height: 18px;
     width: 18px;
@@ -755,23 +757,23 @@ ul.radio-bar {
   }
 
   li {
-    height: 36px;
+    background: $radio-bar-background-color;
     border-radius: 18px;
+    height: 36px;
     padding: 4px;
-    background: $gray-2;
     text-align: center;
 
     &:last-child:after {
+      background: white;
+      border-radius: 14px;
       content: '';
       display: block;
-      position: absolute;
-      background: white;
-      top: 4px;
-      z-index: 2;
-      pointer-events: none;
-      transition: left 0.5s ease, width 0.5s ease;
       height: 28px;
-      border-radius: 14px;
+      pointer-events: none;
+      position: absolute;
+      top: 4px;
+      transition: left 0.2s ease, width 0.2s ease;
+      z-index: 2;
     }
   }
 
@@ -782,8 +784,8 @@ ul.radio-bar {
     input[type="radio"] {
       display: inline-block;
       height: 1px;
-      width: 1px;
       opacity: 0;
+      width: 1px;
     }
 
     span {
@@ -804,11 +806,11 @@ ul.radio-bar {
 
 .slider-bar {
   height: 36px;
-  background: $gray-2;
+  background: $slider-bar-background-color;
   border-radius: 18px;
+  max-width: 340px;
   padding: 0 18px;
   width: 100%;
-  max-width: 340px;
 
   &, input[type=range], label {
     display: inline-block;
@@ -820,9 +822,9 @@ ul.radio-bar {
     appearance: none;
     background: white;
     border-radius: 4px;
+    height: 4px;
     opacity: 0.7;
     outline: none;
-    height: 4px;
     transition: opacity .2s;
     width: calc(100% - 80px);
     vertical-align: middle;
@@ -836,6 +838,7 @@ ul.radio-bar {
       appearance: none;
       background: white;
       border-radius: 50%;
+      box-shadow: $range-thumb-box-shadow;
       cursor: pointer;
       height: 18px;
       width: 18px;
@@ -844,6 +847,7 @@ ul.radio-bar {
     &::-moz-range-thumb {
       background: white;
       border-radius: 50%;
+      box-shadow: $range-thumb-box-shadow;
       cursor: pointer;
       height: 18px;
       width: 18px;
