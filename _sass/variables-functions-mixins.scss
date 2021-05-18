@@ -197,6 +197,8 @@ $option-color: $gray-7 !default;
 
 $required-color: $red-medium !default;
 
+$radio-bar-background-color: $gray-2 !default;
+
 $radio-border-color: $gray-4 !default;
 $radio-check-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2) !default;
 $radio-pin-color: white !default;
@@ -205,12 +207,16 @@ $radio-disabled-background-color: rgba($gray-2, 0.7) !default;
 $radio-disabled-color: $gray-6 !default;
 $radio-disabled-text-color: $gray-4 !default;
 
+$range-thumb-box-shadow: $layered-box-shadow !default;
+
 $select-background-color: $gray-2 !default;
 $select-border: none !default;
 $select-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2) !default;
 $select-color: $gray-6 !default;
 $select-flat-background: transparent !default;
 $select-padding: 8px 50px 8px 13px !default;
+
+$slider-bar-background-color: $gray-2 !default;
 
 $text-border-color: $gray-3 !default;
 $text-disabled-border-color: $gray-2 !default;
@@ -235,19 +241,19 @@ $trading-card-title-background-color: $gray-1 !default;
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
 $grid-settings: (
-  'containers': (
-    'sm': 540px,
-    'md': 720px,
-    'lg': 960px,
-    'xl': 1140px
-  ),
-  'spacing': 15px,
-  'widths': (
-    'sm': 576px,
-    'md': 768px,
-    'lg': 992px,
-    'xl': 1200px
-  )
+    'containers': (
+        'sm': 540px,
+        'md': 720px,
+        'lg': 960px,
+        'xl': 1140px
+    ),
+    'spacing': 15px,
+    'widths': (
+        'sm': 576px,
+        'md': 768px,
+        'lg': 992px,
+        'xl': 1200px
+    )
 ) !default;
 $grid-spacing: map-get($grid-settings, 'spacing') !default;
 

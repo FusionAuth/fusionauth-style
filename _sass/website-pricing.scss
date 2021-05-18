@@ -21,41 +21,191 @@
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
 section.pricing {
-  margin-bottom: -500px;
+  margin-bottom: -110px;
   padding-bottom: 0;
-
-  &.editions {
-    margin-bottom: -600px;
-
-    & + * {
-      padding-top: 475px;
-    }
-  }
-
-  & + * {
-    padding-top: 375px;
-    position: relative;
-  }
 
   &.main .content {
     padding-top: 75px;
   }
 
+  .hosting-selections {
+    label span {
+      font-weight: 600;
+    }
+
+    i {
+      color: $orange-light;
+    }
+
+    .selection-text {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .radio-bar, .slider-bar {
+      margin-bottom: 20px;
+    }
+
+    .radio-bar, .slider-bar, .compare-features {
+      margin-top: auto;
+    }
+
+    .compare-features {
+      display: none;
+      width: 100%;
+      text-align: right;
+      vertical-align: middle;
+
+      span {
+        font-size: 13px;
+      }
+
+      @include media(md) {
+        display: inline-block;
+      }
+    }
+
+    .compare-button {
+      color: black;
+      margin-left: 8px;
+    }
+
+    .col-xs-12 {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    @include media(lg) {
+      .col-xs-12 {
+        margin-bottom: 0;
+        height: 75px;
+      }
+
+      .col-lg-12 {
+        height: 40px;
+      }
+
+      .selection-text, .radio-bar, .slider-bar {
+        margin-bottom: 0;
+      }
+    }
+
+    @include media(xl) {
+      .col-xl-6 {
+        flex-basis: calc(45% - 20px);
+        max-width: calc(45% - 20px);
+      }
+
+      .col-xl-4 {
+        flex-basis: calc(33%);
+        max-width: calc(33%);
+      }
+
+      .col-xl-2 {
+        height: 75px;
+        flex-basis: calc(22% - 20px);
+        max-width: calc(22% - 20px);
+      }
+    }
+  }
+
+  ul.radio-bar {
+    flex-basis: 100%;
+    max-width: 300px;
+
+    li {
+      margin: 0 10px 10px 0;
+    }
+
+    @include media(sm) {
+      background-color: $radio-bar-background-color;
+      flex-basis: auto;
+      max-width: none;
+
+      li {
+        margin: 0;
+      }
+
+      input[type="radio"]:checked + span {
+        background: none;
+      }
+
+      li:nth-child(1) {
+        width: 122px;
+
+        &.checked ~ li:last-child:after {
+          left: 4px;
+          width: 114px;
+        }
+      }
+
+      li:nth-child(2) {
+        width: 122px;
+
+        &.checked ~ li:last-child:after {
+          left: 126px;
+          width: 114px;
+        }
+      }
+
+      li:nth-child(3) {
+        width: 148px;
+
+        &.checked ~ li:last-child:after {
+          left: 248px;
+          width: 140px;
+        }
+      }
+
+      li:nth-child(4) {
+        width: 102px;
+
+        &.checked:after {
+          left: 396px;
+          width: 94px;
+        }
+      }
+    }
+  }
+
   .card {
     margin-bottom: 20px;
+    border-top: 6px solid;
+    background-color: $gray-1;
+
+    &.green-border {
+      border-color: $green-light;
+    }
+
+    &.purple-border {
+      border-color: $purple-medium;
+    }
+
+    &.blue-border {
+      border-color: $blue-light;
+    }
+
+    &.orange-border {
+      border-color: $orange-light;
+    }
 
     a {
       color: $body-font-color;
     }
 
     h2 {
-      margin-top: 0;
+      margin: 0 0 20px 0;
+      font-size: 16px;
+      text-align: center;
     }
 
     h3 {
-      border-bottom: 1px solid $gray-2;
-      font-size: 16px;
+      border-top: 1px solid $gray-2;
+      padding-top: 10px;
+      font-size: 14px;
       font-weight: 600;
+      line-height: 20px;
     }
 
     > .button {
@@ -64,25 +214,30 @@ section.pricing {
 
     .cost {
       margin-bottom: 30px;
+      text-align: center;
 
-      .starting-at {
-        color: $gray-5;
+      span {
         display: block;
-        font-size: 12px;
-        font-style: italic;
-        margin-bottom: 15px;
       }
 
       .amount {
         color: $header-font-color;
         font-family: 'Barlow', sans-serif;
         font-size: 44px;
-        font-weight: 700;
+        font-weight: 600;
       }
 
-      .interval {
-        font-size: 16px;
-        margin-left: 10px;
+      .hosting {
+        margin-top: 12px;
+        font-size: 12px;
+        font-weight: 500;
+      }
+
+      .starting-at {
+        color: $gray-4;
+        font-size: 12px;
+        font-style: italic;
+        margin-bottom: 10px;
       }
     }
   }
@@ -100,15 +255,46 @@ section.pricing {
   }
 
   .pricing-cards {
-    padding-bottom: 50px;
-    padding-top: 50px;
+    padding-bottom: 40px;
+    padding-top: 40px;
 
-    @include media(xl) {
-      .col-xl-3 {
-        flex-basis: calc(25% - 16px);
-        margin-left: 8px;
-        margin-right: 8px;
-        max-width: calc(25% - 16px);
+    .card .hosting {
+      display: none;
+    }
+
+    &.show-self-hosted span.self-hosted,
+    &.show-basic-cloud span.basic-cloud,
+    &.show-business-cloud span.business-cloud,
+    &.show-ha-cloud span.ha-cloud {
+      display: block;
+    }
+
+    &.show-self-hosted li.self-hosted,
+    &.show-basic-cloud li.basic-cloud,
+    &.show-business-cloud li.business-cloud,
+    &.show-ha-cloud li.ha-cloud {
+      display: list-item;
+    }
+
+    @include media(lg) {
+      .col-lg-3 {
+        margin-left: 5px;
+        margin-right: 5px;
+        flex-basis: calc(25% - 10px);
+        max-width: calc(25% - 10px);
+      }
+
+      .col-lg-3:first-of-type {
+        margin-left: 20px;
+      }
+
+      .col-lg-3:last-of-type {
+        margin-right: 20px;
+      }
+
+      .col-lg-3:first-of-type, .col-lg-3:last-of-type {
+        flex-basis: calc(25% - 25px);
+        max-width: calc(25% - 25px);
       }
     }
   }
@@ -117,13 +303,9 @@ section.pricing {
 .feature-details {
   position: relative;
   z-index: 10;
+
   &.card {
     padding: 0;
-  }
-
-  header {
-    background: $gray-1;
-    padding: 30px;
   }
 
   table {
@@ -132,33 +314,19 @@ section.pricing {
     width: 100%;
 
     &.edition {
-      td:nth-of-type(2) {
+      td:nth-of-type(2) i {
         color: $green-light;
       }
 
-      td:nth-of-type(3) {
+      td:nth-of-type(3) i {
         color: $purple-light;
       }
 
-      td:nth-of-type(4) {
+      td:nth-of-type(4) i {
         color: $blue-light;
       }
 
-      td:nth-of-type(5) {
-        color: $orange-light;
-      }
-    }
-
-    &.hosting {
-      td:nth-of-type(2) {
-        color: $purple-light;
-      }
-
-      td:nth-of-type(3) {
-        color: $blue-light;
-      }
-
-      td:nth-of-type(4) {
+      td:nth-of-type(5) i {
         color: $orange-light;
       }
     }
@@ -166,35 +334,187 @@ section.pricing {
     td {
       font-size: 16px;
       font-weight: 500;
-      padding: 20px 35px;
+      padding: 10px 10px;
 
       &:not(:first-of-type) {
         text-align: center;
       }
+
+      @include media(lg) {
+        padding: 20px 35px;
+      }
     }
 
     th {
-      padding: 20px 0;
+      padding: 14px 0;
       text-align: center;
+
+      span {
+        color: white;
+        display: block;
+        font-size: 12px;
+        font-weight: 600;
+      }
+
+      a {
+        display: none;
+      }
+
+      &:nth-of-type(2) {
+        background-color: $green-light;
+      }
+
+      &:nth-of-type(3) {
+        background-color: $purple-light;
+      }
+
+      &:nth-of-type(4) {
+        background-color: $blue-light;
+      }
+
+      &:nth-of-type(5) {
+        background-color: $orange-light;
+      }
+
+      @include media(lg) {
+        padding: 20px 0;
+
+        span {
+          color: $body-font-color;
+          font-size: 16px;
+          margin-bottom: 9px;
+        }
+      }
+    }
+
+    td:first-of-type, th:first-of-type {
+      display: none;
     }
 
     tr {
-      &:nth-of-type(odd) {
+      &.mobile-heading td {
+        text-align: left;
+      }
+
+      &:nth-of-type(4n+1), &:nth-of-type(4n+2) {
         td {
           background: $gray-1;
         }
       }
-
-      td:not(last) {
-        border-right: 1px solid $gray-3;
-      }
     }
 
+    .mobile-heading td {
+      font-size: 13px;
+      font-weight: 400;
+    }
+
+    // This must be after the `.mobile-heading td` rule so it overrides it
     .category td {
-      background: $gray-7 !important;
+      background: $gray-6 !important;
       color: white;
-      font-size: 16px;
+      font-size: 14px;
       font-weight: 600;
     }
+
+    @include media(lg) {
+      th:nth-of-type(n) {
+        background-color: $gray-1;
+      }
+
+      th a {
+        display: inline-block;
+      }
+
+      tr.mobile-heading {
+        display: none;
+      }
+
+      td:not(last) {
+        border-right: 1px solid $gray-4;
+      }
+
+      td:first-of-type, th:first-of-type {
+        display: table-cell;
+      }
+    }
+  }
+}
+
+#compare-plan-features {
+  h1 {
+    margin-top: 20px;
+  }
+}
+
+#cloud-hosting-dialog {
+  border: none;
+  border-radius: 5px;
+
+  header {
+    height: 50px;
+
+    a {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      color: $orange-light;
+      font-size: 28px;
+    }
+  }
+
+  main {
+    max-height: calc(100vh - 125px);
+  }
+
+  .title, .questions, footer {
+    text-align: center;
+  }
+
+  .title {
+    padding: 0 30px;
+
+    h1 {
+      font-size: 36px;
+      margin-bottom: 0;
+    }
+  }
+
+  .content {
+    padding: 30px 10px 0;
+  }
+
+  .separator div {
+    height: 30px;
+    border-bottom: 1px solid $gray-4;
+  }
+
+  .questions h5 {
+    margin: 30px 0 0;
+  }
+
+  footer {
+    height: 75px;
+    padding: 0 30px;
+
+    a {
+      white-space: normal;
+    }
+  }
+
+  @media (min-width: 576px) {
+    header a {
+      top: 30px;
+      right: 30px;
+    }
+  }
+
+  @include media(lg) {
+    left: calc(50vw - 450px);
+    width: 900px;
+  }
+
+  @include media(xl) {
+    left: calc(50vw - 500px);
+    width: 1000px;
   }
 }

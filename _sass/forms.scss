@@ -268,6 +268,7 @@ input[type=range] {
     appearance: none;
     background: $purple-medium;
     border-radius: 50%;
+    box-shadow: $range-thumb-box-shadow;
     cursor: pointer;
     height: 18px;
     width: 18px;
@@ -276,6 +277,7 @@ input[type=range] {
   &::-moz-range-thumb {
     background: $purple-medium;
     border-radius: 50%;
+    box-shadow: $range-thumb-box-shadow;
     cursor: pointer;
     height: 18px;
     width: 18px;
@@ -738,6 +740,127 @@ form .form-row .input-addon-group label.select {
         opacity: 1;
       }
     }
+  }
+}
+
+ul.radio-bar {
+  display: inline-flex;
+  flex-flow: row wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  z-index: 1;
+
+  &, li {
+    border-radius: 18px;
+  }
+
+  li {
+    background: $radio-bar-background-color;
+    border-radius: 18px;
+    height: 36px;
+    padding: 4px;
+    text-align: center;
+
+    &:last-child:after {
+      background: white;
+      border-radius: 14px;
+      content: '';
+      display: block;
+      height: 28px;
+      pointer-events: none;
+      position: absolute;
+      top: 4px;
+      transition: left 0.2s ease, width 0.2s ease;
+      z-index: 2;
+    }
+  }
+
+  label {
+    text-align: center;
+    z-index: 3;
+
+    input[type="radio"] {
+      display: inline-block;
+      height: 1px;
+      opacity: 0;
+      width: 1px;
+    }
+
+    span {
+      display: inline-block;
+      text-align: center;
+      color: black !important;
+      height: 28px;
+      line-height: 28px;
+      border-radius: 14px;
+      padding: 0 10px;
+    }
+  }
+
+  input[type="radio"]:checked + span {
+    background-color: white;
+  }
+}
+
+.slider-bar {
+  height: 36px;
+  background: $slider-bar-background-color;
+  border-radius: 18px;
+  max-width: 340px;
+  padding: 0 18px;
+  width: 100%;
+
+  &, input[type=range], label {
+    display: inline-block;
+  }
+
+  input[type=range] {
+    -webkit-appearance: none;
+    -webkit-transition: .2s;
+    appearance: none;
+    background: white;
+    border-radius: 4px;
+    height: 4px;
+    opacity: 0.7;
+    outline: none;
+    transition: opacity .2s;
+    width: calc(100% - 80px);
+    vertical-align: middle;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    &::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      background: white;
+      border-radius: 50%;
+      box-shadow: $range-thumb-box-shadow;
+      cursor: pointer;
+      height: 18px;
+      width: 18px;
+    }
+
+    &::-moz-range-thumb {
+      background: white;
+      border-radius: 50%;
+      box-shadow: $range-thumb-box-shadow;
+      cursor: pointer;
+      height: 18px;
+      width: 18px;
+    }
+  }
+
+  label {
+    display: inline-block;
+    line-height: 36px;
+    margin-left: 10px;
+    vertical-align: middle;
+    text-align: right;
+    width: 64px;
   }
 }
 
