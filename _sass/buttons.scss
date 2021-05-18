@@ -200,10 +200,10 @@
   position: relative;
 
   > a {
-      border-bottom-right-radius: 0;
-      border-top-right-radius: 0;
-      flex: 0 1 auto;
-      margin-right: -1px;
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+    flex: 0 1 auto;
+    margin-right: -1px;
   }
 
   a {
@@ -278,5 +278,21 @@
     .divider {
       border-top: 1px solid lighten($gray-button-border-color, 20%);
     }
+  }
+}
+
+.inline-buttons {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  
+  @include media(md) {
+    flex-direction: row;
+  }
+
+  a {
+    margin: 0 5px 10px;
   }
 }
