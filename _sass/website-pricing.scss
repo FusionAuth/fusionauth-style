@@ -484,7 +484,26 @@ section.pricing {
   }
 
   .content {
-    padding: 30px 10px 0;
+    padding: 30px 10px 0 10px;
+
+    h6 {
+      background: $slider-bar-background-color;
+      border-radius: 18px;
+      color: black;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 5px 12px;
+    }
+
+    .col-lg-4 {
+      padding: 0 15px;
+    }
+
+    .col-lg-4:not(:last-of-type) {
+      @include media(lg) {
+        border-right: 1px solid $gray-2;
+      }
+    }
   }
 
   .separator div {
