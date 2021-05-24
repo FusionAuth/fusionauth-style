@@ -216,15 +216,22 @@ section.pricing {
       margin-bottom: 30px;
       text-align: center;
 
-      span {
+      > span {
         display: block;
       }
 
       .amount {
         color: $header-font-color;
         font-family: 'Barlow', sans-serif;
-        font-size: 44px;
+        font-size: 42px;
         font-weight: 600;
+
+        .permo {
+          color: $header-font-color;
+          font-family: 'Barlow', sans-serif;
+          font-size: 28px;
+          font-weight: 600;
+        }
       }
 
       .hosting {
