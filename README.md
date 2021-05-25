@@ -20,7 +20,9 @@ Bump the version in `build.savant`.
 
 **Commit all changes.** You need to have a clean build directory before you can release. No local changes, no unpushed changes.
 
-Note that you'll have to have an account in the FusionAuth repo.
+Note that you'll have to have an account in the FusionAuth savant repo, and you will want to make sure that running the appropriate `svn list` command doesn't prompt you for a password.
+
+Finally, run:
 
 ```
 sb release
