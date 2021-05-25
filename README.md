@@ -18,6 +18,8 @@ sb serve
 
 Bump the version in `build.savant`.
 
+**Commit all changes.** You need to have a clean build directory before you can release. No local changes, no unpushed changes.
+
 Note that you'll have to have an account in the FusionAuth repo.
 
 ```
