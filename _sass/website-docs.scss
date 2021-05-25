@@ -252,7 +252,7 @@ section.docs {
         color: lighten($blue-dark, 5%);
       }
 
-      &.fa-lock {
+      &.fa-lock, &.fa-shield {
         color: lighten($red-dark, 5%);
       }
 
