@@ -63,6 +63,13 @@ form {
       color: $error-color;
       display: block;
     }
+
+    /* When in a form-row, tighten up the toggle height so we don't make this row taller than normal.
+       Generally it should  be 31px in height.
+    */
+    .toggle {
+      height: 21px;
+    }
   }
 
   &.full {
@@ -941,7 +948,10 @@ label.select {
   margin: 5px 0 0 0;
   padding: 0;
   position: relative;
-  height: 21px;
+  /* @ 28px, this allows a table row <tr> that contains a toggle to be the same height as a table row
+     with action icons, which is 43px;
+   */
+  height: 28px;
   width: 50px;
 
   span.rail {
