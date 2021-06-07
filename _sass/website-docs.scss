@@ -260,6 +260,10 @@ section.docs {
         color: lighten($documentation-since-color, 7%);
       }
 
+      &.fa-radiation-alt {
+        color: $orange-medium
+      }
+
       /* Replicate a FusionAuth admin UI button Style */
       &.ui-button {
         border-radius: 3px;
@@ -325,18 +329,27 @@ section.docs {
         }
       }
 
-       > span.field {
-         background: darken($gray-1, 5%);
-         border-bottom: 1px solid $orange-medium;
-         font-size: 0.8rem;
-         padding: 1px 3px 0 3px;
-       }
+      > span.field {
+        background: darken($gray-1, 5%);
+        border-bottom: 1px solid $orange-medium;
+        font-size: 0.8rem;
+        padding: 1px 3px 0 3px;
+      }
 
       > span.note {
         color: $blue-dark;
         font-size: 12px;
         font-weight: 500;
         margin-top: 20px;
+        text-transform: uppercase;
+      }
+
+      > span.paid {
+        border-top: solid 1px;
+        border-bottom: solid 1px;
+        color: $gray-5;
+        font-size: 10px;
+        font-weight: 500;
         text-transform: uppercase;
       }
     }
@@ -443,10 +456,29 @@ section.docs {
           font-family: 'Font Awesome 5 Pro';
           font-weight: 300;
         }
+
+        &.paid::before {
+          color: $orange-medium;
+          content: '\f7ba';
+          font-family: 'Font Awesome 5 Pro';
+          font-weight: 300;
+        }
+
       }
 
       &.note {
         border-left: 4px solid $blue-medium;
+
+        &.paid {
+          border-left: 4px solid $orange-medium;
+
+          .icon.note::before {
+            color: $orange-medium;
+            content: '\f7ba';
+            font-family: 'Font Awesome 5 Pro';
+            font-weight: 300;
+          }
+        }
 
         &.since {
           border-left: 4px solid $documentation-since-color;
