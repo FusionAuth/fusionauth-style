@@ -295,7 +295,7 @@ section.docs {
 
       // On full size, take a bit more real-estate
       @include media(lg) {
-        &:not(.box-shadow) {
+        &:not(.box-shadow,.custom) {
           margin-left: -39px;
           max-width: 107%;
         }
