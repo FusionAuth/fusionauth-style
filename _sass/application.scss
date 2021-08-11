@@ -431,6 +431,12 @@ body > main {
     border-bottom: 2px solid $page-header-border-color;
     padding: 0 0 15px 0;
 
+    /* Some panel headers such as dashboard do not have any actions. Without
+       action buttons the first row ends up being 30px instead of 36px so it is 6px shorter. */
+    > .row:first-of-type {
+      min-height: 36px;
+    }
+
     h1 {
       color: $page-header-color;
       display: inline-block;
