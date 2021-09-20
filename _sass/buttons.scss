@@ -257,6 +257,7 @@
     z-index: $layer-3;
 
     .item {
+      align-items: center;
       color: $gray-button-color;
       display: flex;
       padding: 10px 12px;
