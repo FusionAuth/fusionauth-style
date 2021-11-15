@@ -33,18 +33,25 @@
     text-align: left;
 
     h1 {
+      color: $tooltip-color;
       font-size: 18px;
       font-weight: normal;
     }
 
     h2 {
+      color: $tooltip-color;
       font-size: 16px;
       font-weight: normal;
     }
 
     h3 {
+      color: $tooltip-color;
       font-size: 14px;
       font-weight: 400;
+    }
+
+    h4 {
+      color: $tooltip-color;
     }
   }
 
