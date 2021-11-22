@@ -28,6 +28,8 @@ Finally, run:
 sb release
 ```
 
+If this fails, make sure you have access to svn and can run `svn list http://svn.inversoft.org/savant` without any errors or mac security popups.
+
 ## Adding a new widget
 
 ```
