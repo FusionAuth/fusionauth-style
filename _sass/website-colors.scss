@@ -1,38 +1,39 @@
 
 /* Colors
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
-$blue-light: #13EBF2;
-$blue-medium: #02B6D3;
-$blue-dark: #147894;
-$blue-section-gradient: linear-gradient(#1D5974, #08A3BF);
+$blue-light: #7DD3FC;
+$blue-medium: #0EA5E9;
+$blue-dark: #0369A1;
+$blue-section-gradient: linear-gradient($blue-light, $blue-dark);
 
-$gray-1: #FAFAFA;
-$gray-2: #D0D3D4;
-$gray-3: #bfbfbf;
-$gray-4: #919A9C;
-$gray-5: #677173;
-$gray-6: #3E4E50;
-$gray-7: #253031;
+$gray-0: #F1F5F9;
+$gray-1: #E2E8F0;
+$gray-2: #CBD5E1;
+$gray-3: #94A3B8;
+$gray-4: #64748B;
+$gray-5: #475569;
+$gray-6: #334155;
+$gray-7: #1E293B;
 
 
 //$green-light: #B4FF64;
 //$green-medium: #8CC84B;
 //$green-dark: #507627;
 
-$orange-light: #F9B928;
+$orange-light: #FDBA74;
 $orange-medium: #F58320;
-$orange-dark: #F74B01;
-$orange-section-gradient: linear-gradient(#C33221, #F4821F);
+$orange-dark: #C2410C;
+$orange-section-gradient: linear-gradient($orange-light, $orange-dark);
 
-$red-light: #FF1D1D;
-$red-medium: #D80303;
-$red-dark: #B20000;
+$red-light: #FDA4AF;
+$red-medium: #F43F5E;
+$red-dark: #BE123C;
 
-$purple-light: #C8C8FC;
-$purple-medium: #8989CE;
-$purple-dark: #59558E;
-$purple-section-gradient: linear-gradient(#42417B, #8383D0);
+$purple-light: #5EEAD4;
+$purple-medium: #14B8A6;
+$purple-dark: #0F766E;
+$purple-section-gradient: linear-gradient($purple-light, $purple-dark);
 
-$yellow-light: #FFE129;
-$yellow-medium: #E2C000;
-$yellow-dark: #B79C00;
+$yellow-light: #FCD34D;
+$yellow-medium: #F59E0B;
+$yellow-dark: #B45309;

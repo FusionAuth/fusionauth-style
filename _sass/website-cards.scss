@@ -81,6 +81,82 @@
   }
 }
 
+.card-flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.flat-orange-card {
+  border-radius: 15px;
+  border: 2px solid $orange-medium;
+  margin: 20px;
+  padding: 40px 40px 25px 40px;
+  text-align: center;
+  width: 240px;
+
+  img {
+    margin-bottom: 20px;
+  }
+
+  span {
+    font-size: 17px;
+    font-weight: 500;
+  }
+}
+
+.advice-card {
+  background-position: bottom -60px right -80px;
+  background-repeat: no-repeat;
+  border-radius: 15px;
+  box-shadow: $website-shadow;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+  padding: 28px;
+
+  &.orange {
+    background-color: #F6923B;
+    background-image: url("/assets/img/advice/icons/folder.svg");
+  }
+
+  &.blue {
+    background-color: #3898DA;
+    background-image: url("/assets/img/advice/icons/folder.svg");
+  }
+
+  &.teal {
+    background-color: #0BB5D2;
+    background-image: url("/assets/img/advice/icons/folder.svg");
+  }
+
+  h2 {
+    color: white !important;
+    font-size: 14px;
+    font-weight: 500;
+    margin: 0 0 20px 0;
+    text-transform: uppercase;
+  }
+
+  h3 {
+    color: white !important;
+    font-size: 27px;
+    font-weight: 500;
+    flex-grow: 1;
+    line-height: 36px;
+    margin-bottom: 50px;
+  }
+
+  a.button {
+    border: 2px solid white;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+    padding: 10px 8px;
+  }
+}
+
 .card {
   border-radius: 5px;
   box-shadow: $website-shadow;

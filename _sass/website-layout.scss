@@ -262,8 +262,8 @@ header.page-header {
 
           @include media('lg') {
             color: #fff;
-            font-size: 14px;
-            font-weight: 600;
+            font-size: 13px;
+            font-weight: 500;
             padding-bottom: 5px;
 
             &.active {
@@ -558,8 +558,14 @@ section {
   }
 
   &.orange {
-    background: $orange-section-gradient;
+    background: $orange-medium;
     color: white;
+
+    &.advice {
+      background-image: url("/assets/img/advice/icons/personal-development.svg");
+      background-position: calc(50% + 400px) 20px;
+      background-repeat: no-repeat;
+    }
 
     a, a:hover, a:visited, a:link, h1, h2, h3, h4, h5, h6, p, span {
       color: white;
@@ -605,8 +611,8 @@ section {
   position: sticky;
   width: 100%;
 
-  height:calc();
-  y-scroll:something;
+  //height:calc();
+  //y-scroll:something;
 
 
   > div {
