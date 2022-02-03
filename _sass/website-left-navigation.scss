@@ -50,7 +50,7 @@ section.account, section.docs {
     }
 
     nav {
-      background: darken($gray-0, 1%);
+      background: darken($gray-1, 1%);
       display: none;
       margin: 0;
       padding: 0;
@@ -68,11 +68,11 @@ section.account, section.docs {
       // General for <nav> and <ul>
       li {
         &.open {
-          background-color: darken($gray-0, 5%);
+          background-color: darken($gray-1, 5%);
 
           li {
             &.active {
-              background-color: darken($gray-0, 10%);
+              background-color: darken($gray-1, 10%);
             }
           }
 
@@ -84,7 +84,7 @@ section.account, section.docs {
 
       li:not(.open) {
         &:hover {
-          background-color: darken($gray-0, 10%);
+          background-color: darken($gray-1, 10%);
         }
       }
 
@@ -160,21 +160,20 @@ section.account, section.docs {
   &.account {
     aside {
       nav {
-        background: darken($gray-0, 2%);
+        background: darken($gray-1, 2%);
 
         li {
           &.active {
-            background-color: darken($gray-0, 10%);
+            background-color: darken($gray-1, 10%);
           }
         }
 
         li:not(.open) {
           &:hover {
-            background-color: darken($gray-0, 7%);
+            background-color: darken($gray-1, 7%);
           }
         }
       }
     }
   }
-  
 }
