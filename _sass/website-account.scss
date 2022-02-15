@@ -231,6 +231,18 @@ section.account {
       padding: 50px 0 50px 30px;
     }
 
+    &.blue {
+      background: $blue-dark;
+    }
+
+    &.purple {
+      background: $purple-medium;
+    }
+
+    a {
+      color: white;
+    }
+
     h2 {
       color: white;
       font-size: 32px;
@@ -247,6 +259,10 @@ section.account {
       }
     }
 
+    .blue-text {
+      color: $blue-light !important;
+    }
+
     .buttons {
       align-items: center;
       display: flex;
@@ -256,6 +272,26 @@ section.account {
         margin: 0 30px 0 0;
         font-weight: 700;
       }
+
+      .button.blue {
+        background: $blue-medium !important;
+
+        &:hover, &:focus {
+          background: darken($blue-medium, 4) !important;
+        }
+      }
+
+      .button.purple {
+        background: $purple-dark !important;
+
+        &:hover, &:focus {
+          background: darken($purple-dark, 5) !important;
+        }
+      }
+    }
+
+    .purple-text {
+      color: $purple-dark !important;
     }
   }
 
