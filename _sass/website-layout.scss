@@ -606,28 +606,24 @@ section {
 /* Scroll to section
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 #scroll-nav {
-  //font-size: 2rem;
-  top: 80px;
   position: sticky;
+  top: 80px;
   width: 100%;
-
-  //height:calc();
-  //y-scroll:something;
-
+  z-index: 100;
 
   > div {
-    font-size: 2rem;
-    width: 3rem;
-    height: 3rem;
     background: #{$blue-medium};
+    border-radius: 50%;
     display: block;
+    font-size: 2rem;
+    height: 3rem;
+    opacity: 0.5;
     position: absolute;
     right: 0;
-    border-radius: 50%;
     text-align: center;
-    vertical-align: middle;
-    opacity: 0.5;
     transition: opacity 0.1s ease-in;
+    vertical-align: middle;
+    width: 3rem;
 
     i {
       --fa-primary-color: #fff;
@@ -649,13 +645,16 @@ section {
   }
 
   > ul {
+    background-color: rgba($blue-medium, 0.95);
+    border-radius: 2px;
     display: inline-block;
+    max-height: calc(100vh - 175px);
+    overflow-y: scroll;
+    padding: 15px 20px 10px 10px;
     position: absolute;
     right: calc(3rem + 15px);
-    background-color: rgba($blue-medium, 0.85);
     transition: background 0.1s ease-in;
-    padding: 8px;
-    border-radius: 8px;
+    z-index: 100;
 
     ul {
       padding-left: 15px;
