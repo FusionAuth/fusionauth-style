@@ -248,6 +248,10 @@ section.docs {
     }
 
     i {
+      &.fa-cogs {
+        color: black;
+      }
+
       &.fa-id-badge {
         color: lighten($blue-dark, 5%);
       }
