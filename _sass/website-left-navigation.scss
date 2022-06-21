@@ -143,6 +143,9 @@ section.account, section.docs {
               li a {
                 padding-left: 60px;
               }
+	      &.tertiary a {
+		padding-left: 80px;
+              }
             }
           }
         }
