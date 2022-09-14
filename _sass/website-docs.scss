@@ -256,7 +256,7 @@ section.docs {
         color: lighten($blue-dark, 5%);
       }
 
-      &.fa-lock, &.fa-shield-alt {
+      &.fa-lock, &.fa-shield-alt, &.fa-passport {
         color: lighten($red-dark, 5%);
       }
 
@@ -274,19 +274,23 @@ section.docs {
 
         &.blue {
           color: #fff;
-          background-color: #3998DB !important;
+          background-color: $blue-medium !important;
         }
 
         &.green {
           color: #fff;
-          background-color: #0bb796 !important;;
+          background-color: $green-medium !important;;
         }
 
         &.purple {
           color: #fff;
-          background-color: #34485e !important;
+          background-color: $purple-medium !important;
         }
 
+        &.red {
+          color: #fff;
+          background-color: $red-medium !important;
+        }
       }
     }
 
