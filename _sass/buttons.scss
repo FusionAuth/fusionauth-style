@@ -194,6 +194,54 @@
   }
 }
 
+.chunky-wide-submit {
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  border-top: 1px solid $gray-2;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  height: 55px;
+  margin-bottom: 0;
+  text-align: left;
+  width: 100%;
+
+  &:hover {
+    border-top: 1px solid $blue-medium;
+    background-color: $gray-1;
+    color: $black;
+    transition: background-color 0.2s ease-out;
+
+    i {
+      color: $blue-medium;
+    }
+  }
+
+  i {
+    color: $gray-2;
+    font-size: 15px;
+  }
+
+  span {
+    color: $gray-6;
+    display: block;
+    font-size: 1.2em;
+
+    &.sub-text {
+      font-size: 0.75em;
+    }
+
+    > span:first-of-type {
+      margin-bottom: 3px;
+    }
+  }
+
+  > span {
+    margin: 0 0 3px 0;
+  }
+}
+
 .split-button {
   display: inline-flex;
   position: relative;

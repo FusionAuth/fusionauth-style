@@ -1,0 +1,168 @@
+---
+layout: application
+title: Login
+nav: login
+---
+
+<div class="container">
+  <div class="row">
+    <!-- WebAuthn reauthentication no available credentials to select from.-->
+    <div class="col-xs col-sm-8 col-md-6 col-lg-5 col-xl-4">
+      <div class="panel">
+        <h2>No password</h2>
+        <main>
+          <fieldset>
+            <p>Do you want to skip the password next time?</p>
+            <form class="full">
+
+              <fieldset>
+                <div class="form-row">
+                  <label>
+                    <input type="checkbox" name="doNotAskAgain" value="true" checked="checked/">
+                    &nbsp; Don't ask me again on this device
+                  </label>
+                </div>
+                <div class="form-row">
+                  <button class="blue button" name="action" value="skip"><i class="fa fa-check"></i> Not now</button>
+                </div>
+              </fieldset>
+            </form>
+            <p>
+              <em>
+                Register a new credential. The display name will help you identify this credential in the future.
+              </em>
+            </p>
+            <form class="full">
+              <fieldset>
+                <div class="form-row">
+                  <label for="displayName">Display name <span class="required">*</span></label>
+                  <input id="displayName" type="text" name="displayName" value="Unnamed" class="" autocapitalize="none" autocomplete="off" autocorrect="off" spellcheck="false" autofocus="autofocus" placeholder="">
+                </div>
+              </fieldset>
+              <div class="form-row">
+                <button class="blue button" name="action" value="register"><i class="fa fa-key"></i> Register</button>
+              </div>
+            </form>
+          </fieldset>
+        </main>
+      </div>
+    </div>
+
+    <!-- WebAuthn reauthentication, some available credentials to select from.  -->
+    <div class="col-xs col-sm-8 col-md-6 col-lg-5 col-xl-4">
+      <div class="panel">
+        <h2>No password</h2>
+        <main>
+          <fieldset>
+            <p>Do you want to skip the password next time?</p>
+            <form class="full">
+
+              <fieldset>
+                <fieldset class="mt-3 push-bottom">
+                  <!-- Submit button  -->
+                  <button class="chunky-wide-submit" name="credentialId" value="5b06a1fa-88ab-48d5-932f-9b879b8a050a">
+                    <span>
+                      <span>Brave macOS TouchId</span>
+                      <span class="sub-text">Last used 12/31/1999</span>
+                    </span>
+                    <i class="fa fa-chevron-right"></i>
+                  </button>
+                  <button class="chunky-wide-submit" name="credentialId" value="5b06a1fa-88ab-48d5-932f-9b879b8a050c">
+                    <span>
+                      <span>Chrome macOS FaceId</span>
+                      <span class="sub-text">Last used 4/20/2021</span>
+                    </span>
+                    <i class="fa fa-chevron-right"></i>
+                  </button>
+                </fieldset>
+
+                <div class="form-row">
+                  <label>
+                    <input type="checkbox" name="doNotAskAgain" value="true" checked="checked/">
+                    &nbsp; Don't ask me again on this device
+                  </label>
+                </div>
+                <div class="form-row">
+                  <button class="blue button" name="action" value="skip"><i class="fa fa-check"></i> Not now</button>
+                </div>
+              </fieldset>
+            </form>
+            <p>
+              <em>
+                Or register a new credential. The display name will help you identify this credential in the future.
+              </em>
+            </p>
+            <form class="full">
+              <fieldset>
+                <div class="form-row">
+                  <label for="displayName2">Display name <span class="required">*</span></label>
+                  <input id="displayName2" type="text" name="displayName2" value="Unnamed" class="" autocapitalize="none" autocomplete="off" autocorrect="off" spellcheck="false" autofocus="autofocus" placeholder="">
+                </div>
+              </fieldset>
+              <div class="form-row">
+                <button class="blue button" name="action" value="register"><i class="fa fa-key"></i> Register</button>
+              </div>
+            </form>
+          </fieldset>
+        </main>
+      </div>
+    </div>
+
+      <!-- Register, select or bypass  -->
+    <div class="col-xs col-sm-8 col-md-6 col-lg-5 col-xl-4">
+      <div class="panel">
+        <h2>Reauthenticate</h2>
+        <main>
+          <form class="full">
+            <p>
+              <em>
+                Welcome back, click the credential to continue.
+              </em>
+            </p>
+            <fieldset class="mt-3 push-bottom">
+              <button class="chunky-wide-submit" name="credentialId" value="5b06a1fa-88ab-48d5-932f-9b879b8a050d">
+                <span>
+                  <span>Erlich Bachman</span>
+                  <span class="sub-text">brave macOS touchId</span>
+                </span>
+                <i class="fa fa-chevron-right"></i>
+              </button>
+              <button class="chunky-wide-submit" name="credentialId" value="5b06a1fa-88ab-48d5-932f-9b879b8a050e">
+                <span>
+                  <span>Richard Hendricks</span>
+                  <span class="sub-text">Chrome macOS FaceId</span>
+                </span>
+                <i class="fa fa-chevron-right"></i>
+              </button>
+            </fieldset>
+
+            <p>
+              <em>
+                If you don't recognize the
+                credential
+                above, click return to normal login below.
+              </em>
+            </p>
+
+            <fieldset>
+            </fieldset>
+
+            <div class="form-row">
+              <label>
+                <input type="checkbox" name="rememberDevice" value="true" checked="checked/">
+                &nbsp; Keep me signed in
+                <i class="fa fa-info-circle" data-tooltip="Check this to stay signed into FusionAuth for the configured duration, do not select this on a public computer or when this device is shared with multiple users"></i></label>
+            </div>
+
+            <div class="form-row">
+              <p class="mt-2">
+                <a href="#">Return to the normal login</a>
+              </p>
+            </div>
+          </form>
+        </main>
+      </div>
+    </div>
+  </div>
+</div>
+
