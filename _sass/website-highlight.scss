@@ -4,6 +4,7 @@ pre.highlight {
   .hll, .tok-hll { background-color: $code-background; }
   .c, .tok-c { color: #efe67d
   } /* Comment */
+  .cm, .tok-ch { color: #e6db74 } /* Comment.HashBang */
   .cm, .tok-cm { color: #e6db74 } /* Comment.Multiline */
   .cp, .tok-cp { color: #e6db74 } /* Comment.Preproc */
   .c1, .tok-c1 { color: #e6db74 } /* Comment.Single */
