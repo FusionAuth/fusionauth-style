@@ -340,6 +340,13 @@ section.docs {
          padding: 1px 3px 0 3px;
        }
 
+       > span.uielement {
+         background: darken($gray-1, 10%);
+         border-bottom: 1px solid $orange-dark;
+         font-size: 0.8rem;
+         padding: 1px 3px 0 3px;
+       }
+
       > span.note {
         color: $blue-dark;
         font-size: 12px;
