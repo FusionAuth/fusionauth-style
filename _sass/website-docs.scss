@@ -319,6 +319,30 @@ section.docs {
 
     }
 
+    .safari-wrapper {
+      display: block;
+      box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.25);
+      border-radius: 15px;
+      overflow: hidden;
+
+      &.safari-wrapper-sm {
+        border-radius: 7px;
+      }
+
+      > div {
+        height: 69px;
+        background: url(/assets/img/docs/safari-top.png) bottom center no-repeat;
+        background-size: contain;
+        width: 100%;
+      }
+
+      > img {
+        display: block;
+        margin-left: 0 !important;
+        max-width: 100% !important;
+      }
+    }
+
     p {
       margin: 20px 0;
 
