@@ -243,35 +243,45 @@
     -webkit-transition-duration: 100ms;
     transition-duration: 100ms;
     text-align: center;
-  }
 
-  .docs-lp-link-block:hover {
-    border-style: solid;
-    border-width: 2px;
-    border-color: #6366f1;
+    &:hover {
+      border-style: solid;
+      border-width: 2px;
+      border-color: #6366f1;
 
-    .link-block-title-text { //modified (i think webflow was using js for this? blech)
-      color: #6366f1;
+      .link-block-title-text {
+        color: #6366f1;
+      }
     }
-  }
 
-  .docs-lp-link-block.shadow-removed {
-    padding: 10px 15px 9px;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-    -webkit-flex-direction: row;
-    -ms-flex-direction: row;
-    flex-direction: row;
-    -webkit-box-align: start;
-    -webkit-align-items: flex-start;
-    -ms-flex-align: start;
-    align-items: flex-start;
-    box-shadow: none;
-    text-align: left;
-  }
+    &.shadow-removed {
+      padding: 10px 15px 9px;
+      -webkit-box-orient: horizontal;
+      -webkit-box-direction: normal;
+      -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+      flex-direction: row;
+      -webkit-box-align: start;
+      -webkit-align-items: flex-start;
+      -ms-flex-align: start;
+      align-items: flex-start;
+      box-shadow: none;
+      text-align: left;
 
-  .docs-lp-link-block.shadow-removed:hover {
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
+      &:hover {
+        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
+      }
+    }
+
+    &.coming-soon {
+      background-color: #F1F5F9;
+      opacity: 0.4;
+
+      &:hover {
+        border-color: #e2e8f0;
+        box-shadow: none;
+      }
+    }
   }
 
   .docs-lp-link-block.shadow-removed.quickstart {
