@@ -38,7 +38,7 @@
 .w-icon-file-upload-icon:before {
   content: "\e903";
 }
-.landing-body {
+.wf-doc-wrapper {
   margin: 0;
   min-height: 100%;
   background-color: #fff;
@@ -375,7 +375,7 @@
       font-size: 30px;
     }
 
-    .landing-body {
+    .wf-doc-wrapper {
       p {
         font-size: 15px;
       }
@@ -709,9 +709,6 @@
   }
 
   @media screen and (max-width: 479px) {
-    .landing-body {
-    }
-
     .button.w--current {
       margin-right: 0px;
     }
