@@ -274,22 +274,29 @@ section.docs {
 
         &.blue {
           color: #fff;
-          background-color: $blue-medium !important;
+          background-color: $blue-ui-button-bg !important;
         }
 
         &.green {
           color: #fff;
-          background-color: $green-medium !important;;
+          background-color: $green-ui-button-bg !important;
         }
 
         &.purple {
           color: #fff;
-          background-color: $purple-medium !important;
+          background-color: $purple-ui-button-bg !important;
         }
 
         &.red {
           color: #fff;
-          background-color: $red-medium !important;
+          background-color: $red-ui-button-bg !important;
+        }
+
+        &.gray {
+          padding: 6px;
+          color: $gray-ui-button-fg;
+          background-color: $gray-ui-button-bg !important;
+          border: 1px solid $gray-ui-button-border;
         }
       }
     }
