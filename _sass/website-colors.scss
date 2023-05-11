@@ -5,6 +5,7 @@ $blue-light: #7DD3FC;
 $blue-medium: #0EA5E9;
 $blue-dark: #0369A1;
 $blue-section-gradient: linear-gradient($blue-light, $blue-dark);
+$blue-ui-button-bg: #3998DB;
 
 $gray-0: #fafdff;
 $gray-1: #F1F5F9;
@@ -14,11 +15,15 @@ $gray-4: #64748B;
 $gray-5: #475569;
 $gray-6: #334155;
 $gray-7: #1E293B;
+$gray-ui-button-bg: #F7F7F7;
+$gray-ui-button-fg: #262626;
+$gray-ui-button-border: #BFBFBF;
 
 
 //$green-light: #B4FF64;
 //$green-medium: #8CC84B;
 //$green-dark: #507627;
+$green-ui-button-bg: #0BB796;
 
 $orange-light: #FDBA74;
 $orange-medium: #F58320;
@@ -28,11 +33,13 @@ $orange-section-gradient: linear-gradient($orange-light, $orange-dark);
 $red-light: #FDA4AF;
 $red-medium: #F43F5E;
 $red-dark: #BE123C;
+$red-ui-button-bg: #EE3E54;
 
 $purple-light: #5EEAD4;
 $purple-medium: #14B8A6;
 $purple-dark: #0F766E;
 $purple-section-gradient: linear-gradient($purple-light, $purple-dark);
+$purple-ui-button-bg: #34485E;
 
 $yellow-light: #FCD34D;
 $yellow-medium: #F59E0B;
