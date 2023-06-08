@@ -199,7 +199,7 @@
 
   .docs-lp-grid {
     margin-top: 50px;
-    justify-items: center;
+    justify-items: stretch;
     -ms-grid-columns: 1fr 1fr 1fr 1fr;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     -ms-grid-rows: auto;

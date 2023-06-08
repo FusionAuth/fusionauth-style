@@ -15,7 +15,7 @@
  */
 primejsVersion = "1.5.0"
 
-project(group: "io.fusionauth", name: "fusionauth-style", version: "0.3.65", licenses: ["ApacheV2_0"]) {
+project(group: "io.fusionauth", name: "fusionauth-style", version: "0.3.66", licenses: ["ApacheV2_0"]) {
   workflow {
     fetch {
       cache()
