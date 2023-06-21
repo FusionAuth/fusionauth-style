@@ -264,6 +264,10 @@ section.docs {
         color: lighten($documentation-since-color, 7%);
       }
 
+      &.fa-server {
+        color: lighten($documentation-since-color, 7%);
+      }
+
       /* Replicate a FusionAuth admin UI button Style */
       &.ui-button {
         border-radius: 3px;
