@@ -296,6 +296,11 @@ section.docs {
           background-color: $red-ui-button-bg !important;
         }
 
+        &.orange {
+          color: #fff;
+          background-color: $orange-ui-button-bg !important;
+        }
+
         &.gray {
           padding: 6px;
           color: $gray-ui-button-fg;
