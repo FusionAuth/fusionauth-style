@@ -501,6 +501,10 @@ table {
       pointer-events: none;
     }
 
+    &.hidden {
+      display: none;
+    }
+
     &:hover {
       background: $table-pagination-link-color;
       color: white;
