@@ -229,6 +229,14 @@ table {
         text-align: left;
         vertical-align: middle;
 
+        &.action {
+          > .split-button {
+            .button, button {
+              padding: 6px 7px !important;
+            }
+          }
+        }
+
         &.action, &.tight {
           text-align: left;
           white-space: nowrap;
@@ -254,7 +262,7 @@ table {
             color: #3998DB;
             display: inline-block;
             font-family: 'Font Awesome 5 Pro', FontAwesome;
-            padding: 7px;
+            padding: 7px 9px !important;
             font-size: 14px;
             text-decoration: none;
             text-rendering: auto;
