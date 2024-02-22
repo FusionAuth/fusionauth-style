@@ -232,7 +232,11 @@ table {
         &.action {
           > .split-button {
             .button, button {
-              padding: 6px 7px !important;
+              padding: 6px 8px !important;
+            }
+
+            .menu > a {
+              padding: 6px 8px !important;
             }
           }
         }
