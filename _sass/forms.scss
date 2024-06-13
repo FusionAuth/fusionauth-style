@@ -83,6 +83,7 @@ form {
     input[type="tel"],
     input[type="url"],
     input[type="password"],
+    input[type="date"],
     textarea,
     select {
       width: 100%;
@@ -215,6 +216,7 @@ input[type="text"],
 input[type="tel"],
 input[type="url"],
 input[type="password"],
+input[type="date"],
 textarea {
   appearance: none;
   background: $input-background-color;
@@ -342,6 +344,7 @@ input[type=range] {
   input[type="tel"],
   input[type="url"],
   input[type="password"],
+  input[type="date"],
   textarea {
     font-size: $input-font-size-desktop;
   }
@@ -538,6 +541,7 @@ form.labels-left.full td {
   input[type="tel"],
   input[type="url"],
   input[type="password"],
+  input[type="date"],
   textarea,
   select {
     width: 100%;
