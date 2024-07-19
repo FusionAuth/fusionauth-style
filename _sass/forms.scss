@@ -84,6 +84,7 @@ form {
     input[type="url"],
     input[type="password"],
     input[type="date"],
+    input[type="datetime-local"],
     textarea,
     select {
       width: 100%;
@@ -217,6 +218,7 @@ input[type="tel"],
 input[type="url"],
 input[type="password"],
 input[type="date"],
+input[type="datetime-local"],
 textarea {
   appearance: none;
   background: $input-background-color;
@@ -345,6 +347,7 @@ input[type=range] {
   input[type="url"],
   input[type="password"],
   input[type="date"],
+  input[type="datetime-local"],
   textarea {
     font-size: $input-font-size-desktop;
   }
